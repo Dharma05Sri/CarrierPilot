@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5HVBHX1KDW');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support and Help Center for CareerPilot. Contact our team for career mapping assistance or technical support.">
+    <title>CareerPilot | Support Command</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #030712; 
+            --glass-panel: rgba(15, 23, 42, 0.7);
+            --neon-blue: #3B82F6; --neon-cyan: #06B6D4;
+            --border-glow: rgba(255, 255, 255, 0.08);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; }
+        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); top: -200px; left: -200px; z-index: -1; }
+
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 40px; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-glow); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: white; }
+        .brand span { color: var(--neon-cyan); }
+        .nav-links { display: flex; gap: 20px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-links a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-cyan); }
+
+        .glass-module { background: var(--glass-panel); backdrop-filter: blur(16px); border: 1px solid var(--border-glow); border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        
+        .form-control { width: 100%; padding: 16px 20px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; outline: none; transition: 0.3s; }
+        .form-control:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
+        
+        .btn-primary { background: var(--neon-blue); color: white; padding: 16px 24px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; width: 100%; transition: 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; border: none; cursor: pointer; margin-top: 10px; }
+        .btn-primary:hover { background: #2563EB; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-glow); color: #94A3B8; font-size: 0.9rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <div class="nav-links hidden md:flex">
+            <a href="index.html">Dashboard</a>
+            <a href="insights.html">Insights</a>
+            <a href="support.html" style="color: var(--neon-cyan);">Support</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto w-full p-4 md:p-8 flex-grow grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        
+        <div class="glass-module">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl font-black mb-6 uppercase tracking-tighter text-white">Initialize <span style="color: var(--neon-cyan);">Support</span></h1>
+            <p class="text-slate-400 mb-8">Require clarification on an academic pathway or encountered an algorithmic error in the Career DNA Matrix? Transmit your query below.</p>
+            
+            <form action="mailto:contact@astraforage.in" method="post" enctype="text/plain" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-widest">System ID / Full Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-widest">Return Protocol / Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="user@domain.com" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-widest">Message Payload</label>
+                    <textarea name="message" class="form-control h-32" style="resize: vertical;" placeholder="Detail your operational query here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Transmit Data</button>
+            </form>
+        </div>
+
+        <div class="glass-module">
+            <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black mb-8 uppercase tracking-tighter text-white">System Protocols (FAQ)</h2>
+            
+            <div class="space-y-6">
+                <div class="border-b border-slate-800 pb-6">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-start gap-2"><span class="text-cyan-400">Q:</span> How does the Career DNA Engine work?</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed pl-6">The matrix evaluates your answers against a weighted algorithm, assigning points to specific career trajectories based on your cognitive and operational preferences to calculate an optimal mathematical match.</p>
+                </div>
+
+                <div class="border-b border-slate-800 pb-6">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-start gap-2"><span class="text-cyan-400">Q:</span> Is the salary projection data guaranteed?</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed pl-6">No. The projected salaries are statistical aggregations of current market trends. Individual compensation is highly dependent on institutional prestige, skill velocity, and geographic location.</p>
+                </div>
+
+                <div class="border-b border-slate-800 pb-6">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-start gap-2"><span class="text-cyan-400">Q:</span> I got matched with a career I didn't expect. Should I change streams?</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed pl-6">The engine provides insights, not mandates. Review the "Contingency Pivot (Plan B)" section in the career breakdown to see how your current stream can still align with unexpected roles.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-start gap-2"><span class="text-cyan-400">Q:</span> Can I request a new career path to be added?</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed pl-6">Yes. Transmit a request via the support form outlining the specific industry, and our analysts will evaluate adding it to the global matrix.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="privacy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+            <a href="support.html" style="color: var(--neon-cyan);">Support</a>
+        </div>
+        <p>&copy; 2026 AstraForge CareerPilot. Engineered for Strategic Growth.</p>
+    </footer>
+
+</body>
+</html>
