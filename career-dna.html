@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Take the Career DNA Test to find your mathematically optimal career path, stream, and degree.">
+    <title>Career DNA Test | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #06B6D4;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        .glow-orb { position: fixed; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; }
+
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-primary); }
+
+        .glass-module { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        /* Quiz UI Elements */
+        .progress-container { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 30px; }
+        .progress-bar { height: 100%; background: var(--neon-primary); width: 0%; transition: width 0.4s ease; box-shadow: 0 0 10px var(--neon-primary); }
+
+        .option-btn { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 16px; color: white; font-weight: 600; text-align: left; transition: 0.3s; cursor: pointer; margin-bottom: 15px; display: flex; items-center; gap: 15px; }
+        .option-btn:hover { background: rgba(6,182,212,0.1); border-color: var(--neon-primary); transform: translateX(5px); }
+        .option-letter { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 8px; font-weight: 900; font-family: 'Rajdhani', sans-serif; color: var(--neon-primary); }
+
+        /* Screen Transitions */
+        .screen { display: none; animation: fadeIn 0.5s ease-out forwards; }
+        .screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Loader */
+        .loader { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--neon-primary); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .btn-primary { background: var(--neon-primary); color: #020617; padding: 16px 32px; border-radius: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; }
+        .btn-primary:hover { background: white; box-shadow: 0 0 20px rgba(6,182,212,0.5); }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 transition-colors text-decoration-none">← Abort Test</a>
+    </nav>
+
+    <main class="flex-grow max-w-3xl mx-auto w-full p-4 md:p-8 flex flex-col justify-center">
+
+        <div id="screen-intro" class="screen active text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Career <span class="text-cyan-400">DNA Test™</span></h1>
+            <p class="text-slate-400 mb-8 max-w-lg mx-auto leading-relaxed">This neural algorithm will analyze your cognitive processing, logic matrices, and environmental preferences to calculate your mathematically optimal career trajectory. Answer instinctively.</p>
+            
+            <div class="glass-module mb-8 flex justify-between text-left">
+                <div>
+                    <div class="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Time Req</div>
+                    <div class="text-xl font-bold text-white">~3 Minutes</div>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Questions</div>
+                    <div class="text-xl font-bold text-white">8 Stages</div>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Accuracy</div>
+                    <div class="text-xl font-bold text-cyan-400">94.2%</div>
+                </div>
+            </div>
+
+            <button class="btn-primary w-full md:w-auto" onclick="startTest()">Initialize Scan Sequence</button>
+        </div>
+
+        <div id="screen-quiz" class="screen">
+            <div class="glass-module">
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-xs text-cyan-400 uppercase font-bold tracking-widest" id="q-counter">Phase 1 of 8</span>
+                    <span class="text-xs text-slate-500 font-bold" id="q-percent">0%</span>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 leading-tight" id="question-text">Loading parameter...</h2>
+                
+                <div id="options-container">
+                    </div>
+            </div>
+        </div>
+
+        <div id="screen-loading" class="screen text-center py-20">
+            <div class="loader"></div>
+            <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black text-white uppercase tracking-tighter mb-2">Compiling DNA Matrix</h2>
+            <p class="text-slate-400 text-sm animate-pulse">Running cross-reference with 500+ global career trajectories...</p>
+        </div>
+
+        <div id="screen-result" class="screen">
+            <div class="glass-module relative overflow-hidden" id="dna-card">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+
+                <div class="text-center mb-8 relative z-10">
+                    <span class="text-[10px] bg-cyan-900/40 text-cyan-400 border border-cyan-800 px-3 py-1 rounded-full font-bold uppercase tracking-widest">DNA Verified</span>
+                    <h2 style="font-family: 'Rajdhani';" class="text-4xl font-black text-white uppercase tracking-tighter mt-4 mb-2">Your Optimal Trajectory</h2>
+                    <p class="text-slate-400 text-sm">Based on algorithmic matching</p>
+                </div>
+
+                <div class="bg-black/40 border border-cyan-500/30 rounded-2xl p-6 mb-6 text-center relative z-10 shadow-[0_0_30px_rgba(6,182,212,0.1)]">
+                    <div class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-2">Primary Match</div>
+                    <div class="text-3xl md:text-4xl font-black text-cyan-400 mb-2" id="res-primary-title">AI & Machine Learning</div>
+                    <div class="text-sm text-slate-300 mb-6" id="res-primary-desc">High logical processing. Built for scaling automation.</div>
+                    
+                    <div class="grid grid-cols-3 gap-2 text-center border-t border-slate-800 pt-4">
+                        <div><div class="text-[10px] text-slate-500 uppercase font-bold mb-1">Fit</div><div class="text-lg font-bold text-white" id="res-fit">96%</div></div>
+                        <div class="border-l border-slate-800"><div class="text-[10px] text-slate-500 uppercase font-bold mb-1">Best Stream</div><div class="text-lg font-bold text-white" id="res-stream">MPC</div></div>
+                        <div class="border-l border-slate-800"><div class="text-[10px] text-slate-500 uppercase font-bold mb-1">Peak Salary</div><div class="text-lg font-bold text-emerald-400" id="res-salary">₹40L+</div></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 mb-8 relative z-10 flex justify-between items-center">
+                    <div>
+                        <div class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mb-1">Secondary Alternative</div>
+                        <div class="text-lg font-bold text-white" id="res-secondary">Data Science / Quant</div>
+                    </div>
+                    <div class="text-cyan-400 font-bold text-lg" id="res-sec-fit">88%</div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 relative z-10">
+                    <a href="future-simulator.html" class="btn-primary text-center flex-grow text-sm">Deploy Full Roadmap</a>
+                    <button onclick="shareDNA()" class="bg-transparent border border-slate-600 text-white py-4 px-6 rounded-xl font-bold uppercase tracking-widest text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors">Share DNA Card</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center p-6 border-t border-slate-800 text-slate-500 text-xs">
+        <p>&copy; 2026 AstraForge CareerPilot Network.</p>
+    </footer>
+
+    <script>
+        // --- Algorithmic Logic & Database ---
+        // Categories: ENG (Engineering), MED (Medical), FIN (Finance/CA), LAW (Legal/UPSC), DEF (Defense/Aviation)
+        
+        const questions = [
+            {
+                q: "When presented with a complex problem, what is your default reaction?",
+                opts: [
+                    { text: "Break it down into mathematical formulas and logical steps.", scores: { ENG: 3, FIN: 1, DEF: 1 } },
+                    { text: "Analyze the human behavior and rules governing the situation.", scores: { LAW: 3, FIN: 1 } },
+                    { text: "Look for biological, chemical, or natural patterns.", scores: { MED: 3 } },
+                    { text: "Take immediate physical action and lead the group.", scores: { DEF: 3, LAW: 1 } }
+                ]
+            },
+            {
+                q: "Which environment allows you to operate at maximum efficiency?",
+                opts: [
+                    { text: "A high-stakes corporate boardroom or courtroom.", scores: { LAW: 3, FIN: 2 } },
+                    { text: "A quiet, highly technical lab or multi-monitor computer setup.", scores: { ENG: 3, MED: 1 } },
+                    { text: "A dynamic, high-pressure physical environment (e.g., Hospital, Cockpit, Field).", scores: { DEF: 3, MED: 2 } },
+                    { text: "Analyzing massive spreadsheets and market data independently.", scores: { FIN: 3, ENG: 1 } }
+                ]
+            },
+            {
+                q: "If you had to read a 300-page book tonight, what would the topic be?",
+                opts: [
+                    { text: "How Artificial Intelligence is rewriting global economics.", scores: { ENG: 3, FIN: 1 } },
+                    { text: "The psychology of negotiation and high-profile legal battles.", scores: { LAW: 3 } },
+                    { text: "Advanced human anatomy or cutting-edge genetics.", scores: { MED: 3 } },
+                    { text: "Military strategy, aviation, or survival tactics.", scores: { DEF: 3 } }
+                ]
+            },
+            {
+                q: "What defines ultimate 'success' for you?",
+                opts: [
+                    { text: "Building a scalable product or software that millions use.", scores: { ENG: 3 } },
+                    { text: "Securing immense wealth and controlling corporate capital.", scores: { FIN: 3, LAW: 1 } },
+                    { text: "Having the prestige and authority to command or save lives.", scores: { MED: 2, DEF: 3 } },
+                    { text: "Defending justice, creating policy, or running a nation.", scores: { LAW: 3 } }
+                ]
+            },
+            {
+                q: "How do you handle strict rules and repetitive processes?",
+                opts: [
+                    { text: "I love them. Audits, accounting, and compliance are my strength.", scores: { FIN: 3, LAW: 1 } },
+                    { text: "I respect them, but only if they are logical algorithms I can optimize.", scores: { ENG: 3 } },
+                    { text: "I thrive under absolute discipline and physical protocol.", scores: { DEF: 3, MED: 2 } },
+                    { text: "I use rules to my advantage to win arguments and build cases.", scores: { LAW: 3 } }
+                ]
+            },
+            {
+                q: "Which academic baseline do you naturally gravitate towards?",
+                opts: [
+                    { text: "Pure Mathematics, Physics, and coding.", scores: { ENG: 3, DEF: 1 } },
+                    { text: "Biology, Chemistry, and memory-intensive subjects.", scores: { MED: 3 } },
+                    { text: "Economics, Commerce, Accountancy, or Civics.", scores: { FIN: 3, LAW: 2 } },
+                    { text: "History, Political Science, and intense debates.", scores: { LAW: 3 } }
+                ]
+            },
+            {
+                q: "What is your stance on the rapid advancement of AI?",
+                opts: [
+                    { text: "I want to be the one programming and designing it.", scores: { ENG: 3 } },
+                    { text: "I want to use it to predict financial markets and stocks.", scores: { FIN: 3 } },
+                    { text: "I am not worried. AI cannot perform physical surgery yet.", scores: { MED: 3 } },
+                    { text: "I am not worried. AI cannot lead troops or fly fighter jets in combat.", scores: { DEF: 3 } }
+                ]
+            },
+            {
+                q: "Choose your preferred ultimate title:",
+                opts: [
+                    { text: "Chief Technology Officer (CTO)", scores: { ENG: 3 } },
+                    { text: "Chief Financial Officer (CFO) or Senior Partner", scores: { FIN: 2, LAW: 2 } },
+                    { text: "Chief of Surgery / Medical Director", scores: { MED: 3 } },
+                    { text: "Squadron Leader / Commanding Officer", scores: { DEF: 3 } }
+                ]
+            }
+        ];
+
+        const careerProfiles = {
+            ENG: { title: "AI / Software Architect", desc: "You possess elite logical processing. The tech industry offers you the highest scaling potential.", stream: "MPC", salary: "₹20L - ₹60L+", sec: "Quant Finance / Data Science" },
+            MED: { title: "Clinical Surgeon / MD", desc: "High biological curiosity and memory retention. You are built for high-impact healthcare.", stream: "BiPC", salary: "₹15L - ₹50L+", sec: "Biotechnology / Genetics" },
+            FIN: { title: "Chartered Accountant / IB", desc: "A mastermind for numbers, rules, and capital. You are the backbone of the corporate economy.", stream: "MEC/CEC", salary: "₹12L - ₹40L+", sec: "Actuarial Science / MBA" },
+            LAW: { title: "Corporate Lawyer / IAS", desc: "High verbal intelligence and strategic empathy. You dominate in negotiation and policy.", stream: "HEC/CEC/Any", salary: "₹12L - ₹35L+", sec: "Public Policy / Management" },
+            DEF: { title: "Defense Officer / Pilot", desc: "Extreme physical discipline and quick decision-making under stress. Born for leadership.", stream: "MPC (Preferred)", salary: "₹1.5L+/mo + Perks", sec: "Commercial Aviation / Logistics" }
+        };
+
+        // --- Application State ---
+        let currentQ = 0;
+        let userScores = { ENG: 0, MED: 0, FIN: 0, LAW: 0, DEF: 0 };
+
+        // --- Core Functions ---
+        function switchScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function startTest() {
+            currentQ = 0;
+            userScores = { ENG: 0, MED: 0, FIN: 0, LAW: 0, DEF: 0 };
+            switchScreen('screen-quiz');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qData = questions[currentQ];
+            
+            // Update UI Counters
+            document.getElementById('q-counter').innerText = `Phase ${currentQ + 1} of ${questions.length}`;
+            const percent = Math.round((currentQ / questions.length) * 100);
+            document.getElementById('q-percent').innerText = `${percent}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            
+            // Inject Text
+            document.getElementById('question-text').innerText = qData.q;
+            
+            // Inject Options
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+            
+            const letters = ['A', 'B', 'C', 'D'];
+            qData.opts.forEach((opt, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'option-btn';
+                btn.onclick = () => handleSelection(opt.scores);
+                btn.innerHTML = `<span class="option-letter">${letters[index]}</span> <span>${opt.text}</span>`;
+                optContainer.appendChild(btn);
+            });
+        }
+
+        function handleSelection(scores) {
+            // Apply weights
+            for (let category in scores) {
+                userScores[category] += scores[category];
+            }
+            
+            currentQ++;
+            if (currentQ < questions.length) {
+                renderQuestion();
+            } else {
+                processResults();
+            }
+        }
+
+        function processResults() {
+            // Finish progress bar
+            document.getElementById('q-percent').innerText = `100%`;
+            document.getElementById('progress-bar').style.width = `100%`;
+            
+            switchScreen('screen-loading');
+            
+            setTimeout(() => {
+                // Find top 2 categories
+                let sorted = Object.keys(userScores).sort((a, b) => userScores[b] - userScores[a]);
+                let primaryKey = sorted[0];
+                let secondaryKey = sorted[1];
+                
+                let primaryData = careerProfiles[primaryKey];
+                
+                // Simulated High Percentages for Gamification
+                let fit1 = Math.floor(Math.random() * (98 - 92 + 1)) + 92; 
+                let fit2 = Math.floor(Math.random() * (89 - 82 + 1)) + 82;
+
+                // Inject Data to Result Card
+                document.getElementById('res-primary-title').innerText = primaryData.title;
+                document.getElementById('res-primary-desc').innerText = primaryData.desc;
+                document.getElementById('res-fit').innerText = `${fit1}%`;
+                document.getElementById('res-stream').innerText = primaryData.stream;
+                document.getElementById('res-salary').innerText = primaryData.salary;
+                
+                document.getElementById('res-secondary').innerText = careerProfiles[secondaryKey].title;
+                document.getElementById('res-sec-fit').innerText = `${fit2}%`;
+                
+                switchScreen('screen-result');
+            }, 2500); // 2.5 second dramatic loading
+        }
+
+        function shareDNA() {
+            const title = document.getElementById('res-primary-title').innerText;
+            const fit = document.getElementById('res-fit').innerText;
+            const shareText = `🔥 I just took the Career DNA Test!\n\nMy Optimal Trajectory: ${title} (${fit} Fit)\n\nAnalyze your cognitive architecture at CareerPilot: https://career.astraforage.in`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Career DNA',
+                    text: shareText,
+                    url: 'https://career.astraforage.in'
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(shareText);
+                alert("Data copied to clipboard! Share it on WhatsApp/Instagram.");
+            }
+        }
+    </script>
+</body>
+</html>
