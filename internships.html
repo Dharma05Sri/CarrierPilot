@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Live internship tracker for Indian students. Tech, Research, and Corporate opportunities.">
+    <title>Internship Radar | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #3B82F6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: #06B6D4; }
+
+        .job-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px; transition: 0.3s; }
+        .job-card:hover { border-color: var(--neon-primary); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        
+        .filter-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: #94A3B8; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active { background: rgba(59,130,246,0.2); border-color: var(--neon-primary); color: white; }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Dashboard</a>
+    </nav>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full p-4 md:p-8">
+        <header class="mb-8 text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Internship <span class="text-blue-500">Radar</span></h1>
+            <p class="text-slate-400 text-sm">Live corporate and research opportunities for school and college students.</p>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-8" id="filter-container">
+            <button class="filter-btn active" onclick="filterJobs('all')">All Opportunities</button>
+            <button class="filter-btn" onclick="filterJobs('tech')">Tech & Software</button>
+            <button class="filter-btn" onclick="filterJobs('research')">Govt & Research</button>
+            <button class="filter-btn" onclick="filterJobs('finance')">Finance & Biz</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="job-grid">
+            </div>
+    </main>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+
+    <script>
+        const jobs = [
+            { cat: 'tech', corp: 'Google', title: 'STEP Internship 2026', req: '1st/2nd Year B.Tech (CSE)', stipend: '₹50,000/mo', tags: ['Software', 'Diversity'] },
+            { cat: 'research', corp: 'ISRO', title: 'Young Scientist Program (YUVIKA)', req: 'Class 9th & 10th Students', stipend: 'Fully Funded', tags: ['Space', 'Research'] },
+            { cat: 'tech', corp: 'Microsoft', title: 'Engage Mentorship Program', req: '2nd Year Engineering', stipend: 'Pre-Placement Offer', tags: ['AI', 'Mentorship'] },
+            { cat: 'finance', corp: 'Goldman Sachs', title: 'Summer Analyst 2026', req: 'Pre-final year (Any Degree)', stipend: '₹75,000/mo', tags: ['Quant', 'Finance'] },
+            { cat: 'research', corp: 'DRDO', title: 'Apprentice Trainee', req: 'B.Tech/Diploma (Mech/ECE)', stipend: '₹9,000/mo', tags: ['Defense', 'Hardware'] },
+            { cat: 'tech', corp: 'TCS Research', title: 'Innovation Labs Intern', req: 'B.Tech/M.Tech (AI/ML)', stipend: '₹25,000/mo', tags: ['Deep Learning', 'Corporate'] }
+        ];
+
+        function renderJobs(filter) {
+            const grid = document.getElementById('job-grid');
+            grid.innerHTML = '';
+            
+            jobs.forEach(job => {
+                if(filter === 'all' || job.cat === filter) {
+                    let tagsHTML = job.tags.map(t => `<span class="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest">${t}</span>`).join(' ');
+                    
+                    grid.innerHTML += `
+                        <div class="job-card flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-xs font-black uppercase tracking-widest text-blue-400">${job.corp}</span>
+                                    <span class="text-[10px] font-bold text-emerald-400 bg-emerald-900/20 px-2 py-1 rounded">${job.stipend}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">${job.title}</h3>
+                                <p class="text-sm text-slate-400 mb-4"><strong>Eligibility:</strong> ${job.req}</p>
+                                <div class="flex gap-2 mb-6">${tagsHTML}</div>
+                            </div>
+                            <button onclick="alert('Routing to official portal...')" class="w-full bg-slate-800 hover:bg-blue-600 border border-slate-600 hover:border-blue-500 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-colors">View Official Portal</button>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function filterJobs(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderJobs(cat);
+        }
+
+        renderJobs('all');
+    </script>
+</body>
+</html>
