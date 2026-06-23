@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ask CareerGPT: The AI career counselor for Indian students navigating 10th and 12th grade streams.">
+    <title>Ask CareerGPT | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #06B6D4;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+
+        nav { padding: 15px 30px; background: rgba(2, 6, 23, 0.95); border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-primary); }
+
+        /* Chat Architecture */
+        .chat-container { flex-grow: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; width: 100%; scroll-behavior: smooth; }
+        .chat-container::-webkit-scrollbar { width: 6px; }
+        .chat-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        .message { max-width: 85%; padding: 16px 20px; border-radius: 16px; font-size: 0.95rem; line-height: 1.6; animation: slideUp 0.3s ease-out forwards; opacity: 0; transform: translateY(10px); }
+        .msg-user { align-self: flex-end; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: white; border-bottom-right-radius: 4px; }
+        .msg-ai { align-self: flex-start; background: rgba(15, 23, 42, 0.9); border: 1px solid var(--glass-border); color: #cbd5e1; border-bottom-left-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+        .typing-indicator { display: flex; gap: 5px; padding: 10px 20px; align-items: center; }
+        .typing-dot { width: 8px; height: 8px; background: var(--neon-primary); border-radius: 50%; animation: typing 1.4s infinite ease-in-out; opacity: 0.5; }
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(-4px); opacity: 1; } }
+
+        /* Input Area */
+        .input-area { padding: 20px; background: rgba(2, 6, 23, 0.95); border-top: 1px solid var(--glass-border); }
+        .input-wrapper { max-width: 800px; margin: 0 auto; position: relative; display: flex; gap: 10px; }
+        .chat-input { flex-grow: 1; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glass-border); padding: 16px 20px; border-radius: 16px; color: white; outline: none; transition: 0.3s; font-size: 1rem; }
+        .chat-input:focus { border-color: var(--neon-primary); box-shadow: 0 0 15px rgba(6,182,212,0.1); }
+        .send-btn { background: var(--neon-primary); color: #020617; padding: 0 24px; border-radius: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; }
+        .send-btn:hover { background: white; }
+
+        .suggestion-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; max-width: 800px; margin: 0 auto 10px; }
+        .suggestion-chips::-webkit-scrollbar { display: none; }
+        .chip { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; color: #94A3B8; cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .chip:hover { border-color: var(--neon-primary); color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Dashboard</a>
+    </nav>
+
+    <div class="chat-container" id="chat-box">
+        <div class="message msg-ai">
+            <h3 class="text-white font-bold mb-2 font-['Rajdhani'] text-xl tracking-wide flex items-center gap-2"><span class="text-cyan-400">🤖</span> CareerGPT Initialized</h3>
+            <p>I am your dedicated neural career counselor. I process millions of data points on Indian streams, global salaries, and future AI automation risks.</p>
+            <p class="mt-2 text-cyan-400 text-sm font-bold uppercase tracking-widest">Awaiting your parameters...</p>
+        </div>
+    </div>
+
+    <div class="input-area">
+        <div class="suggestion-chips">
+            <button class="chip" onclick="fillInput('I hate Physics but love Biology. What are my options besides MBBS?')">Hate Physics, Love Bio</button>
+            <button class="chip" onclick="fillInput('Which has a better future salary: CSE or ECE?')">CSE vs ECE Salary</button>
+            <button class="chip" onclick="fillInput('What is the roadmap to become a Commercial Pilot after 10th?')">Pilot Roadmap</button>
+            <button class="chip" onclick="fillInput('Are there high-paying jobs in the Commerce (MEC/CEC) stream?')">Commerce Careers</button>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" id="user-input" class="chat-input" placeholder="Describe your interests, marks, or confusions..." onkeypress="if(event.key === 'Enter') sendMessage()">
+            <button class="send-btn" onclick="sendMessage()">Transmit</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        function fillInput(text) {
+            userInput.value = text;
+            userInput.focus();
+        }
+
+        // Extremely robust keyword-based response logic
+        function generateAIResponse(text) {
+            text = text.toLowerCase();
+            
+            if(text.includes('physics') && text.includes('hate') || text.includes('biology')) {
+                return `<strong>Diagnostic Analysis:</strong> If Physics is a bottleneck, the traditional MPC engineering route is highly unadvised. \n\n<strong>Optimal Pathway: BiPC.</strong>\n\nIf you do not wish to pursue the grueling 10-year MBBS route, elite high-paying alternatives include:\n1. <strong>Biotechnology & Genetics:</strong> Heavy demand in global R&D.\n2. <strong>Pharmacy (Pharm.D):</strong> High international scope.\n3. <strong>Clinical Research:</strong> Managing trials for pharmaceutical giants.\n\n<em>Action Step:</em> Navigate to the Career Battles matrix to compare Medical degrees.`;
+            }
+            if(text.includes('cse') || text.includes('ece') || text.includes('computer')) {
+                return `<strong>Data Comparison: CSE vs ECE</strong>\n\n<strong>CSE (Computer Science):</strong>\n• Focus: Code, Algorithms, AI.\n• Salary Ceiling: Extreme (₹20L - ₹1Cr+ globally).\n• Remote Scope: Very High.\n\n<strong>ECE (Electronics):</strong>\n• Focus: Microprocessors, Hardware, IoT.\n• Salary Ceiling: High (₹12L - ₹40L+).\n• Remote Scope: Low.\n\n<strong>Verdict:</strong> Choose CSE for maximum salary and flexibility. Choose ECE only if you are deeply passionate about robotics and semiconductor design.`;
+            }
+            if(text.includes('pilot') || text.includes('aviation')) {
+                return `<strong>Trajectory: Commercial Airline Pilot</strong>\n\nThis is a heavily regulated, capital-intensive pathway.\n\n<strong>Execution Steps:</strong>\n1. <strong>Stream:</strong> 10+2 MPC is strictly mandatory.\n2. <strong>Clearance:</strong> Obtain DGCA Class 2 and Class 1 Medicals immediately.\n3. <strong>Licensing:</strong> Complete 200 hours of flight time to earn a CPL (Commercial Pilot License).\n4. <strong>Induction:</strong> Complete a Type Rating (e.g., A320) to join an airline.\n\n<em>Note:</em> Expect an initial investment of ₹40L - ₹80L, but peak salaries reach ₹3L-₹8L/month.`;
+            }
+            if(text.includes('commerce') || text.includes('mec') || text.includes('cec') || text.includes('ca')) {
+                return `<strong>Financial Sector Matrix:</strong>\n\nCommerce streams (MEC/CEC) are often underestimated but hold massive wealth-generation potential.\n\n<strong>Elite Pathways:</strong>\n1. <strong>Chartered Accountancy (CA):</strong> The ultimate corporate backbone. Extremely difficult entrance, but secures ₹12L-₹30L+ packages.\n2. <strong>Actuarial Science:</strong> Risk calculation for insurance. Heavily math-focused, very low competition, extremely high pay.\n3. <strong>IPM (Integrated MBA):</strong> Enter IIMs directly after 12th grade.\n\n<em>Verdict:</em> If you handle numbers well but hate pure science, Commerce is a superior wealth-building path.`;
+            }
+            
+            return `<strong>Neural Analysis Complete:</strong>\n\nYour query requires deeper contextual mapping. Based on the market data, I recommend taking the <strong>Career DNA Test™</strong> on your dashboard. It will process your specific personality traits against 500+ global careers and generate an exact percentage match for your optimal trajectory.\n\nAlternatively, specify a particular stream (MPC, BiPC) or job title (AI Engineer, Lawyer) for detailed metrics.`;
+        }
+
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if(!text) return;
+
+            // Render User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message msg-user';
+            userMsg.innerText = text;
+            chatBox.appendChild(userMsg);
+
+            userInput.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Render Typing Indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message msg-ai typing-indicator';
+            typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            chatBox.appendChild(typingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Simulate Network Processing Time
+            setTimeout(() => {
+                chatBox.removeChild(typingDiv);
+                
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message msg-ai';
+                // Replace \n with <br> for HTML rendering
+                aiMsg.innerHTML = generateAIResponse(text).replace(/\n/g, '<br>');
+                chatBox.appendChild(aiMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
