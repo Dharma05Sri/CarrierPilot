@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Side-by-side data comparisons of streams, degrees, and career paths.">
+    <title>Career Battles | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #06B6D4;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-primary); }
+
+        .glass-module { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; }
+
+        /* Stat Bars */
+        .stat-bar-bg { width: 100%; height: 8px; background: rgba(0,0,0,0.5); border-radius: 4px; overflow: hidden; margin-top: 6px; }
+        .stat-fill { height: 100%; border-radius: 4px; transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        /* Specific Colors */
+        .fill-blue { background: #3B82F6; box-shadow: 0 0 10px #3B82F6; }
+        .fill-purple { background: #8B5CF6; box-shadow: 0 0 10px #8B5CF6; }
+
+        /* Battle Selectors */
+        .battle-btn { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; }
+        .battle-btn.active { background: rgba(6,182,212,0.1); border-color: var(--neon-primary); color: white; }
+        .battle-btn:hover { border-color: rgba(6,182,212,0.5); }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Dashboard</a>
+    </nav>
+
+    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
+        
+        <header class="mb-10 text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Career <span class="text-cyan-400">Battle Arena</span></h1>
+            <p class="text-slate-400 text-sm">Direct, data-driven comparisons to eliminate confusion.</p>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <button class="battle-btn active" onclick="loadBattle('mpc_bipc', this)">MPC vs BiPC</button>
+            <button class="battle-btn" onclick="loadBattle('cse_ece', this)">CSE vs ECE</button>
+            <button class="battle-btn" onclick="loadBattle('btech_degree', this)">B.Tech vs Degree</button>
+            <button class="battle-btn" onclick="loadBattle('india_abroad', this)">India vs Abroad</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            <div class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-900 border-2 border-slate-700 w-16 h-16 rounded-full items-center justify-center font-black text-2xl text-slate-500 z-10" style="font-family: 'Rajdhani';">VS</div>
+
+            <div class="glass-module border-t-4 border-t-blue-500">
+                <div class="text-center mb-6 pb-6 border-b border-slate-800">
+                    <h2 class="text-3xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';" id="title-A">MPC Stream</h2>
+                    <p class="text-xs text-slate-400 mt-2 font-bold uppercase tracking-widest" id="sub-A">Engineering & Technology</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Computational Focus</span> <span id="val-A-1">95%</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-1" style="width: 0%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Global Portability</span> <span id="val-A-2">90%</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-2" style="width: 0%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Automation Resilience</span> <span id="val-A-3">85%</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-3" style="width: 0%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-black/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="text-xs text-blue-400 font-bold uppercase tracking-widest mb-2">The Verdict</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed" id="verdict-A">The definitive choice for building algorithms, software, and systems. Opens doors to high-paying global tech hubs.</p>
+                </div>
+            </div>
+
+            <div class="glass-module border-t-4 border-t-purple-500">
+                <div class="text-center mb-6 pb-6 border-b border-slate-800">
+                    <h2 class="text-3xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';" id="title-B">BiPC Stream</h2>
+                    <p class="text-xs text-slate-400 mt-2 font-bold uppercase tracking-widest" id="sub-B">Medical & Research</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Memory & Memorization</span> <span id="val-B-1">98%</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-1" style="width: 0%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Time to Peak Earning</span> <span id="val-B-2">Low (10+ Yrs)</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-2" style="width: 0%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Automation Resilience</span> <span id="val-B-3">95%</span></div>
+                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-3" style="width: 0%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-black/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="text-xs text-purple-400 font-bold uppercase tracking-widest mb-2">The Verdict</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed" id="verdict-B">A highly secure but grueling path focused purely on clinical practice, genetics, and biotechnology research.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+
+    <script>
+        const battles = {
+            mpc_bipc: {
+                A: {
+                    title: "MPC Stream", sub: "Engineering & Tech",
+                    labels: ["Mathematical/Computational Focus", "Global Portability", "Startup Scope"],
+                    vals: ["95%", "90%", "High"], bars: [95, 90, 88],
+                    verdict: "The absolute dominant pathway for algorithmic architecture, AI, and engineering. Grants immediate access to massive global tech salaries and allows seamless pivoting into finance and management."
+                },
+                B: {
+                    title: "BiPC Stream", sub: "Medical & Life Sciences",
+                    labels: ["Memory & Memorization", "Time to Peak Earning", "Clinical Authority"],
+                    vals: ["95%", "Slow (10+ Yrs)", "High"], bars: [95, 30, 90],
+                    verdict: "Requires immense patience. Excludes computational architecture entirely. Focuses purely on biological systems, NEET, and localized clinical or laboratory practice."
+                }
+            },
+            cse_ece: {
+                A: {
+                    title: "CSE Branch", sub: "Computer Science",
+                    labels: ["Coding & Algorithms", "Remote Work Scope", "Average Starting Pay"],
+                    vals: ["98%", "Very High", "₹8L - ₹15L"], bars: [98, 95, 85],
+                    verdict: "The software engine of the world. Focuses on data structures, neural networks, and web architecture. Unmatched flexibility and salary ceilings."
+                },
+                B: {
+                    title: "ECE Branch", sub: "Electronics & Comm",
+                    labels: ["Hardware Architecture", "Core Industry Demand", "Syllabus Difficulty"],
+                    vals: ["90%", "Medium-High", "Extreme"], bars: [90, 75, 95],
+                    verdict: "Bridges the physical and digital. Focuses on microprocessors, IoT, and telecommunications. Harder syllabus, but crucial for semiconductor and chip design industries."
+                }
+            },
+            btech_degree: {
+                A: {
+                    title: "B.Tech (4 Years)", sub: "Professional Engineering",
+                    labels: ["Technical Depth", "Campus Placement Ratio", "Global Tech Recognition"],
+                    vals: ["90%", "High", "95%"], bars: [90, 85, 95],
+                    verdict: "A heavily weighted, rigorous 4-year technical degree. The baseline requirement for most Tier-1 engineering and tech corporation screenings."
+                },
+                B: {
+                    title: "B.Sc / B.A. (3 Years)", sub: "Academic Degree",
+                    labels: ["Theoretical Focus", "Time to Completion", "Preparation for Govt Exams"],
+                    vals: ["80%", "Fast", "High"], bars: [80, 95, 90],
+                    verdict: "Faster and deeply theoretical. Excellent for entering research academia, or buying time to heavily prepare for UPSC and civil service examinations."
+                }
+            },
+            india_abroad: {
+                A: {
+                    title: "Indian Institutes (IIT/NIT)", sub: "Domestic Execution",
+                    labels: ["Entrance Brutality", "Tuition Cost", "Alumni Network in India"],
+                    vals: ["Extreme (0.1%)", "Low-Medium", "Unmatched"], bars: [99, 30, 95],
+                    verdict: "Requires surviving the JEE grinder. Secures elite status within India with massive day-zero placements, but subjects students to hyper-competition."
+                },
+                B: {
+                    title: "Global Universities", sub: "International Strategy",
+                    labels: ["Profile Building Reqs", "R&D Infrastructure", "Need-Blind Aid Scope"],
+                    vals: ["High", "World-Class", "High (If Top Tier)"], bars: [85, 98, 80],
+                    verdict: "Focuses on holistic profiles, SAT scores, and essays. Offers unmatched global exposure, research funding, and zero-investment degrees if 100% need-blind scholarships are secured."
+                }
+            }
+        };
+
+        function loadBattle(key, btnElement) {
+            // UI Update
+            document.querySelectorAll('.battle-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const data = battles[key];
+
+            // Reset Bars
+            for(let i=1; i<=3; i++) {
+                document.getElementById(`bar-A-${i}`).style.width = '0%';
+                document.getElementById(`bar-B-${i}`).style.width = '0%';
+            }
+
+            setTimeout(() => {
+                // Populate A
+                document.getElementById('title-A').innerText = data.A.title;
+                document.getElementById('sub-A').innerText = data.A.sub;
+                document.getElementById('verdict-A').innerText = data.A.verdict;
+                
+                // Populate B
+                document.getElementById('title-B').innerText = data.B.title;
+                document.getElementById('sub-B').innerText = data.B.sub;
+                document.getElementById('verdict-B').innerText = data.B.verdict;
+
+                // Labels & Bars
+                for(let i=1; i<=3; i++) {
+                    // Update Text
+                    document.getElementById(`val-A-${i}`).previousElementSibling.innerText = data.A.labels[i-1];
+                    document.getElementById(`val-A-${i}`).innerText = data.A.vals[i-1];
+                    document.getElementById(`val-B-${i}`).previousElementSibling.innerText = data.B.labels[i-1];
+                    document.getElementById(`val-B-${i}`).innerText = data.B.vals[i-1];
+                    
+                    // Animate Bars
+                    document.getElementById(`bar-A-${i}`).style.width = data.A.bars[i-1] + '%';
+                    document.getElementById(`bar-B-${i}`).style.width = data.B.bars[i-1] + '%';
+                }
+            }, 100);
+        }
+
+        // Initialize first battle
+        setTimeout(() => {
+            loadBattle('mpc_bipc', document.querySelector('.battle-btn'));
+        }, 300);
+    </script>
+</body>
+</html>
