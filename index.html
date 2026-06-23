@@ -12,6 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="India's ultimate Career Operating System. Take the Career DNA test, simulate roadmaps, and compare engineering and medical streams.">
     <title>CareerPilot | The Career Operating System</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,53 +21,56 @@
     <style>
         :root {
             --bg-deep: #020617; 
-            --glass-base: rgba(15, 23, 42, 0.4);
+            --glass-base: rgba(15, 23, 42, 0.5);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --neon-primary: #06B6D4; /* Cyan for Student */
+            --neon-primary: #06B6D4; /* Cyan */
             --neon-secondary: #3B82F6; /* Blue */
-            --parent-primary: #10B981; /* Emerald for Parent Mode */
+            --parent-primary: #10B981; /* Emerald */
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Dynamic App Background */
+        /* Infrastructure UI */
         .app-bg { position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, #0f172a 0%, var(--bg-deep) 100%); z-index: -3; }
-        .grid-overlay { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.5; }
-        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%); top: -200px; right: -200px; z-index: -1; transition: background 0.5s ease; }
+        .grid-overlay { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.4; }
+        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%); top: -150px; right: -150px; z-index: -1; transition: background 0.5s ease; pointer-events: none; }
         
-        body.parent-mode .glow-orb { background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); }
+        body.parent-mode .glow-orb { background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%); }
         body.parent-mode { --neon-primary: var(--parent-primary); }
 
-        /* Premium Nav */
-        nav { position: sticky; top: 0; width: 100%; padding: 12px 24px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; }
+        /* Navigation Architecture */
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
         .brand span { color: var(--neon-primary); transition: color 0.3s ease; }
         
-        /* Level System UI */
-        .level-badge { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); padding: 6px 12px; border-radius: 12px; font-family: 'Rajdhani', sans-serif; }
-        .xp-bar { width: 60px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .xp-fill { height: 100%; background: var(--neon-primary); width: 45%; box-shadow: 0 0 10px var(--neon-primary); transition: 0.3s; }
+        /* Persistent Top Ticker */
+        .ticker-wrap { width: 100%; background: linear-gradient(90deg, transparent, rgba(6,182,212,0.1), transparent); border-bottom: 1px solid rgba(6,182,212,0.2); overflow: hidden; padding: 6px 0; }
+        .ticker { display: inline-block; white-space: nowrap; padding-right: 100%; animation: ticker 30s linear infinite; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--neon-primary); letter-spacing: 1px; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* Master Search Bar */
-        .master-search-wrapper { position: relative; width: 100%; max-width: 800px; margin: 30px auto; }
-        .master-search { width: 100%; background: rgba(15, 23, 42, 0.8); border: 2px solid var(--glass-border); padding: 20px 25px; border-radius: 20px; font-size: 1.2rem; color: white; outline: none; transition: 0.3s; box-shadow: 0 15px 35px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+        /* Level & XP Framework */
+        .level-badge { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); padding: 6px 15px; border-radius: 12px; font-family: 'Rajdhani', sans-serif; }
+        .xp-bar { width: 70px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-top: 2px; }
+        .xp-fill { height: 100%; background: var(--neon-primary); width: 35%; box-shadow: 0 0 10px var(--neon-primary); transition: 0.3s; }
+
+        /* Central Search Engine */
+        .master-search-wrapper { position: relative; width: 100%; max-width: 800px; margin: 40px auto 30px; padding: 0 20px; }
+        .master-search { width: 100%; background: rgba(15, 23, 42, 0.7); border: 2px solid var(--glass-border); padding: 22px 30px; border-radius: 20px; font-size: 1.1rem; color: white; outline: none; transition: 0.3s; box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(15px); }
         .master-search:focus { border-color: var(--neon-primary); box-shadow: 0 0 30px rgba(6,182,212,0.2), inset 0 0 10px rgba(6,182,212,0.1); }
-        .master-search::placeholder { color: #64748B; }
-
-        /* Bento Grid Architecture */
-        .bento-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto 50px; padding: 0 20px; }
-        .bento-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; transition: 0.3s; position: relative; overflow: hidden; }
-        .bento-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         
-        /* Specific Grid Placements */
+        /* The Bento Grid Engine */
+        .bento-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; max-width: 1300px; margin: 0 auto 60px; padding: 0 20px; flex-grow: 1; }
+        .bento-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-col; position: relative; overflow: hidden; text-decoration: none; }
+        .bento-hover:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
         .bento-dna { grid-column: span 12; }
-        .bento-gpt { grid-column: span 12; }
         .bento-alerts { grid-column: span 12; }
+        .bento-gpt { grid-column: span 12; }
         .bento-vs { grid-column: span 12; }
         .bento-sim { grid-column: span 12; }
         
-        @media (min-width: 768px) {
+        @media (min-width: 800px) {
             .bento-dna { grid-column: span 8; }
             .bento-alerts { grid-column: span 4; grid-row: span 2; }
             .bento-gpt { grid-column: span 8; }
@@ -74,32 +78,28 @@
             .bento-sim { grid-column: span 6; }
         }
 
-        /* Viral DNA Card Styling */
-        .dna-gradient { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(59,130,246,0.1)); border-color: rgba(6,182,212,0.3); }
-        .btn-viral { background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary)); color: #020617; padding: 14px 28px; border-radius: 12px; font-weight: 900; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 10px 20px rgba(6,182,212,0.3); }
+        /* Routing Buttons (Real Anchors) */
+        .btn-viral { display: inline-block; background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary)); color: #020617; padding: 16px 32px; border-radius: 14px; font-weight: 900; font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 10px 25px rgba(6,182,212,0.3); text-decoration: none; text-align: center; }
         .btn-viral:hover { filter: brightness(1.2); transform: scale(1.02); }
 
-        /* Parent Mode Toggle */
-        .toggle-switch { position: relative; width: 50px; height: 26px; background: #334155; border-radius: 13px; cursor: pointer; transition: 0.3s; }
-        .toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: 0.3s; }
+        .btn-secondary { display: inline-block; background: rgba(15, 23, 42, 0.8); color: var(--neon-primary); border: 1px solid var(--neon-primary); padding: 12px 24px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; text-align: center; transition: 0.3s; }
+        .btn-secondary:hover { background: rgba(6, 182, 212, 0.1); }
+
+        /* Parent Mode Toggle Switch */
+        .toggle-switch { position: relative; width: 46px; height: 24px; background: #334155; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: 0.3s; }
         body.parent-mode .toggle-switch { background: var(--parent-primary); }
-        body.parent-mode .toggle-switch::after { transform: translateX(24px); }
+        body.parent-mode .toggle-switch::after { transform: translateX(22px); }
 
-        /* Animations */
-        .pulse-text { animation: textPulse 2s infinite; }
-        @keyframes textPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-        /* Modals */
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.3s; }
-        .modal.active { opacity: 1; pointer-events: all; }
-        .modal-content { background: #0f172a; border: 1px solid var(--neon-primary); border-radius: 24px; padding: 40px; max-width: 500px; width: 90%; transform: translateY(20px); transition: 0.3s; }
-        .modal.active .modal-content { transform: translateY(0); }
-
-        /* Custom Scrollbar for Alert Lists */
-        .alert-list { max-height: 350px; overflow-y: auto; padding-right: 10px; }
+        /* Scrollable Alert List */
+        .alert-list { max-height: 350px; overflow-y: auto; padding-right: 5px; }
         .alert-list::-webkit-scrollbar { width: 4px; }
         .alert-list::-webkit-scrollbar-track { background: transparent; }
-        .alert-list::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+        .alert-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.85rem; background: rgba(2, 6, 23, 0.95); margin-top: auto; }
+        .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 12px; transition: 0.2s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links a:hover { color: var(--neon-primary); }
 
     </style>
 </head>
@@ -108,186 +108,186 @@
     <div class="app-bg"></div>
     <div class="grid-overlay"></div>
     <div class="glow-orb"></div>
+    <div id="particle-container" class="fixed inset-0 pointer-events-none z-[-1]"></div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            🚨 AP EAPCET / TS EAMCET 2026 Deadlines Approaching &nbsp;&nbsp;|&nbsp;&nbsp; 💡 Princeton Review SAT Bootcamps Open &nbsp;&nbsp;|&nbsp;&nbsp; 🚀 Google STEP Internships for 1st Year CS Students &nbsp;&nbsp;|&nbsp;&nbsp; 📈 Highest Paying 2026 Careers Data Updated &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ NDA SSB Interview Roadmaps Live
+        </div>
+    </div>
 
     <nav>
         <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
         
-        <div class="hidden md:flex gap-6 font-bold text-sm text-slate-400 uppercase tracking-widest">
-            <a href="insights.html" class="hover:text-white transition-colors">Insights</a>
-            <a href="support.html" class="hover:text-white transition-colors">Support</a>
+        <div class="hidden md:flex gap-8 font-bold text-xs text-slate-400 uppercase tracking-widest">
+            <a href="insights.html" class="hover:text-white transition-colors">Insights Hub</a>
+            <a href="colleges.html" class="hover:text-white transition-colors">Colleges</a>
+            <a href="exams.html" class="hover:text-white transition-colors">Exams</a>
         </div>
 
         <div class="flex items-center gap-6">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="toggleParentMode()">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400" id="mode-text">Student Mode</span>
-                <div class="toggle-switch" onclick="toggleParentMode()"></div>
+                <div class="toggle-switch"></div>
             </div>
 
             <div class="level-badge hidden sm:flex">
                 <div>
                     <div class="text-[9px] uppercase tracking-widest text-slate-400">Rank</div>
-                    <div class="text-sm font-bold text-white" id="user-rank">Explorer Lv.2</div>
+                    <div class="text-sm font-bold text-white tracking-wide" id="user-rank">Explorer Lv.2</div>
                 </div>
-                <div class="ml-2">
-                    <div class="text-[9px] text-right text-[var(--neon-primary)] font-bold mb-1"><span id="user-xp">450</span> XP</div>
+                <div class="ml-2 w-16">
+                    <div class="text-[9px] text-right text-[var(--neon-primary)] font-bold mb-1"><span id="user-xp">150</span> XP</div>
                     <div class="xp-bar"><div class="xp-fill"></div></div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="master-search-wrapper px-4">
-        <div class="text-center mb-4">
-            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter" id="hero-title">The Career <span style="color: var(--neon-primary);">Operating System</span></h1>
-            <p class="text-slate-400 text-sm md:text-base mt-2" id="hero-subtitle">Search 500+ careers, compare streams, and simulate your exact future roadmap.</p>
+    <header class="master-search-wrapper">
+        <div class="text-center mb-6">
+            <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white" id="hero-title">The Career <span style="color: var(--neon-primary);">Operating System</span></h1>
+            <p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl mx-auto" id="hero-subtitle">Access the ultimate intelligence matrix. Search 500+ careers, compare engineering streams, and simulate your exact future roadmap.</p>
         </div>
-        <input type="text" class="master-search" placeholder="Search 'Software Engineer', 'MPC vs BiPC', 'IIT Bombay'..." onkeypress="handleSearch(event)">
-        <div class="flex justify-center gap-3 mt-4 flex-wrap">
-            <span class="text-[10px] bg-slate-800 text-slate-300 px-3 py-1 rounded-full cursor-pointer hover:bg-slate-700">Trending: CSE vs ECE</span>
-            <span class="text-[10px] bg-slate-800 text-slate-300 px-3 py-1 rounded-full cursor-pointer hover:bg-slate-700">Highest Salary Jobs</span>
-            <span class="text-[10px] bg-slate-800 text-slate-300 px-3 py-1 rounded-full cursor-pointer hover:bg-slate-700">What after 10th?</span>
+        
+        <div class="relative">
+            <input type="text" class="master-search" placeholder="Search 'AI Engineer', 'MPC vs BiPC', 'IIT Madras'..." onkeypress="if(event.key === 'Enter') window.location.href='insights.html'">
+            <div class="absolute right-4 top-4 text-slate-500">🔍</div>
         </div>
-    </div>
+        
+        <div class="flex justify-center gap-2 mt-4 flex-wrap">
+            <a href="career-battles.html" class="text-[10px] bg-slate-800 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-full hover:bg-slate-700 hover:text-white transition-colors text-decoration-none">🔥 CSE vs ECE</a>
+            <a href="salary-explorer.html" class="text-[10px] bg-slate-800 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-full hover:bg-slate-700 hover:text-white transition-colors text-decoration-none">💰 Highest Salaries</a>
+            <a href="stream-explorer.html" class="text-[10px] bg-slate-800 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-full hover:bg-slate-700 hover:text-white transition-colors text-decoration-none">🎓 Best MPC Courses</a>
+        </div>
+    </header>
 
     <main class="bento-container">
 
-        <div class="bento-card bento-dna dna-gradient flex flex-col justify-center">
-            <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[10px] font-black uppercase px-4 py-1 rounded-bl-xl">Most Popular</div>
-            <h2 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black mb-2 uppercase text-white">Career DNA Test™</h2>
-            <p class="text-slate-300 text-sm md:text-base mb-6 max-w-lg leading-relaxed">Stop guessing your future. Our algorithm analyzes your interests, skills, and personality to calculate your exact percentage match for 500+ global careers.</p>
-            <div class="flex gap-4 items-center">
-                <button class="btn-viral" onclick="launchDNA()">Analyze My DNA</button>
-                <span class="text-xs text-slate-400 font-bold tracking-widest uppercase">⏱ 3 Minutes • 🎁 +100 XP</span>
+        <div class="bento-card bento-dna flex flex-col justify-center border-[var(--neon-primary)]/30 bg-gradient-to-br from-slate-900 to-slate-900/50">
+            <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[10px] font-black uppercase px-4 py-1 rounded-bl-xl shadow-lg">Phase 1 Directive</div>
+            <h2 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black mb-3 uppercase text-white tracking-tighter">Career DNA Test™</h2>
+            <p class="text-slate-300 text-sm mb-8 max-w-lg leading-relaxed">Stop guessing your future stream. Our multi-variable algorithm analyzes your mathematical logic, cognitive interests, and personality to generate a verifiable percentage match for 500+ global careers.</p>
+            <div class="flex gap-4 items-center flex-wrap">
+                <a href="career-dna.html" class="btn-viral">Initialize DNA Scan</a>
+                <span class="text-xs text-slate-400 font-bold tracking-widest uppercase bg-black/50 px-3 py-2 rounded-lg border border-slate-800">⏱ 4 Minutes • 🎁 +250 XP</span>
             </div>
         </div>
 
-        <div class="bento-card bento-alerts">
-            <h3 class="text-xl font-bold mb-4 flex justify-between items-center text-white">
-                Live Intelligence <span class="text-[10px] bg-red-500/20 text-red-400 px-2 py-1 rounded uppercase tracking-widest pulse-text">Live</span>
+        <div class="bento-card bento-alerts flex flex-col">
+            <h3 class="text-2xl font-black mb-4 flex justify-between items-center text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">
+                Intelligence <span class="text-[10px] bg-red-500/20 border border-red-500/50 text-red-400 px-2 py-1 rounded tracking-widest animate-pulse">Live</span>
             </h3>
-            <div class="flex gap-2 mb-4 border-b border-slate-700 pb-2">
-                <button class="text-xs font-bold text-white border-b-2 border-[var(--neon-primary)] pb-1">Internships</button>
-                <button class="text-xs font-bold text-slate-500 hover:text-white pb-1">Scholarships</button>
-                <button class="text-xs font-bold text-slate-500 hover:text-white pb-1">Exams</button>
+            
+            <div class="flex gap-4 mb-4 border-b border-slate-800 pb-2">
+                <a href="internships.html" class="text-xs font-bold text-white border-b-2 border-[var(--neon-primary)] pb-1 text-decoration-none">Internships</a>
+                <a href="scholarships.html" class="text-xs font-bold text-slate-500 hover:text-white pb-1 transition-colors text-decoration-none">Scholarships</a>
             </div>
             
-            <div class="alert-list space-y-4">
-                <div class="bg-black/30 p-3 rounded-lg border border-slate-800 hover:border-slate-600 cursor-pointer transition-colors">
-                    <div class="text-[10px] text-cyan-400 font-bold mb-1">GOOGLE • TECH</div>
-                    <div class="text-sm font-bold text-white mb-1">STEP Internship 2026 Open</div>
-                    <div class="text-xs text-slate-400">For 1st & 2nd Year CS Students.</div>
-                </div>
-                <div class="bg-black/30 p-3 rounded-lg border border-slate-800 hover:border-slate-600 cursor-pointer transition-colors">
-                    <div class="text-[10px] text-emerald-400 font-bold mb-1">GOVT OF INDIA</div>
-                    <div class="text-sm font-bold text-white mb-1">NTSE Scholarship Deadline</div>
-                    <div class="text-xs text-slate-400">Class 10 students apply before Friday.</div>
-                </div>
-                <div class="bg-black/30 p-3 rounded-lg border border-slate-800 hover:border-slate-600 cursor-pointer transition-colors">
-                    <div class="text-[10px] text-amber-400 font-bold mb-1">ENTRANCE EXAM</div>
-                    <div class="text-sm font-bold text-white mb-1">JEE Main Session 2 Dates</div>
-                    <div class="text-xs text-slate-400">Admit cards releasing tomorrow.</div>
-                </div>
-                <div class="bg-black/30 p-3 rounded-lg border border-slate-800 hover:border-slate-600 cursor-pointer transition-colors">
-                    <div class="text-[10px] text-purple-400 font-bold mb-1">ISRO • RESEARCH</div>
-                    <div class="text-sm font-bold text-white mb-1">Young Scientist Program</div>
-                    <div class="text-xs text-slate-400">Class 9 & 10 applications live.</div>
-                </div>
+            <div class="alert-list space-y-3 flex-grow">
+                <a href="internships.html" class="block bg-black/40 p-4 rounded-xl border border-slate-800 hover:border-slate-500 transition-colors text-decoration-none">
+                    <div class="text-[10px] text-cyan-400 font-bold mb-1 tracking-widest">TECH • GOOGLE</div>
+                    <div class="text-sm font-bold text-white mb-1">STEP Internship 2026 Portal Live</div>
+                    <div class="text-xs text-slate-400">Exclusive entry for 1st/2nd Year CS Students.</div>
+                </a>
+                <a href="scholarships.html" class="block bg-black/40 p-4 rounded-xl border border-slate-800 hover:border-slate-500 transition-colors text-decoration-none">
+                    <div class="text-[10px] text-emerald-400 font-bold mb-1 tracking-widest">GOVT OF INDIA</div>
+                    <div class="text-sm font-bold text-white mb-1">NTSE Scholarship Registration</div>
+                    <div class="text-xs text-slate-400">Class 10 students must apply before Friday.</div>
+                </a>
+                <a href="exams.html" class="block bg-black/40 p-4 rounded-xl border border-slate-800 hover:border-slate-500 transition-colors text-decoration-none">
+                    <div class="text-[10px] text-amber-400 font-bold mb-1 tracking-widest">ENTRANCE EXAM</div>
+                    <div class="text-sm font-bold text-white mb-1">JEE Main / AP EAPCET Deadlines</div>
+                    <div class="text-xs text-slate-400">Review the updated 2026 exam schedule.</div>
+                </a>
+            </div>
+            
+            <a href="internships.html" class="mt-4 text-center text-xs font-bold text-[var(--neon-primary)] hover:text-white transition-colors uppercase tracking-widest text-decoration-none">View All Databases →</a>
+        </div>
+
+        <div class="bento-card bento-gpt flex flex-col justify-center border-t-4 border-t-[var(--neon-primary)] bento-hover">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">🤖</span>
+                <h3 class="text-3xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Ask CareerGPT</h3>
+            </div>
+            <p class="text-sm text-slate-400 mb-6">Type your exact confusion. The simulated AI engine will calculate your optimal trajectory.</p>
+            
+            <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-2 flex items-center relative">
+                <input type="text" class="w-full bg-transparent p-3 text-white outline-none text-sm" placeholder="e.g., I got 85% in 10th and like Math but hate Chemistry. Best stream?">
+                <a href="careergpt.html" class="bg-[var(--neon-primary)] text-slate-900 px-6 py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors text-decoration-none whitespace-nowrap">Ask Engine</a>
             </div>
         </div>
 
-        <div class="bento-card bento-gpt border-t-4 border-t-[var(--neon-primary)]">
-            <h3 class="text-2xl font-bold mb-2 text-white">Ask CareerGPT</h3>
-            <p class="text-sm text-slate-400 mb-4">Type any confusion. The neural engine answers instantly.</p>
-            <div class="relative">
-                <input type="text" id="gptInput" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none pr-32 focus:border-[var(--neon-primary)] transition-colors" placeholder="e.g., I got 85% in 10th and like Biology, but hate Physics. Best stream?">
-                <button onclick="runGPT()" class="absolute right-2 top-2 bg-slate-800 text-[var(--neon-primary)] px-4 py-2 rounded-lg font-bold hover:bg-slate-700 transition-colors">Ask AI</button>
+        <div class="bento-card bento-vs flex flex-col">
+            <h3 class="text-2xl font-black mb-1 text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Career Battle Arena</h3>
+            <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Data-Driven Comparisons</p>
+            
+            <div class="grid grid-cols-2 gap-4 flex-grow">
+                <a href="career-battles.html" class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] transition-all text-center flex flex-col justify-center text-decoration-none group">
+                    <div class="font-black text-xl text-white mb-2 tracking-tighter">MPC <span class="text-slate-500 text-sm mx-2 font-normal">vs</span> BiPC</div>
+                    <div class="text-[10px] text-slate-400 group-hover:text-[var(--neon-primary)] uppercase font-bold tracking-widest transition-colors">Analyze Data →</div>
+                </a>
+                <a href="career-battles.html" class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] transition-all text-center flex flex-col justify-center text-decoration-none group">
+                    <div class="font-black text-xl text-white mb-2 tracking-tighter">CSE <span class="text-slate-500 text-sm mx-2 font-normal">vs</span> ECE</div>
+                    <div class="text-[10px] text-slate-400 group-hover:text-[var(--neon-primary)] uppercase font-bold tracking-widest transition-colors">Analyze Data →</div>
+                </a>
             </div>
-            <div id="gptOutput" class="hidden mt-4 p-4 bg-slate-900/50 rounded-xl border border-slate-800 text-sm text-slate-300 leading-relaxed"></div>
-        </div>
-
-        <div class="bento-card bento-vs">
-            <h3 class="text-xl font-bold mb-1 text-white">Stream & Career Battles</h3>
-            <p class="text-xs text-slate-400 mb-5">Side-by-side data comparisons.</p>
-            <div class="grid grid-cols-2 gap-3">
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] cursor-pointer transition-all text-center">
-                    <div class="font-black text-lg text-white mb-1">MPC <span class="text-slate-500 text-sm mx-1">vs</span> BiPC</div>
-                    <div class="text-[10px] text-[var(--neon-primary)] uppercase font-bold tracking-widest">Compare →</div>
-                </div>
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] cursor-pointer transition-all text-center">
-                    <div class="font-black text-lg text-white mb-1">CSE <span class="text-slate-500 text-sm mx-1">vs</span> ECE</div>
-                    <div class="text-[10px] text-[var(--neon-primary)] uppercase font-bold tracking-widest">Compare →</div>
-                </div>
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] cursor-pointer transition-all text-center">
-                    <div class="font-black text-lg text-white mb-1">B.Tech <span class="text-slate-500 text-sm mx-1">vs</span> Degree</div>
-                    <div class="text-[10px] text-[var(--neon-primary)] uppercase font-bold tracking-widest">Compare →</div>
-                </div>
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] cursor-pointer transition-all text-center">
-                    <div class="font-black text-lg text-white mb-1">India <span class="text-slate-500 text-sm mx-1">vs</span> Abroad</div>
-                    <div class="text-[10px] text-[var(--neon-primary)] uppercase font-bold tracking-widest">Compare →</div>
-                </div>
-            </div>
+            <a href="career-battles.html" class="btn-secondary w-full mt-4 text-xs">Open Comparison Matrix</a>
         </div>
 
         <div class="bento-card bento-sim flex flex-col justify-between">
             <div>
-                <h3 class="text-xl font-bold mb-1 text-white">Future Simulator</h3>
-                <p class="text-xs text-slate-400 mb-5">Select a destination. We build the roadmap.</p>
-                <select class="w-full bg-slate-900 border border-slate-700 text-white p-3 rounded-lg outline-none mb-4 cursor-pointer">
-                    <option>AI Engineer</option>
-                    <option>Commercial Pilot</option>
-                    <option>Chartered Accountant (CA)</option>
-                    <option>IAS Officer (UPSC)</option>
-                </select>
+                <h3 class="text-2xl font-black mb-1 text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Future Simulator</h3>
+                <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Generate Execution Timelines</p>
             </div>
             
-            <div class="bg-black/40 p-4 rounded-xl border border-slate-800">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-xs text-slate-400 font-bold uppercase">Expected Salary</span>
-                    <span class="text-sm font-black text-emerald-400">₹12L - ₹40L+</span>
+            <div class="bg-black/50 p-6 rounded-xl border border-slate-800 flex-grow flex flex-col justify-center">
+                <div class="flex items-center gap-4 mb-4 opacity-50">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center text-xs">10</div>
+                    <div class="flex-grow h-1 bg-slate-800"></div>
+                    <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center text-xs">12</div>
+                    <div class="flex-grow h-1 bg-slate-800"></div>
+                    <div class="w-8 h-8 rounded-full bg-[var(--neon-primary)] text-slate-900 font-bold flex items-center justify-center text-xs shadow-[0_0_10px_var(--neon-primary)]">JOB</div>
                 </div>
-                <div class="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                    <span class="text-cyan-400">10th</span> → <span class="text-cyan-400">MPC</span> → <span class="text-cyan-400">B.Tech CSE</span> → <span>Job</span>
-                </div>
-                <button class="mt-4 w-full bg-slate-800 text-white text-xs font-bold py-2 rounded border border-slate-600 hover:bg-slate-700 transition-colors uppercase tracking-widest">View Full Roadmap</button>
+                <div class="text-center text-sm text-slate-300 mb-4">Select a destination (e.g., AI Engineer, CA, Pilot) to generate a step-by-step academic roadmap, salary projections, and backup plans.</div>
+                <a href="future-simulator.html" class="btn-secondary w-full text-xs">Launch Simulator</a>
             </div>
         </div>
 
     </main>
 
-    <div id="dnaModal" class="modal">
-        <div class="modal-content relative overflow-hidden">
-            <button class="absolute top-4 right-4 text-slate-500 hover:text-white" onclick="closeModal()">✕</button>
-            <div class="absolute inset-0 bg-gradient-to-b from-[var(--neon-primary)]/20 to-transparent z-0 pointer-events-none"></div>
-            
-            <div class="relative z-10 text-center">
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black text-white uppercase tracking-widest mb-1">Career DNA Verified</h2>
-                <p class="text-sm text-slate-400 mb-6">Algorithm Confidence: 94%</p>
-                
-                <div class="bg-black/50 border border-[var(--neon-primary)] rounded-2xl p-6 mb-6">
-                    <div class="text-xs text-[var(--neon-primary)] uppercase font-bold tracking-widest mb-2">Primary Match</div>
-                    <div class="text-3xl font-black text-white mb-1">Artificial Intelligence</div>
-                    <div class="text-sm text-slate-300 mb-4">Highest compatibility with your logic & math metrics.</div>
-                    
-                    <div class="flex justify-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest border-t border-slate-800 pt-4">
-                        <div>Match<br><span class="text-lg text-white">92%</span></div>
-                        <div class="border-l border-slate-800 pl-4">Demand<br><span class="text-lg text-emerald-400">High</span></div>
-                        <div class="border-l border-slate-800 pl-4">Salary<br><span class="text-lg text-cyan-400">₹20L+</span></div>
-                    </div>
-                </div>
-
-                <button class="w-full bg-[var(--neon-primary)] text-[#020617] py-3 rounded-xl font-black uppercase tracking-widest text-lg hover:bg-white transition-colors" onclick="shareResult()">
-                    📸 Share My DNA Card
-                </button>
-            </div>
+    <footer>
+        <div class="footer-links flex flex-wrap justify-center gap-y-4 mb-6">
+            <a href="about.html">About Framework</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="contact.html">Contact Hub</a>
+            <a href="support.html" style="color: var(--neon-primary);">System Support</a>
         </div>
-    </div>
-
-    <div id="sysToast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-slate-900 border border-[var(--neon-primary)] text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg opacity-0 transition-opacity pointer-events-none z-50 flex items-center gap-2">
-        <span class="text-[var(--neon-primary)]">⚡</span> <span id="toastMsg">Action completed.</span>
-    </div>
+        <p>&copy; 2026 AstraForge CareerPilot Network. All operational rights reserved.</p>
+    </footer>
 
     <script>
-        // Parent Mode Logic
+        // Generate ambient floating particles for the background
+        const pContainer = document.getElementById('particle-container');
+        for(let i=0; i<30; i++){
+            let d = document.createElement('div');
+            d.className = 'absolute rounded-full bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.3)] pointer-events-none';
+            
+            let size = Math.random() * 4 + 1;
+            d.style.width = size + 'px';
+            d.style.height = size + 'px';
+            d.style.left = Math.random() * 100 + 'vw';
+            
+            let duration = Math.random() * 15 + 15;
+            d.style.animation = `float ${duration}s infinite linear`;
+            d.style.animationDelay = (Math.random() * 5) + 's';
+            
+            pContainer.appendChild(d);
+        }
+
+        // Parent Mode Toggle Logic
         let isParentMode = false;
         function toggleParentMode() {
             isParentMode = !isParentMode;
@@ -295,86 +295,14 @@
                 document.body.classList.add('parent-mode');
                 document.getElementById('mode-text').innerText = "Parent Mode";
                 document.getElementById('hero-title').innerHTML = `Guide Your Child's <span style="color: var(--neon-primary);">Future</span>`;
-                document.getElementById('hero-subtitle').innerText = "Discover safe, high-paying career paths, colleges, and streams for your son or daughter.";
-                showToast("Parent Mode Activated. UI reconfigured.");
+                document.getElementById('hero-subtitle').innerText = "Access the intelligence matrix to discover safe, high-paying career paths, top colleges, and secure streams for your son or daughter.";
             } else {
                 document.body.classList.remove('parent-mode');
                 document.getElementById('mode-text').innerText = "Student Mode";
                 document.getElementById('hero-title').innerHTML = `The Career <span style="color: var(--neon-primary);">Operating System</span>`;
-                document.getElementById('hero-subtitle').innerText = "Search 500+ careers, compare streams, and simulate your exact future roadmap.";
-                showToast("Student Mode Activated.");
+                document.getElementById('hero-subtitle').innerText = "Access the ultimate intelligence matrix. Search 500+ careers, compare engineering streams, and simulate your exact future roadmap.";
             }
         }
-
-        // Gamification / XP System
-        let xp = 450;
-        function addXP(amount) {
-            xp += amount;
-            document.getElementById('user-xp').innerText = xp;
-            showToast(`+${amount} XP Earned!`);
-        }
-
-        // Search Bar Logic
-        function handleSearch(e) {
-            if (e.key === 'Enter') {
-                const val = e.target.value;
-                if(val) {
-                    showToast(`Searching global database for: ${val}...`);
-                    setTimeout(() => { e.target.value = ''; }, 1500);
-                }
-            }
-        }
-
-        // CareerGPT Logic
-        function runGPT() {
-            const input = document.getElementById('gptInput');
-            const out = document.getElementById('gptOutput');
-            if(!input.value) return;
-
-            input.disabled = true;
-            out.classList.remove('hidden');
-            out.innerHTML = `<span class="pulse-text text-cyan-400">Processing neural query...</span>`;
-
-            setTimeout(() => {
-                out.innerHTML = `<strong>AI Analysis:</strong> If you excel in Biology but struggle with Physics, avoid MPC and heavy engineering streams. <strong>BiPC is ideal.</strong> If you don't want to pursue MBBS, high-paying alternatives include <strong>Biotechnology, Pharmacy, or Clinical Research</strong>. <br><br><em>Suggested Action:</em> Compare MBBS vs Biotech in the VS Engine.`;
-                input.value = '';
-                input.disabled = false;
-                addXP(10);
-            }, 1000);
-        }
-
-        // DNA Test Modal Logic
-        function launchDNA() {
-            showToast("Initializing DNA Matrix...");
-            setTimeout(() => {
-                document.getElementById('dnaModal').classList.add('active');
-                addXP(100);
-            }, 800);
-        }
-
-        function closeModal() {
-            document.getElementById('dnaModal').classList.remove('active');
-        }
-
-        function shareResult() {
-            const shareText = "🔥 I just took the Career DNA Test on CareerPilot!\n\nMy Top Match: Artificial Intelligence Engineer (92% Fit)\n\nFind your perfect career path after 10th/12th here: https://career.astraforage.in";
-            
-            if (navigator.share) {
-                navigator.share({ title: 'My Career DNA', text: shareText, url: 'https://career.astraforage.in' });
-            } else {
-                navigator.clipboard.writeText(shareText);
-                showToast("Result copied to clipboard for Instagram/WhatsApp!");
-            }
-        }
-
-        // Toast Notification System
-        function showToast(msg) {
-            const toast = document.getElementById('sysToast');
-            document.getElementById('toastMsg').innerText = msg;
-            toast.style.opacity = '1';
-            setTimeout(() => { toast.style.opacity = '0'; }, 3000);
-        }
-
     </script>
 </body>
 </html>
