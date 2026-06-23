@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5HVBHX1KDW');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPilot | Advanced Pathfinding Engine</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #030712; 
+            --glass-panel: rgba(15, 23, 42, 0.7);
+            --neon-blue: #3B82F6; --neon-cyan: #06B6D4;
+            --neon-emerald: #10B981; --neon-amber: #F59E0B;
+            --border-glow: rgba(255, 255, 255, 0.08);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+        /* Background Architecture */
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; }
+        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); top: -200px; left: -200px; z-index: -1; }
+
+        /* UI Components */
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 40px; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-glow); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: white; }
+        .brand span { color: var(--neon-cyan); }
+        .nav-links { display: flex; gap: 20px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-links a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-cyan); }
+
+        .glass-module { background: var(--glass-panel); backdrop-filter: blur(16px); border: 1px solid var(--border-glow); border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: 0.3s; }
+        
+        /* Interactive Elements */
+        .btn-primary { background: var(--neon-blue); color: white; padding: 16px 24px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; width: 100%; transition: 0.3s; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; border: none; cursor: pointer; }
+        .btn-primary:hover { background: #2563EB; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
+        
+        .path-card { cursor: pointer; border: 1px solid var(--border-glow); }
+        .path-card:hover { border-color: var(--neon-cyan); background: rgba(6, 182, 212, 0.05); transform: translateY(-5px); }
+        
+        .stat-badge { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Modals & Screens */
+        .view-screen { display: none; animation: fadeUp 0.4s ease-out; }
+        .view-screen.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Quiz UI */
+        .quiz-option { background: rgba(0,0,0,0.4); border: 1px solid var(--border-glow); padding: 15px 20px; border-radius: 12px; margin-bottom: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .quiz-option:hover { background: rgba(6,182,212,0.1); border-color: var(--neon-cyan); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 25px; }
+        .progress-fill { height: 100%; background: var(--neon-cyan); width: 0%; transition: 0.3s; }
+
+        footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-glow); color: #94A3B8; font-size: 0.9rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <div class="nav-links hidden md:flex">
+            <a href="#" style="color: var(--neon-cyan);">Dashboard</a>
+            <a href="insights.html">Insights</a>
+            <a href="support.html">Support</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto w-full p-4 md:p-8 flex-grow">
+        
+        <div id="view-dashboard" class="view-screen active">
+            <div class="text-center mb-16 mt-8">
+                <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter">Navigate Your <span style="color: var(--neon-cyan);">Trajectory</span></h1>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Analyze global market data to construct your optimal post-10th and post-12th academic architecture. Stop guessing. Start calculating.</p>
+            </div>
+
+            <div class="glass-module mb-12 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 z-0"></div>
+                <div class="relative z-10">
+                    <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black mb-4">Career DNA Engine</h2>
+                    <p class="text-slate-400 mb-8 max-w-lg mx-auto">Not sure between MPC, BiPC, or Commerce? Let the AI Matrix analyze your cognitive preferences and output your highest-probability career matches.</p>
+                    <button class="btn-primary max-w-md mx-auto" onclick="startQuiz()">Initialize DNA Scan</button>
+                </div>
+            </div>
+
+            <h3 style="font-family: 'Rajdhani';" class="text-2xl font-black mb-6 uppercase text-slate-300 border-b border-slate-800 pb-2">Global Career Matrix</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="career-grid">
+                </div>
+        </div>
+
+        <div id="view-quiz" class="view-screen max-w-2xl mx-auto mt-10">
+            <div class="glass-module">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-bold text-cyan-400" id="quiz-counter">Phase 1/5</span>
+                    <button class="text-slate-400 text-sm hover:text-white" onclick="switchView('view-dashboard')">Abort</button>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" id="quiz-progress"></div></div>
+                
+                <h2 id="quiz-question" class="text-2xl font-bold mb-6 line-height-relaxed">Loading parameter...</h2>
+                <div id="quiz-options" class="flex flex-col">
+                    </div>
+            </div>
+        </div>
+
+        <div id="view-results" class="view-screen max-w-3xl mx-auto mt-10">
+            <div class="glass-module text-center">
+                <h2 style="font-family: 'Rajdhani';" class="text-4xl font-black text-cyan-400 mb-2">DNA Scan Complete</h2>
+                <p class="text-slate-400 mb-8">Based on your cognitive preferences, these are your mathematically optimal trajectories.</p>
+                
+                <div id="results-container" class="flex flex-col gap-4 mb-8 text-left">
+                    </div>
+                
+                <button class="btn-primary" style="background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan);" onclick="switchView('view-dashboard')">Return to Matrix</button>
+            </div>
+        </div>
+
+        <div id="view-detail" class="view-screen mt-8">
+            <button class="mb-6 text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2 hover:text-cyan-400" onclick="switchView('view-dashboard')">
+                <span>←</span> Return to Matrix
+            </button>
+            
+            <div class="glass-module">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-slate-800 pb-6">
+                    <div>
+                        <div class="stat-badge bg-blue-900/30 text-blue-400 border border-blue-800 mb-3" id="detail-category">Category</div>
+                        <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter" id="detail-title">Title</h1>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-1">Peak Salary Projection</div>
+                        <div class="text-2xl font-black text-emerald-400" id="detail-salary">₹0L</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-cyan-400 mb-4 uppercase tracking-widest text-sm">Execution Timeline</h3>
+                        <div class="bg-black/40 border border-slate-800 rounded-xl p-5" id="detail-timeline"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-cyan-400 mb-4 uppercase tracking-widest text-sm">Market Intelligence</h3>
+                        <div class="bg-black/40 border border-slate-800 rounded-xl p-5 space-y-4">
+                            <div><span class="text-slate-500 text-xs uppercase block mb-1">AI Automation Risk</span><span id="detail-risk" class="font-bold text-white"></span></div>
+                            <div><span class="text-slate-500 text-xs uppercase block mb-1">Entrance Gateways</span><span id="detail-exams" class="font-bold text-white"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-amber-400 mb-2 flex items-center gap-2"><span>⚡</span> Contingency Pivot (Plan B)</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed" id="detail-pivot">What happens if you change your mind? Pivot logic goes here.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="privacy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+            <a href="support.html" class="hover:text-cyan-400 transition-colors">Support</a>
+        </div>
+        <p>&copy; 2026 AstraForge CareerPilot. Engineered for Strategic Growth.</p>
+    </footer>
+
+    <script>
+        /* ==========================================
+           DATA MATRIX: Enterprise Career Database
+           ========================================== */
+        const careerData = {
+            "ai_engineer": {
+                id: "ai_engineer", category: "Tech & Engineering", icon: "💻", title: "AI & Machine Learning Engineer",
+                desc: "Design neural networks, LLMs, and predictive models. The vanguard of the modern economy.",
+                salary: "₹12L - ₹60L+", risk: "Low (Builders of Automation)", exams: "JEE Main/Advanced, BITSAT (Requires MPC)",
+                timeline: "10+2 (MPC) → B.Tech (CSE/AI) → Data Structures & Python Mastery → Corporate/Startup Deployment",
+                pivot: "With a strong algorithmic foundation, you can easily pivot into Investment Banking (Quant), Product Management, or Data Science."
+            },
+            "cpl_pilot": {
+                id: "cpl_pilot", category: "Aviation", icon: "✈️", title: "Commercial Airline Pilot",
+                desc: "Command commercial airliners globally. High responsibility, highly regulated operational environment.",
+                salary: "₹1.5L - ₹8L / Month", risk: "Medium (Autopilot advances, but human oversight remains legally mandatory)", exams: "DGCA Medicals, NDA (for Air Force route), IGRUA",
+                timeline: "10+2 (MPC Required) → Class 2 Medicals → Flight School (200 Hours Flying) → CPL → Type Rating (A320/B737)",
+                pivot: "If grounded due to medicals, MPC + Aviation knowledge allows pivoting into Air Traffic Control (ATC), Aviation Management, or Drone Operations."
+            },
+            "ca_finance": {
+                id: "ca_finance", category: "Finance & Commerce", icon: "📊", title: "Chartered Accountant (CA)",
+                desc: "The backbone of corporate finance, taxation, and auditing. High barrier to entry, extreme prestige.",
+                salary: "₹8L - ₹35L+", risk: "Medium (Basic bookkeeping is automated; strategic advisory is highly secure)", exams: "ICAI Foundation, Intermediate, Final",
+                timeline: "10+2 (Any Stream, MEC/CEC preferred) → CA Foundation → CA Inter → 3-Year Articleship → CA Final",
+                pivot: "A CA dropout or pivot can seamlessly transition into Corporate Finance, ACCA (Global), Wealth Management, or Financial Analysis."
+            },
+            "nda_officer": {
+                id: "nda_officer", category: "Defense & Strategic", icon: "🛡️", title: "Armed Forces Officer (NDA)",
+                desc: "Lead infantry, naval fleets, or fighter squadrons. Demands extreme physical and psychological resilience.",
+                salary: "₹1L - ₹2.5L / Month + High Perks", risk: "Zero (Un-automatable leadership)", exams: "UPSC NDA & NA Exam, SSB Interview",
+                timeline: "10+2 (MPC for Navy/AF, Any for Army) → NDA Exam → 5-Day SSB Interview → 3 Years NDA Pune → IMA/AFA/INA",
+                pivot: "Officers retiring early or failing SSB can dominate Corporate Leadership roles, Security Consulting, or Civil Services (UPSC IAS/IPS)."
+            },
+            "med_surgeon": {
+                id: "med_surgeon", category: "Medical Sciences", icon: "⚕️", title: "Clinical Surgeon (MBBS/MS)",
+                desc: "Direct patient intervention and surgical execution. The longest academic trajectory with the highest human impact.",
+                salary: "₹10L - ₹50L+", risk: "Low (AI assists diagnostics, but physical surgical execution requires humans)", exams: "NEET UG, INI-CET",
+                timeline: "10+2 (BiPC) → NEET → 5.5 Years MBBS → 3 Years MS/MD → Super Specialization",
+                pivot: "If clinical practice is not desired, BiPC students can pivot to Biotechnology, Hospital Administration (MBA), or Clinical Research."
+            },
+            "corporate_law": {
+                id: "corporate_law", category: "Law & Judiciary", icon: "⚖️", title: "Corporate Lawyer",
+                desc: "Navigate mergers, acquisitions, and intellectual property. Fast-paced, high-stress corporate environment.",
+                salary: "₹12L - ₹40L+", risk: "Medium (Contract drafting is automated; negotiation and court litigation are secure)", exams: "CLAT, AILET, LSAT",
+                timeline: "10+2 (Any Stream, HEC/CEC popular) → CLAT → 5-Year Integrated BA-LLB at National Law University (NLU) → Tier-1 Law Firm",
+                pivot: "Legal training translates powerfully into Civil Services (IAS), Public Policy formulation, or Legal Tech startups."
+            }
+        };
+
+        // Render Cards to Dashboard
+        function renderDashboard() {
+            const grid = document.getElementById('career-grid');
+            grid.innerHTML = '';
+            for (const key in careerData) {
+                const item = careerData[key];
+                grid.innerHTML += `
+                    <div class="glass-module path-card p-6" onclick="openDetail('${key}')">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">${item.icon}</span>
+                            <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500 bg-slate-900 px-2 py-1 rounded">${item.category}</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">${item.title}</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-2">${item.desc}</p>
+                        <div class="text-xs font-bold text-emerald-400">${item.salary}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // --- Navigation Logic ---
+        function switchView(viewId) {
+            document.querySelectorAll('.view-screen').forEach(v => v.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function openDetail(id) {
+            const data = careerData[id];
+            document.getElementById('detail-category').innerText = data.category;
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-salary').innerText = data.salary;
+            document.getElementById('detail-timeline').innerHTML = data.timeline.split('→').map(step => `<div class="mb-2"><span class="text-cyan-500 mr-2">➜</span>${step.trim()}</div>`).join('');
+            
+            let riskColor = data.risk.includes('Low') || data.risk.includes('Zero') ? 'text-emerald-400' : 'text-amber-400';
+            document.getElementById('detail-risk').innerHTML = `<span class="${riskColor}">${data.risk}</span>`;
+            document.getElementById('detail-exams').innerText = data.exams;
+            document.getElementById('detail-pivot').innerText = data.pivot;
+            
+            switchView('view-detail');
+        }
+
+        /* ==========================================
+           QUIZ ENGINE: Dynamic Scoring Matrix
+           ========================================== */
+        const questions = [
+            { q: "When solving a problem, what do you prefer?", opts: [ { text: "Using strict mathematics and logic formulas", scores: { ai_engineer: 3, cpl_pilot: 2, nda_officer: 1 } }, { text: "Analyzing human behavior and historical data", scores: { corporate_law: 3, ca_finance: 1 } }, { text: "Understanding biological systems and nature", scores: { med_surgeon: 3 } } ] },
+            { q: "What is your ideal work environment?", opts: [ { text: "A high-tech lab or computer terminal", scores: { ai_engineer: 3 } }, { text: "A dynamic, high-pressure physical environment (Cockpit/Field)", scores: { cpl_pilot: 3, nda_officer: 3, med_surgeon: 1 } }, { text: "A structured corporate office or courtroom", scores: { corporate_law: 3, ca_finance: 3 } } ] },
+            { q: "How do you handle intense pressure?", opts: [ { text: "I remain calm and calculate my next move", scores: { cpl_pilot: 3, nda_officer: 2, ai_engineer: 1 } }, { text: "I rely on strict rules and legal/financial frameworks", scores: { corporate_law: 2, ca_finance: 3 } }, { text: "I focus entirely on executing the physical task perfectly", scores: { med_surgeon: 3, nda_officer: 2 } } ] },
+            { q: "Which subjects naturally interest you the most?", opts: [ { text: "Physics & Advanced Mathematics (MPC)", scores: { ai_engineer: 3, cpl_pilot: 2, nda_officer: 1 } }, { text: "Biology & Chemistry (BiPC)", scores: { med_surgeon: 3 } }, { text: "Economics, Commerce, or Civics (MEC/CEC/HEC)", scores: { ca_finance: 3, corporate_law: 3 } } ] },
+            { q: "What is your ultimate career priority?", opts: [ { text: "Building scalable technology and high income", scores: { ai_engineer: 3, ca_finance: 1 } }, { text: "Serving the nation or saving lives", scores: { nda_officer: 3, med_surgeon: 3 } }, { text: "Global travel, prestige, and executive authority", scores: { cpl_pilot: 3, corporate_law: 2, ca_finance: 2 } } ] }
+        ];
+
+        let currentQuestion = 0;
+        let userScores = { ai_engineer: 0, cpl_pilot: 0, ca_finance: 0, nda_officer: 0, med_surgeon: 0, corporate_law: 0 };
+
+        function startQuiz() {
+            currentQuestion = 0;
+            for(let key in userScores) userScores[key] = 0;
+            switchView('view-quiz');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = questions[currentQuestion];
+            document.getElementById('quiz-counter').innerText = `Phase ${currentQuestion + 1}/${questions.length}`;
+            document.getElementById('quiz-progress').style.width = `${((currentQuestion) / questions.length) * 100}%`;
+            document.getElementById('quiz-question').innerText = qData.q;
+            
+            const optContainer = document.getElementById('quiz-options');
+            optContainer.innerHTML = '';
+            qData.opts.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-option';
+                btn.innerText = opt.text;
+                btn.onclick = () => selectOption(opt.scores);
+                optContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(scores) {
+            for(let key in scores) userScores[key] += scores[key];
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function calculateResults() {
+            document.getElementById('quiz-progress').style.width = '100%';
+            
+            // Sort scores
+            let sortedPaths = Object.keys(userScores).sort((a, b) => userScores[b] - userScores[a]);
+            const top3 = sortedPaths.slice(0, 3);
+            
+            const resContainer = document.getElementById('results-container');
+            resContainer.innerHTML = '';
+            
+            top3.forEach((id, index) => {
+                const data = careerData[id];
+                const matchPercent = Math.min(99, Math.max(75, 95 - (index * 8))); // Simulated match %
+                
+                resContainer.innerHTML += `
+                    <div class="bg-black/50 border ${index === 0 ? 'border-cyan-500' : 'border-slate-800'} p-5 rounded-xl cursor-pointer hover:bg-slate-900 transition-all" onclick="openDetail('${id}')">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Match #${index + 1}</span>
+                            <span class="text-sm font-black ${index === 0 ? 'text-cyan-400' : 'text-slate-300'}">${matchPercent}% Fit</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">${data.icon} ${data.title}</h3>
+                        <p class="text-sm text-slate-400">Click to view execution timeline & salary data.</p>
+                    </div>
+                `;
+            });
+            
+            switchView('view-results');
+        }
+
+        // Init
+        window.onload = renderDashboard;
+    </script>
+</body>
+</html>
