@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Tracker Matrix | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #F59E0B; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: #06B6D4; }
+
+        .exam-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-left: 4px solid var(--neon-primary); border-radius: 20px; padding: 25px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between;}
+        .exam-card:hover { transform: translateY(-4px); border-color: var(--neon-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        
+        .status-badge { display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        .status-active { background: rgba(16,185,129,0.2); color: #10B981; border: 1px solid #10B981; }
+        .status-pending { background: rgba(245,158,11,0.2); color: #F59E0B; border: 1px solid #F59E0B; }
+        .status-closed { background: rgba(239,68,68,0.2); color: #EF4444; border: 1px solid #EF4444; }
+
+        .cat-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: #94A3B8; padding: 10px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .cat-btn.active { background: rgba(245,158,11,0.15); border-color: var(--neon-primary); color: white; }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-amber-400 text-decoration-none">← Dashboard</a>
+    </nav>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full p-4 md:p-8">
+        <header class="mb-10 text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Gateway <span class="text-amber-500">Exams</span></h1>
+            <p class="text-slate-400 text-sm">Monitor timelines for 60+ global standardized tests and national gateways.</p>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button class="cat-btn active" onclick="filterExams('all')">All Gateways</button>
+            <button class="cat-btn" onclick="filterExams('eng')">Engineering</button>
+            <button class="cat-btn" onclick="filterExams('med')">Medical</button>
+            <button class="cat-btn" onclick="filterExams('global')">Global & Abroad</button>
+            <button class="cat-btn" onclick="filterExams('gov')">Govt / Defense / Law</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="exams-grid">
+            </div>
+    </main>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+
+    <script>
+        // Massive Database Array (Category: eng, med, global, gov)
+        const examsList = [
+            // GLOBAL / STUDY ABROAD
+            { name: "SAT (Scholastic Assessment Test)", cat: "global", status: "active", desc: "Standardized test for undergraduate global admissions, heavily required for US IVY League need-blind aid.", req: "Math & English", target: "1500+" },
+            { name: "ACT", cat: "global", status: "pending", desc: "Alternative to the SAT for US college admissions, includes a Science section.", req: "Math, Eng, Sci", target: "34+" },
+            { name: "TOEFL iBT", cat: "global", status: "active", desc: "English proficiency exam mandatory for non-native speakers applying globally.", req: "R, L, S, W", target: "100+" },
+            { name: "IELTS Academic", cat: "global", status: "active", desc: "UK, Aus, CAN, and US preferred English language test.", req: "English Fluency", target: "7.5 Bands" },
+            { name: "Duolingo English Test (DET)", cat: "global", status: "active", desc: "Fast, cheaper alternative to IELTS/TOEFL accepted by many institutions.", req: "Basic Hardware", target: "130+" },
+            { name: "GRE General", cat: "global", status: "active", desc: "Graduate Record Examination for MS/Ph.D. globally.", req: "Quant, Verbal, AWA", target: "320+" },
+            { name: "GMAT", cat: "global", status: "active", desc: "Premier test for elite global MBA programs (Harvard, Wharton, INSEAD).", req: "Quant, Logic", target: "700+" },
+            { name: "PTE Academic", cat: "global", status: "active", desc: "Pearson Test of English. Computer-based language exam.", req: "English", target: "70+" },
+            { name: "AP Exams (Advanced Placement)", cat: "global", status: "pending", desc: "College-level exams taken in high school to earn US college credits.", req: "Subject Specific", target: "Score of 4/5" },
+
+            // ENGINEERING (National & State)
+            { name: "JEE Main", cat: "eng", status: "pending", desc: "National gateway to NITs, IIITs, and qualifying round for JEE Advanced.", req: "MPC (Class 12)", target: "99 Percentile" },
+            { name: "JEE Advanced", cat: "eng", status: "pending", desc: "The ultimate engineering exam. Gateway to the 23 IITs.", req: "JEE Main Top 2.5L", target: "Under 5000 Rank" },
+            { name: "BITSAT", cat: "eng", status: "pending", desc: "Entrance for BITS Pilani, Goa, and Hyderabad. Tests speed and logic.", req: "MPC + English", target: "300+ / 390" },
+            { name: "VITEEE", cat: "eng", status: "active", desc: "Entrance exam for Vellore Institute of Technology campuses.", req: "MPC / BPCE", target: "Under 10k Rank" },
+            { name: "SRMJEEE", cat: "eng", status: "active", desc: "SRM Institute of Science and Technology entrance exam.", req: "MPC", target: "Under 5k Rank" },
+            { name: "AP EAPCET", cat: "eng", status: "pending", desc: "Andhra Pradesh state engineering and agriculture entrance.", req: "Inter MPC/BiPC", target: "Under 5k Rank" },
+            { name: "TS EAMCET", cat: "eng", status: "pending", desc: "Telangana state engineering entrance for Osmania, JNTU.", req: "Inter MPC/BiPC", target: "Under 5k Rank" },
+            { name: "MHT CET", cat: "eng", status: "pending", desc: "Maharashtra state engineering test (COEP, VJTI).", req: "HSC Board", target: "99 Percentile" },
+            { name: "KCET", cat: "eng", status: "pending", desc: "Karnataka common entrance test for state colleges.", req: "PUC II", target: "Top Rank" },
+            { name: "COMEDK UGET", cat: "eng", status: "pending", desc: "Gateway to top private engineering colleges in Karnataka (RVCE, BMSCE).", req: "MPC", target: "Under 1k Rank" },
+            { name: "WBJEE", cat: "eng", status: "pending", desc: "West Bengal JEE (Jadavpur University gateway).", req: "MPC", target: "Under 500 Rank" },
+            { name: "GUJCET", cat: "eng", status: "pending", desc: "Gujarat Common Entrance Test.", req: "Class 12", target: "Top Percentile" },
+            { name: "KEAM", cat: "eng", status: "pending", desc: "Kerala Engineering Architecture Medical test.", req: "Class 12", target: "Top Rank" },
+            { name: "Manipal MET", cat: "eng", status: "active", desc: "Manipal Academy of Higher Education entrance.", req: "MPC", target: "High Score" },
+            { name: "GATE", cat: "eng", status: "closed", desc: "Graduate Aptitude Test for PSU jobs and M.Tech in IITs.", req: "B.Tech Final Yr", target: "Under 500 AIR" },
+            
+            // MEDICAL
+            { name: "NEET UG", cat: "med", status: "pending", desc: "Single national entrance exam for MBBS, BDS, and Ayush courses.", req: "BiPC (Class 12)", target: "650+ / 720" },
+            { name: "INI CET", cat: "med", status: "pending", desc: "Institute of National Importance Combined Entrance for MD/MS (AIIMS, JIPMER).", req: "MBBS", target: "Top Rank" },
+            { name: "NEET PG", cat: "med", status: "closed", desc: "Postgraduate medical entrance for broad specialty courses.", req: "MBBS + Internship", target: "High Rank" },
+
+            // LAW, GOVT, DEFENSE, COMMERCE
+            { name: "CLAT", cat: "gov", status: "closed", desc: "Common Law Admission Test for 24 National Law Universities (NLUs).", req: "Class 12 (Any)", target: "Under 500 AIR" },
+            { name: "AILET", cat: "gov", status: "closed", desc: "All India Law Entrance Test exclusively for NLU Delhi.", req: "Class 12", target: "Under 100 AIR" },
+            { name: "LSAT India", cat: "gov", status: "active", desc: "Standardized test for private law colleges like Jindal Global Law School.", req: "Class 12", target: "High Percentile" },
+            { name: "UPSC CSE", cat: "gov", status: "active", desc: "Civil Services Exam (IAS, IPS, IFS). The most difficult exam in India.", req: "Any Degree", target: "Final List" },
+            { name: "NDA & NA", cat: "gov", status: "active", desc: "National Defence Academy (UPSC). Gateway to Armed Forces training.", req: "Class 12 (MPC pref)", target: "Written + SSB" },
+            { name: "CDS", cat: "gov", status: "pending", desc: "Combined Defence Services for graduates entering military academies.", req: "Degree", target: "Written + SSB" },
+            { name: "AFCAT", cat: "gov", status: "pending", desc: "Air Force Common Admission Test for flying and ground duty branches.", req: "B.Tech / Degree", target: "High Score" },
+            { name: "SSC CGL", cat: "gov", status: "active", desc: "Staff Selection Commission for Group B/C Govt posts (Income Tax, CBI).", req: "Degree", target: "Tier 1 & 2 Clear" },
+            { name: "SBI PO / IBPS PO", cat: "gov", status: "pending", desc: "Probationary Officer exams for public sector banking.", req: "Degree", target: "Mains + Interview" },
+            { name: "CAT", cat: "gov", status: "pending", desc: "Common Admission Test for elite IIM MBAs.", req: "Degree", target: "99+ Percentile" },
+            { name: "XAT", cat: "gov", status: "closed", desc: "XLRI Admission Test for top management programs.", req: "Degree", target: "95+ Percentile" },
+            { name: "CA Foundation", cat: "gov", status: "active", desc: "Entry-level exam for the Chartered Accountancy course by ICAI.", req: "Class 12", target: "Pass (50%+)" },
+            { name: "CS Executive", cat: "gov", status: "active", desc: "Company Secretary exam by ICSI.", req: "Grad/Foundation", target: "Pass" },
+            { name: "CUET UG", cat: "gov", status: "pending", desc: "Common University Entrance Test for Central Universities (DU, BHU).", req: "Class 12", target: "Max Percentile" },
+            { name: "NID DAT", cat: "gov", status: "closed", desc: "National Institute of Design entrance for B.Des.", req: "Class 12", target: "High Creativity" },
+            { name: "UCEED", cat: "gov", status: "closed", desc: "Undergraduate Common Entrance Exam for Design at IITs.", req: "Class 12", target: "Top Rank" },
+            { name: "IAT (IISER)", cat: "gov", status: "pending", desc: "IISER Aptitude Test for dual degree BS-MS research programs.", req: "MPC/BiPC", target: "High Score" },
+            { name: "NEST", cat: "gov", status: "pending", desc: "National Entrance Screening Test for NISER and UM-DAE CEBS.", req: "MPC/BiPC", target: "Top Merit List" }
+        ];
+
+        function renderExams(filterCat) {
+            const grid = document.getElementById('exams-grid');
+            grid.innerHTML = '';
+
+            examsList.forEach(exam => {
+                if(filterCat === 'all' || exam.cat === filterCat) {
+                    let badgeClass = exam.status === 'active' ? 'status-active' : (exam.status === 'pending' ? 'status-pending' : 'status-closed');
+                    let badgeText = exam.status === 'active' ? 'Registration Open' : (exam.status === 'pending' ? 'Upcoming / Scheduled' : 'Closed for Year');
+                    
+                    // Assign border colors based on category
+                    let borderClass = 'border-l-slate-500';
+                    if(exam.cat === 'global') borderClass = 'border-l-red-500';
+                    if(exam.cat === 'eng') borderClass = 'border-l-blue-500';
+                    if(exam.cat === 'med') borderClass = 'border-l-purple-500';
+                    if(exam.cat === 'gov') borderClass = 'border-l-amber-500';
+
+                    grid.innerHTML += `
+                        <div class="exam-card ${borderClass}">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="status-badge ${badgeClass} ${exam.status === 'active' ? 'animate-pulse' : ''}">${badgeText}</span>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">${exam.cat}</span>
+                                </div>
+                                <h2 class="text-2xl font-black text-white mb-2" style="font-family: 'Rajdhani';">${exam.name}</h2>
+                                <p class="text-sm text-slate-300 mb-6 leading-relaxed">${exam.desc}</p>
+                            </div>
+                            
+                            <div>
+                                <div class="bg-black/40 p-4 rounded-xl border border-slate-800 mb-4">
+                                    <div class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mb-1">Eligibility Core</div>
+                                    <div class="text-xs text-white font-bold">${exam.req}</div>
+                                </div>
+                                <div class="flex justify-between items-center border-t border-slate-800 pt-4">
+                                    <div class="text-xs text-amber-400 font-black tracking-widest uppercase">Target: ${exam.target}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function filterExams(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderExams(cat);
+        }
+
+        // Init
+        renderExams('all');
+    </script>
+</body>
+</html>
