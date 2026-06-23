@@ -2,203 +2,159 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5HVBHX1KDW');
-    </script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Elite insights on global career pathways, AI engineering, NDA strategies, commercial aviation, and zero-investment degrees.">
-    <title>CareerPilot | Intelligence Matrix</title>
+    <meta name="description" content="Read elite career insights, admission strategies, and future tech roadmaps for Indian students.">
+    <title>Insights Hub | CareerPilot</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-deep: #030712; 
-            --glass-panel: rgba(15, 23, 42, 0.7);
-            --neon-blue: #3B82F6; --neon-cyan: #06B6D4;
-            --border-glow: rgba(255, 255, 255, 0.08);
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #06B6D4;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; }
-        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); top: -200px; left: -200px; z-index: -1; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-primary); }
 
-        nav { position: sticky; top: 0; width: 100%; padding: 15px 40px; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-glow); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: white; }
-        .brand span { color: var(--neon-cyan); }
-        .nav-links { display: flex; gap: 20px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
-        .nav-links a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
-        .nav-links a:hover { color: var(--neon-cyan); }
-
-        .glass-module { background: var(--glass-panel); backdrop-filter: blur(16px); border: 1px solid var(--border-glow); border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: 0.3s; }
-        .glass-module:hover { border-color: rgba(6,182,212,0.3); transform: translateY(-3px); }
-
-        footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-glow); color: #94A3B8; font-size: 0.9rem; margin-top: auto; }
+        .glass-module { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
+        
+        /* Article Cards */
+        .article-card { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; text-decoration: none; }
+        .article-card:hover { border-color: var(--neon-primary); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6,182,212,0.05); }
+        .article-img { width: 100%; height: 180px; background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(59,130,246,0.1)); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        
+        /* Featured Article */
+        .featured-article { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 20px; background: linear-gradient(135deg, rgba(15,23,42,0.8), rgba(6,182,212,0.05)); border: 1px solid rgba(6,182,212,0.3); border-radius: 24px; overflow: hidden; text-decoration: none; transition: 0.3s; }
+        .featured-article:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.6); border-color: var(--neon-primary); }
+        @media (min-width: 768px) {
+            .featured-article { grid-template-columns: 1fr 1fr; align-items: center; }
+            .featured-img { height: 100%; min-height: 300px; }
+        }
+        
+        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
     </style>
 </head>
 <body>
 
     <div class="grid-bg"></div>
-    <div class="glow-orb"></div>
 
     <nav>
         <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
-        <div class="nav-links hidden md:flex">
-            <a href="index.html">Dashboard</a>
-            <a href="insights.html" style="color: var(--neon-cyan);">Insights</a>
-            <a href="support.html">Support</a>
-        </div>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← OS Dashboard</a>
     </nav>
 
-    <main class="max-w-4xl mx-auto w-full p-4 md:p-8 flex-grow">
+    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
         
-        <header class="text-center mb-16 mt-8">
-            <h1 style="font-family: 'Rajdhani';" class="text-5xl font-black mb-4 uppercase tracking-tighter">Global <span style="color: var(--neon-cyan);">Intelligence Matrix</span></h1>
-            <p class="text-slate-400 text-lg">Declassified career roadmaps, admission strategies, and market forecasts.</p>
+        <header class="mb-10 text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Intelligence <span class="text-cyan-400">Matrix</span></h1>
+            <p class="text-slate-400 text-sm max-w-2xl mx-auto">Declassified career roadmaps, admission strategies, and market forecasts designed to secure your academic future.</p>
         </header>
 
-        <div class="space-y-8">
+        <div class="flex justify-center gap-3 mb-10 flex-wrap">
+            <span class="text-xs font-bold uppercase tracking-widest bg-cyan-900/30 text-cyan-400 border border-cyan-800 px-4 py-2 rounded-full cursor-pointer">All Intel</span>
+            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Engineering & Tech</span>
+            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Global Admissions</span>
+            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Finance & Commerce</span>
+        </div>
 
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Engineering & AI</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The Python Prerequisite: Architecting AI Portfolios</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Securing a position at top-tier global tech firms requires moving past basic syntax. Elite AI/ML engineers demonstrate their capability through deep, algorithmic logic. Stripped of IDE auto-completes, the practice of "paper coding"—writing out complex loops, conditional logic, and data structures by hand—forges an unbreakable understanding of backend architecture. Building and deploying independent AI models showcases the exact operational maturity admissions and corporate recruiters demand.</p>
-            </article>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            
+            <a href="#" class="featured-article group">
+                <div class="article-img featured-img text-6xl">🤖</div>
+                <div class="p-8 md:p-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 px-2 py-1 rounded font-bold uppercase tracking-widest">Featured Report</span>
+                        <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">6 Min Read</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-4 leading-tight group-hover:text-cyan-400 transition-colors" style="font-family: 'Rajdhani';">The Python Prerequisite: Architecting AI Portfolios Before College</h2>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Securing a position at top-tier global tech firms requires moving past basic syntax. Learn why elite AI/ML engineers demonstrate their capability through deep, algorithmic logic and "paper coding" before they even clear 12th grade.</p>
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-2">Initialize Reading <span class="group-hover:translate-x-2 transition-transform">→</span></div>
+                </div>
+            </a>
 
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Global Admissions</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Zero-Investment Degrees: Cracking Need-Blind Frameworks</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The narrative of crippling student debt is avoidable for elite international applicants. A select tier of global universities operate under "Need-Blind" protocols, completely neutralizing tuition and living costs for admitted candidates. Securing these fully funded packages requires a flawless academic transcript, a verified English proficiency score (IELTS/TOEFL), and a highly developed extracurricular "spike" that proves singular exceptionalism in fields like tech, research, or leadership.</p>
-            </article>
+            <a href="#" class="article-card group">
+                <div class="article-img">✈️</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-blue-400 font-bold uppercase tracking-widest mb-2">Aviation Sector</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">The 200-Hour Threshold: Commercial Pilot Licensing (CPL)</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">Becoming an airline captain requires navigating a heavily regulated, capital-intensive pathway. Decode the DGCA medicals and flight school logistics.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
 
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Standardized Testing</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Triangulating a 1550+: Advanced SAT Strategy</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">A 1550+ on the SAT is not a matter of volume; it is a matter of strategic calibration. The elite preparation matrix requires strict triangulation: leveraging 7 official College Board tests for baseline pacing, simulating hostile test environments with 3 premium Princeton Review 2026 exams, and executing hyper-specific micro-drills using 10 specialized SAT Panda tests to ruthlessly eliminate quantitative errors. This structured cross-training guarantees elite-percentile output.</p>
-            </article>
+            <a href="#" class="article-card group">
+                <div class="article-img">🌍</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-2">Global Admissions</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Zero-Investment Degrees: Cracking Need-Blind Frameworks</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">The narrative of crippling student debt is avoidable. Learn how to secure 100% funded packages at US Ivy Leagues using extreme extracurricular spikes.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
 
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Defense</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Command Logic: Surviving the NDA SSB Interview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Clearing the UPSC written exam is merely the gateway to the Armed Forces. The 5-day Services Selection Board (SSB) interview is a psychological and physical crucible designed to test innate Officer Like Qualities (OLQs). From the Word Association Test to Group Obstacle Tasks, candidates are evaluated not on perfection, but on raw resilience, decision-making under stress, and group cohesion.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Aviation</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The 200-Hour Threshold: Commercial Pilot Licensing (CPL)</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Becoming an airline captain requires navigating a heavily regulated, capital-intensive pathway. Post 10+2 (with mandatory Physics and Mathematics), candidates must clear rigorous DGCA Class 2 and Class 1 medicals before logging 200 hours of flight time. Understanding the cost-benefit analysis of domestic versus international flight schools (USA, South Africa, Australia) is critical for accelerating type-rating and securing airline placement.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Finance</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Chartered Accountancy (CA): The Corporate Backbone</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The CA designation remains one of the most prestigious and recession-proof careers globally. With a notoriously challenging pass rate, the journey from Foundation to Final requires relentless discipline. The mandatory 3-year articleship acts as a real-world crucible, transforming theoretical tax and audit knowledge into highly lucrative corporate advisory and CFO-level leadership skills.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Law & Judiciary</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The NLU Pipeline: CLAT and Corporate Litigation</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The National Law Universities (NLUs) represent the absolute apex of legal education in India. Cracking the CLAT demands high-speed reading comprehension and flawless logical reasoning. Graduates from top-tier NLUs bypass traditional courtroom struggles, landing massive day-zero packages at elite corporate law firms managing international mergers and IP acquisitions.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Language & Communication</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Decoding English Proficiency for STEM Domination</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">A flawless technical mind is severely handicapped if it cannot articulate complex architecture. Global institutions demand highly calibrated IELTS or TOEFL scores. Engineering candidates who practice conversational fluency daily, transforming their ability to explain intricate algorithms or physics principles into clear, concise English, possess a massive tactical advantage during visa and university interviews.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Finance Tech</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Quant Finance: Where Math Meets Wall Street</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The highest-paid engineers on the planet do not work in Silicon Valley; they work in hedge funds. Quantitative Analysts ("Quants") utilize advanced stochastic calculus, C++, and machine learning to build high-frequency trading algorithms. This highly specialized, ruthless sector demands an elite mathematical foundation (MPC), offering compensation ceilings that dwarf traditional software engineering.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Design & UI/UX</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The Architecture of Empathy: UI/UX Design</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">A brilliantly engineered backend is useless if the user interface is hostile. UI/UX designers bridge the gap between human psychology and digital execution. This career path rewards those who blend creative aesthetics with rigorous user data testing, ensuring software products scale efficiently and retain users intuitively.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Public Administration</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Tech Graduates in Civil Services (UPSC)</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The era of the purely arts-driven administrator is shifting. Engineering graduates are increasingly dominating the UPSC Civil Services Examination. Their conditioned ability to process massive volumes of data, apply logical frameworks to abstract problems, and endure extreme analytical pressure makes them formidable candidates for the IAS and IPS cadres.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Management</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The IPM Advantage: Direct Entry to IIMs</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Integrated Program in Management (IPM) allows students to secure admission into elite Indian Institutes of Management (IIMs) directly after 12th grade, bypassing the grueling post-grad CAT bottleneck. This 5-year dual-degree framework fast-tracks ambitious students into premier consulting, strategy, and corporate leadership roles globally.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Data Science</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Big Data: The Oil of the 21st Century</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Every interaction, transaction, and movement in the modern world generates data. Data Scientists clean, structure, and visualize this chaos, allowing mega-corporations to predict consumer behavior. Mastering Python, SQL, and statistical probability transforms a student into an indispensable asset across healthcare, finance, and retail sectors.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Future Tech</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Cybersecurity: Defending the Digital Perimeter</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">As entire economies migrate to the cloud, the threat of digital terrorism scales exponentially. Ethical hackers and cybersecurity architects operate as the invisible shield of the modern world. This high-stakes career demands constant evolution, deep network architecture knowledge, and a naturally defensive, skeptical mindset.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Engineering</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Aerospace & Defense Engineering</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">With the privatization of space (SpaceX, Blue Origin) and rapid advancements in drone technology, aerospace engineering has entered a golden age. Students focused on fluid dynamics, thermodynamics, and propulsion systems are no longer restricted to government agencies (ISRO/DRDO); they are highly sought after by commercial space conglomerates.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Actuarial Science</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Calculating Chaos: The Actuarial Pathway</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">For students possessing elite mathematical processing power who do not wish to code, Actuarial Science is the ultimate trajectory. Actuaries evaluate financial risks using mathematics, statistics, and financial theory, serving as the critical risk-assessment engine for global insurance and pension networks.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Mechanical</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Mechatronics: The Physical-Digital Bridge</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Pure mechanical engineering is evolving. The modern world requires physical machines that possess digital brains. Mechatronics merges mechanical, electrical, and software engineering, preparing students to design automated assembly lines, autonomous vehicles, and advanced robotics architectures.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Market Analysis</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Evaluating AI Automation Risk</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">When projecting a career path, students must factor in AI obsolescence. Careers reliant on repetitive data processing or basic contract drafting face high automation risk. Conversely, roles requiring complex physical dexterity (Surgery), high-level strategic empathy (Counseling), or the actual programming of the AI itself remain structurally secure.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Academic Strategy</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">The Power of the Extracurricular Spike</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Global universities discard "well-rounded" applicants in favor of "spiked" applicants. Having a 95% board average is standard. True differentiation requires singular obsession—whether it is securing international patents, deploying live SaaS applications at 17, or representing the nation in athletic competitions. The spike is the ultimate admissions leverage.</p>
-            </article>
-
-            <article class="glass-module">
-                <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest bg-cyan-900/30 border border-cyan-800 px-2 py-1 rounded">Strategy</span>
-                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-bold mt-4 mb-4 text-white uppercase">Pivoting: Why Your Stream Does Not Lock Your Future</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The greatest anxiety in 10th grade is the fear of permanence. In reality, the modern economy is fluid. An MPC student can transition into high-end finance; a BiPC student can pivot into biotechnology research or MBA-level hospital administration. The foundational logic learned in high school is a launchpad, not a cage.</p>
-            </article>
+            <a href="#" class="article-card group">
+                <div class="article-img">📊</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-purple-400 font-bold uppercase tracking-widest mb-2">Finance Tech</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Quant Finance: Where Advanced Math Meets Wall Street</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">The highest-paid engineers don't work in Silicon Valley; they work in hedge funds. Why MPC students are dominating the global finance sector.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
+            
+            <a href="#" class="article-card group">
+                <div class="article-img">⚖️</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest mb-2">Law & Judiciary</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">The NLU Pipeline: CLAT and Corporate Litigation</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">How cracking the CLAT exam bypasses traditional courtroom struggles, landing massive day-zero packages at elite corporate law firms.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
+            
+            <a href="#" class="article-card group">
+                <div class="article-img">📝</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-red-400 font-bold uppercase tracking-widest mb-2">Standardized Testing</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Triangulating a 1550+: Advanced SAT Strategy</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">A 1550+ on the SAT is not about volume; it's about strategic calibration using College Board baselines and Princeton Review simulations.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
+            
+            <a href="#" class="article-card group">
+                <div class="article-img">🛡️</div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest mb-2">Defense Sector</span>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Command Logic: Surviving the NDA SSB Interview</h3>
+                    <p class="text-sm text-slate-400 mb-6 flex-grow">Clearing the UPSC written exam is merely the gateway. Decode the 5-day psychological and physical crucible of the Services Selection Board.</p>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
+                </div>
+            </a>
 
         </div>
+        
+        <div class="text-center mt-8">
+            <button class="bg-slate-900 border border-slate-700 text-white font-bold py-3 px-8 rounded-xl uppercase tracking-widest text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors">Load Archival Data ↓</button>
+        </div>
+
     </main>
 
-    <footer>
-        <div class="flex justify-center gap-6 mb-4">
-            <a href="privacy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
-            <a href="support.html" class="hover:text-cyan-400 transition-colors">Support</a>
-        </div>
-        <p>&copy; 2026 AstraForge CareerPilot. Engineered for Strategic Growth.</p>
-    </footer>
+    <footer>&copy; 2026 AstraForge CareerPilot Network. All operational rights reserved.</footer>
 
 </body>
 </html>
