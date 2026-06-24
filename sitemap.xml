@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://career.astraforage.in/</loc></url>
-  <url><loc>https://career.astraforage.in/insights.html</loc></url>
-  <url><loc>https://career.astraforage.in/support.html</loc></url>
+  <url><loc>https://career.astraforage.in/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://career.astraforage.in/parent-dashboard.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  
+  <url><loc>https://career.astraforage.in/career-dna.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/careergpt.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://career.astraforage.in/career-swipe.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/future-simulator.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/future-demand.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/career-battles.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  
+  <url><loc>https://career.astraforage.in/career-wiki.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://career.astraforage.in/stream-explorer.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/salary-explorer.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/colleges.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://career.astraforage.in/exams.html</loc><priority>0.8</priority><changefreq>daily</changefreq></url>
+  
+  <url><loc>https://career.astraforage.in/internships.html</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://career.astraforage.in/scholarships.html</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://career.astraforage.in/insights.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+
+  <url><loc>https://career.astraforage.in/about.html</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://career.astraforage.in/privacy-policy.html</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://career.astraforage.in/terms.html</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://career.astraforage.in/disclaimer.html</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://career.astraforage.in/contact.html</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://career.astraforage.in/support.html</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
 </urlset>
