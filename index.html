@@ -15,7 +15,7 @@
     <style>
         :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --neon-accent: #8B5CF6; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
         .app-bg { position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, #0f172a 0%, var(--bg-deep) 100%); z-index: -3; }
         .grid-overlay { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.4; }
@@ -28,11 +28,10 @@
         .gamify-hud { display: flex; gap: 15px; align-items: center; background: rgba(0,0,0,0.4); padding: 5px 15px; border-radius: 12px; border: 1px solid var(--glass-border); }
         .streak-fire { color: #F59E0B; font-weight: 900; display: flex; align-items: center; gap: 4px; }
         
-        .bento-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1400px; margin: 40px auto 60px; padding: 0 20px; }
-        .bento-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; transition: 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .bento-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1400px; margin: 40px auto 60px; padding: 0 20px; flex-grow: 1; }
+        .bento-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; transition: 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; }
         .bento-hover:hover { border-color: var(--neon-primary); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
-        /* Grid Spans */
         .col-span-full { grid-column: span 12; }
         @media (min-width: 768px) {
             .md-span-8 { grid-column: span 8; }
@@ -40,22 +39,22 @@
             .md-span-6 { grid-column: span 6; }
         }
 
-        /* Dream Salary Calculator UI */
         .salary-slider { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.1); outline: none; margin: 20px 0; }
         .salary-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--neon-primary); cursor: pointer; box-shadow: 0 0 15px var(--neon-primary); }
         
-        /* Parent Mode Toggle */
         .toggle-switch { position: relative; width: 46px; height: 24px; background: #334155; border-radius: 12px; cursor: pointer; transition: 0.3s; }
         .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: 0.3s; }
         body.parent-mode .toggle-switch { background: #10B981; }
         body.parent-mode .toggle-switch::after { transform: translateX(22px); }
         body.parent-mode { --neon-primary: #10B981; }
 
-        /* Career Swipe Cards (Netflix Style) */
         .swipe-deck { position: relative; height: 200px; width: 100%; perspective: 1000px; margin-top: 10px; }
         .swipe-card { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(6,182,212,0.1)); border: 1px solid var(--neon-primary); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: 0.3s transform, 0.3s opacity; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-        footer { text-align: center; padding: 30px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+        /* Enterprise Footer (Crucial for AdSense) */
+        footer { padding: 40px 20px; border-top: 1px solid var(--glass-border); background: rgba(2, 6, 23, 0.95); margin-top: auto; }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--neon-primary); }
     </style>
 </head>
 <body>
@@ -66,10 +65,15 @@
     <nav>
         <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
         
-        <div class="hidden md:flex gamify-hud">
-            <div class="streak-fire">🔥 12 Day Streak</div>
-            <div class="border-l border-slate-700 h-6 mx-2"></div>
-            <div class="text-xs font-bold text-cyan-400">Lv.4 Explorer <span class="text-white ml-1">850 XP</span></div>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="insights.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Insights Hub</a>
+            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
+            
+            <div class="gamify-hud">
+                <div class="streak-fire">🔥 12 Day Streak</div>
+                <div class="border-l border-slate-700 h-6 mx-2"></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.4 Explorer <span class="text-white ml-1">850 XP</span></div>
+            </div>
         </div>
 
         <div class="flex items-center gap-4 cursor-pointer" onclick="toggleParentMode()">
@@ -104,23 +108,23 @@
             </div>
         </div>
 
-        <div class="bento-card col-span-full md-span-4 flex flex-col justify-between">
+        <a href="career-swipe.html" class="bento-card col-span-full md-span-4 flex flex-col justify-between bento-hover text-decoration-none">
             <h2 class="text-2xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Career Swipe</h2>
             <p class="text-xs text-slate-400 mb-4">Discover paths instantly.</p>
             
-            <div class="swipe-deck" id="swipeDeck">
-                <div class="swipe-card" id="activeCard">
+            <div class="swipe-deck pointer-events-none">
+                <div class="swipe-card">
                     <div class="text-4xl mb-2">💻</div>
                     <h3 class="text-xl font-bold text-white mb-1">AI / ML Engineer</h3>
                     <div class="text-xs text-emerald-400 font-bold mb-4">₹40L+ Peak • MPC Stream</div>
                     <div class="flex gap-4 w-full justify-center">
-                        <button class="bg-slate-800 text-white w-12 h-12 rounded-full font-bold hover:bg-red-500/20 hover:text-red-400 transition-colors" onclick="swipeCard('skip')">✕</button>
-                        <button class="bg-[var(--neon-primary)] text-slate-900 w-12 h-12 rounded-full font-bold hover:bg-white transition-colors" onclick="swipeCard('save')">♥</button>
+                        <div class="bg-slate-800 text-white w-12 h-12 rounded-full font-bold flex items-center justify-center">✕</div>
+                        <div class="bg-[var(--neon-primary)] text-slate-900 w-12 h-12 rounded-full font-bold flex items-center justify-center">♥</div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-4 text-[10px] text-slate-500 font-bold uppercase tracking-widest">Swipe left to skip, right to save</div>
-        </div>
+            <div class="text-center mt-4 text-[10px] text-slate-500 font-bold uppercase tracking-widest">Tap to launch full deck matrix →</div>
+        </a>
 
         <div class="bento-card col-span-full md-span-6 bento-hover">
             <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Battles 2.0</h2>
@@ -147,69 +151,60 @@
                 <h2 class="text-2xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Daily Challenge</h2>
                 <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-1 rounded font-bold uppercase tracking-widest animate-pulse">Live</span>
             </div>
-            <p class="text-sm text-slate-300 mb-4">Guess the starting salary for a <strong>Tier-1 Corporate Lawyer (NLU)</strong> in India.</p>
+            <p class="text-sm text-slate-300 mb-4">For the Sep 2026 SAT, which prep asset ensures elite quantitative triangulation?</p>
             
             <div class="grid grid-cols-2 gap-3 mb-6">
-                <button class="bg-slate-900 border border-slate-700 py-3 rounded-lg text-sm text-slate-300 font-bold hover:bg-slate-800 transition-colors" onclick="alert('Incorrect. Lawyers at top firms earn more. +5 XP')">₹8 Lakhs</button>
-                <button class="bg-slate-900 border border-slate-700 py-3 rounded-lg text-sm text-slate-300 font-bold hover:bg-slate-800 transition-colors" onclick="alert('Correct! Top tier corporate law starts between ₹14L-18L. +50 XP')">₹16 Lakhs</button>
+                <button class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 transition-colors text-center" onclick="alert('Incorrect. +5 XP')">Standard High School Math</button>
+                <button class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 transition-colors text-center" onclick="alert('Correct! Combining 10 SAT Panda drills with Princeton Review simulations creates an unbreakable baseline. +50 XP')">SAT Panda + Princeton Review</button>
             </div>
             
             <div class="border-t border-slate-800 pt-4 flex justify-between items-center">
                 <div class="text-xs text-slate-400 font-bold uppercase tracking-widest">Global Rank: #4,092</div>
-                <a href="#" class="text-xs text-amber-400 font-bold uppercase tracking-widest text-decoration-none hover:text-white transition-colors">View Leaderboard →</a>
+                <div class="text-xs text-amber-400 font-bold uppercase tracking-widest hover:text-white transition-colors cursor-pointer">View Leaderboard →</div>
             </div>
         </div>
 
-        <div class="bento-card col-span-full md-span-4">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Reality Check</h2>
-            <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Unfiltered Pros & Cons</p>
-            
-            <select class="w-full bg-slate-900 border border-slate-700 p-3 rounded-xl text-white font-bold outline-none mb-4 text-sm cursor-pointer">
-                <option>Commercial Airline Pilot</option>
-                <option>AI Engineer</option>
-                <option>Chartered Accountant</option>
-            </select>
-            
-            <div class="space-y-2">
-                <div class="bg-emerald-900/20 border border-emerald-900/50 p-3 rounded-lg flex items-start gap-3">
-                    <span class="text-emerald-500">➕</span>
-                    <span class="text-xs text-slate-300 font-medium">Extreme global demand & massive salary ceilings.</span>
-                </div>
-                <div class="bg-red-900/20 border border-red-900/50 p-3 rounded-lg flex items-start gap-3">
-                    <span class="text-red-500">➖</span>
-                    <span class="text-xs text-slate-300 font-medium">High risk of medical grounding; massive initial training cost (₹40L+).</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="bento-card col-span-full md-span-8 flex flex-col justify-center">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4" style="font-family: 'Rajdhani';">Core Engines</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="career-dna.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-cyan-400 transition-colors text-decoration-none group">
-                    <div class="text-2xl mb-2">🧬</div>
-                    <div class="text-xs font-bold text-white group-hover:text-cyan-400 uppercase tracking-widest">Career DNA</div>
+        <div class="bento-card col-span-full flex flex-col justify-center">
+            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4" style="font-family: 'Rajdhani';">Super App Core Engines</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <a href="career-dna.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">🧬</div>
+                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Career DNA</div>
                 </a>
-                <a href="future-simulator.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-cyan-400 transition-colors text-decoration-none group">
-                    <div class="text-2xl mb-2">⏳</div>
-                    <div class="text-xs font-bold text-white group-hover:text-cyan-400 uppercase tracking-widest">Simulator</div>
+                <a href="career-wiki.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">📚</div>
+                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Encyclopedia</div>
                 </a>
-                <a href="careergpt.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-cyan-400 transition-colors text-decoration-none group">
-                    <div class="text-2xl mb-2">🤖</div>
-                    <div class="text-xs font-bold text-white group-hover:text-cyan-400 uppercase tracking-widest">Ask GPT</div>
+                <a href="future-simulator.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">⏳</div>
+                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Simulator</div>
                 </a>
-                <a href="internships.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-cyan-400 transition-colors text-decoration-none group">
-                    <div class="text-2xl mb-2">⚡</div>
-                    <div class="text-xs font-bold text-white group-hover:text-cyan-400 uppercase tracking-widest">Alerts Hub</div>
+                <a href="careergpt.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">🤖</div>
+                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Ask GPT</div>
+                </a>
+                <a href="future-demand.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group md:col-span-1 col-span-2">
+                    <div class="text-3xl mb-2">📈</div>
+                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">AI Impact Map</div>
                 </a>
             </div>
         </div>
 
     </main>
 
-    <footer>&copy; 2026 AstraForge CareerPilot Network. Super App Edition.</footer>
+    <footer>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-6">
+            <a href="about.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">About Us</a>
+            <a href="privacy-policy.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Privacy Policy</a>
+            <a href="terms.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Terms of Service</a>
+            <a href="disclaimer.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Disclaimer</a>
+            <a href="contact.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Contact Hub</a>
+            <a href="support.html" class="text-cyan-400 hover:text-white transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">System Support</a>
+        </div>
+        <p class="text-slate-600 font-medium">AstraForge CareerPilot Network. Engine Version 4.0.</p>
+    </footer>
 
     <script>
-        // Dream Salary Logic
         function updateSalary() {
             const val = document.getElementById('salarySlider').value;
             document.getElementById('salaryOutput').innerText = `₹${val},00L`;
@@ -222,54 +217,8 @@
             else matchEl.innerText = "Elite Tech Architecture / Hedge Funds";
         }
 
-        // Swipe Card Simulator
-        const swipeJobs = [
-            { icon: "✈️", title: "Commercial Pilot", detail: "₹80L+ Peak • High Capital Req" },
-            { icon: "📊", title: "Quant Finance", detail: "₹1Cr+ Peak • Elite Math Req" },
-            { icon: "⚖️", title: "Corporate Lawyer", detail: "₹40L+ Peak • NLU Pipeline" }
-        ];
-        let swipeIdx = 0;
-
-        function swipeCard(action) {
-            const card = document.getElementById('activeCard');
-            // Animate out
-            card.style.transform = action === 'save' ? 'translateX(100%) rotate(10deg)' : 'translateX(-100%) rotate(-10deg)';
-            card.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Load next
-                const job = swipeJobs[swipeIdx % swipeJobs.length];
-                card.innerHTML = `
-                    <div class="text-4xl mb-2">${job.icon}</div>
-                    <h3 class="text-xl font-bold text-white mb-1">${job.title}</h3>
-                    <div class="text-xs text-emerald-400 font-bold mb-4">${job.detail}</div>
-                    <div class="flex gap-4 w-full justify-center">
-                        <button class="bg-slate-800 text-white w-12 h-12 rounded-full font-bold hover:bg-red-500/20 hover:text-red-400 transition-colors" onclick="swipeCard('skip')">✕</button>
-                        <button class="bg-[var(--neon-primary)] text-slate-900 w-12 h-12 rounded-full font-bold hover:bg-white transition-colors" onclick="swipeCard('save')">♥</button>
-                    </div>
-                `;
-                // Animate in
-                card.style.transform = 'translateX(0) rotate(0)';
-                card.style.opacity = '1';
-                swipeIdx++;
-            }, 300);
-        }
-
-        // Parent Mode Toggle
-        let isParentMode = false;
         function toggleParentMode() {
-            isParentMode = !isParentMode;
-            if(isParentMode) {
-                document.body.classList.add('parent-mode');
-                document.getElementById('mode-text').innerText = "Parent Dashboard";
-                document.getElementById('hero-title').innerHTML = `Child Success <span style="color: var(--neon-primary);">Engine</span>`;
-                document.getElementById('hero-subtitle').innerText = "Analyze low-risk, high-ROI career paths, track global need-blind scholarships, and calculate degree investments securely.";
-            } else {
-                document.body.classList.remove('parent-mode');
-                document.getElementById('mode-text').innerText = "Student View";
-                document.getElementById('hero-title').innerHTML = `The Career <span style="color: var(--neon-primary);">Super App</span>`;
-                document.getElementById('hero-subtitle').innerText = "Swipe careers, calculate dream salaries, and simulate elite execution roadmaps based on hard data.";
-            }
+            window.location.href = 'parent-dashboard.html';
         }
     </script>
 </body>
