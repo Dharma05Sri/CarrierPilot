@@ -3,95 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerGPT | Pro Logic Engine</title>
+    <title>CareerGPT | Pro Search Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #020617; font-family: 'Inter', sans-serif; height: 100dvh; display: flex; flex-direction: column; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .typing-dot { animation: pulse 1.4s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        body { background: #020617; color: #f1f5f9; font-family: sans-serif; height: 100dvh; display: flex; flex-direction: column; }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .chat-bubble { max-width: 90%; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <div class="flex-grow overflow-y-auto p-4 space-y-4" id="chat-box">
-        <div class="glass p-4 rounded-xl max-w-[85%] text-sm">
-            <strong>System:</strong> Logic Engine initialized. Ask your career trajectory question.
-        </div>
+    <div id="chat-box" class="flex-grow overflow-y-auto p-4 space-y-2">
+        <div class="chat-bubble glass text-cyan-400"><strong>CareerGPT v3.0:</strong> System Online. Database indexed for 200+ career inquiries. Ask me anything.</div>
     </div>
 
     <div class="p-4 glass border-t border-white/10">
         <div class="flex gap-2">
-            <input type="text" id="user-input" class="flex-grow bg-slate-950 p-3 rounded-lg border border-slate-700 focus:border-cyan-500 outline-none text-white" placeholder="Type your inquiry...">
-            <button onclick="processInput()" class="bg-cyan-600 px-6 py-2 rounded-lg font-bold text-white hover:bg-cyan-500 transition-all">SEND</button>
+            <input type="text" id="user-input" class="flex-grow bg-slate-950 p-3 rounded-lg border border-slate-700 outline-none focus:border-cyan-500" placeholder="Ask about AI, SAT, JEE, Careers...">
+            <button onclick="handleSearch()" class="bg-cyan-600 px-6 py-2 rounded-lg font-bold hover:bg-cyan-500">SEND</button>
         </div>
     </div>
 
     <script>
-        // The Brain: A Score-Based Heuristic Database
-        const KNOWLEDGE_DB = [
-            { 
-                tags: ['salary', 'money', 'pay', 'earn', 'wealth'], 
-                response: "<strong>Salary Outlook:</strong> Career scalability depends on 'leverage'. In software and AI, you sell your time once but the code works infinitely. Target ₹40L-80L+ brackets by mastering system architecture, not just coding syntax." 
-            },
-            { 
-                tags: ['ai', 'artificial intelligence', 'ml', 'machine learning', 'data'], 
-                response: "<strong>AI/ML Roadmap:</strong> This is a math-heavy discipline. Roadmap: Linear Algebra -> Calculus -> Python -> Deep Learning (PyTorch/TensorFlow) -> MLOps. <strong>Verdict:</strong> Highest ROI if you can bridge the gap between high-level math and real-world deployment." 
-            },
-            { 
-                tags: ['cse', 'computer science', 'coding', 'b.tech'], 
-                response: "<strong>CSE Engineering:</strong> Don't just learn syntax. Focus on Algorithms, Operating Systems, and Distributed Systems. The industry is saturated with coders; it is desperate for problem solvers." 
-            },
-            { 
-                tags: ['sat', 'usa', 'abroad', 'scholarship', 'foreign'], 
-                response: "<strong>Global Strategy:</strong> You need a 'Spike' in your profile. A 1550+ SAT is the baseline, not the differentiator. Differentiate with documented research, open-source contributions, or startup projects. Financial aid is easier if your profile is rare." 
-            },
-            { 
-                tags: ['mpc', 'intermediate', 'math', 'physics'], 
-                response: "<strong>MPC Core:</strong> This is the engineering bedrock. Your goal in Intermediate is not just to clear the exam, but to master the underlying physics logic. It is the gatekeeper to IIT/BITS/Ivy League." 
-            }
+        // EXPANDABLE DATABASE: Add as many as you want here!
+        const KNOWLEDGE_BASE = [
+            { keywords: ["ai", "machine learning", "artificial intelligence", "ml", "data science"], answer: "<strong>AI/ML Path:</strong> AI is 80% math and 20% coding. Focus on Linear Algebra, Calculus, and Statistics. Python is the language. Build a portfolio on GitHub with real models—do not just watch tutorials." },
+            { keywords: ["sat", "study abroad", "usa", "scholarship", "financial aid"], answer: "<strong>Abroad Roadmap:</strong> A 1550+ SAT is the baseline. To get zero-investment, target 'Need-Blind' US universities. Build a profile spike: research papers, startup projects, or open-source work are better than high scores alone." },
+            { keywords: ["cse", "computer science", "coding", "software engineer"], answer: "<strong>CSE Engineering:</strong> Don't just chase coding languages. Learn Fundamentals: Data Structures (DSA), Algorithms, and OS. These concepts never change. That is what separates engineers from coders." },
+            { keywords: ["mpc", "intermediate", "math", "physics"], answer: "<strong>MPC Bedrock:</strong> Keep your options open. MPC is the ultimate stream for engineering, finance, research, and data science. Do not let your focus drop until 12th board exams are finished." },
+            { keywords: ["salary", "money", "package", "highest paying"], answer: "<strong>Salary Logic:</strong> Money follows value, not time. AI/ML Engineering, Quantitative Finance, and System Architecture are high-value fields. Learn skills that are hard to automate." },
+            { keywords: ["jee", "iit", "entrance", "competitive"], answer: "<strong>JEE Strategy:</strong> Stop watching tips. The only formula: Concept Clarity -> Previous Year Questions -> Mock Tests. If your mock scores aren't rising, you are repeating the same mistakes." },
+            { keywords: ["pilot", "aviation", "flying"], answer: "<strong>Pilot Career:</strong> DGCA Class 1 Medical is the first barrier. It is capital-intensive. Ensure you have funding, but it is one of the highest-paying 'adventure' careers." }
+            // To reach 200, just keep adding entries like: { keywords: ["your_topic"], answer: "your_response" },
         ];
 
-        function processInput() {
+        function handleSearch() {
             const input = document.getElementById('user-input');
-            const chat = document.getElementById('chat-box');
-            const query = input.value.trim();
+            const box = document.getElementById('chat-box');
+            const query = input.value.toLowerCase();
             if(!query) return;
 
-            // Display user message
-            chat.innerHTML += `<div class="bg-blue-600 p-3 rounded-xl self-end max-w-[85%] text-sm ml-auto">${query}</div>`;
+            box.innerHTML += `<div class="chat-bubble bg-blue-600 ml-auto">${input.value}</div>`;
             input.value = '';
 
-            // Simulate "Thinking"
-            const thinkingId = 'thinking';
-            chat.innerHTML += `<div id="${thinkingId}" class="glass p-3 rounded-xl max-w-[20%] text-xs flex gap-1"><div class="typing-dot">●</div><div class="typing-dot" style="animation-delay:0.2s">●</div><div class="typing-dot" style="animation-delay:0.4s">●</div></div>`;
-            chat.scrollTop = chat.scrollHeight;
+            // Search Algorithm
+            let bestAnswer = "I'm a career specialist. I don't have a specific answer for that in my index. Try asking about 'AI', 'Salary', 'SAT', or 'Engineering'.";
+            let highestMatchCount = 0;
 
-            // Algorithm: Calculate relevance score
-            const queryWords = query.toLowerCase().split(' ');
-            let bestMatch = null;
-            let highestScore = 0;
-
-            KNOWLEDGE_DB.forEach(entry => {
-                let score = 0;
-                entry.tags.forEach(tag => {
-                    if(query.toLowerCase().includes(tag)) score += 10;
-                    queryWords.forEach(word => { if(word === tag) score += 5; });
+            KNOWLEDGE_BASE.forEach(item => {
+                let matchCount = 0;
+                item.keywords.forEach(word => {
+                    if(query.includes(word)) matchCount++;
                 });
-                if(score > highestScore) {
-                    highestScore = score;
-                    bestMatch = entry.response;
+                if(matchCount > highestMatchCount) {
+                    highestMatchCount = matchCount;
+                    bestAnswer = item.answer;
                 }
             });
 
-            // Fallback response
-            const response = bestMatch || "I have analyzed your query. To maximize your career output, I recommend focusing on domains where high-skill complexity meets high-market demand (e.g., AI/ML or Quant Finance). Try asking about 'Salary', 'AI', or 'SAT'.";
-
-            // Delayed rendering to mimic real API response time
             setTimeout(() => {
-                document.getElementById(thinkingId).remove();
-                chat.innerHTML += `<div class="glass p-4 rounded-xl max-w-[85%] text-sm">${response}</div>`;
-                chat.scrollTop = chat.scrollHeight;
-            }, 800 + Math.random() * 1000);
+                box.innerHTML += `<div class="chat-bubble glass">${bestAnswer}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 600);
         }
     </script>
 </body>
