@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Career Pilot Swipe Deck. Dynamically evaluate, filter, and save elite tech, finance, and defense career paths.">
+    <title>Career Discovery Deck | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-cyan: #06B6D4;
+            --neon-red: #EF4444;
+            --neon-emerald: #10B981;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        .glow-orb { position: fixed; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); bottom: -100px; left: -100px; z-index: -1; pointer-events: none; }
+
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-cyan); }
+
+        .glass-module { background: var(--glass-base); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+
+        /* Advanced Swipe Deck Framework */
+        .deck-wrapper { position: relative; width: 100%; max-width: 440px; height: 520px; margin: 0 auto; }
+        .deck-card { position: absolute; width: 100%; height: 100%; background: linear-gradient(145deg, #0f172a, #020617); border: 2px solid var(--glass-border); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, border-color 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); transform-origin: center bottom; z-index: 10; }
+        
+        /* Action Buttons */
+        .control-btn { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-skip:hover { border-color: var(--neon-red); color: var(--neon-red); transform: scale(1.1) rotate(-10deg); box-shadow: 0 0 20px rgba(239,68,68,0.2); }
+        .btn-save:hover { border-color: var(--neon-emerald); color: var(--neon-emerald); transform: scale(1.1) rotate(10deg); box-shadow: 0 0 20px rgba(16,185,129,0.2); }
+
+        /* Saved Vault Tray */
+        .vault-tray { border-top: 1px solid var(--glass-border); background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(15px); padding: 20px; max-height: 200px; overflow-x: auto; display: flex; gap: 15px; }
+        .vault-item { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 12px; padding: 10px 20px; white-space: nowrap; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; color: #cbd5e1; }
+
+        footer { text-align: center; padding: 15px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.75rem; background: #020617; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Exit Deck</a>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto w-full p-4 md:p-8 flex flex-col justify-center">
+        
+        <div class="relative w-full text-center">
+            <div id="deck-container" class="deck-wrapper mb-8">
+                <div class="deck-card justify-center items-center text-center" id="end-card" style="display: none; z-index: 1;">
+                    <div class="text-5xl mb-4">🏁</div>
+                    <h3 style="font-family: 'Rajdhani';" class="text-3xl font-black text-white uppercase tracking-tighter mb-2">Deck Exhausted</h3>
+                    <p class="text-slate-400 text-sm max-w-xs mx-auto mb-6">You have filtered the core global vectors. Analyze your committed selections in the storage tray below.</p>
+                    <button onclick="resetDeck()" class="bg-cyan-500 text-slate-900 px-6 py-3 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-white transition-colors">Re-Initialize Deck</button>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-8 items-center max-w-xs mx-auto mb-6" id="controls-interface">
+                <button class="control-btn btn-skip" onclick="processSwipe('skip')" title="Skip Career">✕</button>
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-500" id="deck-counter">0 / 0</span>
+                <button class="control-btn btn-save" onclick="processSwipe('save')" title="Save to Vault">♥</button>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 px-6 mb-2 max-w-7xl mx-auto w-full">🔒 Your Saved Career Vault (`localStorage`)</div>
+    <div class="vault-tray max-w-7xl mx-auto w-full" id="vault-tray-container">
+        <div class="text-sm text-slate-600 font-semibold p-2 italic" id="empty-vault-msg">No trajectories committed to storage yet. Swipe right (♥) to execute.</div>
+    </div>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+
+    <script>
+        // Elite Career Profiles Matrix (Strictly Technical/MPC focus aligned with peak capital vectors)
+        const swipeDatabase = [
+            {
+                id: "ai_arch", icon: "💻", title: "AI & Neural Architect", stream: "MPC • B.Tech CSE", salary: "₹24L - ₹80L+",
+                pro: "Exponential industrial demand; highest scaling potential in modern global tech.",
+                con: "Demands continuous cognitive adaptation; relentless algorithmic re-learning cycles."
+            },
+            {
+                id: "quant_an", icon: "📊", title: "Quantitative Trading Analyst", stream: "MPC • Tier-1 Math/CS", salary: "₹35L - ₹1.2Cr+",
+                pro: "Unmatched financial compensation structures; directly commands corporate hedge fund capital.",
+                con: "Extreme psychological pressure profiles; directly tied to real-time market volatility metrics."
+            },
+            {
+                id: "aero_eng", icon: "🚀", title: "Aerospace Propulsion Systems", stream: "MPC • Aerospace Engineering", salary: "₹12L - ₹45L+",
+                pro: "Work at the cutting edge of defense contracts, rocket mechanics, and drone autonomy frameworks.",
+                con: "Highly localized state clearance demands; long development timelines before commercialization."
+            },
+            {
+                id: "cpl_capt", icon: "✈️", title: "Commercial Airline Captain", stream: "MPC • DGCA Flight School", salary: "₹2.5L - ₹8L / Mo",
+                pro: "Immediate global mobility; elite prestige and structured non-desk operational profiles.",
+                con: "High structural barriers to entry; intense initial training costs (₹40L-80L) and medical grounding risks."
+            },
+            {
+                id: "cyber_sec", icon: "🛡️", title: "Cyberwarfare & Sec Architect", stream: "MPC • Network Infrastructure", salary: "₹15L - ₹55L+",
+                pro: "Recession-proof operational defense roles across banking, enterprise clouds, and federal architecture.",
+                con: "Requires persistent on-call schedules; high accountability during active digital perimeter breaches."
+            },
+            {
+                id: "corp_law", icon: "⚖️", title: "Corporate Mergers Attorney", stream: "Any Stream • NLU CLAT Route", topology: "Law", salary: "₹16L - ₹50L+",
+                pro: "Elite institutional placement directly out of camp; orchestrate multi-million dollar cross-border acquisitions.",
+                con: "Severe work-life balance compromises; regular 80+ hour work weeks during active corporate transactions."
+            }
+        ];
+
+        let activeIndex = 0;
+        let activeDeck = [...swipeDatabase];
+
+        function initDeck() {
+            const container = document.getElementById('deck-container');
+            
+            // Clean previous cards except the end-card placeholder
+            const placeholder = document.getElementById('end-card');
+            container.innerHTML = '';
+            container.appendChild(placeholder);
+
+            activeDeck.forEach((card, idx) => {
+                const el = document.createElement('div');
+                el.className = 'deck-card';
+                el.id = `card-${idx}`;
+                // Stagger display layering depth visually via style elevations
+                el.style.transform = `translateY(${idx * -6}px) scale(${1 - (idx * 0.03)})`;
+                el.style.zIndex = `${100 - idx}`;
+
+                el.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-slate-900 border border-slate-700 px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest text-slate-400">${card.stream}</span>
+                            <span class="text-2xl">${card.icon}</span>
+                        </div>
+                        <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black text-white uppercase tracking-tighter mb-1">${card.title}</h2>
+                        <div class="text-xs font-black text-emerald-400 tracking-wide mb-6">Peak Compensation: ${card.salary}</div>
+                        
+                        <div class="space-y-4 border-t border-slate-800/80 pt-4">
+                            <div>
+                                <div class="text-[9px] text-emerald-500 font-bold uppercase tracking-widest mb-1">⚡ Operational Pro</div>
+                                <p class="text-xs text-slate-300 leading-relaxed">${card.pro}</p>
+                            </div>
+                            <div>
+                                <div class="text-[9px] text-red-500 font-bold uppercase tracking-widest mb-1">⚠️ Reality Check / Con</div>
+                                <p class="text-xs text-slate-300 leading-relaxed">${card.con}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-slate-600 font-bold uppercase tracking-widest text-center border-t border-slate-800/40 pt-4">System Identity: ${card.id}</div>
+                `;
+                container.appendChild(el);
+            });
+
+            updateInterfaceCounter();
+            renderVaultTray();
+        }
+
+        function updateInterfaceCounter() {
+            const total = activeDeck.length;
+            const counter = document.getElementById('deck-counter');
+            if(activeIndex < total) {
+                counter.innerText = `${activeIndex + 1} / ${total}`;
+                document.getElementById('controls-interface').style.opacity = "1";
+                document.getElementById('controls-interface').style.pointerEvents = "all";
+            } else {
+                counter.innerText = `${total} / ${total}`;
+                document.getElementById('controls-interface').style.opacity = "0.3";
+                document.getElementById('controls-interface').style.pointerEvents = "none";
+                document.getElementById('end-card').style.display = "flex";
+            }
+        }
+
+        function processSwipe(action) {
+            if(activeIndex >= activeDeck.length) return;
+
+            const card = document.getElementById(`card-${activeIndex}`);
+            
+            if(action === 'save') {
+                card.style.transform = 'translateX(200%) rotate(25deg)';
+                card.style.opacity = '0';
+                commitToVault(activeDeck[activeIndex]);
+            } else {
+                card.style.transform = 'translateX(-200%) rotate(-25deg)';
+                card.style.opacity = '0';
+            }
+
+            activeIndex++;
+            
+            // Adjust architectural position elevations on remaining layers smoothly
+            for(let i = activeIndex; i < activeDeck.length; i++) {
+                const remainingCard = document.getElementById(`card-${i}`);
+                if(remainingCard) {
+                    let layeredIdx = i - activeIndex;
+                    remainingCard.style.transform = `translateY(${layeredIdx * -6}px) scale(${1 - (layeredIdx * 0.03)})`;
+                }
+            }
+
+            updateInterfaceCounter();
+        }
+
+        function commitToVault(jobObj) {
+            let saved = JSON.parse(localStorage.getItem('pilot_vault')) || [];
+            // Mitigate redundant saving configurations duplicate items
+            if(!saved.some(item => item.id === jobObj.id)) {
+                saved.push({ id: jobObj.id, title: jobObj.title, icon: jobObj.icon });
+                localStorage.setItem('pilot_vault', JSON.stringify(saved));
+                renderVaultTray();
+            }
+        }
+
+        function renderVaultTray() {
+            const tray = document.getElementById('vault-tray-container');
+            let saved = JSON.parse(localStorage.getItem('pilot_vault')) || [];
+
+            if(saved.length === 0) {
+                tray.innerHTML = `<div class="text-sm text-slate-600 font-semibold p-2 italic" id="empty-vault-msg">No trajectories committed to storage yet. Swipe right (♥) to execute.</div>`;
+                return;
+            }
+
+            tray.innerHTML = '';
+            saved.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'vault-item';
+                div.innerHTML = `<span>${item.icon}</span> <span>${item.title}</span> <button onclick="deleteVaultItem('${item.id}')" class="text-slate-500 hover:text-red-400 ml-2 cursor-pointer">✕</button>`;
+                tray.appendChild(div);
+            });
+        }
+
+        function deleteVaultItem(id) {
+            let saved = JSON.parse(localStorage.getItem('pilot_vault')) || [];
+            saved = saved.filter(item => item.id !== id);
+            localStorage.setItem('pilot_vault', JSON.stringify(saved));
+            renderVaultTray();
+        }
+
+        function resetDeck() {
+            activeIndex = 0;
+            document.getElementById('end-card').style.display = "none";
+            initDeck();
+        }
+
+        // Initialize application deck logic on document parse load
+        window.onload = initDeck;
+    </script>
+</body>
+</html>
