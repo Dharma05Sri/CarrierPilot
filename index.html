@@ -51,7 +51,10 @@
         .swipe-deck { position: relative; height: 200px; width: 100%; perspective: 1000px; margin-top: 10px; }
         .swipe-card { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(6,182,212,0.1)); border: 1px solid var(--neon-primary); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: 0.3s transform, 0.3s opacity; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-        /* Enterprise Footer (Crucial for AdSense) */
+        /* Dynamic Buttons */
+        .btn-challenge { transition: 0.3s; cursor: pointer; }
+        .btn-challenge:disabled { cursor: not-allowed; opacity: 0.6; }
+
         footer { padding: 40px 20px; border-top: 1px solid var(--glass-border); background: rgba(2, 6, 23, 0.95); margin-top: auto; }
         .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .footer-links a:hover { color: var(--neon-primary); }
@@ -70,9 +73,9 @@
             <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
             
             <div class="gamify-hud">
-                <div class="streak-fire">🔥 12 Day Streak</div>
+                <div class="streak-fire">🔥 <span id="nav-streak">1</span> Day Streak</div>
                 <div class="border-l border-slate-700 h-6 mx-2"></div>
-                <div class="text-xs font-bold text-cyan-400">Lv.4 Explorer <span class="text-white ml-1">850 XP</span></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer <span class="text-white ml-1"><span id="nav-xp">0</span> XP</span></div>
             </div>
         </div>
 
@@ -92,7 +95,7 @@
         <div class="bento-card col-span-full md-span-8 bg-gradient-to-br from-slate-900 to-slate-800 border-[var(--neon-primary)]/50">
             <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[10px] font-black uppercase px-4 py-1 rounded-bl-xl shadow-lg">Trending Tool</div>
             <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Dream Salary <span class="text-[var(--neon-primary)]">Calculator</span></h2>
-            <p class="text-sm text-slate-400 mb-6">Enter your target annual compensation. The neural engine will output the exact MPC engineering or quant paths required to hit it.</p>
+            <p class="text-sm text-slate-400 mb-6">Enter your target annual compensation. The neural engine will output the exact paths required to hit it.</p>
             
             <div class="text-center mb-2">
                 <span class="text-4xl font-black text-white tracking-tighter" id="salaryOutput">₹24,00L</span><span class="text-slate-500 font-bold"> / Year</span>
@@ -149,17 +152,17 @@
         <div class="bento-card col-span-full md-span-6 border-t-4 border-t-amber-500 bg-gradient-to-b from-amber-500/5 to-transparent">
             <div class="flex justify-between items-start mb-4">
                 <h2 class="text-2xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Daily Challenge</h2>
-                <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-1 rounded font-bold uppercase tracking-widest animate-pulse">Live</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-1 rounded font-bold uppercase tracking-widest animate-pulse" id="dc-status">Live</span>
             </div>
-            <p class="text-sm text-slate-300 mb-4">For the Sep 2026 SAT, which prep asset ensures elite quantitative triangulation?</p>
+            <p class="text-sm text-slate-300 mb-4" id="dc-text">Which of these professions strictly requires clearing a <strong>DGCA Class 1 Medical</strong> examination before training?</p>
             
             <div class="grid grid-cols-2 gap-3 mb-6">
-                <button class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 transition-colors text-center" onclick="alert('Incorrect. +5 XP')">Standard High School Math</button>
-                <button class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 transition-colors text-center" onclick="alert('Correct! Combining 10 SAT Panda drills with Princeton Review simulations creates an unbreakable baseline. +50 XP')">SAT Panda + Princeton Review</button>
+                <button id="btn-opt1" class="btn-challenge bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center" onclick="submitChallenge(false, 'btn-opt1')">Marine Engineer</button>
+                <button id="btn-opt2" class="btn-challenge bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center" onclick="submitChallenge(true, 'btn-opt2')">Commercial Pilot</button>
             </div>
             
             <div class="border-t border-slate-800 pt-4 flex justify-between items-center">
-                <div class="text-xs text-slate-400 font-bold uppercase tracking-widest">Global Rank: #4,092</div>
+                <div class="text-xs text-slate-400 font-bold uppercase tracking-widest" id="feedback-msg">Global Rank: #4,092</div>
                 <div class="text-xs text-amber-400 font-bold uppercase tracking-widest hover:text-white transition-colors cursor-pointer">View Leaderboard →</div>
             </div>
         </div>
@@ -201,10 +204,70 @@
             <a href="contact.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Contact Hub</a>
             <a href="support.html" class="text-cyan-400 hover:text-white transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">System Support</a>
         </div>
-        <p class="text-slate-600 font-medium">AstraForge CareerPilot Network. Engine Version 4.0.</p>
+        <p class="text-slate-600 font-medium text-center">AstraForge CareerPilot Network. Engine Version 4.0.</p>
     </footer>
 
     <script>
+        // --- Persistence Gamification Engine ---
+        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250; // Base starting XP
+        let userLevel = Math.floor(userXP / 500) + 1;
+        
+        // Init HUD
+        document.getElementById('nav-xp').innerText = userXP;
+        document.getElementById('nav-level').innerText = userLevel;
+
+        const today = new Date().toDateString();
+        const lastPlayed = localStorage.getItem('daily_done_date');
+
+        function lockDailyChallenge() {
+            document.getElementById('btn-opt1').disabled = true;
+            document.getElementById('btn-opt2').disabled = true;
+            document.getElementById('dc-status').innerText = "Completed";
+            document.getElementById('dc-status').classList.remove('animate-pulse');
+            document.getElementById('dc-status').classList.replace('text-amber-400', 'text-slate-400');
+            document.getElementById('dc-status').classList.replace('bg-amber-500/20', 'bg-slate-800');
+        }
+
+        // Check if already played today on page load
+        if(lastPlayed === today) {
+            lockDailyChallenge();
+            document.getElementById('feedback-msg').innerText = "Challenge complete. Come back tomorrow.";
+        }
+
+        function submitChallenge(isCorrect, btnId) {
+            if(lastPlayed === today) return; // Prevent double clicking logic loophole
+
+            const btn = document.getElementById(btnId);
+            const feedback = document.getElementById('feedback-msg');
+            
+            let xpGained = isCorrect ? 50 : 5;
+            userXP += xpGained;
+            
+            // Save state
+            localStorage.setItem('pilot_xp', userXP);
+            localStorage.setItem('daily_done_date', today);
+            
+            // Update HUD visually
+            document.getElementById('nav-xp').innerText = userXP;
+            document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
+
+            // Visual Button Feedback
+            if(isCorrect) {
+                btn.classList.replace('bg-slate-900', 'bg-emerald-600');
+                btn.classList.replace('border-slate-700', 'border-emerald-500');
+                btn.classList.replace('text-slate-300', 'text-white');
+                feedback.innerHTML = `<span class="text-emerald-400">Correct! Commercial Pilots require strict medicals. +${xpGained} XP</span>`;
+            } else {
+                btn.classList.replace('bg-slate-900', 'bg-red-600');
+                btn.classList.replace('border-slate-700', 'border-red-500');
+                btn.classList.replace('text-slate-300', 'text-white');
+                feedback.innerHTML = `<span class="text-red-400">Incorrect. Pilots require it. +${xpGained} XP</span>`;
+            }
+
+            lockDailyChallenge();
+        }
+
+        // --- Standard UI Logic ---
         function updateSalary() {
             const val = document.getElementById('salarySlider').value;
             document.getElementById('salaryOutput').innerText = `₹${val},00L`;
@@ -217,9 +280,7 @@
             else matchEl.innerText = "Elite Tech Architecture / Hedge Funds";
         }
 
-        function toggleParentMode() {
-            window.location.href = 'parent-dashboard.html';
-        }
+        function toggleParentMode() { window.location.href = 'parent-dashboard.html'; }
     </script>
 </body>
 </html>
