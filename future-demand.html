@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Automation Risk Heatmap. Forecast the future demand and survival rate of your chosen career in 2030, 2035, and 2040.">
+    <title>Future Demand Matrix | CareerPilot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #8B5CF6; /* Purple for Future Tech */
+            --safe: #10B981;
+            --warn: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        .glow-orb { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%); top: -200px; left: -200px; z-index: -1; pointer-events: none; }
+
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--neon-primary); }
+
+        .glass-module { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; justify-content: space-between; }
+        .glass-module:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+
+        /* Timeline Selector */
+        .timeline-selector { display: flex; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; max-width: 500px; margin: 0 auto 40px; }
+        .time-btn { flex: 1; padding: 15px 0; text-align: center; font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 1.2rem; color: #64748B; cursor: pointer; transition: 0.3s; }
+        .time-btn.active { background: rgba(139, 92, 246, 0.2); color: white; box-shadow: inset 0 -3px 0 var(--neon-primary); }
+        
+        /* Risk Meter UI */
+        .risk-meter { width: 100%; height: 8px; background: rgba(0,0,0,0.5); border-radius: 4px; overflow: hidden; margin-top: 10px; margin-bottom: 5px; }
+        .risk-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 1s ease; }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-purple-400 text-decoration-none">← OS Dashboard</a>
+    </nav>
+
+    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
+        
+        <header class="mb-8 text-center">
+            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-2">Future Demand <span class="text-purple-500">Heatmap</span></h1>
+            <p class="text-slate-400 text-sm max-w-xl mx-auto">Analyze the projected AI automation risk and global market demand for elite careers across the next two decades.</p>
+        </header>
+
+        <div class="timeline-selector">
+            <div class="time-btn active" onclick="loadYear(2030, this)">2030</div>
+            <div class="time-btn" onclick="loadYear(2035, this)">2035</div>
+            <div class="time-btn" onclick="loadYear(2040, this)">2040</div>
+        </div>
+
+        <div class="flex justify-between items-center mb-6 px-2">
+            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Global Matrix Parameters</div>
+            <div class="flex gap-3 text-[10px] font-bold uppercase tracking-widest">
+                <span class="text-emerald-400">● Safe</span>
+                <span class="text-amber-400">● Adapting</span>
+                <span class="text-red-400">● High Risk</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="heatmap-grid">
+            </div>
+
+    </main>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network. Super App Edition.</footer>
+
+    <script>
+        // High-value data mapping for MPC, Tech, Finance, Defense pathways
+        const forecastData = {
+            "AI / Machine Learning Engineer": { 
+                stream: "MPC",
+                2030: { risk: 5, status: "Apex Creators", color: "var(--safe)", desc: "Building the core LLMs and neural architectures. Supreme demand." },
+                2035: { risk: 10, status: "Systems Overseers", color: "var(--safe)", desc: "Shifting from basic coding to managing autonomous AI clusters." },
+                2040: { risk: 25, status: "Strategic Architects", color: "var(--safe)", desc: "AI writes its own code; human engineers dictate high-level constraints and logic." }
+            },
+            "Quantitative Analyst (Hedge Funds)": {
+                stream: "MPC / Math",
+                2030: { risk: 15, status: "Highly Secure", color: "var(--safe)", desc: "Financial markets demand human oversight of algorithmic trading execution." },
+                2035: { risk: 35, status: "Adapting", color: "var(--warn)", desc: "Standard modeling automated. Focus shifts entirely to elite stochastic calculus." },
+                2040: { risk: 50, status: "Hybrid Intelligence", color: "var(--warn)", desc: "Quants act as directors for ultra-intelligent trading AIs." }
+            },
+            "Commercial Airline Pilot": {
+                stream: "MPC",
+                2030: { risk: 10, status: "Secure", color: "var(--safe)", desc: "Global travel scaling rapidly. Human captains legally mandated in cockpits." },
+                2035: { risk: 30, status: "Monitoring Phase", color: "var(--warn)", desc: "Autopilot handles 95% of flight. Captains transition to systems-failure managers." },
+                2040: { risk: 65, status: "Single-Pilot Ops", color: "var(--danger)", desc: "Cargo goes fully autonomous. Passenger flights pushing for single-pilot operations." }
+            },
+            "Corporate Lawyer (NLU)": {
+                stream: "Law",
+                2030: { risk: 20, status: "Secure", color: "var(--safe)", desc: "Basic contract drafting is automated, but negotiation and courtroom litigation remain human." },
+                2035: { risk: 45, status: "Evolving", color: "var(--warn)", desc: "AI conducts all legal research. Lawyers must focus purely on strategy and client psychology." },
+                2040: { risk: 55, status: "High-Level Only", color: "var(--warn)", desc: "Junior associates replaced. Only elite partners managing complex mergers survive." }
+            },
+            "Software Developer (Basic Web/App)": {
+                stream: "MPC",
+                2030: { risk: 40, status: "Saturating", color: "var(--warn)", desc: "AI co-pilots write 60% of boilerplate code. Junior roles begin shrinking." },
+                2035: { risk: 75, status: "High Risk", color: "var(--danger)", desc: "Natural language prompting builds apps instantly. Traditional coders obsolete." },
+                2040: { risk: 90, status: "Replaced", color: "var(--danger)", desc: "Software engineering is now entirely AI-driven. Humans must pivot to AI Architecture." }
+            },
+            "Armed Forces Officer (NDA)": {
+                stream: "Defense",
+                2030: { risk: 0, status: "Un-automatable", color: "var(--safe)", desc: "Leadership, moral judgment in combat, and physical command cannot be digitized." },
+                2035: { risk: 5, status: "Drone Commanders", color: "var(--safe)", desc: "Officers integrate massive autonomous drone swarms into battlefield tactics." },
+                2040: { risk: 10, status: "Cyber-Kinetic Leaders", color: "var(--safe)", desc: "Warfare relies heavily on tech, but human officers retain ultimate firing authority." }
+            }
+        };
+
+        function loadYear(year, btnElement) {
+            // Update active state on timeline buttons
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const grid = document.getElementById('heatmap-grid');
+            grid.innerHTML = '';
+
+            for (const [career, data] of Object.entries(forecastData)) {
+                const yearData = data[year];
+                
+                // Determine border glow based on risk
+                let borderColor = 'border-slate-800';
+                if(yearData.risk >= 60) borderColor = 'border-red-900';
+                else if(yearData.risk <= 20) borderColor = 'border-emerald-900';
+
+                // Create Card
+                const card = document.createElement('div');
+                card.className = `glass-module ${borderColor}`;
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-slate-900 border border-slate-700 px-2 py-1 rounded text-[9px] font-bold uppercase tracking-widest text-slate-400">${data.stream}</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded" style="background: ${yearData.color}33; color: ${yearData.color}; border: 1px solid ${yearData.color}66;">${yearData.status}</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-white mb-4 leading-tight">${career}</h2>
+                        
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 h-16 overflow-hidden">${yearData.desc}</p>
+                    </div>
+                    
+                    <div class="mt-auto border-t border-slate-800/80 pt-4">
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-1">
+                            <span class="text-slate-400">AI Automation Risk</span>
+                            <span style="color: ${yearData.color}">${yearData.risk}%</span>
+                        </div>
+                        <div class="risk-meter">
+                            <div class="risk-fill" style="width: 0%; background-color: ${yearData.color}"></div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                // Trigger animation after a slight delay to allow DOM insertion
+                setTimeout(() => {
+                    const fill = card.querySelector('.risk-fill');
+                    fill.style.width = `${yearData.risk}%`;
+                }, 100);
+            }
+        }
+
+        // Initialize with 2030 data
+        window.onload = () => {
+            loadYear(2030, document.querySelector('.time-btn.active'));
+        };
+    </script>
+</body>
+</html>
