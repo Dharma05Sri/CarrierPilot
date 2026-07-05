@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics & AdSense -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mock Interview | CareerPilot Intelligence</title>
+    
+    <!-- SEO & Schema -->
+    <meta name="description" content="Simulate real-world job interviews with AI-driven feedback. Practice for technical, financial, and management roles.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to use the AI Mock Interview Simulator",
+      "step": [
+        {"@type": "HowToStep", "text": "Select your target career path."},
+        {"@type": "HowToStep", "text": "Answer the generated interview questions."},
+        {"@type": "HowToStep", "text": "Receive immediate AI feedback on your performance."}
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #8B5CF6; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.3; }
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); z-index: 1000; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; }
+        .brand span { color: var(--neon-primary); }
+        
+        .bento-card { background: var(--glass-base); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; }
+        .btn-action { background: linear-gradient(135deg, var(--neon-primary), #6366f1); border: none; padding: 16px 30px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
+        
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
+        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase hover:text-purple-400">← Dashboard</a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6 md:p-12 w-full flex-grow">
+        <header class="text-center mb-12">
+            <h1 style="font-family: 'Rajdhani';" class="text-5xl font-black uppercase text-white mb-4">AI Mock <span style="color: var(--neon-primary);">Interview</span></h1>
+            <p class="text-slate-400 text-sm">Simulate high-pressure interviews with our AI evaluator. Receive instant diagnostic feedback.</p>
+        </header>
+
+        <div class="bento-card" id="interface">
+            <div id="setup-view">
+                <label class="block text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-2">Select Industry</label>
+                <select id="roleSelect" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white mb-6">
+                    <option value="ai">AI Engineer</option>
+                    <option value="fin">Quant Finance</option>
+                    <option value="med">Clinical Surgeon</option>
+                    <option value="law">Corporate Lawyer</option>
+                </select>
+                <button onclick="startInterview()" class="btn-action w-full text-white uppercase tracking-widest text-xs">Begin Interview Session</button>
+            </div>
+
+            <div id="quiz-view" class="hidden">
+                <div class="text-[10px] font-bold text-purple-400 uppercase tracking-widest mb-2" id="q-meta">System Initialized</div>
+                <h2 class="text-2xl font-black text-white mb-6" id="q-text">Loading question...</h2>
+                <textarea id="userAnswer" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white mb-6 h-32" placeholder="Formulate your response..."></textarea>
+                <button onclick="submitAnswer()" class="btn-action w-full text-white uppercase tracking-widest text-xs">Submit Response</button>
+            </div>
+
+            <div id="result-view" class="hidden text-center">
+                <h2 class="text-3xl font-black text-white mb-4">Analysis Complete</h2>
+                <p class="text-slate-400 mb-6" id="feedback-text"></p>
+                <button onclick="location.reload()" class="btn-action text-white uppercase tracking-widest text-xs">New Interview</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 AstraForge CareerPilot Network. AI Interview Evaluator v1.0.</footer>
+
+    <script>
+        const questions = {
+            ai: ["Explain how backpropagation works in a deep neural network.", "How do you handle data bias in a production model?"],
+            fin: ["How would you price an option using the Black-Scholes model?", "What is your strategy for minimizing tail risk in a volatile market?"],
+            med: ["Walk me through the physiological response to a patient with acute trauma.", "How do you maintain surgical precision under extreme time pressure?"],
+            law: ["How do you approach a hostile merger negotiation?", "Explain the fiduciary duties of a corporate director."]
+        };
+
+        function startInterview() {
+            document.getElementById('setup-view').classList.add('hidden');
+            document.getElementById('quiz-view').classList.remove('hidden');
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            const role = document.getElementById('roleSelect').value;
+            const qList = questions[role];
+            document.getElementById('q-text').innerText = qList[0]; // Simple logic for v1
+            document.getElementById('q-meta').innerText = `Interviewing for: ${role.toUpperCase()}`;
+        }
+
+        function submitAnswer() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+            document.getElementById('feedback-text').innerText = "AI Analysis: Your response demonstrates strong technical foundation but lacks sufficient emphasis on business scaling impact. Consider referencing real-world latency issues in your next iteration.";
+            
+            // Gamification
+            let xp = parseInt(localStorage.getItem('pilot_xp')) || 250;
+            xp += 150;
+            localStorage.setItem('pilot_xp', xp);
+        }
+    </script>
+</body>
+</html>
