@@ -3,60 +3,84 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerPilot | The Career Super App</title>
+    <title>CareerPilot | The Elite Career & Admissions Super App</title>
     
+    <meta name="description" content="CareerPilot is an AI-powered career guidance platform. Simulate career roadmaps, discover elite engineering colleges, and map your zero-investment education strategy.">
+    <meta name="keywords" content="career guidance, AI career match, engineering roadmap, SAT college predictor, fully funded scholarships, career pilot">
+    <meta name="author" content="AstraForge Network">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://career.astraforage.in/">
+    <meta property="og:title" content="CareerPilot | Elite Admissions & Career Intelligence">
+    <meta property="og:description" content="Simulate career roadmaps, discover elite colleges, and map your zero-investment education strategy.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CareerPilot",
+      "url": "https://career.astraforage.in/",
+      "publisher": { "@type": "Organization", "name": "AstraForge Network" }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --neon-accent: #8B5CF6; }
+        /* Enterprise Dark SaaS Theme */
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --neon-accent: #8B5CF6; --gold: #d4af37; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
+        /* Background Effects */
         .app-bg { position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, #0f172a 0%, var(--bg-deep) 100%); z-index: -3; }
         .grid-overlay { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.4; }
         
-        nav { position: sticky; top: 0; width: 100%; padding: 12px 24px; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        /* Sticky Navigation */
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 2rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .brand span { color: var(--neon-primary); }
         
-        /* Gamification Navbar */
-        .gamify-hud { display: flex; gap: 15px; align-items: center; background: rgba(0,0,0,0.4); padding: 5px 15px; border-radius: 12px; border: 1px solid var(--glass-border); }
-        .streak-fire { color: #F59E0B; font-weight: 900; display: flex; align-items: center; gap: 4px; }
+        /* Gamification HUD */
+        .gamify-hud { display: flex; gap: 15px; align-items: center; background: rgba(0,0,0,0.5); padding: 6px 20px; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .streak-fire { color: #F59E0B; font-weight: 900; display: flex; align-items: center; gap: 6px; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
         
+        /* News Ticker */
+        .news-ticker { width: 100%; background: var(--neon-primary); color: #000; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 0; overflow: hidden; white-space: nowrap; }
+        .news-ticker-content { display: inline-block; animation: ticker 25s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+        /* Bento Grid Architecture */
         .bento-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1400px; margin: 40px auto 60px; padding: 0 20px; flex-grow: 1; }
-        .bento-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; transition: 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; }
-        .bento-hover:hover { border-color: var(--neon-primary); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .bento-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; }
+        .bento-hover:hover { border-color: var(--neon-primary); transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
 
         .col-span-full { grid-column: span 12; }
         @media (min-width: 768px) {
             .md-span-8 { grid-column: span 8; }
             .md-span-4 { grid-column: span 4; }
             .md-span-6 { grid-column: span 6; }
+            .md-span-12 { grid-column: span 12; }
         }
 
+        /* Sliders & Inputs */
         .salary-slider { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.1); outline: none; margin: 20px 0; }
-        .salary-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--neon-primary); cursor: pointer; box-shadow: 0 0 15px var(--neon-primary); }
-        
-        .toggle-switch { position: relative; width: 46px; height: 24px; background: #334155; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: 0.3s; }
-        body.parent-mode .toggle-switch { background: #10B981; }
-        body.parent-mode .toggle-switch::after { transform: translateX(22px); }
-        body.parent-mode { --neon-primary: #10B981; }
+        .salary-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--neon-primary); cursor: pointer; box-shadow: 0 0 20px var(--neon-primary); transition: 0.2s; }
+        .salary-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-        .swipe-deck { position: relative; height: 200px; width: 100%; perspective: 1000px; margin-top: 10px; }
-        .swipe-card { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(6,182,212,0.1)); border: 1px solid var(--neon-primary); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: 0.3s transform, 0.3s opacity; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-
-        /* Dynamic Buttons */
-        .btn-challenge { transition: 0.3s; cursor: pointer; }
-        .btn-challenge:disabled { cursor: not-allowed; opacity: 0.6; }
+        /* Floating AI Button */
+        .fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--neon-primary), var(--neon-accent)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: white; cursor: pointer; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4); z-index: 1000; transition: 0.3s; animation: float 3s ease-in-out infinite; text-decoration: none; }
+        .fab:hover { transform: scale(1.1); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         footer { padding: 40px 20px; border-top: 1px solid var(--glass-border); background: rgba(2, 6, 23, 0.95); margin-top: auto; }
-        .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin: 0 10px; }
         .footer-links a:hover { color: var(--neon-primary); }
     </style>
 </head>
@@ -66,39 +90,40 @@
     <div class="grid-overlay"></div>
 
     <nav>
-        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
         
         <div class="hidden md:flex items-center gap-8">
-            <a href="insights.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Insights Hub</a>
-            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
+            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Roadmaps</a>
+            <a href="future-demand.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">AI Matrix</a>
             
             <div class="gamify-hud">
                 <div class="streak-fire">🔥 <span id="nav-streak">1</span> Day Streak</div>
                 <div class="border-l border-slate-700 h-6 mx-2"></div>
-                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer <span class="text-white ml-1"><span id="nav-xp">0</span> XP</span></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer <span class="text-white ml-1 bg-white/10 px-2 py-1 rounded"><span id="nav-xp">0</span> XP</span></div>
             </div>
-        </div>
-
-        <div class="flex items-center gap-4 cursor-pointer" onclick="toggleParentMode()">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400" id="mode-text">Student View</span>
-            <div class="toggle-switch"></div>
         </div>
     </nav>
 
+    <div class="news-ticker">
+        <div class="news-ticker-content">
+            🔥 TRENDING: AI Engineer demand increases by 45% in Q3 | 🎓 MIT updates SAT cutoffs to 1540+ | 💼 Quant Finance starting packages hit ₹60L+ | 🚀 AstraForge Engine v4.0 Online
+        </div>
+    </div>
+
     <header class="text-center mt-12 px-4">
-        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white" id="hero-title">The Career <span style="color: var(--neon-primary);">Super App</span></h1>
-        <p class="text-slate-400 text-sm md:text-base mt-4 max-w-2xl mx-auto" id="hero-subtitle">Swipe careers, calculate dream salaries, and simulate elite execution roadmaps based on hard data.</p>
+        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">The Career <span style="color: var(--neon-primary);">Super App</span></h1>
+        <p class="text-slate-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">Simulate elite execution roadmaps, predict global admissions, and calculate dream salaries based on hard data.</p>
     </header>
 
     <main class="bento-container">
 
-        <div class="bento-card col-span-full md-span-8 bg-gradient-to-br from-slate-900 to-slate-800 border-[var(--neon-primary)]/50">
-            <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[10px] font-black uppercase px-4 py-1 rounded-bl-xl shadow-lg">Trending Tool</div>
+        <div class="bento-card col-span-full md-span-6 bg-gradient-to-br from-slate-900 to-slate-800 border-[var(--neon-primary)]/50">
+            <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[10px] font-black uppercase px-4 py-1 rounded-bl-xl shadow-lg">Data Driven</div>
             <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Dream Salary <span class="text-[var(--neon-primary)]">Calculator</span></h2>
-            <p class="text-sm text-slate-400 mb-6">Enter your target annual compensation. The neural engine will output the exact paths required to hit it.</p>
+            <p class="text-sm text-slate-400 mb-6">Enter target annual compensation. The neural engine outputs the exact execution paths.</p>
             
             <div class="text-center mb-2">
-                <span class="text-4xl font-black text-white tracking-tighter" id="salaryOutput">₹24,00L</span><span class="text-slate-500 font-bold"> / Year</span>
+                <span class="text-5xl font-black text-white tracking-tighter" id="salaryOutput">₹24,00L</span><span class="text-slate-500 font-bold"> / Year</span>
             </div>
             <input type="range" min="5" max="100" value="24" class="salary-slider" id="salarySlider" oninput="updateSalary()">
             
@@ -111,108 +136,283 @@
             </div>
         </div>
 
-        <a href="career-swipe.html" class="bento-card col-span-full md-span-4 flex flex-col justify-between bento-hover text-decoration-none">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Career Swipe</h2>
-            <p class="text-xs text-slate-400 mb-4">Discover paths instantly.</p>
+        <div class="bento-card col-span-full md-span-6 border-t-4 border-t-[var(--gold)] bg-gradient-to-b from-[#d4af37]/5 to-transparent">
+            <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Global Admissions <span style="color: var(--gold);">Predictor</span></h2>
+            <p class="text-sm text-slate-400 mb-4">Set your SAT score. Our AI filters 150 elite global universities to find your immediate matches.</p>
             
-            <div class="swipe-deck pointer-events-none">
-                <div class="swipe-card">
-                    <div class="text-4xl mb-2">💻</div>
-                    <h3 class="text-xl font-bold text-white mb-1">AI / ML Engineer</h3>
-                    <div class="text-xs text-emerald-400 font-bold mb-4">₹40L+ Peak • MPC Stream</div>
-                    <div class="flex gap-4 w-full justify-center">
-                        <div class="bg-slate-800 text-white w-12 h-12 rounded-full font-bold flex items-center justify-center">✕</div>
-                        <div class="bg-[var(--neon-primary)] text-slate-900 w-12 h-12 rounded-full font-bold flex items-center justify-center">♥</div>
-                    </div>
-                </div>
+            <div class="flex items-center gap-4 mb-4">
+                <input type="range" min="1000" max="1600" step="10" value="1450" class="salary-slider flex-grow" style="background: rgba(212,175,55,0.2);" id="satPredictorSlider" oninput="predictColleges()">
+                <div class="bg-[var(--gold)] text-black font-black text-2xl px-4 py-2 rounded-xl" id="satPredictorVal">1450</div>
             </div>
-            <div class="text-center mt-4 text-[10px] text-slate-500 font-bold uppercase tracking-widest">Tap to launch full deck matrix →</div>
-        </a>
 
-        <div class="bento-card col-span-full md-span-6 bento-hover">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Battles 2.0</h2>
+            <div class="bg-black/40 rounded-xl border border-slate-700 p-4 h-[120px] overflow-hidden" id="predictorResults">
+                </div>
+        </div>
+
+        <div class="bento-card col-span-full md-span-4 bento-hover">
+            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Battles</h2>
             <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Data-Driven Face-Offs</p>
             
             <div class="space-y-3">
                 <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] transition-all text-decoration-none group">
                     <div class="font-bold text-white text-sm tracking-wide">CSE <span class="text-slate-500 mx-1">vs</span> ECE</div>
-                    <div class="text-[10px] text-slate-500 group-hover:text-[var(--neon-primary)] uppercase tracking-widest transition-colors">Compare →</div>
+                    <div class="text-[10px] text-slate-500 group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
                 </a>
                 <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] transition-all text-decoration-none group">
-                    <div class="font-bold text-white text-sm tracking-wide">AI Engineer <span class="text-slate-500 mx-1">vs</span> Quant Finance</div>
-                    <div class="text-[10px] text-slate-500 group-hover:text-[var(--neon-primary)] uppercase tracking-widest transition-colors">Compare →</div>
-                </a>
-                <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-[var(--neon-primary)] transition-all text-decoration-none group">
-                    <div class="font-bold text-white text-sm tracking-wide">B.Tech (India) <span class="text-slate-500 mx-1">vs</span> BS (Abroad)</div>
-                    <div class="text-[10px] text-slate-500 group-hover:text-[var(--neon-primary)] uppercase tracking-widest transition-colors">Compare →</div>
+                    <div class="font-bold text-white text-sm tracking-wide">AI Engineer <span class="text-slate-500 mx-1">vs</span> Quant</div>
+                    <div class="text-[10px] text-slate-500 group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
                 </a>
             </div>
         </div>
 
-        <div class="bento-card col-span-full md-span-6 border-t-4 border-t-amber-500 bg-gradient-to-b from-amber-500/5 to-transparent">
+        <div class="bento-card col-span-full md-span-8 border-l-4 border-l-amber-500">
             <div class="flex justify-between items-start mb-4">
                 <h2 class="text-2xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';">Daily Challenge</h2>
                 <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-1 rounded font-bold uppercase tracking-widest animate-pulse" id="dc-status">Live</span>
             </div>
-            <p class="text-sm text-slate-300 mb-4" id="dc-text">Which of these professions strictly requires clearing a <strong>DGCA Class 1 Medical</strong> examination before training?</p>
+            <p class="text-sm text-slate-300 mb-4" id="dc-text">Which engineering sector mathematically scales the highest global compensation?</p>
             
             <div class="grid grid-cols-2 gap-3 mb-6">
-                <button id="btn-opt1" class="btn-challenge bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center" onclick="submitChallenge(false, 'btn-opt1')">Marine Engineer</button>
-                <button id="btn-opt2" class="btn-challenge bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center" onclick="submitChallenge(true, 'btn-opt2')">Commercial Pilot</button>
+                <button id="btn-opt1" class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center transition-colors" onclick="submitChallenge(false, 'btn-opt1')">Civil Engineering</button>
+                <button id="btn-opt2" class="bg-slate-900 border border-slate-700 py-3 px-2 rounded-lg text-xs text-slate-300 font-bold hover:bg-slate-800 text-center transition-colors" onclick="submitChallenge(true, 'btn-opt2')">AI / Systems Architecture</button>
             </div>
             
             <div class="border-t border-slate-800 pt-4 flex justify-between items-center">
-                <div class="text-xs text-slate-400 font-bold uppercase tracking-widest" id="feedback-msg">Global Rank: #4,092</div>
-                <div class="text-xs text-amber-400 font-bold uppercase tracking-widest hover:text-white transition-colors cursor-pointer">View Leaderboard →</div>
+                <div class="text-xs text-slate-400 font-bold uppercase tracking-widest" id="feedback-msg">Earn XP to Level Up</div>
             </div>
         </div>
 
         <div class="bento-card col-span-full flex flex-col justify-center">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4" style="font-family: 'Rajdhani';">Super App Core Engines</h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4" style="font-family: 'Rajdhani';">Enterprise Modules</h2>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
                 <a href="career-dna.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
-                    <div class="text-3xl mb-2">🧬</div>
-                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Career DNA</div>
+                    <div class="text-3xl mb-2">🧬</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Career DNA</div>
                 </a>
                 <a href="career-wiki.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
-                    <div class="text-3xl mb-2">📚</div>
-                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Encyclopedia</div>
+                    <div class="text-3xl mb-2">📚</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Wiki</div>
                 </a>
                 <a href="future-simulator.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
-                    <div class="text-3xl mb-2">⏳</div>
-                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Simulator</div>
+                    <div class="text-3xl mb-2">⏳</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Simulator</div>
                 </a>
                 <a href="careergpt.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
-                    <div class="text-3xl mb-2">🤖</div>
-                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Ask GPT</div>
+                    <div class="text-3xl mb-2">🤖</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Ask GPT</div>
                 </a>
-                <a href="future-demand.html" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group md:col-span-1 col-span-2">
-                    <div class="text-3xl mb-2">📈</div>
-                    <div class="text-xs font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">AI Impact Map</div>
+                <a href="#" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">📝</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Resume Builder</div>
+                </a>
+                <a href="#" class="bg-slate-900/80 border border-slate-700 p-4 rounded-xl text-center hover:border-[var(--neon-primary)] transition-colors text-decoration-none group">
+                    <div class="text-3xl mb-2">🎙️</div><div class="text-[10px] font-bold text-white group-hover:text-[var(--neon-primary)] uppercase tracking-widest">Mock Interview</div>
                 </a>
             </div>
         </div>
 
     </main>
 
+    <a href="careergpt.html" class="fab" title="Chat with CareerGPT">🤖</a>
+
     <footer>
-        <div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-6">
-            <a href="about.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">About Us</a>
-            <a href="privacy-policy.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Privacy Policy</a>
-            <a href="terms.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Terms of Service</a>
-            <a href="disclaimer.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Disclaimer</a>
-            <a href="contact.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">Contact Hub</a>
-            <a href="support.html" class="text-cyan-400 hover:text-white transition-colors font-bold text-xs uppercase tracking-widest text-decoration-none">System Support</a>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-6 footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="contact.html">Contact Hub</a>
+            <a href="support.html">System Support</a>
         </div>
-        <p class="text-slate-600 font-medium text-center">AstraForge CareerPilot Network. Engine Version 4.0.</p>
+        <p class="text-slate-600 font-medium text-center text-sm">AstraForge CareerPilot Network. AI-Powered Admissions Intelligence.</p>
     </footer>
 
     <script>
-        // --- Persistence Gamification Engine ---
-        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250; // Base starting XP
+        // ----------------------------------------------------
+        // 1. THE COMPLETE 150 GLOBAL COLLEGES DATABASE
+        // ----------------------------------------------------
+        const globalColleges = [
+            { name: "MIT", rank: 1, city: "Cambridge, USA", est: 1861, sat: 1540, ielts: 7.5, board: 95, tuition: "$61,000", pt: "$20/hr", ec: "Intl Olympiads, Tech Startups", scholarship: "Need-Blind", alumni: "130k", history: "Undisputed global leader in tech.", courses: "CS, AI, Aero", region: "USA" },
+            { name: "Stanford University", rank: 2, city: "Stanford, USA", est: 1891, sat: 1530, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$22/hr", ec: "Entrepreneurship, Published Research", scholarship: "Need-based", alumni: "220k", history: "Silicon Valley's academic engine.", courses: "AI, CS, Robotics", region: "USA" },
+            { name: "Harvard University", rank: 3, city: "Cambridge, USA", est: 1636, sat: 1520, ielts: 7.5, board: 95, tuition: "$59,000", pt: "$20/hr", ec: "Global Leadership, Activism", scholarship: "Need-based", alumni: "370k", history: "Oldest institution in the US.", courses: "Law, Med, CS", region: "USA" },
+            { name: "Caltech", rank: 4, city: "Pasadena, USA", est: 1891, sat: 1550, ielts: 7.5, board: 98, tuition: "$60,000", pt: "$20/hr", ec: "High-level STEM Research", scholarship: "Need-based", alumni: "25k", history: "Pure science powerhouse managing NASA JPL.", courses: "Physics, CS, AI", region: "USA" },
+            { name: "Oxford University", rank: 5, city: "Oxford, UK", est: 1096, sat: 1500, ielts: 7.5, board: 95, tuition: "£45,000", pt: "£15/hr", ec: "Academic mastery, Super-curriculars", scholarship: "Clarendon Fund", alumni: "300k", history: "Oldest in the English-speaking world.", courses: "CS, Math, PPE", region: "UK" },
+            { name: "Cambridge University", rank: 6, city: "Cambridge, UK", est: 1209, sat: 1500, ielts: 7.5, board: 95, tuition: "£38,000", pt: "£15/hr", ec: "Intense academic focus, STEP exams", scholarship: "Gates Cambridge", alumni: "280k", history: "Birthplace of modern physics.", courses: "Math, CS, Physics", region: "UK" },
+            { name: "UC Berkeley", rank: 7, city: "Berkeley, USA", est: 1868, sat: 1480, ielts: 7.0, board: 90, tuition: "$48,000", pt: "$18/hr", ec: "Tech projects, Social impact", scholarship: "Regents' Scholarship", alumni: "500k", history: "Flagship public research giant.", courses: "CS, Data Sci, Eng", region: "USA" },
+            { name: "National University of Singapore", rank: 8, city: "Singapore", est: 1905, sat: 1480, ielts: 7.0, board: 92, tuition: "$42,000", pt: "$12/hr", ec: "Leadership, Community service", scholarship: "ASEAN Scholarship", alumni: "300k", history: "Asia's leading global university.", courses: "AI, Eng, Bus", region: "Asia" },
+            { name: "ETH Zurich", rank: 9, city: "Zurich, Switzerland", est: 1855, sat: 1520, ielts: 7.5, board: 96, tuition: "CHF 1,500", pt: "CHF 30/hr", ec: "Advanced math/physics", scholarship: "ESOP", alumni: "100k", history: "Einstein's alma mater, robotics hub.", courses: "CS, Robotics, Arch", region: "Europe" },
+            { name: "Imperial College London", rank: 10, city: "London, UK", est: 1907, sat: 1490, ielts: 7.0, board: 93, tuition: "£38,000", pt: "£15/hr", ec: "STEM competitions", scholarship: "President's Scholarship", alumni: "200k", history: "Strictly focused on science and medicine.", courses: "CS, Eng, Med", region: "UK" },
+            { name: "University of Chicago", rank: 11, city: "Chicago, USA", est: 1890, sat: 1520, ielts: 7.5, board: 95, tuition: "$63,000", pt: "$18/hr", ec: "Intellectual curiosity, Writing", scholarship: "UChicago Promise", alumni: "150k", history: "Renowned for rigorous academics and Econ.", courses: "Econ, CS, Physics", region: "USA" },
+            { name: "University of Pennsylvania", rank: 12, city: "Philadelphia, USA", est: 1740, sat: 1520, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$18/hr", ec: "Business ventures, Leadership", scholarship: "Penn Grant", alumni: "280k", history: "Founded by Ben Franklin, home to Wharton.", courses: "Business, CS, Eng", region: "USA" },
+            { name: "Tsinghua University", rank: 13, city: "Beijing, China", est: 1911, sat: 1450, ielts: 7.0, board: 95, tuition: "¥30,000", pt: "¥150/hr", ec: "National science competitions", scholarship: "CGS", alumni: "250k", history: "The MIT of China, driving global AI output.", courses: "CS, AI, Eng", region: "Asia" },
+            { name: "Princeton University", rank: 14, city: "Princeton, USA", est: 1746, sat: 1530, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Deep academic focus", scholarship: "Need-Blind", alumni: "90k", history: "Ivy League excellence, strong undergrad focus.", courses: "Physics, Math, CS", region: "USA" },
+            { name: "Cornell University", rank: 15, city: "Ithaca, USA", est: 1865, sat: 1500, ielts: 7.5, board: 93, tuition: "$65,000", pt: "$18/hr", ec: "Engineering projects", scholarship: "Cornell Grant", alumni: "260k", history: "Interdisciplinary Ivy League research.", courses: "CS, Eng, Arch", region: "USA" },
+            { name: "Columbia University", rank: 16, city: "New York, USA", est: 1754, sat: 1510, ielts: 7.5, board: 94, tuition: "$63,000", pt: "$25/hr", ec: "Urban impact, publications", scholarship: "Need-based", alumni: "300k", history: "Prestigious Ivy embedded in NYC.", courses: "CS, Econ, Eng", region: "USA" },
+            { name: "Yale University", rank: 17, city: "New Haven, USA", est: 1701, sat: 1520, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Performing arts, politics", scholarship: "Need-Blind", alumni: "170k", history: "Producing actors and US Presidents.", courses: "CS, Law, Soc", region: "USA" },
+            { name: "EPFL", rank: 18, city: "Lausanne, Switzerland", est: 1969, sat: 1500, ielts: 7.0, board: 95, tuition: "CHF 1,500", pt: "CHF 25/hr", ec: "Tech innovation", scholarship: "Excellence Fellowships", alumni: "50k", history: "Major European center for tech excellence.", courses: "CS, Robotics, Bio", region: "Europe" },
+            { name: "Johns Hopkins", rank: 19, city: "Baltimore, USA", est: 1876, sat: 1500, ielts: 7.5, board: 93, tuition: "$58,000", pt: "$18/hr", ec: "Medical volunteering, bio-research", scholarship: "Bloomberg Scholars", alumni: "200k", history: "America's first research university.", courses: "BioMed, CS, PH", region: "USA" },
+            { name: "University of Edinburgh", rank: 20, city: "Edinburgh, UK", est: 1582, sat: 1450, ielts: 7.0, board: 90, tuition: "£35,000", pt: "£12/hr", ec: "Subject-specific passion", scholarship: "Global Scholarships", alumni: "250k", history: "Ancient Scottish university, AI pioneer.", courses: "AI, Informatics, Med", region: "UK" },
+            { name: "University of Tokyo", rank: 21, city: "Tokyo, Japan", est: 1877, sat: 1450, ielts: 7.0, board: 92, tuition: "¥535,800", pt: "¥1500/hr", ec: "High academic rigor, JLPT prep", scholarship: "MEXT", alumni: "200k", history: "Japan's premier public university.", courses: "Eng, CS, Physics", region: "Asia" },
+            { name: "Carnegie Mellon University", rank: 22, city: "Pittsburgh, USA", est: 1900, sat: 1530, ielts: 7.5, board: 97, tuition: "$62,000", pt: "$20/hr", ec: "Hackathons, algorithmic programming", scholarship: "Need-based", alumni: "110k", history: "Global leader in CS and AI.", courses: "AI, CS, Robotics", region: "USA" },
+            { name: "KAIST", rank: 23, city: "Daejeon, South Korea", est: 1971, sat: 1460, ielts: 6.5, board: 93, tuition: "$8,000", pt: "₩15k/hr", ec: "Science fairs, robotics", scholarship: "KAIST Scholarship", alumni: "70k", history: "Korea's premier science and tech hub.", courses: "CS, Eng, Bio", region: "Asia" },
+            { name: "University of Toronto", rank: 24, city: "Toronto, Canada", est: 1827, sat: 1450, ielts: 7.0, board: 92, tuition: "$60,000 CAD", pt: "$20/hr", ec: "Clubs, strong academic marks", scholarship: "Lester B. Pearson", alumni: "600k", history: "Canada's top research powerhouse.", courses: "CS, Data Sci, Eng", region: "Canada" },
+            { name: "UCLA", rank: 25, city: "Los Angeles, USA", est: 1919, sat: 1450, ielts: 7.0, board: 91, tuition: "$44,000", pt: "$18/hr", ec: "Leadership, arts, diverse activities", scholarship: "Regents Scholarships", alumni: "500k", history: "Most applied-to university in the US.", courses: "CS, Film, Psych", region: "USA" },
+            { name: "University of Michigan", rank: 26, city: "Ann Arbor, USA", est: 1817, sat: 1460, ielts: 7.0, board: 92, tuition: "$55,000", pt: "$18/hr", ec: "Community impact, school spirit", scholarship: "Merit Scholarships", alumni: "600k", history: "Elite public research and sports culture.", courses: "Eng, CS, Bus", region: "USA" },
+            { name: "Georgia Tech", rank: 27, city: "Atlanta, USA", est: 1885, sat: 1480, ielts: 7.0, board: 93, tuition: "$33,000", pt: "$20/hr", ec: "FIRST Robotics, engineering clubs", scholarship: "President's Scholars", alumni: "170k", history: "Top-tier public engineering school.", courses: "CS, Eng, Aerospace", region: "USA" },
+            { name: "New York University", rank: 28, city: "New York, USA", est: 1831, sat: 1470, ielts: 7.0, board: 92, tuition: "$60,000", pt: "$22/hr", ec: "Global awareness, arts", scholarship: "Need-based", alumni: "500k", history: "Global university embedded in NYC.", courses: "CS, Bus, Art", region: "USA" },
+            { name: "University of Hong Kong", rank: 29, city: "Hong Kong", est: 1911, sat: 1440, ielts: 7.0, board: 90, tuition: "HK$ 180,000", pt: "HKD 90/hr", ec: "Debate, international competitions", scholarship: "HKU Foundation", alumni: "200k", history: "Prestigious English-speaking hub in Asia.", courses: "CS, Eng, Law", region: "Asia" },
+            { name: "King's College London", rank: 30, city: "London, UK", est: 1829, sat: 1420, ielts: 7.0, board: 90, tuition: "£30,000", pt: "£12/hr", ec: "Research, subject reading", scholarship: "International Scholarships", alumni: "200k", history: "Historic London institution.", courses: "CS, Med, Law", region: "UK" },
+            { name: "University of Washington", rank: 31, city: "Seattle, USA", est: 1861, sat: 1420, ielts: 7.0, board: 90, tuition: "$40,000", pt: "$20/hr", ec: "Tech internships, environment", scholarship: "Purple and Gold", alumni: "450k", history: "Connected with Microsoft and Amazon.", courses: "CS, Eng, Bio", region: "USA" },
+            { name: "Purdue University", rank: 32, city: "West Lafayette, USA", est: 1869, sat: 1400, ielts: 6.5, board: 88, tuition: "$31,000", pt: "$15/hr", ec: "Engineering projects", scholarship: "Presidential", alumni: "600k", history: "The Cradle of Astronauts.", courses: "Eng, CS, Aero", region: "USA" },
+            { name: "UT Austin", rank: 33, city: "Austin, USA", est: 1883, sat: 1420, ielts: 7.0, board: 90, tuition: "$40,000", pt: "$18/hr", ec: "Leadership, state recognition", scholarship: "Forty Acres Scholars", alumni: "500k", history: "Driving the Silicon Hills tech boom.", courses: "CS, Eng, Bus", region: "USA" },
+            { name: "LMU Munich", rank: 34, city: "Munich, Germany", est: 1472, sat: 1400, ielts: 7.0, board: 92, tuition: "€150 fee", pt: "€15/hr", ec: "Language proficiency", scholarship: "DAAD", alumni: "200k", history: "Centuries of academic tradition.", courses: "CS, Physics, Math", region: "Europe" },
+            { name: "University of Amsterdam", rank: 35, city: "Amsterdam, Netherlands", est: 1632, sat: 1350, ielts: 7.0, board: 88, tuition: "€15,000", pt: "€12/hr", ec: "Independent thinking", scholarship: "AMS", alumni: "150k", history: "Leading European research center.", courses: "CS, Logic, Bus", region: "Europe" },
+            { name: "UIUC", rank: 36, city: "Urbana, USA", est: 1867, sat: 1430, ielts: 7.0, board: 91, tuition: "$36,000", pt: "$16/hr", ec: "Coding, hardware projects", scholarship: "Merit-based", alumni: "480k", history: "Birthplace of the first web browser.", courses: "CS, Eng, Math", region: "USA" },
+            { name: "UC San Diego", rank: 37, city: "San Diego, USA", est: 1960, sat: 1410, ielts: 7.0, board: 90, tuition: "$44,000", pt: "$18/hr", ec: "Biotech clubs, STEM", scholarship: "Chancellor's", alumni: "200k", history: "Coastal powerhouse innovator.", courses: "CS, BioEng", region: "USA" },
+            { name: "Seoul National University", rank: 38, city: "Seoul, South Korea", est: 1946, sat: 1400, ielts: 6.5, board: 90, tuition: "$6,000", pt: "₩15k/hr", ec: "Top-tier grades, national exams", scholarship: "GKS", alumni: "300k", history: "The absolute top institution in Korea.", courses: "CS, Eng, Med", region: "Asia" },
+            { name: "UBC", rank: 39, city: "Vancouver, Canada", est: 1908, sat: 1380, ielts: 7.0, board: 89, tuition: "$45,000 CAD", pt: "$18/hr", ec: "Sustainability, outdoors", scholarship: "IMES", alumni: "350k", history: "Beautiful coastal campus, world-class research.", courses: "CS, Eng, Env", region: "Canada" },
+            { name: "University of Manchester", rank: 40, city: "Manchester, UK", est: 1824, sat: 1350, ielts: 6.5, board: 88, tuition: "£28,000", pt: "£11/hr", ec: "Focused subject interest", scholarship: "Global Futures", alumni: "500k", history: "Birthplace of the stored-program computer.", courses: "CS, Eng, Chem", region: "UK" },
+            { name: "UW Madison", rank: 41, city: "Madison, USA", est: 1848, sat: 1390, ielts: 7.0, board: 89, tuition: "$40,000", pt: "$15/hr", ec: "Community service, strong grades", scholarship: "Chancellor's", alumni: "450k", history: "Highly regarded public Ivy.", courses: "CS, Eng, Data", region: "USA" },
+            { name: "TU Munich", rank: 42, city: "Munich, Germany", est: 1868, sat: 1420, ielts: 7.0, board: 93, tuition: "€3,000 fee", pt: "€15/hr", ec: "Tech internships, engineering", scholarship: "DAAD", alumni: "150k", history: "Leading technical university in Europe.", courses: "CS, Robotics, AI", region: "Europe" },
+            { name: "University of Melbourne", rank: 43, city: "Melbourne, Australia", est: 1853, sat: 1350, ielts: 7.0, board: 88, tuition: "$45,000 AUD", pt: "$28/hr", ec: "Strong ATAR/Board equivalent", scholarship: "Melbourne Intl", alumni: "300k", history: "Consistently top-ranked in Australia.", courses: "CS, Eng, Med", region: "Australia" },
+            { name: "Ohio State University", rank: 44, city: "Columbus, USA", est: 1870, sat: 1350, ielts: 6.5, board: 87, tuition: "$38,000", pt: "$15/hr", ec: "School spirit, broad involvement", scholarship: "Morrill Scholarship", alumni: "600k", history: "Massive public research scope.", courses: "CS, Eng, Bus", region: "USA" },
+            { name: "University of Maryland", rank: 45, city: "College Park, USA", est: 1856, sat: 1370, ielts: 7.0, board: 88, tuition: "$40,000", pt: "$16/hr", ec: "Cybersecurity interest", scholarship: "Banneker/Key", alumni: "350k", history: "Strong ties to DC tech, NASA, NSA.", courses: "CS, CyberSec, Eng", region: "USA" },
+            { name: "Penn State", rank: 46, city: "State College, USA", est: 1855, sat: 1350, ielts: 6.5, board: 87, tuition: "$39,000", pt: "$14/hr", ec: "Student govt, THON/Charity", scholarship: "Schreyer Honors", alumni: "700k", history: "Legendary alumni network.", courses: "CS, Eng, Bus", region: "USA" },
+            { name: "Boston University", rank: 47, city: "Boston, USA", est: 1839, sat: 1400, ielts: 7.0, board: 90, tuition: "$63,000", pt: "$18/hr", ec: "Urban internships, leadership", scholarship: "Trustee Scholarship", alumni: "300k", history: "Massive private urban research powerhouse.", courses: "CS, Bus, Data", region: "USA" },
+            { name: "University of Sydney", rank: 48, city: "Sydney, Australia", est: 1850, sat: 1320, ielts: 7.0, board: 87, tuition: "$48,000 AUD", pt: "$28/hr", ec: "Strong academic record", scholarship: "Sydney Scholars", alumni: "300k", history: "Oldest Australian university.", courses: "CS, Eng, Law", region: "Australia" },
+            { name: "University of Minnesota", rank: 49, city: "Minneapolis, USA", est: 1851, sat: 1350, ielts: 6.5, board: 87, tuition: "$35,000", pt: "$16/hr", ec: "Consistent grades, volunteering", scholarship: "Global Excellence", alumni: "500k", history: "Public research excellence in Twin Cities.", courses: "CS, Eng, Bio", region: "USA" },
+            { name: "Northwestern University", rank: 50, city: "Evanston, USA", est: 1851, sat: 1480, ielts: 7.5, board: 94, tuition: "$62,000", pt: "$18/hr", ec: "Journalism, performing arts", scholarship: "Need-based", alumni: "250k", history: "Private excellence in Illinois.", courses: "CS, Eng, Bus", region: "USA" },
+            { name: "UC Santa Barbara", rank: 51, city: "Santa Barbara, USA", est: 1891, sat: 1400, ielts: 7.0, board: 90, tuition: "$44,000", pt: "$18/hr", ec: "Environmental clubs, science", scholarship: "Regents", alumni: "200k", history: "Elite research in physical sciences.", courses: "CS, Physics", region: "USA" },
+            { name: "UC Irvine", rank: 52, city: "Irvine, USA", est: 1965, sat: 1380, ielts: 7.0, board: 89, tuition: "$44,000", pt: "$18/hr", ec: "Tech clubs, e-sports", scholarship: "Chancellor's", alumni: "200k", history: "Major feeder into SoCal tech.", courses: "CS, Data Sci", region: "USA" },
+            { name: "Brown University", rank: 53, city: "Providence, USA", est: 1764, sat: 1480, ielts: 7.5, board: 94, tuition: "$62,000", pt: "$18/hr", ec: "Self-driven learning", scholarship: "Need-based", alumni: "100k", history: "Ivy League famous for Open Curriculum.", courses: "CS, Math", region: "USA" },
+            { name: "Dartmouth College", rank: 54, city: "Hanover, USA", est: 1769, sat: 1470, ielts: 7.5, board: 93, tuition: "$62,000", pt: "$18/hr", ec: "Outdoors club, strong leadership", scholarship: "Need-blind", alumni: "80k", history: "Smallest Ivy League, liberal arts focus.", courses: "CS, Eng", region: "USA" },
+            { name: "Rice University", rank: 55, city: "Houston, USA", est: 1912, sat: 1490, ielts: 7.5, board: 94, tuition: "$54,000", pt: "$18/hr", ec: "STEM competitions, space camp", scholarship: "Merit-based", alumni: "50k", history: "Small research powerhouse tied to NASA.", courses: "CS, Space", region: "USA" },
+            { name: "Duke University", rank: 56, city: "Durham, USA", est: 1838, sat: 1500, ielts: 7.5, board: 94, tuition: "$63,000", pt: "$18/hr", ec: "Medical volunteering", scholarship: "Robertson", alumni: "170k", history: "Elite Southern research powerhouse.", courses: "CS, BioMed", region: "USA" },
+            { name: "Vanderbilt University", rank: 57, city: "Nashville, USA", est: 1873, sat: 1480, ielts: 7.5, board: 93, tuition: "$60,000", pt: "$18/hr", ec: "High academic rigor", scholarship: "Ingram", alumni: "140k", history: "Prestigious 'Harvard of the South'.", courses: "CS, Soc", region: "USA" },
+            { name: "University of Rochester", rank: 58, city: "Rochester, USA", est: 1850, sat: 1400, ielts: 7.0, board: 88, tuition: "$60,000", pt: "$16/hr", ec: "Music, optics", scholarship: "Merit", alumni: "100k", history: "Home to the premier Institute of Optics.", courses: "CS, Optics", region: "USA" },
+            { name: "Case Western Reserve", rank: 59, city: "Cleveland, USA", est: 1826, sat: 1420, ielts: 7.0, board: 90, tuition: "$58,000", pt: "$18/hr", ec: "Engineering co-ops", scholarship: "Need-based", alumni: "100k", history: "Top-tier tech-focused research.", courses: "CS, BioEng", region: "USA" },
+            { name: "Tufts University", rank: 60, city: "Medford, USA", est: 1852, sat: 1440, ielts: 7.5, board: 91, tuition: "$63,000", pt: "$18/hr", ec: "Intl relations, languages", scholarship: "Need-based", alumni: "100k", history: "Known for holistic, quirky admissions.", courses: "CS, Int'l", region: "USA" },
+            { name: "USC", rank: 61, city: "Los Angeles, USA", est: 1880, sat: 1440, ielts: 7.0, board: 92, tuition: "$63,000", pt: "$20/hr", ec: "Film, Trojan network", scholarship: "Trustee", alumni: "400k", history: "Connected to LA tech and entertainment.", courses: "CS, Film", region: "USA" },
+            { name: "UNC Chapel Hill", rank: 62, city: "Chapel Hill, USA", est: 1789, sat: 1400, ielts: 7.0, board: 90, tuition: "$38,000", pt: "$14/hr", ec: "Service, leadership", scholarship: "Morehead-Cain", alumni: "300k", history: "Oldest public university in US.", courses: "CS, Med", region: "USA" },
+            { name: "Peking University", rank: 63, city: "Beijing, China", est: 1898, sat: 1430, ielts: 7.0, board: 92, tuition: "$8,000", pt: "¥120/hr", ec: "National exams, top 1%", scholarship: "CGS", alumni: "300k", history: "Premier research university in China.", courses: "CS, Math", region: "Asia" },
+            { name: "University of Glasgow", rank: 64, city: "Glasgow, UK", est: 1451, sat: 1320, ielts: 6.5, board: 87, tuition: "£25,000", pt: "£11/hr", ec: "Consistent subject passion", scholarship: "Undergrad Excellence", alumni: "200k", history: "Powerhouse of the industrial revolution.", courses: "CS, Eng", region: "UK" },
+            { name: "University of Southampton", rank: 65, city: "Southampton, UK", est: 1862, sat: 1300, ielts: 6.5, board: 86, tuition: "£24,000", pt: "£11/hr", ec: "Tech/Marine projects", scholarship: "Intl Merit", alumni: "200k", history: "Top-tier UK institution for engineering.", courses: "CS, Marine", region: "UK" },
+            { name: "University of Queensland", rank: 66, city: "Brisbane, Australia", est: 1909, sat: 1300, ielts: 6.5, board: 86, tuition: "$45,000 AUD", pt: "$28/hr", ec: "Solid academic standing", scholarship: "Global Excellence", alumni: "250k", history: "Dominating in biological sciences.", courses: "CS, Bio", region: "Australia" },
+            { name: "University of Helsinki", rank: 67, city: "Helsinki, Finland", est: 1640, sat: 1300, ielts: 6.5, board: 88, tuition: "€15,000", pt: "€12/hr", ec: "Tech focus, independent learning", scholarship: "Finland Scholarship", alumni: "150k", history: "Birthplace of the Linux kernel.", courses: "CS, Physics", region: "Europe" },
+            { name: "KTH Royal Institute", rank: 68, city: "Stockholm, Sweden", est: 1827, sat: 1350, ielts: 6.5, board: 90, tuition: "SEK 122,000", pt: "SEK 135/hr", ec: "Coding, hardware", scholarship: "KTH Scholarship", alumni: "100k", history: "Premier Swedish tech institute.", courses: "CS, Robotics", region: "Europe" },
+            { name: "DTU", rank: 69, city: "Lyngby, Denmark", est: 1829, sat: 1350, ielts: 6.5, board: 90, tuition: "€15,000", pt: "DKK 135/hr", ec: "Sustainability projects", scholarship: "Danish Govt", alumni: "80k", history: "Scandinavian tech leader.", courses: "CS, Eng", region: "Europe" },
+            { name: "CU Boulder", rank: 70, city: "Boulder, USA", est: 1876, sat: 1300, ielts: 6.5, board: 85, tuition: "$39,000", pt: "$16/hr", ec: "Aerospace clubs, outdoors", scholarship: "Chancellor's", alumni: "300k", history: "Heavily affiliated with NASA.", courses: "Aero, CS", region: "USA" },
+            { name: "University of Warwick", rank: 71, city: "Coventry, UK", est: 1965, sat: 1350, ielts: 6.5, board: 88, tuition: "£28,000", pt: "£11/hr", ec: "Strong maths/econ", scholarship: "Global Excellence", alumni: "200k", history: "Elite UK research university.", courses: "CS, Econ", region: "UK" },
+            { name: "University of Basel", rank: 72, city: "Basel, Switzerland", est: 1460, sat: 1350, ielts: 6.5, board: 90, tuition: "CHF 1,700", pt: "CHF 22/hr", ec: "Biomedical interest", scholarship: "Swiss Govt", alumni: "100k", history: "Oldest university in Switzerland.", courses: "BioMed, CS", region: "Europe" },
+            { name: "University of Leiden", rank: 73, city: "Leiden, Netherlands", est: 1575, sat: 1320, ielts: 7.0, board: 87, tuition: "€15,000", pt: "€12/hr", ec: "Global perspective", scholarship: "LExS", alumni: "150k", history: "World-class research, visited by Einstein.", courses: "CS, Law", region: "Europe" },
+            { name: "University of Auckland", rank: 74, city: "Auckland, New Zealand", est: 1883, sat: 1300, ielts: 6.5, board: 85, tuition: "$40,000 NZD", pt: "$22/hr", ec: "Well-rounded profile", scholarship: "Intl Excellence", alumni: "200k", history: "New Zealand's leading research hub.", courses: "CS, Med", region: "Australia" },
+            { name: "Georgia Tech (Global)", rank: 75, city: "Atlanta, USA", est: 1885, sat: 1450, ielts: 7.0, board: 92, tuition: "$33,000", pt: "$18/hr", ec: "Intl STEM experience", scholarship: "Merit", alumni: "180k", history: "Engineering innovation powerhouse.", courses: "CS, AI", region: "USA" },
+            { name: "NTU", rank: 76, city: "Singapore", est: 1991, sat: 1450, ielts: 7.0, board: 92, tuition: "$38,000", pt: "$12/hr", ec: "High math/science scores", scholarship: "Nanyang Scholarship", alumni: "250k", history: "Rapid-rising Asian tech giant.", courses: "AI, CS", region: "Asia" },
+            { name: "UC Davis", rank: 77, city: "Davis, USA", est: 1905, sat: 1350, ielts: 6.5, board: 88, tuition: "$44,000", pt: "$18/hr", ec: "Agri-tech, bio sciences", scholarship: "Regents", alumni: "300k", history: "Elite agricultural research.", courses: "CS, Bio", region: "USA" },
+            { name: "UC Santa Cruz", rank: 78, city: "Santa Cruz, USA", est: 1965, sat: 1320, ielts: 6.5, board: 87, tuition: "$43,000", pt: "$18/hr", ec: "Game design, SV links", scholarship: "Dean's Scholarships", alumni: "150k", history: "Silicon Valley-adjacent research.", courses: "CS, Astronomy", region: "USA" },
+            { name: "University of Utah", rank: 79, city: "Salt Lake City, USA", est: 1850, sat: 1300, ielts: 6.5, board: 85, tuition: "$32,000", pt: "$14/hr", ec: "Game dev, engineering", scholarship: "Intl Merit", alumni: "250k", history: "Pioneering computer graphics.", courses: "CS, Games", region: "USA" },
+            { name: "Arizona State University", rank: 80, city: "Tempe, USA", est: 1885, sat: 1280, ielts: 6.5, board: 84, tuition: "$33,000", pt: "$14/hr", ec: "Innovation, entrepreneurship", scholarship: "New American Uni", alumni: "500k", history: "Ranked #1 for Innovation in the US.", courses: "CS, Bus", region: "USA" },
+            { name: "University of Florida", rank: 81, city: "Gainesville, USA", est: 1853, sat: 1350, ielts: 7.0, board: 88, tuition: "$28,000", pt: "$12/hr", ec: "State involvement", scholarship: "Merit waivers", alumni: "400k", history: "Major public research powerhouse.", courses: "CS, Eng", region: "USA" },
+            { name: "University of Calgary", rank: 82, city: "Calgary, Canada", est: 1966, sat: 1300, ielts: 6.5, board: 85, tuition: "$32,000 CAD", pt: "$18/hr", ec: "Energy sector interest", scholarship: "Intl Entrance", alumni: "200k", history: "Ties to energy and engineering sectors.", courses: "Eng, CS", region: "Canada" },
+            { name: "University of Waterloo", rank: 83, city: "Waterloo, Canada", est: 1957, sat: 1400, ielts: 7.0, board: 90, tuition: "$55,000 CAD", pt: "Paid Co-op", ec: "Math contests, coding", scholarship: "President's", alumni: "250k", history: "Canada's top tech hub.", courses: "CS, Math", region: "Canada" },
+            { name: "McMaster University", rank: 84, city: "Hamilton, Canada", est: 1887, sat: 1320, ielts: 6.5, board: 87, tuition: "$40,000 CAD", pt: "$18/hr", ec: "Health sciences", scholarship: "Excellence Awards", alumni: "200k", history: "Invented Evidence-Based Medicine.", courses: "CS, Med", region: "Canada" },
+            { name: "University of Alberta", rank: 85, city: "Edmonton, Canada", est: 1908, sat: 1300, ielts: 6.5, board: 86, tuition: "$32,000 CAD", pt: "$18/hr", ec: "AI research interest", scholarship: "Student Scholarships", alumni: "300k", history: "Premier research center for AI.", courses: "CS, AI", region: "Canada" },
+            { name: "University of Notre Dame", rank: 86, city: "South Bend, USA", est: 1842, sat: 1450, ielts: 7.0, board: 92, tuition: "$60,000", pt: "$14/hr", ec: "Faith-based service", scholarship: "Need-Blind for US", alumni: "150k", history: "Elite Catholic research university.", courses: "CS, Eng", region: "USA" },
+            { name: "Georgetown University", rank: 87, city: "Washington, USA", est: 1789, sat: 1450, ielts: 7.5, board: 93, tuition: "$61,000", pt: "$18/hr", ec: "Political science, debate", scholarship: "Need-based", alumni: "200k", history: "Premier US institution for intl relations.", courses: "CS, Int'l", region: "USA" },
+            { name: "WashU in St. Louis", rank: 88, city: "St. Louis, USA", est: 1853, sat: 1480, ielts: 7.5, board: 93, tuition: "$60,000", pt: "$18/hr", ec: "Pre-med, research", scholarship: "Danforth Scholars", alumni: "150k", history: "Major medical and biotech hub.", courses: "CS, Med", region: "USA" },
+            { name: "RPI", rank: 89, city: "Troy, USA", est: 1824, sat: 1400, ielts: 7.0, board: 90, tuition: "$58,000", pt: "$15/hr", ec: "Tech projects", scholarship: "Rensselaer Medal", alumni: "100k", history: "Oldest tech institute in the US.", courses: "CS, Robotics", region: "USA" },
+            { name: "Virginia Tech", rank: 90, city: "Blacksburg, USA", est: 1872, sat: 1320, ielts: 6.5, board: 87, tuition: "$35,000", pt: "$12/hr", ec: "Engineering clubs", scholarship: "Pamplin", alumni: "250k", history: "Senior military college and tech hub.", courses: "CS, Aero", region: "USA" },
+            { name: "University of Pittsburgh", rank: 91, city: "Pittsburgh, USA", est: 1787, sat: 1330, ielts: 7.0, board: 88, tuition: "$36,000", pt: "$14/hr", ec: "Health volunteering", scholarship: "Merit", alumni: "300k", history: "Deeply integrated with medical centers.", courses: "CS, Med", region: "USA" },
+            { name: "University of Iowa", rank: 92, city: "Iowa City, USA", est: 1847, sat: 1280, ielts: 6.5, board: 85, tuition: "$32,000", pt: "$12/hr", ec: "Writing, arts", scholarship: "National Scholars", alumni: "250k", history: "Renowned for Iowa Writers' Workshop.", courses: "CS, Arts", region: "USA" },
+            { name: "UMass Amherst", rank: 93, city: "Amherst, USA", est: 1863, sat: 1350, ielts: 7.0, board: 89, tuition: "$38,000", pt: "$16/hr", ec: "CS clubs", scholarship: "Chancellor's Award", alumni: "250k", history: "Flagship UMass campus.", courses: "CS, AI", region: "USA" },
+            { name: "Colorado School of Mines", rank: 94, city: "Golden, USA", est: 1874, sat: 1380, ielts: 7.0, board: 90, tuition: "$41,000", pt: "$18/hr", ec: "Heavy math/science", scholarship: "Merit", alumni: "50k", history: "Dominating in energy and materials tech.", courses: "Eng, CS", region: "USA" },
+            { name: "Michigan State University", rank: 95, city: "East Lansing, USA", est: 1855, sat: 1250, ielts: 6.5, board: 84, tuition: "$40,000", pt: "$14/hr", ec: "Solid academics", scholarship: "Intl Tuition Grant", alumni: "500k", history: "Pioneer of land-grant university systems.", courses: "CS, Bus", region: "USA" },
+            { name: "University of Notre Dame (AUS)", rank: 96, city: "Fremantle, Australia", est: 1989, sat: 1250, ielts: 6.5, board: 84, tuition: "$35,000 AUD", pt: "$28/hr", ec: "Community service", scholarship: "Welcome Scholarships", alumni: "50k", history: "Private catholic university in Australia.", courses: "Med, CS", region: "Australia" },
+            { name: "University of Victoria", rank: 97, city: "Victoria, Canada", est: 1963, sat: 1280, ielts: 6.5, board: 85, tuition: "$28,000 CAD", pt: "$18/hr", ec: "Marine interest", scholarship: "Entrance Scholarships", alumni: "150k", history: "Focused on ocean/climate science.", courses: "CS, Bio", region: "Canada" },
+            { name: "Syracuse University", rank: 98, city: "Syracuse, USA", est: 1870, sat: 1300, ielts: 7.0, board: 87, tuition: "$58,000", pt: "$16/hr", ec: "Communications, tech", scholarship: "Chancellor's", alumni: "250k", history: "Famous for public affairs schools.", courses: "CS, Bus", region: "USA" },
+            { name: "University of Delaware", rank: 99, city: "Newark, USA", est: 1743, sat: 1280, ielts: 6.5, board: 85, tuition: "$36,000", pt: "$14/hr", ec: "Chemical engineering", scholarship: "Delaware Destination", alumni: "180k", history: "Pipeline for the chemical industry.", courses: "CS, Chem", region: "USA" },
+            { name: "University of Oregon", rank: 100, city: "Eugene, USA", est: 1876, sat: 1250, ielts: 6.5, board: 84, tuition: "$39,000", pt: "$16/hr", ec: "Sports, environment", scholarship: "Intl Excellence", alumni: "200k", history: "Deeply tied to the founding of Nike.", courses: "CS, Env", region: "USA" },
+            { name: "Fudan University", rank: 101, city: "Shanghai, China", est: 1905, sat: 1380, ielts: 6.5, board: 90, tuition: "¥32,000", pt: "¥120/hr", ec: "Top provincial ranks", scholarship: "CGS", alumni: "280k", history: "Prestigious C9 League member.", courses: "CS, Econ, Med", region: "Asia" },
+            { name: "Zhejiang University", rank: 102, city: "Hangzhou, China", est: 1897, sat: 1350, ielts: 6.5, board: 89, tuition: "¥30,000", pt: "¥120/hr", ec: "Tech focus", scholarship: "CGS", alumni: "350k", history: "Comprehensive tech hub.", courses: "CS, Eng", region: "Asia" },
+            { name: "Kyoto University", rank: 103, city: "Kyoto, Japan", est: 1897, sat: 1400, ielts: 7.0, board: 91, tuition: "¥535,800", pt: "¥1500/hr", ec: "Research aptitude", scholarship: "MEXT", alumni: "150k", history: "Multiple Nobel laureates.", courses: "CS, Physics", region: "Asia" },
+            { name: "UNSW Sydney", rank: 104, city: "Sydney, Australia", est: 1949, sat: 1300, ielts: 6.5, board: 86, tuition: "$45,000 AUD", pt: "$28/hr", ec: "Solid ATAR", scholarship: "Global Academic", alumni: "320k", history: "Powerhouse in engineering/tech.", courses: "CS, Eng", region: "Australia" },
+            { name: "Monash University", rank: 105, city: "Melbourne, Australia", est: 1958, sat: 1280, ielts: 6.5, board: 85, tuition: "$44,000 AUD", pt: "$28/hr", ec: "Well-rounded", scholarship: "Intl Merit", alumni: "350k", history: "Largest university in Australia.", courses: "CS, Pharm", region: "Australia" },
+            { name: "UWA", rank: 106, city: "Perth, Australia", est: 1911, sat: 1250, ielts: 6.5, board: 84, tuition: "$42,000 AUD", pt: "$28/hr", ec: "Mining/Energy interest", scholarship: "Global Excellence", alumni: "150k", history: "Group of Eight member.", courses: "Eng, CS", region: "Australia" },
+            { name: "University of Adelaide", rank: 107, city: "Adelaide, Australia", est: 1874, sat: 1250, ielts: 6.5, board: 84, tuition: "$40,000 AUD", pt: "$28/hr", ec: "Agriculture/Wine tech", scholarship: "Global Citizens", alumni: "140k", history: "Oldest in South Australia.", courses: "CS, Agri", region: "Australia" },
+            { name: "University of Geneva", rank: 108, city: "Geneva, Switzerland", est: 1559, sat: 1300, ielts: 6.5, board: 88, tuition: "CHF 1,000", pt: "CHF 25/hr", ec: "Intl diplomacy", scholarship: "Excellence Masters", alumni: "120k", history: "Founded by John Calvin.", courses: "Law, CS", region: "Europe" },
+            { name: "University of Zurich", rank: 109, city: "Zurich, Switzerland", est: 1833, sat: 1320, ielts: 6.5, board: 88, tuition: "CHF 1,500", pt: "CHF 25/hr", ec: "Finance/Med", scholarship: "Swiss Govt", alumni: "130k", history: "Largest in Switzerland.", courses: "Med, CS", region: "Europe" },
+            { name: "RWTH Aachen", rank: 110, city: "Aachen, Germany", est: 1870, sat: 1350, ielts: 6.5, board: 90, tuition: "€1,500 fee", pt: "€15/hr", ec: "Automotive engineering", scholarship: "DAAD", alumni: "100k", history: "Top German engineering school.", courses: "CS, MechEng", region: "Europe" },
+            { name: "University of Oslo", rank: 111, city: "Oslo, Norway", est: 1811, sat: 1280, ielts: 6.5, board: 85, tuition: "Free", pt: "NOK 180/hr", ec: "Nordic focus", scholarship: "State grants", alumni: "150k", history: "Highest ranked in Norway.", courses: "CS, Env", region: "Europe" },
+            { name: "Uppsala University", rank: 112, city: "Uppsala, Sweden", est: 1477, sat: 1280, ielts: 6.5, board: 85, tuition: "SEK 110,000", pt: "SEK 135/hr", ec: "Historical research", scholarship: "Uppsala Global", alumni: "120k", history: "Oldest in Scandinavia.", courses: "CS, Bio", region: "Europe" },
+            { name: "Aarhus University", rank: 113, city: "Aarhus, Denmark", est: 1928, sat: 1280, ielts: 6.5, board: 85, tuition: "€10,000", pt: "DKK 130/hr", ec: "Sustainability", scholarship: "Danish State", alumni: "100k", history: "Leading Danish research hub.", courses: "CS, Eng", region: "Europe" },
+            { name: "Lund University", rank: 114, city: "Lund, Sweden", est: 1666, sat: 1280, ielts: 6.5, board: 85, tuition: "SEK 120,000", pt: "SEK 135/hr", ec: "Innovation", scholarship: "Lund Global", alumni: "130k", history: "Top 100 global regular.", courses: "CS, Physics", region: "Europe" },
+            { name: "Trinity College Dublin", rank: 115, city: "Dublin, Ireland", est: 1592, sat: 1300, ielts: 6.5, board: 88, tuition: "€20,000", pt: "€12/hr", ec: "Literature/Tech", scholarship: "Global Excellence", alumni: "100k", history: "Oldest in Ireland.", courses: "CS, Arts", region: "Europe" },
+            { name: "University College Dublin", rank: 116, city: "Dublin, Ireland", est: 1854, sat: 1280, ielts: 6.5, board: 86, tuition: "€18,000", pt: "€12/hr", ec: "Business/Tech", scholarship: "Global Excellence", alumni: "150k", history: "Ireland's Global University.", courses: "CS, Bus", region: "Europe" },
+            { name: "KU Leuven", rank: 117, city: "Leuven, Belgium", est: 1425, sat: 1320, ielts: 6.5, board: 88, tuition: "€6,000", pt: "€12/hr", ec: "Micro-electronics", scholarship: "Science Grants", alumni: "200k", history: "Most innovative in Europe.", courses: "CS, Eng", region: "Europe" },
+            { name: "Sorbonne University", rank: 118, city: "Paris, France", est: 1257, sat: 1300, ielts: 6.5, board: 88, tuition: "€3,000", pt: "€12/hr", ec: "Math/Literature", scholarship: "Eiffel", alumni: "300k", history: "Historic Parisian powerhouse.", courses: "Math, CS", region: "Europe" },
+            { name: "University of Vienna", rank: 119, city: "Vienna, Austria", est: 1365, sat: 1280, ielts: 6.5, board: 85, tuition: "€1,500", pt: "€12/hr", ec: "Physics/Phil", scholarship: "Austrian Govt", alumni: "200k", history: "Oldest in German-speaking world.", courses: "CS, Physics", region: "Europe" },
+            { name: "IIT Bombay", rank: 120, city: "Mumbai, India", est: 1958, sat: 1450, ielts: 7.0, board: 95, tuition: "₹2,00,000", pt: "₹500/hr", ec: "JEE Advanced", scholarship: "MCM", alumni: "60k", history: "Premier Indian Tech Institute.", courses: "CS, Eng", region: "Asia" },
+            { name: "IIT Delhi", rank: 121, city: "Delhi, India", est: 1961, sat: 1450, ielts: 7.0, board: 95, tuition: "₹2,00,000", pt: "₹500/hr", ec: "JEE Advanced", scholarship: "MCM", alumni: "55k", history: "Tech hub of the capital.", courses: "CS, Eng", region: "Asia" },
+            { name: "IIT Madras", rank: 122, city: "Chennai, India", est: 1959, sat: 1450, ielts: 7.0, board: 95, tuition: "₹2,00,000", pt: "₹500/hr", ec: "JEE Advanced", scholarship: "MCM", alumni: "50k", history: "Top-ranked engineering in India.", courses: "CS, Eng", region: "Asia" },
+            { name: "IIT Kanpur", rank: 123, city: "Kanpur, India", est: 1959, sat: 1420, ielts: 7.0, board: 94, tuition: "₹2,00,000", pt: "₹500/hr", ec: "JEE Advanced", scholarship: "MCM", alumni: "40k", history: "Pioneering CS education in India.", courses: "CS, Aero", region: "Asia" },
+            { name: "IIT Kharagpur", rank: 124, city: "Kharagpur, India", est: 1951, sat: 1420, ielts: 7.0, board: 94, tuition: "₹2,00,000", pt: "₹500/hr", ec: "JEE Advanced", scholarship: "MCM", alumni: "65k", history: "First IIT established.", courses: "CS, Eng", region: "Asia" },
+            { name: "IISc Bangalore", rank: 125, city: "Bangalore, India", est: 1909, sat: 1480, ielts: 7.0, board: 96, tuition: "₹1,00,000", pt: "₹500/hr", ec: "Research, KVPY", scholarship: "Govt Grants", alumni: "25k", history: "India's premier science institute.", courses: "Physics, CS", region: "Asia" },
+            { name: "Yonsei University", rank: 126, city: "Seoul, South Korea", est: 1885, sat: 1350, ielts: 6.5, board: 88, tuition: "$6,500", pt: "₩12k/hr", ec: "Top SKY grades", scholarship: "Global Leader", alumni: "300k", history: "Prestigious private SKY uni.", courses: "CS, Med", region: "Asia" },
+            { name: "Korea University", rank: 127, city: "Seoul, South Korea", est: 1905, sat: 1350, ielts: 6.5, board: 88, tuition: "$6,500", pt: "₩12k/hr", ec: "Top SKY grades", scholarship: "KU Global", alumni: "300k", history: "Fierce rival of Yonsei.", courses: "CS, Bus", region: "Asia" },
+            { name: "Sungkyunkwan University", rank: 128, city: "Seoul, South Korea", est: 1398, sat: 1320, ielts: 6.5, board: 87, tuition: "$7,000", pt: "₩12k/hr", ec: "Tech/Samsung links", scholarship: "SKKU Merit", alumni: "200k", history: "Backed by Samsung.", courses: "CS, Eng", region: "Asia" },
+            { name: "Hanyang University", rank: 129, city: "Seoul, South Korea", est: 1939, sat: 1300, ielts: 6.5, board: 85, tuition: "$6,500", pt: "₩12k/hr", ec: "Engineering focus", scholarship: "Hanyang Excellence", alumni: "250k", history: "Engine of Korea's industrialization.", courses: "CS, Eng", region: "Asia" },
+            { name: "CUHK", rank: 130, city: "Hong Kong", est: 1963, sat: 1350, ielts: 6.5, board: 88, tuition: "HK$ 145,000", pt: "HKD 80/hr", ec: "Bilingual prep", scholarship: "CUHK Admission", alumni: "250k", history: "Largest campus in HK.", courses: "CS, Med", region: "Asia" },
+            { name: "HKUST", rank: 131, city: "Hong Kong", est: 1991, sat: 1380, ielts: 6.5, board: 90, tuition: "HK$ 140,000", pt: "HKD 80/hr", ec: "Tech/Business", scholarship: "HKUST Merit", alumni: "100k", history: "Rapidly rising tech giant.", courses: "CS, Bus", region: "Asia" },
+            { name: "CityU Hong Kong", rank: 132, city: "Hong Kong", est: 1984, sat: 1280, ielts: 6.5, board: 85, tuition: "HK$ 140,000", pt: "HKD 80/hr", ec: "Urban tech", scholarship: "Entrance Scholar", alumni: "150k", history: "Modern urban research.", courses: "CS, Eng", region: "Asia" },
+            { name: "PolyU Hong Kong", rank: 133, city: "Hong Kong", est: 1937, sat: 1280, ielts: 6.5, board: 85, tuition: "HK$ 140,000", pt: "HKD 80/hr", ec: "Applied science", scholarship: "PolyU Entry", alumni: "200k", history: "Focus on applied research.", courses: "CS, Eng", region: "Asia" },
+            { name: "National Taiwan Uni", rank: 134, city: "Taipei, Taiwan", est: 1928, sat: 1350, ielts: 6.5, board: 88, tuition: "$3,000", pt: "NT$ 180/hr", ec: "Top tech grades", scholarship: "MOE Taiwan", alumni: "300k", history: "Premier university in Taiwan.", courses: "CS, Eng", region: "Asia" },
+            { name: "NCKU", rank: 135, city: "Tainan, Taiwan", est: 1931, sat: 1280, ielts: 6.5, board: 85, tuition: "$3,000", pt: "NT$ 180/hr", ec: "Engineering focus", scholarship: "NCKU Intl", alumni: "200k", history: "Engineering powerhouse.", courses: "CS, Eng", region: "Asia" },
+            { name: "NTHU", rank: 136, city: "Hsinchu, Taiwan", est: 1911, sat: 1320, ielts: 6.5, board: 87, tuition: "$3,000", pt: "NT$ 180/hr", ec: "Semiconductor tech", scholarship: "NTHU Scholar", alumni: "100k", history: "Tied to TSMC and tech.", courses: "CS, Physics", region: "Asia" },
+            { name: "University of Malaya", rank: 137, city: "Kuala Lumpur, Malaysia", est: 1905, sat: 1250, ielts: 6.0, board: 84, tuition: "$5,000", pt: "RM 20/hr", ec: "ASEAN focus", scholarship: "Malaysian Intl", alumni: "200k", history: "Oldest in Malaysia.", courses: "CS, Med", region: "Asia" },
+            { name: "University of Otago", rank: 138, city: "Dunedin, New Zealand", est: 1869, sat: 1250, ielts: 6.0, board: 84, tuition: "$35,000 NZD", pt: "$22/hr", ec: "Health sciences", scholarship: "Otago Intl", alumni: "100k", history: "Oldest in New Zealand.", courses: "Med, CS", region: "Australia" },
+            { name: "Victoria Uni Wellington", rank: 139, city: "Wellington, New Zealand", est: 1897, sat: 1220, ielts: 6.0, board: 83, tuition: "$33,000 NZD", pt: "$22/hr", ec: "Arts/Law", scholarship: "Wellington Intl", alumni: "120k", history: "Capital city research.", courses: "Law, CS", region: "Australia" },
+            { name: "University of Canterbury", rank: 140, city: "Christchurch, New Zealand", est: 1873, sat: 1220, ielts: 6.0, board: 83, tuition: "$34,000 NZD", pt: "$22/hr", ec: "Engineering", scholarship: "UC Intl First Year", alumni: "100k", history: "Strong engineering focus.", courses: "Eng, CS", region: "Australia" },
+            { name: "Massey University", rank: 141, city: "Palmerston North, NZ", est: 1927, sat: 1200, ielts: 6.0, board: 82, tuition: "$32,000 NZD", pt: "$22/hr", ec: "Aviation/Agri", scholarship: "Massey Excellence", alumni: "150k", history: "Aviation and veterinary.", courses: "Aviation, CS", region: "Australia" },
+            { name: "Lincoln University", rank: 142, city: "Lincoln, New Zealand", est: 1878, sat: 1180, ielts: 6.0, board: 80, tuition: "$30,000 NZD", pt: "$22/hr", ec: "Agriculture", scholarship: "Lincoln Intl", alumni: "50k", history: "Southern Hemisphere agri-hub.", courses: "Agri, Env", region: "Australia" },
+            { name: "Waikato University", rank: 143, city: "Hamilton, New Zealand", est: 1964, sat: 1200, ielts: 6.0, board: 82, tuition: "$31,000 NZD", pt: "$22/hr", ec: "Management", scholarship: "Waikato Excellence", alumni: "80k", history: "Management and CS focus.", courses: "CS, Bus", region: "Australia" },
+            { name: "AUT", rank: 144, city: "Auckland, New Zealand", est: 2000, sat: 1200, ielts: 6.0, board: 82, tuition: "$34,000 NZD", pt: "$22/hr", ec: "Tech/Design", scholarship: "AUT Intl", alumni: "100k", history: "Newest, fast-growing tech uni.", courses: "CS, Design", region: "Australia" },
+            { name: "RMIT University", rank: 145, city: "Melbourne, Australia", est: 1887, sat: 1250, ielts: 6.5, board: 84, tuition: "$38,000 AUD", pt: "$28/hr", ec: "Tech/Design", scholarship: "RMIT Intl", alumni: "350k", history: "Royal Melbourne Institute of Tech.", courses: "CS, Eng", region: "Australia" },
+            { name: "Deakin University", rank: 146, city: "Melbourne, Australia", est: 1974, sat: 1220, ielts: 6.0, board: 83, tuition: "$35,000 AUD", pt: "$28/hr", ec: "Online learning", scholarship: "Deakin Vice-Chancellor", alumni: "250k", history: "Pioneer in distance learning.", courses: "CS, Bus", region: "Australia" },
+            { name: "Griffith University", rank: 147, city: "Brisbane, Australia", est: 1971, sat: 1200, ielts: 6.0, board: 82, tuition: "$33,000 AUD", pt: "$28/hr", ec: "Tourism/Health", scholarship: "Griffith Remarkable", alumni: "200k", history: "Strong health sciences.", courses: "Med, CS", region: "Australia" },
+            { name: "La Trobe University", rank: 148, city: "Melbourne, Australia", est: 1964, sat: 1200, ielts: 6.0, board: 82, tuition: "$34,000 AUD", pt: "$28/hr", ec: "Sports science", scholarship: "La Trobe Excellence", alumni: "200k", history: "Top for sports-related subjects.", courses: "CS, Sports", region: "Australia" },
+            { name: "Curtin University", rank: 149, city: "Perth, Australia", est: 1966, sat: 1220, ielts: 6.0, board: 83, tuition: "$35,000 AUD", pt: "$28/hr", ec: "Mining/Tech", scholarship: "Curtin Merit", alumni: "250k", history: "Largest in Western Australia.", courses: "Eng, CS", region: "Australia" },
+            { name: "Macquarie University", rank: 150, city: "Sydney, Australia", est: 1964, sat: 1250, ielts: 6.5, board: 84, tuition: "$38,000 AUD", pt: "$28/hr", ec: "Finance/Linguistics", scholarship: "Macquarie Vice-Chancellor", alumni: "200k", history: "Hub in Macquarie Park innovation district.", courses: "CS, Finance", region: "Australia" }
+        ];
+
+        // ----------------------------------------------------
+        // 2. PREDICTOR LOGIC
+        // ----------------------------------------------------
+        function predictColleges() {
+            const targetSat = parseInt(document.getElementById('satPredictorSlider').value);
+            const container = document.getElementById('predictorResults');
+            
+            // Filter colleges matching the SAT score range, take top 3
+            const matches = globalColleges.filter(c => c.sat <= targetSat).sort((a,b) => b.sat - a.sat).slice(0, 3);
+            
+            if(matches.length === 0) {
+                container.innerHTML = '<div class="text-slate-400 text-xs text-center mt-8">No exact matches found. Adjust metrics.</div>';
+                return;
+            }
+
+            container.innerHTML = matches.map(c => `
+                <div class="flex justify-between items-center bg-white/5 border border-white/10 p-2 rounded-lg mb-2">
+                    <div>
+                        <div class="text-sm font-bold text-white">${c.name}</div>
+                        <div class="text-[10px] text-slate-400">${c.city} • QS #${c.rank}</div>
+                    </div>
+                    <div class="text-xs bg-[var(--gold)] text-black px-2 py-1 rounded font-bold">Match</div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize predictor on load
+        predictColleges();
+
+        // ----------------------------------------------------
+        // 3. PERSISTENCE GAMIFICATION ENGINE
+        // ----------------------------------------------------
+        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
         let userLevel = Math.floor(userXP / 500) + 1;
-        
-        // Init HUD
         document.getElementById('nav-xp').innerText = userXP;
         document.getElementById('nav-level').innerText = userLevel;
 
@@ -228,50 +428,44 @@
             document.getElementById('dc-status').classList.replace('bg-amber-500/20', 'bg-slate-800');
         }
 
-        // Check if already played today on page load
         if(lastPlayed === today) {
             lockDailyChallenge();
             document.getElementById('feedback-msg').innerText = "Challenge complete. Come back tomorrow.";
         }
 
         function submitChallenge(isCorrect, btnId) {
-            if(lastPlayed === today) return; // Prevent double clicking logic loophole
-
+            if(lastPlayed === today) return;
             const btn = document.getElementById(btnId);
             const feedback = document.getElementById('feedback-msg');
-            
             let xpGained = isCorrect ? 50 : 5;
             userXP += xpGained;
             
-            // Save state
             localStorage.setItem('pilot_xp', userXP);
             localStorage.setItem('daily_done_date', today);
             
-            // Update HUD visually
             document.getElementById('nav-xp').innerText = userXP;
             document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
 
-            // Visual Button Feedback
             if(isCorrect) {
                 btn.classList.replace('bg-slate-900', 'bg-emerald-600');
                 btn.classList.replace('border-slate-700', 'border-emerald-500');
                 btn.classList.replace('text-slate-300', 'text-white');
-                feedback.innerHTML = `<span class="text-emerald-400">Correct! Commercial Pilots require strict medicals. +${xpGained} XP</span>`;
+                feedback.innerHTML = `<span class="text-emerald-400">Correct! +${xpGained} XP</span>`;
             } else {
                 btn.classList.replace('bg-slate-900', 'bg-red-600');
                 btn.classList.replace('border-slate-700', 'border-red-500');
                 btn.classList.replace('text-slate-300', 'text-white');
-                feedback.innerHTML = `<span class="text-red-400">Incorrect. Pilots require it. +${xpGained} XP</span>`;
+                feedback.innerHTML = `<span class="text-red-400">Incorrect. AI Scales highest. +${xpGained} XP</span>`;
             }
-
             lockDailyChallenge();
         }
 
-        // --- Standard UI Logic ---
+        // ----------------------------------------------------
+        // 4. SALARY CALCULATOR LOGIC
+        // ----------------------------------------------------
         function updateSalary() {
             const val = document.getElementById('salarySlider').value;
             document.getElementById('salaryOutput').innerText = `₹${val},00L`;
-            
             const matchEl = document.getElementById('salaryMatch');
             if(val < 10) matchEl.innerText = "General Engineering / Operations";
             else if(val < 25) matchEl.innerText = "Software Dev / Corporate Law";
@@ -279,8 +473,6 @@
             else if(val < 80) matchEl.innerText = "Quant Finance / Commercial Pilot";
             else matchEl.innerText = "Elite Tech Architecture / Hedge Funds";
         }
-
-        function toggleParentMode() { window.location.href = 'parent-dashboard.html'; }
     </script>
 </body>
 </html>
