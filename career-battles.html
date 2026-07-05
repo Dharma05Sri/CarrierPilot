@@ -3,49 +3,77 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Side-by-side data comparisons of streams, degrees, and career paths.">
-    <title>Career Battles | CareerPilot</title>
+    <title>Career Battles | AstraForge Intelligence</title>
     
+    <meta name="description" content="Compare elite careers head-to-head. Analyze salary data, automation risk, academic difficulty, and top global colleges.">
+    <meta name="keywords" content="compare careers, CSE vs ECE, AI Engineer vs Data Scientist, Doctor vs Engineer, highest paying jobs, career pilot">
+    <meta name="author" content="AstraForge Network">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Career Battles | Data-Driven Face-Offs">
+    <meta property="og:description" content="Compare elite careers head-to-head with animated stats and university matches.">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Career Battles Engine",
+      "applicationCategory": "EducationalApplication",
+      "publisher": { "@type": "Organization", "name": "AstraForge Network" }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-deep: #020617; 
-            --glass-base: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --neon-primary: #06B6D4;
-        }
-        
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; --danger: #ef4444; --success: #10b981; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
-
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.2; }
+
         nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
         .brand span { color: var(--neon-primary); }
 
-        .glass-module { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; }
+        .gamify-pill { display: flex; align-items: center; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 800; gap: 12px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .g-streak { color: #F59E0B; display: flex; align-items: center; gap: 4px; }
 
-        /* Stat Bars */
-        .stat-bar-bg { width: 100%; height: 8px; background: rgba(0,0,0,0.5); border-radius: 4px; overflow: hidden; margin-top: 6px; }
-        .stat-fill { height: 100%; border-radius: 4px; transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hero { padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid var(--glass-border); background: radial-gradient(circle at top, rgba(6,182,212,0.05) 0%, transparent 80%); }
         
-        /* Specific Colors */
-        .fill-blue { background: #3B82F6; box-shadow: 0 0 10px #3B82F6; }
-        .fill-purple { background: #8B5CF6; box-shadow: 0 0 10px #8B5CF6; }
+        /* Battle Arena UI */
+        .arena-container { max-width: 1500px; margin: 0 auto 60px; padding: 40px 20px; width: 100%; flex-grow: 1; }
+        .vs-badge { position: absolute; left: 50%; top: 50px; transform: translateX(-50%); background: #020617; border: 2px solid var(--neon-primary); color: var(--neon-primary); font-family: 'Rajdhani'; font-weight: 900; font-size: 2rem; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 10; box-shadow: 0 0 30px rgba(6,182,212,0.5); }
+        @media (max-width: 768px) { .vs-badge { display: none; } }
 
-        /* Battle Selectors */
-        .battle-btn { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; }
-        .battle-btn.active { background: rgba(6,182,212,0.1); border-color: var(--neon-primary); color: white; }
-        .battle-btn:hover { border-color: rgba(6,182,212,0.5); }
+        .fighter-select { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-primary); border-radius: 16px; color: white; font-size: 1.2rem; font-weight: 800; outline: none; margin-bottom: 30px; cursor: pointer; appearance: none; text-align: center; text-transform: uppercase; letter-spacing: 1px; box-shadow: inset 0 2px 15px rgba(6,182,212,0.2); }
+        .fighter-select option { background: var(--bg-deep); color: white; text-align: left; }
 
-        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+        .fighter-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; transition: 0.4s; position: relative; overflow: hidden; }
+        .fighter-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--neon-primary); }
+        .fighter-card.gold-trim::before { background: var(--gold); }
+        
+        .stat-row { margin-bottom: 25px; }
+        .stat-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #94A3B8; margin-bottom: 8px; letter-spacing: 1px; }
+        .stat-value { color: white; }
+        .progress-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; }
+
+        .college-box { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+
+        footer { text-align: center; padding: 40px 20px; background: #02050a; color: #94A3B8; border-top: 1px solid var(--glass-border); font-size: 0.9rem; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; transition: 0.2s; font-weight: 600; }
+        .footer-links a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -53,189 +81,404 @@
     <div class="grid-bg"></div>
 
     <nav>
-        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
-        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Dashboard</a>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Dashboard</a>
+            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
+            
+            <div class="gamify-pill">
+                <div class="g-streak">🔥 <span id="nav-streak">1</span> Day Streak</div>
+                <div class="w-px h-4 bg-slate-600"></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer</div>
+            </div>
+        </div>
     </nav>
 
-    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
+    <div class="hero">
+        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">Career <span class="text-cyan-400">Battles</span></h1>
+        <p class="text-slate-400 text-base max-w-3xl mx-auto">Execute head-to-head analytical comparisons between elite global professions. Assess risk, reward, and academic difficulty.</p>
+    </div>
+
+    <main class="arena-container relative">
+        <div class="vs-badge">VS</div>
         
-        <header class="mb-10 text-center">
-            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Career <span class="text-cyan-400">Battle Arena</span></h1>
-            <p class="text-slate-400 text-sm">Direct, data-driven comparisons to eliminate confusion.</p>
-        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-0">
+            
+            <div>
+                <select id="fighter1" class="fighter-select" onchange="updateBattle()">
+                    <option value="ai_eng">AI & Machine Learning Engineer</option>
+                    <option value="quant">Quantitative Analyst (Hedge Funds)</option>
+                    <option value="surgeon">Clinical Surgeon (MS/MD)</option>
+                    <option value="pilot">Commercial Airline Pilot</option>
+                    <option value="lawyer">Corporate Lawyer (Tier-1)</option>
+                    <option value="cyber">Cybersecurity Architect</option>
+                </select>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <button class="battle-btn active" onclick="loadBattle('mpc_bipc', this)">MPC vs BiPC</button>
-            <button class="battle-btn" onclick="loadBattle('cse_ece', this)">CSE vs ECE</button>
-            <button class="battle-btn" onclick="loadBattle('btech_degree', this)">B.Tech vs Degree</button>
-            <button class="battle-btn" onclick="loadBattle('india_abroad', this)">India vs Abroad</button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-            <div class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-900 border-2 border-slate-700 w-16 h-16 rounded-full items-center justify-center font-black text-2xl text-slate-500 z-10" style="font-family: 'Rajdhani';">VS</div>
-
-            <div class="glass-module border-t-4 border-t-blue-500">
-                <div class="text-center mb-6 pb-6 border-b border-slate-800">
-                    <h2 class="text-3xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';" id="title-A">MPC Stream</h2>
-                    <p class="text-xs text-slate-400 mt-2 font-bold uppercase tracking-widest" id="sub-A">Engineering & Technology</p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Computational Focus</span> <span id="val-A-1">95%</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-1" style="width: 0%;"></div></div>
+                <div class="fighter-card" id="card1">
                     </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Global Portability</span> <span id="val-A-2">90%</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-2" style="width: 0%;"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Automation Resilience</span> <span id="val-A-3">85%</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-blue" id="bar-A-3" style="width: 0%;"></div></div>
-                    </div>
-                </div>
-
-                <div class="mt-8 bg-black/40 p-5 rounded-xl border border-slate-800">
-                    <h3 class="text-xs text-blue-400 font-bold uppercase tracking-widest mb-2">The Verdict</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed" id="verdict-A">The definitive choice for building algorithms, software, and systems. Opens doors to high-paying global tech hubs.</p>
-                </div>
             </div>
 
-            <div class="glass-module border-t-4 border-t-purple-500">
-                <div class="text-center mb-6 pb-6 border-b border-slate-800">
-                    <h2 class="text-3xl font-black text-white uppercase tracking-tighter" style="font-family: 'Rajdhani';" id="title-B">BiPC Stream</h2>
-                    <p class="text-xs text-slate-400 mt-2 font-bold uppercase tracking-widest" id="sub-B">Medical & Research</p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Memory & Memorization</span> <span id="val-B-1">98%</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-1" style="width: 0%;"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Time to Peak Earning</span> <span id="val-B-2">Low (10+ Yrs)</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-2" style="width: 0%;"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-bold text-slate-300 uppercase"><span>Automation Resilience</span> <span id="val-B-3">95%</span></div>
-                        <div class="stat-bar-bg"><div class="stat-fill fill-purple" id="bar-B-3" style="width: 0%;"></div></div>
-                    </div>
-                </div>
+            <div>
+                <select id="fighter2" class="fighter-select" style="border-color: var(--gold); box-shadow: inset 0 2px 15px rgba(212,175,55,0.2);" onchange="updateBattle()">
+                    <option value="quant">Quantitative Analyst (Hedge Funds)</option>
+                    <option value="ai_eng">AI & Machine Learning Engineer</option>
+                    <option value="surgeon">Clinical Surgeon (MS/MD)</option>
+                    <option value="pilot">Commercial Airline Pilot</option>
+                    <option value="lawyer">Corporate Lawyer (Tier-1)</option>
+                    <option value="cyber">Cybersecurity Architect</option>
+                </select>
 
-                <div class="mt-8 bg-black/40 p-5 rounded-xl border border-slate-800">
-                    <h3 class="text-xs text-purple-400 font-bold uppercase tracking-widest mb-2">The Verdict</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed" id="verdict-B">A highly secure but grueling path focused purely on clinical practice, genetics, and biotechnology research.</p>
-                </div>
+                <div class="fighter-card gold-trim" id="card2">
+                    </div>
             </div>
-        </div>
 
+        </div>
     </main>
 
-    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+    <footer>
+        <div class="footer-links">
+            <a href="future-simulator.html">Future Simulator</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="about.html">About Us</a>
+            <a href="support.html">Contact Support</a>
+        </div>
+        <p>&copy; 2026 AstraForge Admissions Intelligence. Neural Combat Engine.</p>
+    </footer>
 
     <script>
-        const battles = {
-            mpc_bipc: {
-                A: {
-                    title: "MPC Stream", sub: "Engineering & Tech",
-                    labels: ["Mathematical/Computational Focus", "Global Portability", "Startup Scope"],
-                    vals: ["95%", "90%", "High"], bars: [95, 90, 88],
-                    verdict: "The absolute dominant pathway for algorithmic architecture, AI, and engineering. Grants immediate access to massive global tech salaries and allows seamless pivoting into finance and management."
-                },
-                B: {
-                    title: "BiPC Stream", sub: "Medical & Life Sciences",
-                    labels: ["Memory & Memorization", "Time to Peak Earning", "Clinical Authority"],
-                    vals: ["95%", "Slow (10+ Yrs)", "High"], bars: [95, 30, 90],
-                    verdict: "Requires immense patience. Excludes computational architecture entirely. Focuses purely on biological systems, NEET, and localized clinical or laboratory practice."
-                }
+        // Gamification persistence
+        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
+        document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
+
+        // ----------------------------------------------------
+        // 1. THE COMPLETE 150 GLOBAL COLLEGES DATABASE 
+        // ----------------------------------------------------
+        const globalColleges = [
+            { name: "MIT", rank: 1, city: "Cambridge, USA", est: 1861, sat: 1540, ielts: 7.5, board: 95, tuition: "$61,000", pt: "$20/hr", ec: "Intl Olympiads, Tech Startups", scholarship: "Need-Blind", alumni: "130k", history: "Undisputed global leader in tech.", courses: "CS, AI, Aero", region: "USA" },
+            { name: "Stanford University", rank: 2, city: "Stanford, USA", est: 1891, sat: 1530, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$22/hr", ec: "Entrepreneurship, Published Research", scholarship: "Need-based", alumni: "220k", history: "Silicon Valley's academic engine.", courses: "AI, CS, Robotics", region: "USA" },
+            { name: "Harvard University", rank: 3, city: "Cambridge, USA", est: 1636, sat: 1520, ielts: 7.5, board: 95, tuition: "$59,000", pt: "$20/hr", ec: "Global Leadership, Activism", scholarship: "Need-based", alumni: "370k", history: "Oldest institution in the US.", courses: "Law, Med, CS", region: "USA" },
+            { name: "Caltech", rank: 4, city: "Pasadena, USA", est: 1891, sat: 1550, ielts: 7.5, board: 98, tuition: "$60,000", pt: "$20/hr", ec: "High-level STEM Research", scholarship: "Need-based", alumni: "25k", history: "Pure science powerhouse managing NASA JPL.", courses: "Physics, CS, AI", region: "USA" },
+            { name: "Oxford University", rank: 5, city: "Oxford, UK", est: 1096, sat: 1500, ielts: 7.5, board: 95, tuition: "£45,000", pt: "£15/hr", ec: "Academic mastery, Super-curriculars", scholarship: "Clarendon Fund", alumni: "300k", history: "Oldest in the English-speaking world.", courses: "CS, Math, Fin", region: "UK" },
+            { name: "Cambridge University", rank: 6, city: "Cambridge, UK", est: 1209, sat: 1500, ielts: 7.5, board: 95, tuition: "£38,000", pt: "£15/hr", ec: "Intense academic focus, STEP exams", scholarship: "Gates Cambridge", alumni: "280k", history: "Birthplace of modern physics.", courses: "Math, CS, Physics", region: "UK" },
+            { name: "UC Berkeley", rank: 7, city: "Berkeley, USA", est: 1868, sat: 1480, ielts: 7.0, board: 90, tuition: "$48,000", pt: "$18/hr", ec: "Tech projects, Social impact", scholarship: "Regents' Scholarship", alumni: "500k", history: "Flagship public research giant.", courses: "CS, Data Sci, Eng", region: "USA" },
+            { name: "National University of Singapore", rank: 8, city: "Singapore", est: 1905, sat: 1480, ielts: 7.0, board: 92, tuition: "$42,000", pt: "$12/hr", ec: "Leadership, Community service", scholarship: "ASEAN Scholarship", alumni: "300k", history: "Asia's leading global university.", courses: "AI, Eng, Med", region: "Asia" },
+            { name: "ETH Zurich", rank: 9, city: "Zurich, Switzerland", est: 1855, sat: 1520, ielts: 7.5, board: 96, tuition: "CHF 1,500", pt: "CHF 30/hr", ec: "Advanced math/physics", scholarship: "ESOP", alumni: "100k", history: "Einstein's alma mater, robotics hub.", courses: "CS, Robotics, Arch", region: "Europe" },
+            { name: "Imperial College London", rank: 10, city: "London, UK", est: 1907, sat: 1490, ielts: 7.0, board: 93, tuition: "£38,000", pt: "£15/hr", ec: "STEM competitions", scholarship: "President's Scholarship", alumni: "200k", history: "Strictly focused on science and medicine.", courses: "CS, Eng, Med", region: "UK" },
+            { name: "University of Chicago", rank: 11, city: "Chicago, USA", est: 1890, sat: 1520, ielts: 7.5, board: 95, tuition: "$63,000", pt: "$18/hr", ec: "Intellectual curiosity, Writing", scholarship: "UChicago Promise", alumni: "150k", history: "Renowned for rigorous academics and Econ.", courses: "Econ, Fin, CS", region: "USA" },
+            { name: "University of Pennsylvania", rank: 12, city: "Philadelphia, USA", est: 1740, sat: 1520, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$18/hr", ec: "Business ventures, Leadership", scholarship: "Penn Grant", alumni: "280k", history: "Founded by Ben Franklin, home to Wharton.", courses: "Business, Fin, Law", region: "USA" },
+            { name: "Tsinghua University", rank: 13, city: "Beijing, China", est: 1911, sat: 1450, ielts: 7.0, board: 95, tuition: "¥30,000", pt: "¥150/hr", ec: "National science competitions", scholarship: "CGS", alumni: "250k", history: "The MIT of China, driving global AI output.", courses: "CS, AI, Eng", region: "Asia" },
+            { name: "Princeton University", rank: 14, city: "Princeton, USA", est: 1746, sat: 1530, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Deep academic focus", scholarship: "Need-Blind", alumni: "90k", history: "Ivy League excellence, strong undergrad focus.", courses: "Physics, Math, Fin", region: "USA" },
+            { name: "Cornell University", rank: 15, city: "Ithaca, USA", est: 1865, sat: 1500, ielts: 7.5, board: 93, tuition: "$65,000", pt: "$18/hr", ec: "Engineering projects", scholarship: "Cornell Grant", alumni: "260k", history: "Interdisciplinary Ivy League research.", courses: "CS, Eng, Arch", region: "USA" },
+            { name: "Columbia University", rank: 16, city: "New York, USA", est: 1754, sat: 1510, ielts: 7.5, board: 94, tuition: "$63,000", pt: "$25/hr", ec: "Urban impact, publications", scholarship: "Need-based", alumni: "300k", history: "Prestigious Ivy embedded in NYC.", courses: "CS, Law, Fin", region: "USA" },
+            { name: "Yale University", rank: 17, city: "New Haven, USA", est: 1701, sat: 1520, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Performing arts, politics", scholarship: "Need-Blind", alumni: "170k", history: "Producing actors and US Presidents.", courses: "Law, CS, Med", region: "USA" },
+            { name: "EPFL", rank: 18, city: "Lausanne, Switzerland", est: 1969, sat: 1500, ielts: 7.0, board: 95, tuition: "CHF 1,500", pt: "CHF 25/hr", ec: "Tech innovation", scholarship: "Excellence Fellowships", alumni: "50k", history: "Major European center for tech excellence.", courses: "CS, Robotics, Bio", region: "Europe" },
+            { name: "Johns Hopkins", rank: 19, city: "Baltimore, USA", est: 1876, sat: 1500, ielts: 7.5, board: 93, tuition: "$58,000", pt: "$18/hr", ec: "Medical volunteering, bio-research", scholarship: "Bloomberg Scholars", alumni: "200k", history: "America's first research university.", courses: "BioMed, Med, PH", region: "USA" },
+            { name: "University of Edinburgh", rank: 20, city: "Edinburgh, UK", est: 1582, sat: 1450, ielts: 7.0, board: 90, tuition: "£35,000", pt: "£12/hr", ec: "Subject-specific passion", scholarship: "Global Scholarships", alumni: "250k", history: "Ancient Scottish university, AI pioneer.", courses: "AI, Informatics, Med", region: "UK" },
+            { name: "University of Tokyo", rank: 21, city: "Tokyo, Japan", est: 1877, sat: 1450, ielts: 7.0, board: 92, tuition: "¥535,800", pt: "¥1500/hr", ec: "High academic rigor, JLPT prep", scholarship: "MEXT", alumni: "200k", history: "Japan's premier public university.", courses: "Eng, CS, Physics", region: "Asia" },
+            { name: "Carnegie Mellon", rank: 22, city: "USA", sat: 1530, courses: "AI, CS, Robotics" },
+            { name: "KAIST", rank: 23, city: "South Korea", sat: 1460, courses: "CS, Eng, Bio" },
+            { name: "University of Toronto", rank: 24, city: "Canada", sat: 1450, courses: "CS, Data Sci, Med" },
+            { name: "UCLA", rank: 25, city: "USA", sat: 1450, courses: "CS, Film, Psych" },
+            { name: "University of Michigan", rank: 26, city: "USA", sat: 1460, courses: "Eng, CS, Bus" },
+            { name: "Georgia Tech", rank: 27, city: "USA", sat: 1480, courses: "CS, Eng, Aerospace" },
+            { name: "New York University", rank: 28, city: "USA", sat: 1470, courses: "CS, Bus, Law" },
+            { name: "University of Hong Kong", rank: 29, city: "Hong Kong", sat: 1440, courses: "CS, Eng, Law" },
+            { name: "King's College London", rank: 30, city: "UK", sat: 1420, courses: "CS, Med, Law" },
+            { name: "University of Washington", rank: 31, city: "USA", sat: 1420, courses: "CS, Eng, Bio" },
+            { name: "Purdue University", rank: 32, city: "USA", sat: 1400, courses: "Eng, CS, Aero" },
+            { name: "UT Austin", rank: 33, city: "USA", sat: 1420, courses: "CS, Eng, Bus" },
+            { name: "LMU Munich", rank: 34, city: "Germany", sat: 1400, courses: "CS, Physics, Math" },
+            { name: "University of Amsterdam", rank: 35, city: "Netherlands", sat: 1350, courses: "CS, Logic, Bus" },
+            { name: "UIUC", rank: 36, city: "USA", sat: 1430, courses: "CS, Eng, Math" },
+            { name: "UC San Diego", rank: 37, city: "USA", sat: 1410, courses: "CS, BioEng" },
+            { name: "Seoul National University", rank: 38, city: "South Korea", sat: 1400, courses: "CS, Eng, Med" },
+            { name: "UBC", rank: 39, city: "Canada", sat: 1380, courses: "CS, Eng, Env" },
+            { name: "University of Manchester", rank: 40, city: "UK", sat: 1350, courses: "CS, Eng, Chem" },
+            { name: "UW Madison", rank: 41, city: "USA", sat: 1390, courses: "CS, Eng, Data" },
+            { name: "TU Munich", rank: 42, city: "Germany", sat: 1420, courses: "CS, Robotics, AI" },
+            { name: "University of Melbourne", rank: 43, city: "Australia", sat: 1350, courses: "CS, Eng, Med" },
+            { name: "Ohio State University", rank: 44, city: "USA", sat: 1350, courses: "CS, Eng, Bus" },
+            { name: "University of Maryland", rank: 45, city: "USA", sat: 1370, courses: "CS, CyberSec, Eng" },
+            { name: "Penn State", rank: 46, city: "USA", sat: 1350, courses: "CS, Eng, Bus" },
+            { name: "Boston University", rank: 47, city: "USA", sat: 1400, courses: "CS, Bus, Data" },
+            { name: "University of Sydney", rank: 48, city: "Australia", sat: 1320, courses: "CS, Eng, Law" },
+            { name: "University of Minnesota", rank: 49, city: "USA", sat: 1350, courses: "CS, Eng, Bio" },
+            { name: "Northwestern University", rank: 50, city: "USA", sat: 1480, courses: "CS, Eng, Bus" },
+            { name: "UC Santa Barbara", rank: 51, city: "USA", sat: 1400, courses: "CS, Physics" },
+            { name: "UC Irvine", rank: 52, city: "USA", sat: 1380, courses: "CS, Data Sci" },
+            { name: "Brown University", rank: 53, city: "USA", sat: 1480, courses: "CS, Math" },
+            { name: "Dartmouth College", rank: 54, city: "USA", sat: 1470, courses: "CS, Fin" },
+            { name: "Rice University", rank: 55, city: "USA", sat: 1490, courses: "CS, Space" },
+            { name: "Duke University", rank: 56, city: "USA", sat: 1500, courses: "CS, BioMed" },
+            { name: "Vanderbilt University", rank: 57, city: "USA", sat: 1480, courses: "CS, Med" },
+            { name: "University of Rochester", rank: 58, city: "USA", sat: 1400, courses: "CS, Optics" },
+            { name: "Case Western Reserve", rank: 59, city: "USA", sat: 1420, courses: "CS, BioEng" },
+            { name: "Tufts University", rank: 60, city: "USA", sat: 1440, courses: "CS, Int'l" },
+            { name: "USC", rank: 61, city: "USA", sat: 1440, courses: "CS, Film" },
+            { name: "UNC Chapel Hill", rank: 62, city: "USA", sat: 1400, courses: "CS, Med" },
+            { name: "Peking University", rank: 63, city: "China", sat: 1430, courses: "CS, Math" },
+            { name: "University of Glasgow", rank: 64, city: "UK", sat: 1320, courses: "CS, Eng" },
+            { name: "University of Southampton", rank: 65, city: "UK", sat: 1300, courses: "CS, Marine" },
+            { name: "University of Queensland", rank: 66, city: "Australia", sat: 1300, courses: "CS, Bio" },
+            { name: "University of Helsinki", rank: 67, city: "Finland", sat: 1300, courses: "CS, Physics" },
+            { name: "KTH Royal Institute", rank: 68, city: "Sweden", sat: 1350, courses: "CS, Robotics" },
+            { name: "DTU", rank: 69, city: "Denmark", sat: 1350, courses: "CS, Eng" },
+            { name: "CU Boulder", rank: 70, city: "USA", sat: 1300, courses: "Aero, CS" },
+            { name: "University of Warwick", rank: 71, city: "UK", sat: 1350, courses: "CS, Econ, Fin" },
+            { name: "University of Basel", rank: 72, city: "Switzerland", sat: 1350, courses: "BioMed, CS" },
+            { name: "University of Leiden", rank: 73, city: "Netherlands", sat: 1320, courses: "CS, Law" },
+            { name: "University of Auckland", rank: 74, city: "New Zealand", sat: 1300, courses: "CS, Med" },
+            { name: "Georgia Tech (Global)", rank: 75, city: "USA", sat: 1450, courses: "CS, AI" },
+            { name: "NTU", rank: 76, city: "Singapore", sat: 1450, courses: "AI, CS" },
+            { name: "UC Davis", rank: 77, city: "USA", sat: 1350, courses: "CS, Bio" },
+            { name: "UC Santa Cruz", rank: 78, city: "USA", sat: 1320, courses: "CS, Astronomy" },
+            { name: "University of Utah", rank: 79, city: "USA", sat: 1300, courses: "CS, Games" },
+            { name: "Arizona State University", rank: 80, city: "USA", sat: 1280, courses: "CS, Bus" },
+            { name: "University of Florida", rank: 81, city: "USA", sat: 1350, courses: "CS, Eng" },
+            { name: "University of Calgary", rank: 82, city: "Canada", sat: 1300, courses: "Eng, CS" },
+            { name: "University of Waterloo", rank: 83, city: "Canada", sat: 1400, courses: "CS, Math" },
+            { name: "McMaster University", rank: 84, city: "Canada", sat: 1320, courses: "CS, Med" },
+            { name: "University of Alberta", rank: 85, city: "Canada", sat: 1300, courses: "CS, AI" },
+            { name: "University of Notre Dame", rank: 86, city: "USA", sat: 1450, courses: "CS, Eng" },
+            { name: "Georgetown University", rank: 87, city: "USA", sat: 1450, courses: "CS, Int'l" },
+            { name: "WashU in St. Louis", rank: 88, city: "USA", sat: 1480, courses: "CS, Med" },
+            { name: "RPI", rank: 89, city: "USA", sat: 1400, courses: "CS, Robotics" },
+            { name: "Virginia Tech", rank: 90, city: "USA", sat: 1320, courses: "CS, Aero" },
+            { name: "University of Pittsburgh", rank: 91, city: "USA", sat: 1330, courses: "CS, Med" },
+            { name: "University of Iowa", rank: 92, city: "USA", sat: 1280, courses: "CS, Arts" },
+            { name: "UMass Amherst", rank: 93, city: "USA", sat: 1350, courses: "CS, AI" },
+            { name: "Colorado School of Mines", rank: 94, city: "USA", sat: 1380, courses: "Eng, CS" },
+            { name: "Michigan State University", rank: 95, city: "USA", sat: 1250, courses: "CS, Bus" },
+            { name: "University of Notre Dame (AUS)", rank: 96, city: "Australia", sat: 1250, courses: "Med, CS" },
+            { name: "University of Victoria", rank: 97, city: "Canada", sat: 1280, courses: "CS, Bio" },
+            { name: "Syracuse University", rank: 98, city: "USA", sat: 1300, courses: "CS, Bus" },
+            { name: "University of Delaware", rank: 99, city: "USA", sat: 1280, courses: "CS, Chem" },
+            { name: "University of Oregon", rank: 100, city: "USA", sat: 1250, courses: "CS, Env" },
+            { name: "Fudan University", rank: 101, city: "China", sat: 1380, courses: "CS, Econ, Med" },
+            { name: "Zhejiang University", rank: 102, city: "China", sat: 1350, courses: "CS, Eng" },
+            { name: "Kyoto University", rank: 103, city: "Japan", sat: 1400, courses: "CS, Physics" },
+            { name: "UNSW Sydney", rank: 104, city: "Australia", sat: 1300, courses: "CS, Eng" },
+            { name: "Monash University", rank: 105, city: "Australia", sat: 1280, courses: "CS, Pharm" },
+            { name: "UWA", rank: 106, city: "Australia", sat: 1250, courses: "Eng, CS" },
+            { name: "University of Adelaide", rank: 107, city: "Australia", sat: 1250, courses: "CS, Agri" },
+            { name: "University of Geneva", rank: 108, city: "Switzerland", sat: 1300, courses: "Law, CS" },
+            { name: "University of Zurich", rank: 109, city: "Switzerland", sat: 1320, courses: "Med, CS" },
+            { name: "RWTH Aachen", rank: 110, city: "Germany", sat: 1350, courses: "CS, MechEng" },
+            { name: "University of Oslo", rank: 111, city: "Norway", sat: 1280, courses: "CS, Env" },
+            { name: "Uppsala University", rank: 112, city: "Sweden", sat: 1280, courses: "CS, Bio" },
+            { name: "Aarhus University", rank: 113, city: "Denmark", sat: 1280, courses: "CS, Eng" },
+            { name: "Lund University", rank: 114, city: "Sweden", sat: 1280, courses: "CS, Physics" },
+            { name: "Trinity College Dublin", rank: 115, city: "Ireland", sat: 1300, courses: "CS, Arts" },
+            { name: "University College Dublin", rank: 116, city: "Ireland", sat: 1280, courses: "CS, Bus" },
+            { name: "KU Leuven", rank: 117, city: "Belgium", sat: 1320, courses: "CS, Eng" },
+            { name: "Sorbonne University", rank: 118, city: "France", sat: 1300, courses: "Math, CS" },
+            { name: "University of Vienna", rank: 119, city: "Austria", sat: 1280, courses: "CS, Physics" },
+            { name: "IIT Bombay", rank: 120, city: "India", sat: 1450, courses: "CS, Eng" },
+            { name: "IIT Delhi", rank: 121, city: "India", sat: 1450, courses: "CS, Eng" },
+            { name: "IIT Madras", rank: 122, city: "India", sat: 1450, courses: "CS, Eng" },
+            { name: "IIT Kanpur", rank: 123, city: "India", sat: 1420, courses: "CS, Aero" },
+            { name: "IIT Kharagpur", rank: 124, city: "India", sat: 1420, courses: "CS, Eng" },
+            { name: "IISc Bangalore", rank: 125, city: "India", sat: 1480, courses: "Physics, CS" },
+            { name: "Yonsei University", rank: 126, city: "South Korea", sat: 1350, courses: "CS, Med" },
+            { name: "Korea University", rank: 127, city: "South Korea", sat: 1350, courses: "CS, Bus" },
+            { name: "Sungkyunkwan University", rank: 128, city: "South Korea", sat: 1320, courses: "CS, Eng" },
+            { name: "Hanyang University", rank: 129, city: "South Korea", sat: 1300, courses: "CS, Eng" },
+            { name: "CUHK", rank: 130, city: "Hong Kong", sat: 1350, courses: "CS, Med" },
+            { name: "HKUST", rank: 131, city: "Hong Kong", sat: 1380, courses: "CS, Bus" },
+            { name: "CityU Hong Kong", rank: 132, city: "Hong Kong", sat: 1280, courses: "CS, Eng" },
+            { name: "PolyU Hong Kong", rank: 133, city: "Hong Kong", sat: 1280, courses: "CS, Eng" },
+            { name: "National Taiwan Uni", rank: 134, city: "Taiwan", sat: 1350, courses: "CS, Eng" },
+            { name: "NCKU", rank: 135, city: "Taiwan", sat: 1280, courses: "CS, Eng" },
+            { name: "NTHU", rank: 136, city: "Taiwan", sat: 1320, courses: "CS, Physics" },
+            { name: "University of Malaya", rank: 137, city: "Malaysia", sat: 1250, courses: "CS, Med" },
+            { name: "University of Otago", rank: 138, city: "New Zealand", sat: 1250, courses: "Med, CS" },
+            { name: "Victoria Uni Wellington", rank: 139, city: "New Zealand", sat: 1220, courses: "Law, CS" },
+            { name: "University of Canterbury", rank: 140, city: "New Zealand", sat: 1220, courses: "Eng, CS" },
+            { name: "Massey University", rank: 141, city: "New Zealand", sat: 1200, courses: "Aviation, CS" },
+            { name: "Lincoln University", rank: 142, city: "New Zealand", sat: 1180, courses: "Agri, Env" },
+            { name: "Waikato University", rank: 143, city: "New Zealand", sat: 1200, courses: "CS, Bus" },
+            { name: "AUT", rank: 144, city: "New Zealand", sat: 1200, courses: "CS, Design" },
+            { name: "RMIT University", rank: 145, city: "Australia", sat: 1250, courses: "CS, Eng" },
+            { name: "Deakin University", rank: 146, city: "Australia", sat: 1220, courses: "CS, Bus" },
+            { name: "Griffith University", rank: 147, city: "Australia", sat: 1200, courses: "Med, CS" },
+            { name: "La Trobe University", rank: 148, city: "Australia", sat: 1200, courses: "CS, Sports" },
+            { name: "Curtin University", rank: 149, city: "Australia", sat: 1220, courses: "Eng, CS" },
+            { name: "Macquarie University", rank: 150, city: "Australia", sat: 1250, courses: "CS, Finance" }
+        ];
+
+        // ----------------------------------------------------
+        // 2. CAREER COMBAT DATABASE
+        // ----------------------------------------------------
+        const battleDB = {
+            "ai_eng": {
+                title: "AI Engineer", courseCode: "AI", tags: ["Tech", "High Growth"],
+                desc: "Design and train neural networks and LLMs.",
+                salaryRaw: 45, salaryText: "₹45L - ₹1.5Cr+",
+                riskRaw: 15, riskText: "15% (Low Risk)",
+                diffRaw: 90, diffText: "Extreme (Advanced Math)",
+                wlbRaw: 65, wlbText: "6.5/10 (High Burnout)",
+                pros: ["Massive global compensation", "Remote flexibility", "High intellectual prestige"],
+                cons: ["Relentless learning required", "Sedentary screen-time"]
             },
-            cse_ece: {
-                A: {
-                    title: "CSE Branch", sub: "Computer Science",
-                    labels: ["Coding & Algorithms", "Remote Work Scope", "Average Starting Pay"],
-                    vals: ["98%", "Very High", "₹8L - ₹15L"], bars: [98, 95, 85],
-                    verdict: "The software engine of the world. Focuses on data structures, neural networks, and web architecture. Unmatched flexibility and salary ceilings."
-                },
-                B: {
-                    title: "ECE Branch", sub: "Electronics & Comm",
-                    labels: ["Hardware Architecture", "Core Industry Demand", "Syllabus Difficulty"],
-                    vals: ["90%", "Medium-High", "Extreme"], bars: [90, 75, 95],
-                    verdict: "Bridges the physical and digital. Focuses on microprocessors, IoT, and telecommunications. Harder syllabus, but crucial for semiconductor and chip design industries."
-                }
+            "quant": {
+                title: "Quantitative Analyst", courseCode: "Fin", tags: ["Finance", "Math"],
+                desc: "Build mathematical models for high-frequency algorithmic trading.",
+                salaryRaw: 85, salaryText: "₹80L - ₹3Cr+",
+                riskRaw: 40, riskText: "40% (Algo Shift)",
+                diffRaw: 98, diffText: "Pinnacle (Stochastic Calc)",
+                wlbRaw: 30, wlbText: "3/10 (Brutal Hours)",
+                pros: ["Highest starting salaries on earth", "Meritocratic environment", "Elite network"],
+                cons: ["Extremely toxic work culture", "Massive stress and pressure"]
             },
-            btech_degree: {
-                A: {
-                    title: "B.Tech (4 Years)", sub: "Professional Engineering",
-                    labels: ["Technical Depth", "Campus Placement Ratio", "Global Tech Recognition"],
-                    vals: ["90%", "High", "95%"], bars: [90, 85, 95],
-                    verdict: "A heavily weighted, rigorous 4-year technical degree. The baseline requirement for most Tier-1 engineering and tech corporation screenings."
-                },
-                B: {
-                    title: "B.Sc / B.A. (3 Years)", sub: "Academic Degree",
-                    labels: ["Theoretical Focus", "Time to Completion", "Preparation for Govt Exams"],
-                    vals: ["80%", "Fast", "High"], bars: [80, 95, 90],
-                    verdict: "Faster and deeply theoretical. Excellent for entering research academia, or buying time to heavily prepare for UPSC and civil service examinations."
-                }
+            "surgeon": {
+                title: "Clinical Surgeon", courseCode: "Med", tags: ["Medical", "Elite"],
+                desc: "Perform life-saving physical operations on the human body.",
+                salaryRaw: 40, salaryText: "₹25L - ₹2Cr+",
+                riskRaw: 5, riskText: "5% (Untouchable)",
+                diffRaw: 95, diffText: "Extreme (12+ Years)",
+                wlbRaw: 20, wlbText: "2/10 (On Call 24/7)",
+                pros: ["Maximum societal respect", "Directly saves lives", "Immune to AI replacement"],
+                cons: ["Takes over a decade to earn well", "Emotional trauma from patient loss"]
             },
-            india_abroad: {
-                A: {
-                    title: "Indian Institutes (IIT/NIT)", sub: "Domestic Execution",
-                    labels: ["Entrance Brutality", "Tuition Cost", "Alumni Network in India"],
-                    vals: ["Extreme (0.1%)", "Low-Medium", "Unmatched"], bars: [99, 30, 95],
-                    verdict: "Requires surviving the JEE grinder. Secures elite status within India with massive day-zero placements, but subjects students to hyper-competition."
-                },
-                B: {
-                    title: "Global Universities", sub: "International Strategy",
-                    labels: ["Profile Building Reqs", "R&D Infrastructure", "Need-Blind Aid Scope"],
-                    vals: ["High", "World-Class", "High (If Top Tier)"], bars: [85, 98, 80],
-                    verdict: "Focuses on holistic profiles, SAT scores, and essays. Offers unmatched global exposure, research funding, and zero-investment degrees if 100% need-blind scholarships are secured."
-                }
+            "pilot": {
+                title: "Commercial Pilot", courseCode: "Aero", tags: ["Aviation", "Travel"],
+                desc: "Command advanced commercial airliners globally.",
+                salaryRaw: 35, salaryText: "₹24L - ₹1.2Cr",
+                riskRaw: 70, riskText: "70% (Autonomy Risk)",
+                diffRaw: 70, diffText: "High (Medical + Tech)",
+                wlbRaw: 80, wlbText: "8/10 (Zero Take-Home Work)",
+                pros: ["Travel the world", "High starting salary", "Once off the plane, work is done"],
+                cons: ["Medical grounding ruins career", "Huge initial flight school debt (₹50L+)"]
+            },
+            "lawyer": {
+                title: "Corporate Lawyer", courseCode: "Law", tags: ["Legal", "Corporate"],
+                desc: "Negotiate massive mergers and corporate acquisitions.",
+                salaryRaw: 30, salaryText: "₹18L - ₹1.5Cr+",
+                riskRaw: 60, riskText: "60% (AI Drafting)",
+                diffRaw: 85, diffText: "High (CLAT + NLU)",
+                wlbRaw: 25, wlbText: "2.5/10 (Billable Hours)",
+                pros: ["High prestige and corporate power", "Excellent financial scaling"],
+                cons: ["AI will automate basic contract law", "Fierce cutthroat environment"]
+            },
+            "cyber": {
+                title: "Cybersecurity Arch", courseCode: "CS", tags: ["Tech", "Defense"],
+                desc: "Defend global enterprise networks from digital attacks.",
+                salaryRaw: 30, salaryText: "₹15L - ₹80L+",
+                riskRaw: 10, riskText: "10% (Constant Threats)",
+                diffRaw: 80, diffText: "High (Certifications)",
+                wlbRaw: 50, wlbText: "5/10 (On-Call Incidents)",
+                pros: ["Zero unemployment rate", "Highly secure against AI", "Exciting 'hacker' dynamic"],
+                cons: ["High stress during active breaches", "Requires constant certification updates"]
             }
         };
 
-        function loadBattle(key, btnElement) {
-            // UI Update
-            document.querySelectorAll('.battle-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
+        function renderCard(cardId, data, isGold) {
+            const card = document.getElementById(cardId);
+            const color = isGold ? 'var(--gold)' : 'var(--neon-primary)';
+            
+            // Bar Calculation (Max values for scaling)
+            const salWidth = Math.min(100, (data.salaryRaw / 100) * 100);
+            const riskWidth = data.riskRaw;
+            const diffWidth = data.diffRaw;
+            const wlbWidth = data.wlbRaw;
 
-            const data = battles[key];
+            // Risk Color formatting
+            let riskColor = 'var(--success)';
+            if(data.riskRaw > 30) riskColor = '#F59E0B'; // warn
+            if(data.riskRaw > 60) riskColor = 'var(--danger)';
 
-            // Reset Bars
-            for(let i=1; i<=3; i++) {
-                document.getElementById(`bar-A-${i}`).style.width = '0%';
-                document.getElementById(`bar-B-${i}`).style.width = '0%';
+            // College Injection
+            const matchedColleges = globalColleges.filter(c => c.courses.includes(data.courseCode)).slice(0, 2);
+            let collegeHtml = '';
+            if(matchedColleges.length > 0) {
+                collegeHtml = matchedColleges.map(c => `
+                    <div class="college-box">
+                        <div>
+                            <div class="text-white font-bold text-sm">${c.name}</div>
+                            <div class="text-slate-400 text-[10px] uppercase">${c.city}</div>
+                        </div>
+                        <div style="color: ${color};" class="font-black text-sm">#${c.rank}</div>
+                    </div>
+                `).join('');
             }
 
-            setTimeout(() => {
-                // Populate A
-                document.getElementById('title-A').innerText = data.A.title;
-                document.getElementById('sub-A').innerText = data.A.sub;
-                document.getElementById('verdict-A').innerText = data.A.verdict;
-                
-                // Populate B
-                document.getElementById('title-B').innerText = data.B.title;
-                document.getElementById('sub-B').innerText = data.B.sub;
-                document.getElementById('verdict-B').innerText = data.B.verdict;
+            card.innerHTML = `
+                <div class="mb-6">
+                    <div class="tag-container">
+                        ${data.tags.map(t => `<span class="tag" style="border-color:${color}; color:${color}; background:transparent;">${t}</span>`).join('')}
+                    </div>
+                    <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">${data.title}</h2>
+                    <p class="text-sm text-slate-400">${data.desc}</p>
+                </div>
 
-                // Labels & Bars
-                for(let i=1; i<=3; i++) {
-                    // Update Text
-                    document.getElementById(`val-A-${i}`).previousElementSibling.innerText = data.A.labels[i-1];
-                    document.getElementById(`val-A-${i}`).innerText = data.A.vals[i-1];
-                    document.getElementById(`val-B-${i}`).previousElementSibling.innerText = data.B.labels[i-1];
-                    document.getElementById(`val-B-${i}`).innerText = data.B.vals[i-1];
-                    
-                    // Animate Bars
-                    document.getElementById(`bar-A-${i}`).style.width = data.A.bars[i-1] + '%';
-                    document.getElementById(`bar-B-${i}`).style.width = data.B.bars[i-1] + '%';
-                }
-            }, 100);
+                <div class="stat-row">
+                    <div class="stat-header"><span>Peak Salary Limit</span><span class="stat-value">${data.salaryText}</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: ${salWidth}%; background-color: ${color};"></div></div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat-header"><span>AI Automation Risk</span><span class="stat-value">${data.riskText}</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: ${riskWidth}%; background-color: ${riskColor};"></div></div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat-header"><span>Academic Difficulty</span><span class="stat-value">${data.diffText}</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: ${diffWidth}%; background-color: ${color};"></div></div>
+                </div>
+
+                <div class="stat-row mb-8">
+                    <div class="stat-header"><span>Work-Life Balance</span><span class="stat-value">${data.wlbText}</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: ${wlbWidth}%; background-color: ${color};"></div></div>
+                </div>
+
+                <div class="bg-black/50 border border-white/10 p-5 rounded-2xl mb-6">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Top Target Institutions</h3>
+                    ${collegeHtml}
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Advantage</h4>
+                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-emerald-500">
+                            ${data.pros.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-2">Drawback</h4>
+                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-red-500">
+                            ${data.cons.map(c => `<li>${c}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
         }
 
-        // Initialize first battle
-        setTimeout(() => {
-            loadBattle('mpc_bipc', document.querySelector('.battle-btn'));
-        }, 300);
+        function updateBattle() {
+            const f1 = document.getElementById('fighter1').value;
+            const f2 = document.getElementById('fighter2').value;
+
+            // Small delay for visual impact
+            document.getElementById('card1').style.opacity = 0;
+            document.getElementById('card2').style.opacity = 0;
+
+            setTimeout(() => {
+                renderCard('card1', battleDB[f1], false);
+                renderCard('card2', battleDB[f2], true);
+                
+                document.getElementById('card1').style.opacity = 1;
+                document.getElementById('card2').style.opacity = 1;
+
+                // Award XP
+                userXP += 10;
+                localStorage.setItem('pilot_xp', userXP);
+                document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
+            }, 300);
+        }
+
+        // Initialize on load
+        window.onload = updateBattle;
     </script>
 </body>
 </html>
