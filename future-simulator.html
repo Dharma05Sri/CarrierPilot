@@ -3,52 +3,64 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate step-by-step academic roadmaps for elite global careers.">
-    <title>Future Simulator | CareerPilot</title>
+    <title>Future Simulator | CareerPilot Admissions Intelligence</title>
+    
+    <meta name="description" content="Simulate long-term career execution roadmaps. Generate precise timelines for elite engineering, medical, and finance trajectories.">
+    <meta name="robots" content="index, follow">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-deep: #020617; 
-            --glass-base: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --neon-primary: #06B6D4;
-        }
-        
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; --success: #10b981; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
-
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+
         nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
         .brand span { color: var(--neon-primary); }
 
-        .glass-module { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .gamify-pill { display: flex; align-items: center; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 800; gap: 12px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .g-streak { color: #F59E0B; display: flex; align-items: center; gap: 4px; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
 
-        /* Timeline UI */
-        .timeline { position: relative; padding-left: 40px; margin-top: 30px; border-left: 2px solid rgba(6,182,212,0.3); }
-        .timeline-item { position: relative; margin-bottom: 30px; animation: slideIn 0.5s ease-out forwards; opacity: 0; transform: translateX(-20px); }
-        .timeline-item::before { content: ''; position: absolute; left: -46px; top: 0px; width: 12px; height: 12px; border-radius: 50%; background: var(--neon-primary); box-shadow: 0 0 12px var(--neon-primary); }
+        .hero { padding: 50px 20px; text-align: center; border-bottom: 1px solid var(--glass-border); background: radial-gradient(circle at top, rgba(6,182,212,0.05) 0%, transparent 80%); }
         
-        /* Staggered Animation */
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .layout-grid { display: grid; grid-template-columns: 350px 1fr; gap: 40px; max-width: 1400px; margin: 40px auto; padding: 0 20px; align-items: start; width: 100%; }
+        @media (max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
 
-        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+        .panel { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; }
+        
+        select { width: 100%; padding: 16px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-size: 1rem; outline: none; margin-bottom: 20px; cursor: pointer; }
+        select:focus { border-color: var(--neon-primary); box-shadow: 0 0 20px rgba(6,182,212,0.2); }
+        select option { background: var(--bg-deep); }
+        
+        .btn-generate { width: 100%; background: linear-gradient(135deg, var(--neon-primary), #3b82f6); color: white; font-weight: 900; padding: 16px; border-radius: 12px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 10px 30px rgba(6,182,212,0.3); }
+        .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(6,182,212,0.5); }
 
-        .skill-tag { background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3); color: var(--neon-primary); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        /* Advanced Timeline CSS */
+        .timeline-container { position: relative; padding-left: 30px; margin-top: 20px; }
+        .timeline-container::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; background: rgba(255,255,255,0.1); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot { position: absolute; left: -35px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--neon-primary); box-shadow: 0 0 15px var(--neon-primary); border: 2px solid var(--bg-deep); }
+        
+        .side-stats { display: flex; flex-direction: column; gap: 20px; }
+        .stat-box { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; }
+        .stat-label { font-size: 0.7rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 5px; }
+        .stat-value { font-size: 1.5rem; font-weight: 900; color: white; }
 
-        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+        .skill-tag { display: inline-block; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3); color: var(--neon-primary); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin: 0 5px 5px 0; }
+
+        footer { text-align: center; padding: 40px 20px; background: #02050a; color: #94A3B8; border-top: 1px solid var(--glass-border); font-size: 0.9rem; margin-top: auto; }
+        .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; transition: 0.2s; font-weight: 600; }
+        .footer-links a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -56,133 +68,203 @@
     <div class="grid-bg"></div>
 
     <nav>
-        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
-        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← Dashboard</a>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Dashboard</a>
+            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
+            
+            <div class="gamify-pill">
+                <div class="g-streak">🔥 <span id="nav-streak">1</span> Day Streak</div>
+                <div class="w-px h-4 bg-slate-600"></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer <span class="text-white ml-1 bg-white/10 px-2 py-1 rounded"><span id="nav-xp">0</span> XP</span></div>
+            </div>
+        </div>
     </nav>
 
-    <main class="flex-grow max-w-5xl mx-auto w-full p-4 md:p-8">
-        <header class="mb-10 text-center">
-            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Future <span class="text-cyan-400">Simulator</span></h1>
-            <p class="text-slate-400 text-sm">Select your target destination. We generate the execution protocol.</p>
-        </header>
+    <div class="hero">
+        <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4">Future <span class="text-cyan-400">Simulator</span></h1>
+        <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">Select your target destination. The engine will generate the precise, multi-year execution protocol.</p>
+    </div>
 
-        <div class="glass-module mb-8">
-            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Target Trajectory</label>
-            <select id="sim-selector" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white font-bold outline-none focus:border-cyan-400 transition-colors cursor-pointer appearance-none" onchange="renderSimulator()">
-                <option value="ai">AI & Machine Learning Engineer (Global Tech)</option>
+    <main class="layout-grid">
+        
+        <aside class="panel">
+            <h2 class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-6">Simulation Parameters</h2>
+            
+            <label class="block text-white text-sm font-bold mb-2">Target Trajectory</label>
+            <select id="simTarget">
+                <option value="ai_eng">AI & Machine Learning Engineer</option>
                 <option value="quant">Quantitative Analyst (Hedge Funds)</option>
-                <option value="law">Corporate Litigator (Tier-1 Firm)</option>
-                <option value="pilot">Commercial Airline Captain</option>
+                <option value="pilot">Commercial Airline Pilot</option>
+                <option value="surgeon">Clinical Surgeon (MS/MD)</option>
             </select>
-        </div>
+            
+            <label class="block text-white text-sm font-bold mb-2">Current Phase</label>
+            <select id="simStart">
+                <option value="highschool">High School (Class 11/12)</option>
+                <option value="undergrad">Undergraduate (Year 1/2)</option>
+            </select>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="md:col-span-2 glass-module">
-                <h2 class="text-xl font-bold text-white uppercase tracking-widest border-b border-slate-800 pb-3 mb-6" style="font-family: 'Rajdhani';">Execution Timeline</h2>
-                <div class="timeline" id="timeline-container">
+            <button class="btn-generate" onclick="generateSimulation()">Initialize Execution Protocol</button>
+            
+            <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                <div class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-2">Simulation Status</div>
+                <div class="text-emerald-400 font-black text-sm tracking-widest uppercase animate-pulse">Systems Online</div>
+            </div>
+        </aside>
+
+        <div class="panel grid grid-cols-1 md:grid-cols-3 gap-8 hidden" id="outputPanel">
+            
+            <div class="md:col-span-2">
+                <h2 style="font-family: 'Rajdhani';" class="text-3xl font-black text-white uppercase tracking-tighter mb-1 border-b border-white/10 pb-4">Execution Timeline</h2>
+                <div class="text-cyan-400 font-bold text-sm uppercase tracking-widest mb-6 mt-2" id="resTitle">AI & Machine Learning Engineer (Global Tech)</div>
+                
+                <div class="timeline-container" id="timelineContent">
                     </div>
             </div>
 
-            <div class="space-y-6">
-                <div class="glass-module p-6 text-center">
-                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Peak Compensation</div>
-                    <div class="text-3xl font-black text-emerald-400" id="stat-salary">₹0L+</div>
-                    <div class="border-t border-slate-800 my-4"></div>
-                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Automation Risk</div>
-                    <div class="text-lg font-bold text-cyan-400" id="stat-risk">Calculating...</div>
+            <div class="side-stats">
+                <div class="stat-box border-t-2 border-t-emerald-400">
+                    <div class="stat-label">Peak Compensation</div>
+                    <div class="stat-value text-emerald-400" id="resSalary">₹40L - ₹80L+</div>
+                </div>
+                
+                <div class="stat-box border-t-2 border-t-cyan-400">
+                    <div class="stat-label">Automation Risk</div>
+                    <div class="stat-value text-cyan-400" id="resRisk">Low (Automation Builders)</div>
                 </div>
 
-                <div class="glass-module p-6">
-                    <h3 class="text-xs font-bold text-white uppercase tracking-widest mb-4">Required Skill Arsenal</h3>
-                    <div class="flex flex-wrap gap-2" id="stat-skills">
+                <div class="stat-box">
+                    <div class="stat-label mb-3">Required Skill Arsenal</div>
+                    <div id="resSkills">
                         </div>
                 </div>
 
-                <div class="bg-amber-900/20 border border-amber-500/30 rounded-2xl p-6">
-                    <h3 class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2 flex items-center gap-2"><span>⚡</span> Contingency Pivot</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed" id="stat-pivot">Fallback plan logic.</p>
+                <div class="stat-box bg-slate-900/80 border-t-2 border-t-[var(--gold)]">
+                    <div class="stat-label text-[var(--gold)]">⚡ Contingency Pivot</div>
+                    <p class="text-xs text-slate-300 leading-relaxed font-medium mt-2" id="resPivot">
+                        A rigorous mathematical foundation allows an immediate pivot into Data Science or Product Management.
+                    </p>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+    <footer>
+        <div class="footer-links mb-4">
+            <a href="career-wiki.html">Encyclopedia</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <p>&copy; 2026 AstraForge Admissions Intelligence. Neural Simulation Engine.</p>
+    </footer>
 
     <script>
-        const simData = {
-            ai: {
-                salary: "₹40L - ₹80L+", risk: "Low (Automation Builders)",
+        // Persistence UI
+        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
+        document.getElementById('nav-xp').innerText = userXP;
+        document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
+
+        // Massive Intelligent Simulation Database
+        const simulations = {
+            "ai_eng": {
+                title: "AI & Machine Learning Engineer (Global Tech)",
+                salary: "₹40L - ₹80L+",
+                risk: "Low (Automation Builders)",
                 skills: ["Python Architecture", "Linear Algebra", "Data Structures", "Neural Networks"],
-                pivot: "A rigorous mathematical and algorithmic foundation allows an immediate pivot into Data Science, Product Management, or launching a high-growth SaaS startup.",
                 timeline: [
-                    { phase: "Intermediate (Class 11/12)", desc: "Lock into the MPC stream. Focus intensely on Calculus and Physics. Begin mastering Python fundamentals through offline, theoretical 'paper coding' to build unbreakable logical intuition." },
+                    { phase: "Intermediate (Class 11/12)", desc: "Lock into the MPC stream. Focus intensely on Calculus and Physics. Begin mastering Python fundamentals through offline, theoretical 'paper coding' to build unbreakable logical intuition before touching an IDE." },
                     { phase: "Standardized Testing", desc: "Execute a zero-investment global admissions strategy. Target a 1550+ SAT score utilizing 7 College Board baselines, 10 specialized SAT Panda drills, and 3 Princeton Review 2026 simulations." },
                     { phase: "B.Tech (CSE / AI & ML)", desc: "Enroll in a premier undergraduate engineering program. Shift focus from basic syntax to complex Data Structures and Algorithms (DSA) and building proprietary machine learning models." },
                     { phase: "Industry Integration", desc: "Secure internships at tech titans (Google/Meta/Microsoft) by demonstrating a portfolio of deployed, functional AI tools, bypassing traditional recruitment bottlenecks." }
-                ]
+                ],
+                pivot: "A rigorous mathematical and algorithmic foundation allows an immediate pivot into Data Science, Product Management, or launching a high-growth SaaS startup."
             },
-            quant: {
-                salary: "₹50L - ₹1Cr+", risk: "Minimal",
-                skills: ["C++ / Python", "Stochastic Calculus", "Algorithmic Trading", "Probability"],
-                pivot: "If the intense pressure of Wall Street/Dalal Street isn't preferred, pivoting to Actuarial Science or Enterprise Risk Management is seamless and highly lucrative.",
+            "quant": {
+                title: "Quantitative Analyst (Hedge Funds)",
+                salary: "₹80L - ₹3Cr+",
+                risk: "Moderate (Algo Dependency)",
+                skills: ["Stochastic Calculus", "C++ Low Latency", "Financial Modeling", "Statistics"],
                 timeline: [
-                    { phase: "Intermediate (Class 11/12)", desc: "Dominate the MPC stream. The entire career rests on elite-level mathematical competence and raw computational speed." },
-                    { phase: "Undergraduate Study", desc: "Pursue Mathematics, Statistics, or Computer Science at a Tier-1 institute (IITs/ISI). Participate relentlessly in competitive programming." },
-                    { phase: "Specialized Masters (Optional)", desc: "Obtain a Master's in Financial Engineering (MFE) to master derivatives pricing and stochastic models." },
-                    { phase: "Hedge Fund Deployment", desc: "Write high-frequency trading algorithms for proprietary trading firms, moving millions of dollars in milliseconds." }
-                ]
+                    { phase: "Mathematical Foundation", desc: "Dominate the MPC curriculum. Engineering entrance exams (JEE/SAT) act as the primary filter for mathematical dominance." },
+                    { phase: "Elite Undergraduate", desc: "Gain admission to a globally recognized institution (IITs, Ivy League, Oxbridge) focusing purely on Mathematics, Physics, or Computer Science." },
+                    { phase: "Algorithmic Development", desc: "Learn C++ for high-frequency, low-latency execution. Build automated trading models on historical stock market data." },
+                    { phase: "Firm Placement", desc: "Apply directly to elite proprietary trading firms (Jane Street, Optiver, Citadel) passing their rigorous, rapid-fire mental math assessments." }
+                ],
+                pivot: "Unparalleled mathematical skills allow instantaneous transitions into elite Software Engineering, Data Science, or Corporate Financial Strategy."
             },
-            law: {
-                salary: "₹18L - ₹45L+", risk: "Medium (Research Automated)",
-                skills: ["Contract Law", "High-Speed Reading", "Negotiation", "Logical Reasoning"],
-                pivot: "A law degree from a premier institute provides immense leverage for entering Civil Services (UPSC), Corporate Strategy, or Public Policy.",
+            "pilot": {
+                title: "Commercial Airline Pilot",
+                salary: "₹24L - ₹1.5Cr+",
+                risk: "High (Autonomous Cargo Systems)",
+                skills: ["Aeronautical Theory", "Spatial Awareness", "Crisis Management", "Meteorology"],
                 timeline: [
-                    { phase: "Intermediate (Class 11/12)", desc: "Any stream is valid, though HEC/CEC/MEC are common. Develop voracious reading habits and flawless logical deduction skills." },
-                    { phase: "The CLAT Gateway", desc: "Clear the Common Law Admission Test (CLAT) with an elite rank to secure a seat at a top-3 National Law University (NLU)." },
-                    { phase: "BA-LLB (5 Years)", desc: "Maintain a high GPA, participate in international moot court competitions, and secure internships with Tier-1 law firms every semester." },
-                    { phase: "Day-Zero Placement", desc: "Get recruited directly from campus by massive corporate firms managing international mergers, acquisitions, and IP rights." }
-                ]
+                    { phase: "Academic & Medical Clearance", desc: "Maintain strong MPC academics (Physics and Math are strictly mandated). Clear the rigorous DGCA Class 1 Medical Examination." },
+                    { phase: "Flight School (CPL)", desc: "Enroll in an approved aviation academy (domestic or overseas). Accumulate 200 hours of rigorous flight training to secure a Commercial Pilot License." },
+                    { phase: "Type Rating", desc: "Execute heavy capital investment to secure a specific Type Rating (e.g., Airbus A320 or Boeing 737) to become employable by major airlines." },
+                    { phase: "Command Upgrade", desc: "Log thousands of co-pilot flight hours to eventually upgrade to Captain, unlocking maximum global compensation tiers." }
+                ],
+                pivot: "Aviation regulations, Air Traffic Control (ATC), or pivot into Aerospace Operations Management if medical grounding occurs."
             },
-            pilot: {
-                salary: "₹2L - ₹8L / Month", risk: "Medium (Autopilot Advances)",
-                skills: ["Spatial Awareness", "Aerodynamics", "Meteorology", "Crisis Management"],
-                pivot: "If grounded due to strict DGCA medicals, aviation knowledge translates directly into Air Traffic Control (ATC), Drone Fleet Management, or Aviation Operations.",
+            "surgeon": {
+                title: "Clinical Surgeon (MS/MD)",
+                salary: "₹25L - ₹2Cr+",
+                risk: "Zero (Human Empathy Required)",
+                skills: ["Anatomy", "Surgical Precision", "Extreme Stamina", "Diagnostics"],
                 timeline: [
-                    { phase: "Intermediate (Class 11/12)", desc: "MPC is strictly mandatory. Obtain DGCA Class 2 and Class 1 Medical clearances before committing any finances to flight training." },
-                    { phase: "Ground School & Flying", desc: "Enroll in a reputed flight academy (India, USA, or South Africa). Clear DGCA ground papers (Navigation, Meteorology, Aviation Law)." },
-                    { phase: "CPL Acquisition", desc: "Log the mandatory 200 hours of flight time to earn your Commercial Pilot License (CPL)." },
-                    { phase: "Type Rating & Induction", desc: "Invest in a Type Rating for a specific aircraft (e.g., Airbus A320, Boeing 737) and get inducted into a commercial airline as a First Officer." }
-                ]
+                    { phase: "Biological Core", desc: "Master the BiPC stream with absolute focus on Zoology and Botany. Initiate relentless, high-volume memory retention strategies." },
+                    { phase: "Medical Entrance", desc: "Clear national medical entrances (NEET) in the top 1% percentile to secure highly subsidized government medical college seats." },
+                    { phase: "MBBS Foundation", desc: "Survive 5.5 years of grueling medical school and clinical rotations, building an encyclopedic knowledge of human pathology." },
+                    { phase: "Surgical Specialization", desc: "Clear postgraduate exams to enter MS (Master of Surgery) or M.Ch programs, enduring 80+ hour work weeks to master surgical execution." }
+                ],
+                pivot: "Medical Consulting, Pharmaceutical R&D, Healthcare Administration, or specialized Clinical Diagnostics."
             }
         };
 
-        function renderSimulator() {
-            const val = document.getElementById('sim-selector').value;
-            const data = simData[val];
+        function generateSimulation() {
+            const target = document.getElementById('simTarget').value;
+            const data = simulations[target];
+            const panel = document.getElementById('outputPanel');
 
-            document.getElementById('stat-salary').innerText = data.salary;
-            document.getElementById('stat-risk').innerText = data.risk;
-            document.getElementById('stat-pivot').innerText = data.pivot;
+            // Render Text Data
+            document.getElementById('resTitle').innerText = data.title;
+            document.getElementById('resSalary').innerText = data.salary;
+            document.getElementById('resRisk').innerText = data.risk;
+            document.getElementById('resPivot').innerText = data.pivot;
 
-            let skillsHTML = '';
-            data.skills.forEach(s => skillsHTML += `<span class="skill-tag">${s}</span>`);
-            document.getElementById('stat-skills').innerHTML = skillsHTML;
+            // Render Skills
+            document.getElementById('resSkills').innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
 
-            let tlHTML = '';
-            data.timeline.forEach(t => {
-                tlHTML += `
-                    <div class="timeline-item">
-                        <h3 class="text-lg font-bold text-cyan-400 mb-1">${t.phase}</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">${t.desc}</p>
-                    </div>
-                `;
-            });
-            document.getElementById('timeline-container').innerHTML = tlHTML;
+            // Render Timeline
+            document.getElementById('timelineContent').innerHTML = data.timeline.map(t => `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-white font-bold text-lg mb-1">${t.phase}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">${t.desc}</p>
+                </div>
+            `).join('');
+
+            // Reveal Panel
+            panel.classList.remove('hidden');
+
+            // Award XP
+            userXP += 15;
+            localStorage.setItem('pilot_xp', userXP);
+            document.getElementById('nav-xp').innerText = userXP;
+            document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
+            
+            // Scroll to view
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Initialize on load
-        renderSimulator();
+        // Auto-run once on load for immediate AdSense text density
+        window.onload = () => {
+            document.getElementById('outputPanel').classList.remove('hidden');
+            generateSimulation();
+        };
     </script>
 </body>
 </html>
