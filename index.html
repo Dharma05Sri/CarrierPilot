@@ -12,7 +12,6 @@
     <meta name="description" content="CareerPilot is an AI-powered career guidance platform. Simulate career roadmaps, discover elite engineering colleges, and map your zero-investment education strategy.">
     <meta name="keywords" content="career guidance, AI career match, engineering roadmap, SAT college predictor, fully funded scholarships, career pilot">
     <meta name="author" content="AstraForge Network">
-    <meta name="robots" content="index, follow">
     
     <script type="application/ld+json">
     {
@@ -28,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; }
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; --danger: #ef4444; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
@@ -51,6 +50,8 @@
             .md-span-8 { grid-column: span 8; }
             .md-span-4 { grid-column: span 4; }
             .md-span-6 { grid-column: span 6; }
+            .md-span-5 { grid-column: span 5; }
+            .md-span-7 { grid-column: span 7; }
         }
 
         .salary-slider { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none; margin: 15px 0; }
@@ -77,9 +78,9 @@
         </div>
     </nav>
 
-    <header class="text-center mt-8 px-4">
+    <header class="text-center mt-8 px-4 mb-4">
         <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">The Career <span style="color: var(--neon-primary);">Super App</span></h1>
-        <p class="text-slate-400 text-xs md:text-sm mt-3 max-w-xl mx-auto">Simulate elite execution roadmaps, predict global admissions, and calculate dream salaries based on hard data.</p>
+        <p class="text-slate-400 text-xs md:text-sm mt-3 max-w-xl mx-auto">Simulate elite execution roadmaps, track critical exam deadlines, and deploy global scholarship strategies.</p>
     </header>
 
     <main class="bento-container">
@@ -87,7 +88,7 @@
         <div class="bento-card col-span-full md-span-7 bg-gradient-to-br from-slate-900 to-slate-800 border-[var(--neon-primary)]/50">
             <div class="absolute top-0 right-0 bg-[var(--neon-primary)] text-[#020617] text-[9px] font-black uppercase px-3 py-1 rounded-bl-lg">Data Driven</div>
             <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Dream Salary <span class="text-[var(--neon-primary)]">Calculator</span></h2>
-            <p class="text-xs text-slate-400 mb-4">Enter target annual compensation. The neural engine outputs the exact execution paths.</p>
+            <p class="text-xs text-slate-400 mb-4">Enter target annual compensation. The neural engine outputs the exact execution paths required to hit it globally.</p>
             
             <div class="text-center mb-2">
                 <span class="text-4xl font-black text-white tracking-tighter" id="salaryOutput">₹24,00L</span><span class="text-slate-500 font-bold text-sm"> / Year</span>
@@ -103,51 +104,91 @@
             </div>
         </div>
 
-        <a href="colleges.html" class="bento-card col-span-full md-span-5 border-t-4 border-t-[var(--gold)] bg-gradient-to-b from-[#d4af37]/5 to-transparent bento-hover">
-            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Global Admissions <span style="color: var(--gold);">Predictor</span></h2>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed">We moved our 150-Institution Matrix to a dedicated engine. Filter top-tier universities, analyze SAT benchmarks, and view detailed financial aid strategies for international students.</p>
-            <div class="mt-auto flex justify-between items-center">
-                <span class="text-[10px] bg-[var(--gold)] text-black px-2 py-1 rounded font-bold uppercase tracking-widest">Launch Engine</span>
-                <span class="text-[var(--gold)] font-black text-xl">→</span>
+        <div class="bento-card col-span-full md-span-5 border-t-4 border-t-[var(--danger)] bg-gradient-to-b from-red-500/5 to-transparent flex flex-col justify-between">
+            <div>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Global Exam <span style="color: var(--danger);">Tracker</span></h2>
+                <p class="text-xs text-slate-400 mb-4">Live countdowns for the SAT, JEE Advanced, AP EAPCET, and critical international standardized testing windows.</p>
             </div>
-        </a>
+            <a href="exams.html" class="bg-red-900/40 border border-red-500/50 hover:bg-red-500/20 text-red-400 p-3 rounded-lg flex justify-between items-center transition text-decoration-none">
+                <span class="text-[10px] font-bold uppercase tracking-widest">Launch Tracker</span>
+                <span class="font-black text-lg">→</span>
+            </a>
+        </div>
 
-        <div class="bento-card col-span-full md-span-4 bento-hover">
-            <h2 class="text-xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Battles</h2>
+        <div class="bento-card col-span-full md-span-6 bento-hover">
+            <h2 class="text-xl font-black text-white uppercase tracking-tighter mb-1" style="font-family: 'Rajdhani';">Career Battles 2.0</h2>
             <p class="text-[10px] text-slate-400 mb-4 uppercase tracking-widest font-bold">Data-Driven Face-Offs</p>
             
-            <div class="space-y-2">
+            <div class="space-y-2 h-48 overflow-y-auto pr-2 custom-scroll">
+                <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
+                    <div class="font-bold text-white text-xs tracking-wide">MPC <span class="text-slate-500 mx-1">vs</span> BiPC</div>
+                    <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
+                </a>
                 <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
                     <div class="font-bold text-white text-xs tracking-wide">CSE <span class="text-slate-500 mx-1">vs</span> ECE</div>
                     <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
                 </a>
                 <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
-                    <div class="font-bold text-white text-xs tracking-wide">AI Engineer <span class="text-slate-500 mx-1">vs</span> Quant</div>
+                    <div class="font-bold text-white text-xs tracking-wide">Civil <span class="text-slate-500 mx-1">vs</span> Mechanical</div>
+                    <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
+                </a>
+                <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
+                    <div class="font-bold text-white text-xs tracking-wide">AI Engineer <span class="text-slate-500 mx-1">vs</span> UPSC (IAS)</div>
+                    <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
+                </a>
+                <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
+                    <div class="font-bold text-white text-xs tracking-wide">B.Tech (India) <span class="text-slate-500 mx-1">vs</span> B.S. (Abroad)</div>
+                    <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
+                </a>
+                <a href="career-battles.html" class="flex justify-between items-center bg-slate-900/60 p-3 rounded-lg border border-slate-800 hover:border-[var(--neon-primary)] transition-all">
+                    <div class="font-bold text-white text-xs tracking-wide">Master's (GATE) <span class="text-slate-500 mx-1">vs</span> Master's (GRE)</div>
                     <div class="text-[9px] text-[var(--neon-primary)] uppercase tracking-widest">Compare →</div>
                 </a>
             </div>
+            <style>
+                .custom-scroll::-webkit-scrollbar { width: 4px; }
+                .custom-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+            </style>
         </div>
 
-        <div class="bento-card col-span-full md-span-8">
+        <a href="colleges.html" class="bento-card col-span-full md-span-6 border-t-4 border-t-[var(--gold)] bg-gradient-to-b from-[#d4af37]/5 to-transparent bento-hover">
+            <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">Admissions <span style="color: var(--gold);">Predictor</span></h2>
+            <p class="text-xs text-slate-400 mb-6 leading-relaxed">Filter 150 top-tier universities, analyze SAT execution benchmarks, and view structured financial aid parameters for international scholars.</p>
+            <div class="mt-auto flex justify-between items-center">
+                <span class="text-[10px] bg-[var(--gold)] text-black px-2 py-1 rounded font-bold uppercase tracking-widest">Launch Matrix</span>
+                <span class="text-[var(--gold)] font-black text-xl">→</span>
+            </div>
+        </a>
+
+        <div class="bento-card col-span-full">
             <h2 class="text-xl font-black text-white uppercase tracking-tighter mb-4" style="font-family: 'Rajdhani';">Enterprise Modules</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
                 <a href="career-dna.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">🧬</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">DNA Test</div>
+                    <div class="text-2xl mb-1">🧬</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">DNA Test</div>
                 </a>
                 <a href="career-wiki.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">📚</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">Wiki</div>
+                    <div class="text-2xl mb-1">📚</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">Wiki</div>
                 </a>
                 <a href="future-simulator.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">⏳</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">Simulator</div>
+                    <div class="text-2xl mb-1">⏳</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">Simulator</div>
+                </a>
+                <a href="scholarships.html" class="bg-emerald-900/20 border border-emerald-900/50 p-3 rounded-lg text-center hover:border-emerald-400 transition-colors">
+                    <div class="text-2xl mb-1">💰</div><div class="text-[8px] font-bold text-emerald-400 uppercase tracking-widest">Grants</div>
                 </a>
                 <a href="careergpt.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">🤖</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">Ask GPT</div>
+                    <div class="text-2xl mb-1">🤖</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">Ask GPT</div>
                 </a>
                 <a href="resume-analyzer.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">📄</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">Resume AI</div>
+                    <div class="text-2xl mb-1">📄</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">Resume AI</div>
                 </a>
                 <a href="mock-interview.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
-                    <div class="text-2xl mb-1">🎙️</div><div class="text-[9px] font-bold text-white uppercase tracking-widest">Interviews</div>
+                    <div class="text-2xl mb-1">🎙️</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">Interviews</div>
+                </a>
+                <a href="future-demand.html" class="bg-slate-900/80 border border-slate-700 p-3 rounded-lg text-center hover:border-[var(--neon-primary)] transition-colors">
+                    <div class="text-2xl mb-1">📈</div><div class="text-[8px] font-bold text-white uppercase tracking-widest">AI Impact</div>
+                </a>
+                <a href="insights.html" class="bg-purple-900/20 border border-purple-900/50 p-3 rounded-lg text-center hover:border-purple-400 transition-colors">
+                    <div class="text-2xl mb-1">🧠</div><div class="text-[8px] font-bold text-purple-400 uppercase tracking-widest">Insights</div>
                 </a>
             </div>
         </div>
@@ -184,10 +225,6 @@
             else if(val < 80) matchEl.innerText = "Quant Finance / Commercial Pilot";
             else matchEl.innerText = "Elite Tech Architecture / Hedge Funds";
         }
-        
-        // Basic HUD Init fallback in case pilot-core.js is delayed
-        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
-        document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
     </script>
     <script src="pilot-core.js" defer></script>
 </body>
