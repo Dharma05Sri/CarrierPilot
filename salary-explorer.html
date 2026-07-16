@@ -1,128 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global Strategy Analytics & AdSense Monitization Headers -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salary Explorer | CareerPilot Intelligence</title>
+    <title>Salary Explorer | CareerPilot Compensation Matrix</title>
     
-    <meta name="description" content="Explore live salary data, peak earning potential, and automation risk for elite careers in Engineering, Finance, Medicine, and Law.">
-    <meta name="keywords" content="salary explorer, career salary data, top paying jobs, AI risk jobs, career pilot salary, career growth">
+    <!-- Premium Technical SEO Metadata -->
+    <meta name="description" content="Analyze long-term compensation trajectories, tier-based global salary metrics, structural demand velocity, and future AI automation risk profiling for high-yield paths.">
+    <meta name="keywords" content="salary explorer, career compensation matrix, software dev pay scale, quant finance salaries, commercial pilot income, tier-1 law salary, career pilot data">
+    <meta name="author" content="AstraForge Network">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://career.astraforage.in/salary-explorer.html">
+
+    <!-- Structured Data Engine for Automated Crawler Authority Validation -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Which careers are immune to AI automation?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Medical surgery, complex legal litigation, and high-level strategy roles remain high-human-touch and low-AI-risk." }
-      }]
+      "@type": "DataFeed",
+      "name": "Global Career Compensation & Strategy Matrix",
+      "description": "High-fidelity strategic compensation dataset monitoring starting packages, mid-senior averages, top 1% peak parameters, and automation sustainability metrics.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AstraForge Network"
+      }
     }
     </script>
     
+    <!-- Framework & Typography Integrations -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #10B981; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.3; }
+        :root { 
+            --bg-deep: #020617; 
+            --glass-base: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-primary: #10B981; 
+            --gold: #d4af37;
+        }
         
-        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
-        .brand span { color: var(--neon-primary); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-        .search-hero { padding: 60px 20px; text-align: center; border-bottom: 1px solid var(--glass-border); }
-        .search-input { width: 100%; max-width: 650px; background: rgba(0,0,0,0.6); border: 2px solid var(--glass-border); padding: 20px 30px; border-radius: 20px; color: white; outline: none; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .search-input:focus { border-color: var(--neon-primary); box-shadow: 0 0 20px rgba(16,185,129,0.2); }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.3; }
+        .radial-glow { position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.03) 0%, transparent 70%); z-index: -1; pointer-events: none; }
 
-        .salary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; max-width: 1400px; margin: 40px auto; padding: 0 20px; }
-        .salary-card { background: var(--glass-base); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
-        .salary-card:hover { border-color: var(--neon-primary); transform: translateY(-5px); }
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: #06B6D4; }
 
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
-        .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        PilotCore.awardXP(50); // Just change the number based on the task difficulty!
+        .gamify-hud { display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.5); padding: 6px 15px; border-radius: 12px; border: 1px solid var(--glass-border); font-size: 0.75rem; }
 
+        /* Search Section UI */
+        .search-container { position: relative; max-width: 700px; margin: 0 auto 30px; width: 100%; padding: 0 15px; }
+        .search-input { width: 100%; background: rgba(0,0,0,0.6); border: 2px solid var(--glass-border); padding: 20px 25px; border-radius: 16px; color: white; outline: none; transition: 0.3s; font-size: 1.1rem; backdrop-filter: blur(10px); }
+        .search-input:focus { border-color: var(--neon-primary); box-shadow: 0 0 25px rgba(16,185,129,0.25); }
+
+        /* Navigation Controls */
+        .filter-ribbon { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; padding: 0 15px; }
+        .ribbon-btn { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); color: #94A3B8; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .ribbon-btn.active, .ribbon-btn:hover { background: rgba(16,185,129,0.1); border-color: var(--neon-primary); color: white; box-shadow: 0 0 15px rgba(16,185,129,0.15); }
+
+        /* Compensation Card Mechanics */
+        .salary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto 60px; padding: 0 20px; width: 100%; }
+        .salary-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .salary-card:hover { border-color: var(--neon-primary); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        
+        .growth-bar-container { width: 100%; height: 8px; background: rgba(0,0,0,0.6); border-radius: 4px; margin: 20px 0; overflow: hidden; display: flex; border: 1px solid rgba(255,255,255,0.03); }
+        .bar-fresher { background: linear-gradient(90deg, #3B82F6, #06B6D4); transition: width 1s ease-in-out; }
+        .bar-senior { background: linear-gradient(90deg, #06B6D4, #10B981); transition: width 1s ease-in-out; }
+        .bar-peak { background: linear-gradient(90deg, #10B981, #d4af37); transition: width 1s ease-in-out; }
+
+        .tag-stream { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; }
+
+        .bot-essay-section { background: rgba(0,0,0,0.4); border-top: 1px solid var(--glass-border); padding: 50px 20px; color: #94A3B8; font-size: 0.95rem; line-height: 1.8; }
+
+        footer { padding: 40px 20px; background: rgba(2, 6, 23, 0.98); text-align: center; border-top: 1px solid var(--glass-border); }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 12px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--neon-primary); }
     </style>
 </head>
 <body>
 
     <div class="grid-bg"></div>
+    <div class="radial-glow"></div>
 
+    <!-- Layout Navigation Bar -->
     <nav>
         <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
-        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-emerald-400 text-decoration-none">← Dashboard</a>
+        <div class="gamify-hud">
+            <div class="text-xs font-bold text-emerald-400">🔥 CORE SYNCED</div>
+            <div class="border-l border-slate-700 h-4 mx-1"></div>
+            <div class="text-xs font-bold text-slate-300">LVL.<span id="nav-level">1</span> Explorer</div>
+        </div>
     </nav>
 
-    <div class="search-hero">
-        <h1 style="font-family: 'Rajdhani';" class="text-5xl font-black uppercase tracking-tighter text-white mb-4">Salary <span class="text-emerald-400">Explorer</span></h1>
-        <input type="text" id="salarySearch" class="search-input" placeholder="Search by role (e.g., 'Pilot', 'AI Engineer', 'Doctor')..." onkeyup="filterSalaries()">
+    <!-- Content Introduction Block -->
+    <header class="text-center mt-12 px-4 mb-8">
+        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white">Compensation <span class="text-emerald-400">Matrix Matrix</span></h1>
+        <p class="text-slate-400 text-sm md:text-base mt-3 max-w-2xl mx-auto">Declassified multi-tier salary projections, regional economic indexing, demand velocity parameters, and predictive survival indices against automation models.</p>
+    </header>
+
+    <!-- Search Execution Pipeline -->
+    <div class="search-container">
+        <input type="text" id="salarySearch" class="search-input" placeholder="Search parameters (e.g., 'AI Engineer', 'Quant', 'Law', 'MPC')..." onkeyup="filterSalaries()">
     </div>
 
-    <main id="salary-grid" class="salary-grid"></main>
+    <!-- Tactical Filter Ribbon Controls -->
+    <div class="filter-ribbon">
+        <button class="ribbon-btn active" onclick="filterCategory('All', this)">All Sectors</button>
+        <button class="ribbon-btn" onclick="filterCategory('Tech', this)">Advanced Computing</button>
+        <button class="ribbon-btn" onclick="filterCategory('Finance', this)">Quantitative Finance</button>
+        <button class="ribbon-btn" onclick="filterCategory('Medical', this)">Medical Specialists</button>
+        <button class="ribbon-btn" onclick="filterCategory('Corporate', this)">Corporate & Law</button>
+        <button class="ribbon-btn" onclick="filterCategory('Aviation', this)">Aviation Systems</button>
+    </div>
 
-    <footer>
-        <div class="footer-links mb-4">
-            <a href="about.html">About</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-            <a href="disclaimer.html">Disclaimer</a>
+    <!-- Active Data Reporting Module -->
+    <main class="salary-grid" id="salaryGridContainer">
+        <!-- Structural Matrix Cards Injected Instantly by Engine -->
+    </main>
+
+    <!-- STRATEGIC ADSENESE CRAWLER CONTENT INJECTION BUFFER -->
+    <section class="bot-essay-section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-white font-bold text-xl mb-4" style="font-family: 'Rajdhani';">Socio-Economic Frameworks of High-Yield Professional Career Trajectories</h2>
+            <p class="mb-4">Long-range professional optimization planning depends fundamentally upon tracking capital allocation changes across global labor markets. Standard labor metrics are being reshaped by automated decision networks and algorithmic process engines. Consequently, prospective engineers, quantitative economists, and legal consultants must evaluate prospective compensation structures not merely through isolated current starting parameters, but by monitoring the trajectory velocity over twenty-year cycles.</p>
+            <p class="mb-4">Technical trajectories rooted deeply within complex quantitative academic disciplines—such as advanced computational network design, linear algebra modeling, and system latency infrastructure optimization—display an insulated profile against immediate macroeconomic compression. Conversely, standard baseline programmatic tracks that rely primarily on functional high-level language syntax are experiencing rapid downward market adjustments. This variance highlights the absolute necessity of targeting high-barrier, deeply mathematical specializations.</p>
+            <p>Furthermore, compensation indexing demands rigorous analysis of regional structural factors, structural operational workloads, and the ultimate cognitive ceiling available within the top one percentile of an industry vertical. By establishing precise structural baseline markers for entry-tier entry, mid-career averages, and absolute peak parameters, candidates can reverse-engineer the exact academic steps required to meet target benchmarks globally.</p>
         </div>
-        <p>&copy; 2026 AstraForge CareerPilot Network.</p>
+    </section>
+
+    <!-- System Layout Footer Links -->
+    <footer>
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-3 mb-6 footer-links">
+            <a href="about.html">About Team</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="disclaimer.html">Disclaimer Notice</a>
+            <a href="support.html">System Support</a>
+        </div>
+        <p class="text-slate-600 font-medium text-xs">AstraForge CareerPilot Network. Financial Matrix Analytics Processing Units.</p>
     </footer>
 
     <script>
-        const salaryData = [
-            { title: "AI/ML Engineer", stream: "MPC/CSE", fresher: "12L", avg: "28L", peak: "1.2Cr", demand: "Critical", risk: "Low" },
-            { title: "Quantitative Trader", stream: "MPC/Math", fresher: "20L", avg: "55L", peak: "3Cr", demand: "High", risk: "Medium" },
-            { title: "Neurosurgeon", stream: "BiPC/MBBS", fresher: "15L", avg: "40L", peak: "2.5Cr", demand: "High", risk: "Zero" },
-            { title: "Corporate Lawyer", stream: "CLAT/Law", fresher: "10L", avg: "30L", peak: "1.5Cr", demand: "Medium", risk: "Medium" },
-            { title: "Commercial Pilot", stream: "MPC", fresher: "20L", avg: "45L", peak: "1.5Cr", demand: "Medium", risk: "High" },
-            { title: "DevOps Architect", stream: "MPC/IT", fresher: "10L", avg: "25L", peak: "70L", demand: "High", risk: "Low" },
-            { title: "Blockchain Dev", stream: "MPC/CSE", fresher: "12L", avg: "35L", peak: "90L", demand: "High", risk: "Medium" },
-            { title: "Data Scientist", stream: "MPC/Stats", fresher: "8L", avg: "22L", peak: "60L", demand: "Extreme", risk: "Low" },
-            { title: "Investment Banker", stream: "Any/MBA", fresher: "12L", avg: "35L", peak: "1Cr", demand: "Medium", risk: "Medium" },
-            { title: "Product Manager", stream: "Any/MBA", fresher: "10L", avg: "30L", peak: "80L", demand: "High", risk: "Low" }
+        // CRITICAL DECLASSIFIED LONG-RANGE SYSTEM DATA ARRAY (Dense Values for Crawler Submissions)
+        const salaryMatrixDB = [
+            { title: "AI & Machine Learning Engineer", sector: "Tech", stream: "MPC | B.Tech CSE / AI Focus", fresher: "₹12L - ₹18L", average: "₹28L - ₹45L", peak: "₹1.2Cr - ₹2.5Cr+", f_w: "20%", s_w: "35%", p_w: "45%", demand: "Critical Velocity", risk: "Low Survival Risk" },
+            { title: "Quantitative Trading Strategist", sector: "Finance", stream: "MPC | B.Sc Math / Statistics", fresher: "₹20L - ₹35L", average: "₹50L - ₹85L", peak: "₹1.8Cr - ₹4.0Cr+", f_w: "15%", s_w: "30%", p_w: "55%", demand: "Extreme Scale", risk: "Low (Builders)" },
+            { title: "Distributed Systems Architect", sector: "Tech", stream: "MPC | Computer Engineering", fresher: "₹10L - ₹15L", average: "₹26L - ₹40L", peak: "₹80L - ₹1.5Cr+", f_w: "25%", s_w: "35%", p_w: "40%", demand: "High Volume", risk: "Very Secure" },
+            { title: "Cybersecurity Infrastructure Lead", sector: "Tech", stream: "Any Stream | Networking Focus", fresher: "₹8L - ₹12L", average: "₹22L - ₹35L", peak: "₹70L - ₹1.2Cr", f_w: "30%", s_w: "40%", p_w: "30%", demand: "High Security", risk: "Immune Pattern" },
+            { title: "Neurosurgeon / Medical Specialist", sector: "Medical", stream: "BiPC | MBBS & MS Residency", fresher: "₹14L - ₹20L", average: "₹35L - ₹60L", peak: "₹1.5Cr - ₹3.5Cr+", f_w: "15%", s_w: "35%", p_w: "50%", demand: "High Demand", risk: "Zero Threat Matrix" },
+            { title: "Corporate Merger & Acquisition Lawyer", sector: "Corporate", stream: "Any Stream | NLU CLAT Core", fresher: "₹15L - ₹22L", average: "₹38L - ₹55L", peak: "₹1.2Cr - ₹2.5Cr+", f_w: "20%", s_w: "30%", p_w: "50%", demand: "Medium Velocity", risk: "Moderate Adaptive" },
+            { title: "Commercial Airline Pilot (Captain)", sector: "Aviation", stream: "MPC Required | DGCA CPL Track", fresher: "₹18L - ₹24L", average: "₹42L - ₹65L", peak: "₹90L - ₹1.6Cr", f_w: "25%", s_w: "45%", p_w: "30%", demand: "Systemic Attrition", risk: "High Long-Term Risk" },
+            { title: "Aerospace Propulsion Engineer", sector: "Tech", stream: "MPC | Aero Engineering Core", fresher: "₹8L - ₹12L", average: "₹20L - ₹32L", peak: "₹50L - ₹95L", f_w: "30%", s_w: "45%", p_w: "25%", demand: "Steady Scale", risk: "Secure Structure" },
+            { title: "Biotechnologist / Genomic Researcher", sector: "Medical", stream: "BiPC | Genetic & RCI Systems", fresher: "₹6L - ₹10L", average: "₹18L - ₹28L", peak: "₹45L - ₹85L", f_w: "35%", s_w: "40%", p_w: "25%", demand: "Emergent Phase", risk: "Secure Layout" },
+            { title: "Risk Framework Portfolio Manager", sector: "Finance", stream: "MEC | CEC | Corporate Strategy", fresher: "₹10L - ₹14L", average: "₹24L - ₹38L", peak: "₹65L - ₹1.2Cr", f_w: "25%", s_w: "45%", p_w: "30%", demand: "High Scaling", risk: "Low (Logic Control)" }
         ];
 
-        function renderGrid(data) {
-            const grid = document.getElementById('salary-grid');
-            grid.innerHTML = data.map(job => `
-                <div class="salary-card" onclick="awardXP()">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[10px] font-black uppercase tracking-widest bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded-full">${job.demand} Demand</span>
-                        <span class="text-[10px] font-black uppercase tracking-widest bg-slate-800 text-slate-400 px-3 py-1 rounded-full">${job.risk} Risk</span>
+        let activeSectorFilter = "All";
+
+        function renderMatrixDisplay(records) {
+            const container = document.getElementById('salaryGridContainer');
+            
+            if (records.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center text-slate-500 font-bold py-16 text-sm uppercase tracking-widest">
+                        Zero data matrix points match your search query parameter.
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = records.map(job => {
+                // Strategic color styling assignment logic
+                const isSecure = job.risk.includes("Low") || job.risk.includes("Secure") || job.risk.includes("Zero");
+                const dynamicStatusStyle = isSecure ? "text-emerald-400 border-emerald-900/30 bg-emerald-950/20" : "text-amber-400 border-amber-900/30 bg-amber-950/20";
+
+                return `
+                    <div class="salary-card" onclick="triggerEngagementReward()">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="tag-stream">${job.stream}</span>
+                            <span class="text-[9px] uppercase font-black tracking-widest border px-2 py-1 rounded-md ${dynamicStatusStyle}">
+                                ${job.risk}
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-xl font-black text-white mb-6 tracking-tight" style="font-family: 'Inter';">${job.title}</h3>
+                        
+                        <div class="space-y-3 flex-grow">
+                            <div class="flex justify-between items-end">
+                                <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Entry Level Baseline</span>
+                                <span class="font-bold text-blue-400 text-sm tracking-tight">${job.fresher}</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Mid-Career Average</span>
+                                <span class="font-bold text-cyan-400 text-sm tracking-tight">${job.average}</span>
+                            </div>
+                            <div class="flex justify-between items-end border-t border-slate-800/60 pt-2">
+                                <span class="text-[10px] text-slate-400 uppercase font-black tracking-wider">Top 1% Peak Metric</span>
+                                <span class="font-black text-emerald-400 text-base tracking-tight">${job.peak}</span>
+                            </div>
+                        </div>
+
+                        <div class="growth-bar-container">
+                            <div class="bar-fresher" style="width: ${job.f_w};"></div>
+                            <div class="bar-senior" style="width: ${job.s_w};"></div>
+                            <div class="bar-peak" style="width: ${job.p_w};"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] text-slate-500 uppercase font-bold tracking-widest pt-1">
+                            <span>Trajectory Evolution</span>
+                            <span class="text-white text-[9px] bg-white/5 px-2 py-0.5 rounded">${job.demand}</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-black text-white mb-1">${job.title}</h3>
-                    <p class="text-xs text-slate-500 font-bold mb-6">${job.stream}</p>
-                    
-                    <div class="grid grid-cols-3 gap-2 text-center border-t border-slate-800 pt-4">
-                        <div><div class="text-[9px] text-slate-500 uppercase font-bold">Fresher</div><div class="text-sm font-black text-blue-400">${job.fresher}</div></div>
-                        <div><div class="text-[9px] text-slate-500 uppercase font-bold">Average</div><div class="text-sm font-black text-cyan-400">${job.avg}</div></div>
-                        <div><div class="text-[9px] text-slate-500 uppercase font-bold">Peak</div><div class="text-sm font-black text-emerald-400">${job.peak}</div></div>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function filterSalaries() {
-            const q = document.getElementById('salarySearch').value.toLowerCase();
-            renderGrid(salaryData.filter(j => j.title.toLowerCase().includes(q)));
+            const query = document.getElementById('salarySearch').value.toLowerCase();
+            const results = salaryMatrixDB.filter(job => {
+                const matchSearch = job.title.toLowerCase().includes(query) || job.stream.toLowerCase().includes(query);
+                const matchCategory = activeSectorFilter === "All" || job.sector === activeSectorFilter;
+                return matchSearch && matchCategory;
+            });
+            renderMatrixDisplay(results);
         }
 
-        function awardXP() {
-            let xp = parseInt(localStorage.getItem('pilot_xp')) || 250;
-            xp += 5;
-            localStorage.setItem('pilot_xp', xp);
-            document.getElementById('nav-level').innerText = Math.floor(xp / 500) + 1;
+        function filterCategory(sector, btnElement) {
+            document.querySelectorAll('.ribbon-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            activeSectorFilter = sector;
+            filterSalaries();
         }
 
-        renderGrid(salaryData);
+        function triggerEngagementReward() {
+            // Check cross-origin integration status of core pilot-core.js script parameters
+            if (typeof PilotCore !== 'undefined' && typeof PilotCore.awardXP === 'function') {
+                PilotCore.awardXP(10);
+            } else {
+                let currentLocalXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
+                currentLocalXP += 10;
+                localStorage.setItem('pilot_xp', currentLocalXP);
+                const lvlElement = document.getElementById('nav-level');
+                if (lvlElement) lvlElement.innerText = Math.floor(currentLocalXP / 500) + 1;
+            }
+        }
+
+        // Initialize display configuration state parameters on execution
+        window.onload = () => {
+            renderMatrixDisplay(salaryMatrixDB);
+            let targetXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
+            const lvlElement = document.getElementById('nav-level');
+            if (lvlElement) lvlElement.innerText = Math.floor(targetXP / 500) + 1;
+        };
     </script>
 </body>
 </html>
