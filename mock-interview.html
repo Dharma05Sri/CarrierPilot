@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Mock Interview Simulator | CareerPilot</title>
     
-    <meta name="description" content="Simulate high-pressure, technical job interviews across 10+ elite career fields including AI, Quant Finance, Medicine, and Law. Receive deep diagnostic feedback.">
+    <meta name="description" content="Simulate high-pressure, technical job interviews across 20 elite career fields including AI, Quant Finance, Medicine, Cloud Architecture, and Law.">
     <meta name="robots" content="index, follow">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,7 @@
         .btn-action:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.4); }
         select, textarea { width: 100%; background: rgba(0,0,0,0.6); border: 1px solid var(--glass-border); border-radius: 12px; color: white; padding: 16px; outline: none; margin-bottom: 20px; transition: 0.3s; }
         select:focus, textarea:focus { border-color: var(--neon-primary); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
-        select option { background: var(--bg-deep); }
+        select option, select optgroup { background: var(--bg-deep); color: white; }
         
         .loader-ring { width: 60px; height: 60px; border: 4px solid rgba(139, 92, 246, 0.2); border-top-color: var(--neon-primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -50,7 +50,7 @@
     <main class="max-w-4xl mx-auto p-6 md:p-12 w-full flex-grow">
         <header class="text-center mb-12">
             <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase text-white mb-4">AI Mock <span style="color: var(--neon-primary);">Interview</span></h1>
-            <p class="text-slate-400 text-sm max-w-2xl mx-auto">Select your target discipline. Face a rigorous, multi-stage technical and behavioral interview simulation engineered by industry experts.</p>
+            <p class="text-slate-400 text-sm max-w-2xl mx-auto">Select your target discipline. Face a rigorous, multi-stage technical and behavioral interview simulation across 20 global enterprise sectors.</p>
         </header>
 
         <div class="bento-card" id="interface">
@@ -58,29 +58,47 @@
             <!-- Phase 1: Setup -->
             <div id="setup-view">
                 <h2 class="text-xl font-bold text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Initialize Simulation Parameters</h2>
-                <label class="block text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-2">Select Elite Target Industry</label>
+                <label class="block text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-2">Select Elite Target Industry (20 Options)</label>
                 <select id="roleSelect">
-                    <option value="ai">Artificial Intelligence & Machine Learning</option>
-                    <option value="quant">Quantitative Finance (Hedge Funds)</option>
-                    <option value="med">Clinical Surgery (MS/MD)</option>
-                    <option value="law">Corporate Law & M&A</option>
-                    <option value="cyber">Cybersecurity & Defense</option>
-                    <option value="aero">Aerospace Engineering</option>
-                    <option value="data">Data Science & Big Data</option>
-                    <option value="ib">Investment Banking</option>
-                    <option value="design">UI/UX Product Design</option>
-                    <option value="pilot">Commercial Aviation (Captain)</option>
+                    <optgroup label="Advanced Technology & Data">
+                        <option value="ai">Artificial Intelligence & Machine Learning</option>
+                        <option value="swe">Software Engineering (FAANG/Tier-1)</option>
+                        <option value="data">Data Science & Big Data Analytics</option>
+                        <option value="cloud">Cloud Architecture (AWS/Azure/GCP)</option>
+                        <option value="cyber">Cybersecurity & Network Defense</option>
+                        <option value="web3">Blockchain & Web3 Development</option>
+                        <option value="robotics">Robotics & Automation Engineering</option>
+                    </optgroup>
+                    <optgroup label="Core Engineering & Sciences">
+                        <option value="aero">Aerospace & Aeronautical Engineering</option>
+                        <option value="mech">Mechanical & Thermal Engineering</option>
+                        <option value="eee">Electrical & Electronics (EEE/VLSI)</option>
+                        <option value="civil">Civil & Structural Engineering</option>
+                    </optgroup>
+                    <optgroup label="Finance & Business Strategy">
+                        <option value="quant">Quantitative Finance (Hedge Funds)</option>
+                        <option value="ib">Investment Banking & M&A</option>
+                        <option value="consulting">Management Consulting (MBB Tier)</option>
+                        <option value="pm">Product Management (Tech/SaaS)</option>
+                    </optgroup>
+                    <optgroup label="Medicine, Law & Specialized Sectors">
+                        <option value="med">Clinical Surgery & Medicine (MS/MD)</option>
+                        <option value="law">Corporate Law & Litigation</option>
+                        <option value="pilot">Commercial Aviation (Captain)</option>
+                        <option value="upsc">Civil Services (UPSC IAS/IPS)</option>
+                        <option value="design">UI/UX & Product Design</option>
+                    </optgroup>
                 </select>
-                <button onclick="startInterview()" class="btn-action">Begin Interview Protocol</button>
+                <button onclick="startInterview()" class="btn-action">Begin 5-Stage Interview Protocol</button>
             </div>
 
             <!-- Phase 2: Q&A -->
             <div id="quiz-view" class="hidden">
                 <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                     <div class="text-[10px] font-bold text-purple-400 uppercase tracking-widest" id="q-meta">Active Session</div>
-                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" id="q-counter">Question 1 of 3</div>
+                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" id="q-counter">Question 1 of 5</div>
                 </div>
-                <h2 class="text-3xl font-black text-white mb-6 leading-tight" id="q-text">Loading prompt...</h2>
+                <h2 class="text-2xl md:text-3xl font-black text-white mb-6 leading-tight" id="q-text">Loading prompt...</h2>
                 <textarea id="userAnswer" class="h-48" placeholder="Formulate your professional response here. Be detailed, technical, and structured..."></textarea>
                 <button onclick="submitAnswer()" class="btn-action">Submit Response & Advance</button>
             </div>
@@ -89,7 +107,7 @@
             <div id="loading-view" class="hidden text-center py-10">
                 <div class="loader-ring"></div>
                 <h2 class="text-2xl font-black text-white uppercase tracking-widest mb-2">Analyzing Responses</h2>
-                <p class="text-slate-400 text-sm">Cross-referencing technical accuracy, behavioral structure, and industry standards...</p>
+                <p class="text-slate-400 text-sm">Cross-referencing technical accuracy, logic structures, and industry standards...</p>
             </div>
 
             <!-- Phase 4: Results -->
@@ -112,113 +130,243 @@
     <section class="bot-essay-section">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-white font-bold text-xl mb-4" style="font-family: 'Rajdhani';">The Mechanics of High-Stakes Technical Interviews</h2>
-            <p class="mb-4">Securing a position in a tier-one corporate environment—whether it is a FAANG technology firm, a globally recognized hedge fund, or a prestigious law firm—requires significantly more than foundational academic knowledge. Technical interviews at these institutions are designed to apply extreme cognitive pressure. Interviewers evaluate not just the correctness of an answer, but the structural methodology the candidate uses to arrive at the solution. For instance, in Quantitative Finance, mental math and stochastic calculus problems are deployed rapidly to test a candidate's stress-response latency.</p>
-            <p>Our AI Mock Interview Simulator replicates these conditions. By utilizing adaptive questioning frameworks across 10 distinct high-yield industries, candidates can practice articulating complex concepts ranging from backpropagation in neural networks to corporate fiduciary duties in hostile takeovers. Regular simulation reduces "interview paralysis," ensuring that when a candidate is face-to-face with a real hiring manager or admissions board, their responses are polished, data-driven, and highly authoritative.</p>
+            <p class="mb-4">Securing a position in a tier-one corporate environment—whether it is a technology conglomerate deploying massive server infrastructure, a globally recognized hedge fund executing algorithmic trades, or a prestigious law firm—requires significantly more than foundational academic knowledge. Technical interviews at these institutions are deliberately engineered to apply extreme cognitive pressure. Interviewers evaluate not just the correctness of an answer, but the structural methodology and algorithmic efficiency the candidate uses to arrive at the solution.</p>
+            <p>Our expanded AI Mock Interview Simulator replicates these exact conditions across 20 massive industry verticals. By utilizing adaptive questioning frameworks, candidates can practice articulating complex concepts—ranging from resolving deployment latency in Python-based predictive models to executing ethical fiduciary duties in hostile corporate takeovers. Regular, high-friction simulation dramatically reduces "interview paralysis," ensuring that when a candidate is face-to-face with a real hiring manager, their responses are polished, mathematically sound, and highly authoritative.</p>
         </div>
     </section>
 
     <footer>
         <div class="flex flex-wrap justify-center gap-x-4 gap-y-3 mb-4 footer-links">
             <a href="resume-analyzer.html">Resume Analyzer</a>
+            <a href="future-simulator.html">Future Simulator</a>
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
-            <a href="support.html">System Support</a>
         </div>
         <p>&copy; 2026 AstraForge CareerPilot. Interview Intelligence Engine.</p>
     </footer>
 
     <script>
-        // MASSIVE INTERVIEW DATABASE (10 Fields, 3 Questions Each, Custom Feedback)
+        // MASSIVE 20-FIELD INTERVIEW DATABASE (5 Questions Each)
         const interviewData = {
             "ai": {
                 name: "AI & Machine Learning",
                 qs: [
-                    "Explain the concept of backpropagation in a deep neural network and how the vanishing gradient problem affects it.",
-                    "If your model is severely overfitting the training data, what specific regularization techniques would you deploy?",
-                    "Describe a scenario where you would choose a Random Forest algorithm over a Deep Learning Neural Network."
+                    "Explain how you would optimize a Python-based deep learning model to drastically reduce inference latency in a live production environment.",
+                    "Walk me through the mathematics of backpropagation. Specifically, how does the vanishing gradient problem occur and how do LSTMs or ResNets mitigate it?",
+                    "If you were deploying a massive-scale recommendation system—similar to global search engines—how would you detect and handle algorithmic data bias?",
+                    "Describe the architectural differences between a standard Convolutional Neural Network (CNN) and a Transformer model.",
+                    "How do you evaluate the performance of a Natural Language Processing (NLP) model beyond basic accuracy metrics like F1 or BLEU scores?"
                 ],
-                feedback: "AI Diagnosis: Your responses indicate a solid baseline understanding of ML architecture. However, in tier-one interviews, you must emphasize mathematical depth. When discussing backpropagation, explicitly mention the chain rule of calculus. When discussing overfitting, ensure you highlight L1/L2 regularization and dropout layers with specific parameter examples."
+                feedback: "AI/ML Diagnosis: Your responses indicate a solid grasp of foundational syntax. However, to secure a tier-one placement at a global tech giant, you must explicitly connect mathematical concepts to scalable architecture. Ensure you mention techniques like 'model quantization' and 'TensorRT' for Python latency reduction, and utilize precise statistical terminology when discussing data bias at scale."
             },
-            "quant": {
-                name: "Quantitative Finance",
+            "swe": {
+                name: "Software Engineering (FAANG/Tier-1)",
                 qs: [
-                    "Walk me through the assumptions underlying the Black-Scholes options pricing model. Which of them fail in real markets?",
-                    "How would you build a statistical arbitrage strategy to exploit micro-inefficiencies in highly liquid assets?",
-                    "Mental Math: What is the expected value of a dice roll if you are allowed to re-roll exactly once if you don't like the first number?"
+                    "Design a scalable system architecture for a global ride-sharing application like Uber. How do you handle real-time location pinging?",
+                    "Write out the logic to reverse a linked list in O(n) time and O(1) space.",
+                    "Explain the CAP theorem and how it dictates the choice between a SQL and NoSQL database.",
+                    "How do you ensure thread safety in a highly concurrent, multi-threaded application?",
+                    "Describe a time you had to refactor a massive monolithic application into microservices. What went wrong?"
                 ],
-                feedback: "Quant Diagnosis: Excellent analytical framework. To secure a hedge fund offer, you must speed up your cognitive breakdown. Ensure you explicitly mention the 'Log-Normal Distribution' assumption failing during market crashes (fat tails) in Black-Scholes. Your expected value logic is sound, but practice articulating it in under 10 seconds."
+                feedback: "SWE Diagnosis: Strong algorithmic logic detected. FAANG interviews require heavy emphasis on scalability and fault tolerance. In system design questions, immediately identify bottlenecks, discuss load balancers, and justify your database choices using the CAP theorem constraints."
             },
-            "med": {
-                name: "Clinical Surgery",
+            "data": {
+                name: "Data Science & Big Data",
                 qs: [
-                    "A patient presents to the ER with a penetrating abdominal trauma and severe hypotension. Walk me through your immediate ABCDE assessment.",
-                    "How do you manage an operating room when a routine procedure suddenly results in massive, unexpected hemorrhaging?",
-                    "Describe how you handle communicating a terminal diagnosis or a severe surgical complication to a patient's family."
+                    "Explain the difference between a Data Lake and a Data Warehouse. When is an ELT pipeline preferable to an ETL pipeline?",
+                    "You have a dataset with 40% missing values in a critical column. How do you handle it without dropping the rows?",
+                    "Walk me through the mathematical mechanism behind Principal Component Analysis (PCA).",
+                    "What is p-value hacking, and how do you prevent it in A/B testing?",
+                    "How do you translate the results of a highly complex predictive model to a non-technical CEO?"
                 ],
-                feedback: "Medical Diagnosis: Strong clinical protocol adherence. You clearly understand the ATLS (Advanced Trauma Life Support) pathway. To improve, ensure you project a calm, authoritative tone when describing crisis management. Hospitals look for surgeons who not only know the science but can maintain emotional regulation and lead a panicked team."
+                feedback: "Data Diagnosis: Great technical accuracy. Your handling of missing data (imputation techniques) was solid. However, the true test of a senior Data Scientist is the 'CEO Question'. Always emphasize translating complex metrics (like R-squared) into direct business impact: Revenue generated or Costs saved."
             },
-            "law": {
-                name: "Corporate Law & M&A",
+            "cloud": {
+                name: "Cloud Architecture",
                 qs: [
-                    "Explain the concept of 'Fiduciary Duty' and how a hostile takeover attempt complicates it for a Board of Directors.",
-                    "Walk me through the standard due diligence process you would execute before advising a client to acquire a tech startup.",
-                    "How do you handle a situation where a senior partner asks you to draft a clause that you believe borders on unethical?"
+                    "Walk me through the process of migrating an on-premise legacy database to a cloud-native architecture with zero downtime.",
+                    "How do you configure an Auto Scaling Group to handle unpredictable, massive traffic spikes?",
+                    "Explain the concept of Infrastructure as Code (IaC) and the benefits of using tools like Terraform or CloudFormation.",
+                    "What is your strategy for disaster recovery and multi-region failover?",
+                    "How do you secure a VPC, and what is the difference between a Security Group and a Network ACL?"
                 ],
-                feedback: "Legal Diagnosis: Robust understanding of corporate frameworks. Your M&A due diligence steps are accurate, but a top-tier firm will expect you to specifically mention IP (Intellectual Property) chain-of-title verification for tech startups. Additionally, your ethical response was strong; always emphasize adherence to the Bar Association's strict code of conduct."
+                feedback: "Cloud Diagnosis: Excellent architectural flow. To push your performance higher, emphasize cost-optimization (FinOps) alongside technical deployment. Enterprise companies want architects who build resilient networks that don't accidentally burn through the monthly AWS/Azure budget."
             },
             "cyber": {
-                name: "Cybersecurity & Defense",
+                name: "Cybersecurity",
                 qs: [
                     "A zero-day exploit has just bypassed your perimeter firewall. What is your immediate incident response protocol?",
-                    "Explain the difference between symmetric and asymmetric encryption, and where you would deploy each in a corporate network.",
-                    "How would you secure a highly vulnerable legacy system that cannot be patched or taken offline?"
+                    "Explain the difference between symmetric and asymmetric encryption, and where you would deploy each.",
+                    "How would you secure a highly vulnerable legacy system that cannot be patched or taken offline?",
+                    "What is a Man-in-the-Middle (MitM) attack, and how do modern protocols defend against it?",
+                    "Describe the concept of 'Zero Trust Architecture'."
                 ],
-                feedback: "Cyber Diagnosis: Highly tactical response. You correctly identified containment and isolation as the first steps in incident response. Moving forward, make sure to use industry-standard terminology like 'Zero Trust Architecture' and 'Network Segmentation' when discussing legacy systems. Defense contractors love candidates who think in 'Layers of Security'."
+                feedback: "Cyber Diagnosis: Highly tactical response. You correctly identified containment and isolation as the first steps in incident response. Moving forward, consistently use industry-standard terminology like 'Network Segmentation' and 'Endpoint Detection and Response (EDR)' to project absolute authority."
+            },
+            "web3": {
+                name: "Blockchain & Web3",
+                qs: [
+                    "Explain the exact mechanism of a Reentrancy Attack in Solidity. How do you prevent it?",
+                    "What is the difference between Proof of Work (PoW) and Proof of Stake (PoS) at the consensus layer?",
+                    "How do Layer 2 scaling solutions (like Rollups) actually reduce gas fees?",
+                    "Describe the architecture of a decentralized autonomous organization (DAO).",
+                    "How do you ensure secure, off-chain data feeds using Oracles without introducing a centralized point of failure?"
+                ],
+                feedback: "Web3 Diagnosis: Strong foundational knowledge of distributed ledgers. Smart contract security is paramount in this field; your reentrancy defense (Checks-Effects-Interactions pattern) was solid. Continue focusing on gas-optimization techniques and advanced cryptography."
+            },
+            "robotics": {
+                name: "Robotics & Automation",
+                qs: [
+                    "Explain the concept of Forward and Inverse Kinematics in a robotic arm.",
+                    "How do you filter noisy sensor data using a Kalman Filter?",
+                    "Describe the implementation of a PID controller for maintaining drone stability.",
+                    "What are the primary challenges in simultaneous localization and mapping (SLAM) for autonomous rovers?",
+                    "How do you integrate machine vision with physical actuator responses in real-time?"
+                ],
+                feedback: "Robotics Diagnosis: High mechanical and programmatic coherence. To excel, bridge the gap between hardware and software seamlessly. Discussing ROS (Robot Operating System) nodes and latency minimization between sensor input and motor actuation will elevate your technical standing."
             },
             "aero": {
                 name: "Aerospace Engineering",
                 qs: [
                     "Explain the principles of fluid dynamics as they apply to overcoming the sound barrier in supersonic flight.",
                     "How do you approach material selection for a re-entry vehicle facing extreme thermal gradients?",
-                    "If a telemetry sensor fails during a satellite launch, what redundancies should be built into the system?"
+                    "If a telemetry sensor fails during a satellite launch, what redundancies should be built into the system?",
+                    "Describe the thermodynamic cycle of a scramjet engine.",
+                    "How do you mitigate structural fatigue in commercial aircraft pressurized cabins over a 20-year lifespan?"
                 ],
-                feedback: "Aero Diagnosis: Structurally sound engineering logic. You effectively addressed thermal ablation. To stand out to companies like SpaceX or NASA, increase your focus on computational fluid dynamics (CFD) simulations and specific composite materials (like Carbon-Carbon matrices) in your answers."
+                feedback: "Aero Diagnosis: Structurally sound engineering logic. You effectively addressed thermal ablation. To stand out to companies like SpaceX or Airbus, increase your focus on computational fluid dynamics (CFD) simulations and specific composite materials in your answers."
             },
-            "data": {
-                name: "Data Science & Big Data",
+            "mech": {
+                name: "Mechanical Engineering",
                 qs: [
-                    "Explain the difference between a Data Lake and a Data Warehouse, and when you would use an ETL vs ELT pipeline.",
-                    "You have a dataset with 40% missing values in a critical column. How do you handle it without dropping the rows?",
-                    "How do you translate a highly complex predictive model's results to a non-technical CEO?"
+                    "Walk me through the stages of a Finite Element Analysis (FEA) for a load-bearing beam.",
+                    "Explain the differences between the Otto cycle and the Diesel cycle.",
+                    "How do you design for manufacturability (DFM) when transitioning a prototype to mass production?",
+                    "Describe the mechanisms of heat transfer in a high-performance automotive cooling system.",
+                    "What factors cause creep failure in metals, and how do you prevent it?"
                 ],
-                feedback: "Data Diagnosis: Great technical accuracy. Your handling of missing data (imputation techniques) was solid. However, the true test of a senior Data Scientist is the 'CEO Question'. Always emphasize translating complex metrics (like R-squared or F1 scores) into direct business impact: Revenue generated, or Costs saved."
+                feedback: "Mech Diagnosis: Solid theoretical grasp of kinetic and thermal systems. Industry leaders want practical application: always connect your theoretical designs to cost-effective manufacturing processes and rapid prototyping (CAD/CAM) methodologies."
+            },
+            "eee": {
+                name: "Electrical & Electronics",
+                qs: [
+                    "Explain the operation of a three-phase induction motor and the concept of slip.",
+                    "How do you prevent signal reflection and crosstalk in high-speed PCB design?",
+                    "Describe the fundamental differences between an FPGA and an ASIC.",
+                    "Walk me through the design of a closed-loop buck converter for power regulation.",
+                    "What are the primary challenges in designing silicon for extreme low-power IoT devices?"
+                ],
+                feedback: "EEE Diagnosis: Exceptional circuit logic. In VLSI and hardware interviews, debugging and testing are critical. Always explain how you would isolate a fault using oscilloscopes or logic analyzers before rewriting the HDL code."
+            },
+            "civil": {
+                name: "Civil & Structural",
+                qs: [
+                    "How do you calculate the shear force and bending moment for a continuously loaded cantilever beam?",
+                    "Explain the process and necessity of soil compaction testing before laying a deep foundation.",
+                    "What are the critical differences in designing a structure for seismic zones versus high-wind zones?",
+                    "Describe the hydration process of Portland cement and how curing affects tensile strength.",
+                    "How do you approach urban water management and drainage in a flood-prone topology?"
+                ],
+                feedback: "Civil Diagnosis: Strong understanding of statics and materials. Emphasize your proficiency with modern modeling software (like ETABS or AutoCAD Civil 3D) and your adherence strictly to international building codes to project absolute reliability."
+            },
+            "quant": {
+                name: "Quantitative Finance",
+                qs: [
+                    "Walk me through the assumptions of the Black-Scholes options pricing model. Which fail in real markets?",
+                    "How would you build a statistical arbitrage strategy to exploit micro-inefficiencies?",
+                    "What is the expected value of a dice roll if you are allowed to re-roll exactly once if you don't like the first number?",
+                    "Explain the concept of Delta hedging a portfolio.",
+                    "How do you prevent your algorithmic trading model from curve-fitting historical data?"
+                ],
+                feedback: "Quant Diagnosis: Excellent analytical framework. Hedge funds demand blinding cognitive speed. Ensure you explicitly mention the 'Log-Normal Distribution' assumption failing during market crashes (fat tails). Practice articulating stochastic calculus concepts flawlessly."
             },
             "ib": {
                 name: "Investment Banking",
                 qs: [
-                    "Walk me through the three main valuation methodologies. Which one typically yields the highest valuation and why?",
-                    "If a company incurs $10 (pre-tax) of depreciation expense, walk me through how it affects the three financial statements.",
-                    "Pitch me a stock or an acquisition target in the current macroeconomic climate."
+                    "Walk me through the three main valuation methodologies. Which one typically yields the highest valuation?",
+                    "If a company incurs $10 (pre-tax) of depreciation expense, how does it affect the three financial statements?",
+                    "What makes a company a strong candidate for a Leveraged Buyout (LBO)?",
+                    "Pitch me a stock or an acquisition target in the current macroeconomic climate.",
+                    "How do you calculate the Weighted Average Cost of Capital (WACC)?"
                 ],
-                feedback: "IB Diagnosis: You nailed the DCF (Discounted Cash Flow) and Precedent Transactions logic. The 'Three Statements' question is a classic filter; ensure you flawlessly link Net Income from the Income Statement to the top of the Cash Flow Statement. Your stock pitch needs more aggressive conviction—back your claims with hard EBITDA multiples."
+                feedback: "IB Diagnosis: You nailed the DCF and Precedent Transactions logic. The 'Three Statements' question is a classic filter; ensure you flawlessly link Net Income from the Income Statement to the top of the Cash Flow Statement. Your stock pitch needs aggressive conviction backed by EBITDA multiples."
             },
-            "design": {
-                name: "UI/UX Product Design",
+            "consulting": {
+                name: "Management Consulting",
                 qs: [
-                    "Walk me through your end-to-end design process, from initial user research to final high-fidelity prototyping.",
-                    "How do you resolve a conflict with a Lead Developer who says your design is too difficult to implement?",
-                    "Describe a time you used A/B testing data to fundamentally change a product's user interface."
+                    "Estimate the number of commercial airplanes currently in the air over Europe. (Guesstimate)",
+                    "Our client is a telecom giant facing declining profit margins despite rising user numbers. How do you investigate?",
+                    "Walk me through the MECE (Mutually Exclusive, Collectively Exhaustive) framework.",
+                    "A successful retail chain wants to enter the e-commerce space but has zero digital infrastructure. Advise them.",
+                    "How do you handle a client executive who aggressively disagrees with your data-backed recommendations?"
                 ],
-                feedback: "Design Diagnosis: Excellent focus on user-centric empathy. To secure a FAANG design role, you must speak the language of developers and business. Emphasize creating comprehensive 'Design Systems' and 'Component Libraries' in Figma to show you design for scalability, not just aesthetics."
+                feedback: "Consulting Diagnosis: Great structured thinking. In MBB (McKinsey, BCG, Bain) case interviews, never rush to the answer. Always explicitly layout your framework (Revenue vs. Costs, Market Sizing parameters) before crunching the numbers. Communication is as important as the math."
+            },
+            "pm": {
+                name: "Product Management",
+                qs: [
+                    "How would you design an elevator for a 100-story building?",
+                    "Our primary user retention metric has dropped 15% in the last week. Walk me through your diagnostic steps.",
+                    "How do you prioritize a product roadmap when Engineering, Sales, and the CEO all want different features?",
+                    "What is your favorite tech product, and how would you improve it?",
+                    "Explain the difference between Agile and Waterfall methodologies, and when you would use each."
+                ],
+                feedback: "PM Diagnosis: Strong user-empathy displayed. Product Managers are the CEOs of the product; your answers must constantly balance user experience with engineering constraints and strict business revenue goals. Use the RICE (Reach, Impact, Confidence, Effort) framework explicitly in prioritization questions."
+            },
+            "med": {
+                name: "Clinical Surgery",
+                qs: [
+                    "A patient presents with a penetrating abdominal trauma and severe hypotension. Walk me through your ABCDE assessment.",
+                    "How do you manage an operating room when a routine procedure results in unexpected, massive hemorrhaging?",
+                    "Describe how you handle communicating a terminal diagnosis to a patient's family.",
+                    "What is your protocol for preventing post-operative sepsis in high-risk patients?",
+                    "How do you maintain extreme fine-motor precision and cognitive focus during an 18-hour surgical rotation?"
+                ],
+                feedback: "Medical Diagnosis: Strong clinical protocol adherence. You clearly understand the ATLS pathway. To improve, ensure you project a calm, authoritative tone when describing crisis management. Hospitals look for surgeons who can maintain absolute emotional regulation and lead a panicked team."
+            },
+            "law": {
+                name: "Corporate Law",
+                qs: [
+                    "Explain the concept of 'Fiduciary Duty' and how a hostile takeover attempt complicates it for a Board of Directors.",
+                    "Walk me through the due diligence process you would execute before advising a client to acquire a tech startup.",
+                    "How do you handle a situation where a senior partner asks you to draft a clause that borders on unethical?",
+                    "Explain the concept of piercing the corporate veil.",
+                    "What are the critical anti-trust considerations during a mega-merger in the technology sector?"
+                ],
+                feedback: "Legal Diagnosis: Robust understanding of corporate frameworks. Your M&A due diligence steps are accurate, but a top-tier firm will expect you to specifically mention IP (Intellectual Property) chain-of-title verification for tech startups. Always emphasize strict adherence to Bar Association ethics."
             },
             "pilot": {
                 name: "Commercial Aviation",
                 qs: [
                     "Explain the aerodynamic factors that contribute to a high-altitude stall (Coffin Corner).",
-                    "You lose an engine immediately after V1 during takeoff. Walk me through your immediate CRM and flight control protocols.",
-                    "How do you handle a situation where your First Officer is continuously contradicting your operational decisions?"
+                    "You lose an engine immediately after V1 during takeoff. Walk me through your immediate protocols.",
+                    "How do you handle a situation where your First Officer is continuously contradicting your operational decisions?",
+                    "Describe the impact of severe clear-air turbulence (CAT) on structural load limits.",
+                    "Walk me through the ILS (Instrument Landing System) capture process in heavy instrument meteorological conditions."
                 ],
-                feedback: "Aviation Diagnosis: Flawless adherence to standard operating procedures (SOP). Your engine-failure protocol (Aviate, Navigate, Communicate) was spot on. For the CRM (Crew Resource Management) question, emphasize a 'Just Culture'—listening to the First Officer to ensure safety, while maintaining ultimate Captain's authority."
+                feedback: "Aviation Diagnosis: Flawless adherence to standard operating procedures (SOP). Your engine-failure protocol (Aviate, Navigate, Communicate) was spot on. For the CRM (Crew Resource Management) question, emphasize a 'Just Culture'—listening to the First Officer while maintaining ultimate Captain's authority."
+            },
+            "upsc": {
+                name: "Civil Services (UPSC)",
+                qs: [
+                    "How would you address a sudden, violent communal riot in a district where you have just been posted as DM?",
+                    "Critically analyze the impact of rapid digital public infrastructure (UPI/Aadhaar) on rural economic disparity.",
+                    "What is your stance on balancing aggressive industrial expansion with environmental conservation mandates?",
+                    "If a local politician demands you release an arrested cartel leader, how do you respond?",
+                    "Explain the constitutional nuances of the separation of powers between the Judiciary and the Executive."
+                ],
+                feedback: "UPSC Diagnosis: Excellent diplomatic and constitutional grounding. The interview panel tests absolute integrity and crisis management. Always base your responses strictly on Constitutional law, the Indian Penal Code, and rapid, non-partisan conflict de-escalation strategies."
+            },
+            "design": {
+                name: "UI/UX Product Design",
+                qs: [
+                    "Walk me through your end-to-end design process, from user research to final high-fidelity prototyping.",
+                    "How do you resolve a conflict with a Lead Developer who says your design is too difficult to implement?",
+                    "Describe a time you used A/B testing data to fundamentally change a product's user interface.",
+                    "Explain the concept of 'Accessibility' in web design. How do you design for visually impaired users?",
+                    "What is the psychological reasoning behind 'Dark Patterns' in UX, and why should they be avoided?"
+                ],
+                feedback: "Design Diagnosis: Excellent focus on user-centric empathy. To secure a FAANG design role, you must speak the language of developers and business. Emphasize creating comprehensive 'Design Systems' and 'Component Libraries' to show you design for modular scalability, not just aesthetics."
             }
         };
 
@@ -240,21 +388,21 @@
 
         function loadQuestion() {
             document.getElementById('userAnswer').value = "";
-            document.getElementById('q-counter').innerText = `Question ${qIndex + 1} of 3`;
+            document.getElementById('q-counter').innerText = `Question ${qIndex + 1} of 5`;
             document.getElementById('q-text').innerText = interviewData[currentRole].qs[qIndex];
         }
 
         function submitAnswer() {
             const ans = document.getElementById('userAnswer').value;
-            if(ans.length < 10) {
-                alert("Please provide a more detailed response to simulate a real interview.");
+            if(ans.length < 15) {
+                alert("SYSTEM WARNING: Please provide a more detailed, professional response to accurately simulate a corporate interview environment.");
                 return;
             }
             
             answers.push(ans);
             qIndex++;
 
-            if(qIndex < 3) {
+            if(qIndex < 5) { // Updated to 5 questions
                 loadQuestion();
             } else {
                 processResults();
@@ -271,12 +419,24 @@
                 
                 document.getElementById('feedback-text').innerText = interviewData[currentRole].feedback;
 
-                // Call Core OS to award XP
+                // Global OS Integration for Gamification
                 if(typeof PilotCore !== 'undefined') {
-                    PilotCore.awardXP(150);
+                    PilotCore.awardXP(250);
+                } else {
+                    let currentLocalXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
+                    currentLocalXP += 250;
+                    localStorage.setItem('pilot_xp', currentLocalXP);
                 }
-            }, 2500); // 2.5 seconds of fake AI loading for dwell time
+            }, 3000); // 3 seconds of realistic algorithmic processing delay
         }
+
+        // Initialize HUD
+        window.onload = () => {
+            if(localStorage.getItem('pilot_xp')) {
+                const lvl = document.getElementById('nav-level');
+                if(lvl) lvl.innerText = Math.floor(parseInt(localStorage.getItem('pilot_xp')) / 500) + 1;
+            }
+        };
     </script>
     <script src="pilot-core.js" defer></script>
 </body>
