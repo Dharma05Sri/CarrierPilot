@@ -3,7 +3,6 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
@@ -11,22 +10,7 @@
     <title>Career Battles | AstraForge Intelligence</title>
     
     <meta name="description" content="Compare elite careers head-to-head. Analyze salary data, automation risk, academic difficulty, and top global colleges.">
-    <meta name="keywords" content="compare careers, CSE vs ECE, AI Engineer vs Data Scientist, Doctor vs Engineer, highest paying jobs, career pilot">
     <meta name="author" content="AstraForge Network">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Career Battles | Data-Driven Face-Offs">
-    <meta property="og:description" content="Compare elite careers head-to-head with animated stats and university matches.">
-    <meta property="og:type" content="website">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Career Battles Engine",
-      "applicationCategory": "EducationalApplication",
-      "publisher": { "@type": "Organization", "name": "AstraForge Network" }
-    }
-    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -35,77 +19,51 @@
         :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; --danger: #ef4444; --success: #10b981; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
-        
         .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.2; }
-
         nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
         .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
         .brand span { color: var(--neon-primary); }
-
-        .gamify-pill { display: flex; align-items: center; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 800; gap: 12px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
-        .g-streak { color: #F59E0B; display: flex; align-items: center; gap: 4px; }
-
         .hero { padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid var(--glass-border); background: radial-gradient(circle at top, rgba(6,182,212,0.05) 0%, transparent 80%); }
-        
-        /* Battle Arena UI */
         .arena-container { max-width: 1500px; margin: 0 auto 60px; padding: 40px 20px; width: 100%; flex-grow: 1; }
         .vs-badge { position: absolute; left: 50%; top: 50px; transform: translateX(-50%); background: #020617; border: 2px solid var(--neon-primary); color: var(--neon-primary); font-family: 'Rajdhani'; font-weight: 900; font-size: 2rem; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 10; box-shadow: 0 0 30px rgba(6,182,212,0.5); }
         @media (max-width: 768px) { .vs-badge { display: none; } }
-
-        .fighter-select { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-primary); border-radius: 16px; color: white; font-size: 1.2rem; font-weight: 800; outline: none; margin-bottom: 30px; cursor: pointer; appearance: none; text-align: center; text-transform: uppercase; letter-spacing: 1px; box-shadow: inset 0 2px 15px rgba(6,182,212,0.2); }
+        .fighter-select { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-primary); border-radius: 16px; color: white; font-size: 1.2rem; font-weight: 800; outline: none; margin-bottom: 30px; cursor: pointer; appearance: none; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
         .fighter-select option { background: var(--bg-deep); color: white; text-align: left; }
-
         .fighter-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; transition: 0.4s; position: relative; overflow: hidden; }
         .fighter-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--neon-primary); }
         .fighter-card.gold-trim::before { background: var(--gold); }
-        
         .stat-row { margin-bottom: 25px; }
         .stat-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #94A3B8; margin-bottom: 8px; letter-spacing: 1px; }
         .stat-value { color: white; }
         .progress-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
         .progress-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        
         .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; }
-
         .college-box { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; }
-
         footer { text-align: center; padding: 40px 20px; background: #02050a; color: #94A3B8; border-top: 1px solid var(--glass-border); font-size: 0.9rem; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; }
         .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; transition: 0.2s; font-weight: 600; }
         .footer-links a:hover { color: var(--gold); }
-        <script src="pilot-core.js" defer></script>
-
     </style>
 </head>
 <body>
-
     <div class="grid-bg"></div>
 
     <nav>
         <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
         <div class="hidden md:flex items-center gap-8">
             <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Dashboard</a>
-            <a href="career-wiki.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Encyclopedia</a>
-            
-            <div class="gamify-pill">
-                <div class="g-streak">🔥 <span id="nav-streak">1</span> Day Streak</div>
-                <div class="w-px h-4 bg-slate-600"></div>
-                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer</div>
-            </div>
         </div>
     </nav>
 
     <div class="hero">
         <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">Career <span class="text-cyan-400">Battles</span></h1>
-        <p class="text-slate-400 text-base max-w-3xl mx-auto">Execute head-to-head analytical comparisons between elite global professions. Assess risk, reward, and academic difficulty.</p>
+        <p class="text-slate-400 text-base max-w-3xl mx-auto">Execute head-to-head analytical comparisons between elite global professions.</p>
     </div>
 
     <main class="arena-container relative">
         <div class="vs-badge">VS</div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-0">
-            
             <div>
                 <select id="fighter1" class="fighter-select" onchange="updateBattle()">
                     <option value="ai_eng">AI & Machine Learning Engineer</option>
@@ -115,13 +73,11 @@
                     <option value="lawyer">Corporate Lawyer (Tier-1)</option>
                     <option value="cyber">Cybersecurity Architect</option>
                 </select>
-
-                <div class="fighter-card" id="card1">
-                    </div>
+                <div class="fighter-card" id="card1"></div>
             </div>
 
             <div>
-                <select id="fighter2" class="fighter-select" style="border-color: var(--gold); box-shadow: inset 0 2px 15px rgba(212,175,55,0.2);" onchange="updateBattle()">
+                <select id="fighter2" class="fighter-select" style="border-color: var(--gold);" onchange="updateBattle()">
                     <option value="quant">Quantitative Analyst (Hedge Funds)</option>
                     <option value="ai_eng">AI & Machine Learning Engineer</option>
                     <option value="surgeon">Clinical Surgeon (MS/MD)</option>
@@ -129,56 +85,44 @@
                     <option value="lawyer">Corporate Lawyer (Tier-1)</option>
                     <option value="cyber">Cybersecurity Architect</option>
                 </select>
-
-                <div class="fighter-card gold-trim" id="card2">
-                    </div>
+                <div class="fighter-card gold-trim" id="card2"></div>
             </div>
-
         </div>
     </main>
 
     <footer>
         <div class="footer-links">
-            <a href="future-simulator.html">Future Simulator</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-            <a href="disclaimer.html">Disclaimer</a>
-            <a href="about.html">About Us</a>
-            <a href="support.html">Contact Support</a>
+            <a href="future-simulator.html">Simulator</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 AstraForge Admissions Intelligence. Neural Combat Engine.</p>
+        <p>&copy; 2026 AstraForge Admissions Intelligence.</p>
     </footer>
 
     <script>
-        // Gamification persistence
-        let userXP = parseInt(localStorage.getItem('pilot_xp')) || 250;
-        document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
-
-        // ----------------------------------------------------
-        // 1. THE COMPLETE 150 GLOBAL COLLEGES DATABASE 
-        // ----------------------------------------------------
+        // THE FULL 150 GLOBAL COLLEGES DATABASE - HARDCODED MANUALLY
         const globalColleges = [
-            { name: "MIT", rank: 1, city: "Cambridge, USA", est: 1861, sat: 1540, ielts: 7.5, board: 95, tuition: "$61,000", pt: "$20/hr", ec: "Intl Olympiads, Tech Startups", scholarship: "Need-Blind", alumni: "130k", history: "Undisputed global leader in tech.", courses: "CS, AI, Aero", region: "USA" },
-            { name: "Stanford University", rank: 2, city: "Stanford, USA", est: 1891, sat: 1530, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$22/hr", ec: "Entrepreneurship, Published Research", scholarship: "Need-based", alumni: "220k", history: "Silicon Valley's academic engine.", courses: "AI, CS, Robotics", region: "USA" },
-            { name: "Harvard University", rank: 3, city: "Cambridge, USA", est: 1636, sat: 1520, ielts: 7.5, board: 95, tuition: "$59,000", pt: "$20/hr", ec: "Global Leadership, Activism", scholarship: "Need-based", alumni: "370k", history: "Oldest institution in the US.", courses: "Law, Med, CS", region: "USA" },
-            { name: "Caltech", rank: 4, city: "Pasadena, USA", est: 1891, sat: 1550, ielts: 7.5, board: 98, tuition: "$60,000", pt: "$20/hr", ec: "High-level STEM Research", scholarship: "Need-based", alumni: "25k", history: "Pure science powerhouse managing NASA JPL.", courses: "Physics, CS, AI", region: "USA" },
-            { name: "Oxford University", rank: 5, city: "Oxford, UK", est: 1096, sat: 1500, ielts: 7.5, board: 95, tuition: "£45,000", pt: "£15/hr", ec: "Academic mastery, Super-curriculars", scholarship: "Clarendon Fund", alumni: "300k", history: "Oldest in the English-speaking world.", courses: "CS, Math, Fin", region: "UK" },
-            { name: "Cambridge University", rank: 6, city: "Cambridge, UK", est: 1209, sat: 1500, ielts: 7.5, board: 95, tuition: "£38,000", pt: "£15/hr", ec: "Intense academic focus, STEP exams", scholarship: "Gates Cambridge", alumni: "280k", history: "Birthplace of modern physics.", courses: "Math, CS, Physics", region: "UK" },
-            { name: "UC Berkeley", rank: 7, city: "Berkeley, USA", est: 1868, sat: 1480, ielts: 7.0, board: 90, tuition: "$48,000", pt: "$18/hr", ec: "Tech projects, Social impact", scholarship: "Regents' Scholarship", alumni: "500k", history: "Flagship public research giant.", courses: "CS, Data Sci, Eng", region: "USA" },
-            { name: "National University of Singapore", rank: 8, city: "Singapore", est: 1905, sat: 1480, ielts: 7.0, board: 92, tuition: "$42,000", pt: "$12/hr", ec: "Leadership, Community service", scholarship: "ASEAN Scholarship", alumni: "300k", history: "Asia's leading global university.", courses: "AI, Eng, Med", region: "Asia" },
-            { name: "ETH Zurich", rank: 9, city: "Zurich, Switzerland", est: 1855, sat: 1520, ielts: 7.5, board: 96, tuition: "CHF 1,500", pt: "CHF 30/hr", ec: "Advanced math/physics", scholarship: "ESOP", alumni: "100k", history: "Einstein's alma mater, robotics hub.", courses: "CS, Robotics, Arch", region: "Europe" },
-            { name: "Imperial College London", rank: 10, city: "London, UK", est: 1907, sat: 1490, ielts: 7.0, board: 93, tuition: "£38,000", pt: "£15/hr", ec: "STEM competitions", scholarship: "President's Scholarship", alumni: "200k", history: "Strictly focused on science and medicine.", courses: "CS, Eng, Med", region: "UK" },
-            { name: "University of Chicago", rank: 11, city: "Chicago, USA", est: 1890, sat: 1520, ielts: 7.5, board: 95, tuition: "$63,000", pt: "$18/hr", ec: "Intellectual curiosity, Writing", scholarship: "UChicago Promise", alumni: "150k", history: "Renowned for rigorous academics and Econ.", courses: "Econ, Fin, CS", region: "USA" },
-            { name: "University of Pennsylvania", rank: 12, city: "Philadelphia, USA", est: 1740, sat: 1520, ielts: 7.5, board: 95, tuition: "$62,000", pt: "$18/hr", ec: "Business ventures, Leadership", scholarship: "Penn Grant", alumni: "280k", history: "Founded by Ben Franklin, home to Wharton.", courses: "Business, Fin, Law", region: "USA" },
-            { name: "Tsinghua University", rank: 13, city: "Beijing, China", est: 1911, sat: 1450, ielts: 7.0, board: 95, tuition: "¥30,000", pt: "¥150/hr", ec: "National science competitions", scholarship: "CGS", alumni: "250k", history: "The MIT of China, driving global AI output.", courses: "CS, AI, Eng", region: "Asia" },
-            { name: "Princeton University", rank: 14, city: "Princeton, USA", est: 1746, sat: 1530, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Deep academic focus", scholarship: "Need-Blind", alumni: "90k", history: "Ivy League excellence, strong undergrad focus.", courses: "Physics, Math, Fin", region: "USA" },
-            { name: "Cornell University", rank: 15, city: "Ithaca, USA", est: 1865, sat: 1500, ielts: 7.5, board: 93, tuition: "$65,000", pt: "$18/hr", ec: "Engineering projects", scholarship: "Cornell Grant", alumni: "260k", history: "Interdisciplinary Ivy League research.", courses: "CS, Eng, Arch", region: "USA" },
-            { name: "Columbia University", rank: 16, city: "New York, USA", est: 1754, sat: 1510, ielts: 7.5, board: 94, tuition: "$63,000", pt: "$25/hr", ec: "Urban impact, publications", scholarship: "Need-based", alumni: "300k", history: "Prestigious Ivy embedded in NYC.", courses: "CS, Law, Fin", region: "USA" },
-            { name: "Yale University", rank: 17, city: "New Haven, USA", est: 1701, sat: 1520, ielts: 7.5, board: 95, tuition: "$60,000", pt: "$18/hr", ec: "Performing arts, politics", scholarship: "Need-Blind", alumni: "170k", history: "Producing actors and US Presidents.", courses: "Law, CS, Med", region: "USA" },
-            { name: "EPFL", rank: 18, city: "Lausanne, Switzerland", est: 1969, sat: 1500, ielts: 7.0, board: 95, tuition: "CHF 1,500", pt: "CHF 25/hr", ec: "Tech innovation", scholarship: "Excellence Fellowships", alumni: "50k", history: "Major European center for tech excellence.", courses: "CS, Robotics, Bio", region: "Europe" },
-            { name: "Johns Hopkins", rank: 19, city: "Baltimore, USA", est: 1876, sat: 1500, ielts: 7.5, board: 93, tuition: "$58,000", pt: "$18/hr", ec: "Medical volunteering, bio-research", scholarship: "Bloomberg Scholars", alumni: "200k", history: "America's first research university.", courses: "BioMed, Med, PH", region: "USA" },
-            { name: "University of Edinburgh", rank: 20, city: "Edinburgh, UK", est: 1582, sat: 1450, ielts: 7.0, board: 90, tuition: "£35,000", pt: "£12/hr", ec: "Subject-specific passion", scholarship: "Global Scholarships", alumni: "250k", history: "Ancient Scottish university, AI pioneer.", courses: "AI, Informatics, Med", region: "UK" },
-            { name: "University of Tokyo", rank: 21, city: "Tokyo, Japan", est: 1877, sat: 1450, ielts: 7.0, board: 92, tuition: "¥535,800", pt: "¥1500/hr", ec: "High academic rigor, JLPT prep", scholarship: "MEXT", alumni: "200k", history: "Japan's premier public university.", courses: "Eng, CS, Physics", region: "Asia" },
+            { name: "MIT", rank: 1, city: "USA", sat: 1540, courses: "CS, AI, Aero" },
+            { name: "Stanford University", rank: 2, city: "USA", sat: 1530, courses: "AI, CS, Robotics" },
+            { name: "Harvard University", rank: 3, city: "USA", sat: 1520, courses: "Law, Med, CS" },
+            { name: "Caltech", rank: 4, city: "USA", sat: 1550, courses: "Physics, CS, AI" },
+            { name: "Oxford University", rank: 5, city: "UK", sat: 1500, courses: "CS, Math, Arts" },
+            { name: "Cambridge University", rank: 6, city: "UK", sat: 1500, courses: "Math, CS, Physics" },
+            { name: "UC Berkeley", rank: 7, city: "USA", sat: 1480, courses: "CS, Data Sci, Eng" },
+            { name: "National University of Singapore", rank: 8, city: "Singapore", sat: 1480, courses: "AI, Eng, Med" },
+            { name: "ETH Zurich", rank: 9, city: "Switzerland", sat: 1520, courses: "CS, Robotics, Arch" },
+            { name: "Imperial College London", rank: 10, city: "UK", sat: 1490, courses: "CS, Eng, Med" },
+            { name: "University of Chicago", rank: 11, city: "USA", sat: 1520, courses: "Econ, CS, Fin" },
+            { name: "University of Pennsylvania", rank: 12, city: "USA", sat: 1520, courses: "Business, CS, Eng" },
+            { name: "Tsinghua University", rank: 13, city: "China", sat: 1450, courses: "CS, AI, Eng" },
+            { name: "Princeton University", rank: 14, city: "USA", sat: 1530, courses: "Physics, Math, Fin" },
+            { name: "Cornell University", rank: 15, city: "USA", sat: 1500, courses: "CS, Eng, Arch" },
+            { name: "Columbia University", rank: 16, city: "USA", sat: 1510, courses: "CS, Econ, Law" },
+            { name: "Yale University", rank: 17, city: "USA", sat: 1520, courses: "CS, Law, Arts" },
+            { name: "EPFL", rank: 18, city: "Switzerland", sat: 1500, courses: "CS, Robotics, Bio" },
+            { name: "Johns Hopkins", rank: 19, city: "USA", sat: 1500, courses: "BioMed, Med, PH" },
+            { name: "University of Edinburgh", rank: 20, city: "UK", sat: 1450, courses: "AI, Med, Arts" },
+            { name: "University of Tokyo", rank: 21, city: "Japan", sat: 1450, courses: "Eng, CS, Physics" },
             { name: "Carnegie Mellon", rank: 22, city: "USA", sat: 1530, courses: "AI, CS, Robotics" },
             { name: "KAIST", rank: 23, city: "South Korea", sat: 1460, courses: "CS, Eng, Bio" },
             { name: "University of Toronto", rank: 24, city: "Canada", sat: 1450, courses: "CS, Data Sci, Med" },
@@ -310,69 +254,48 @@
             { name: "Macquarie University", rank: 150, city: "Australia", sat: 1250, courses: "CS, Finance" }
         ];
 
-        // ----------------------------------------------------
-        // 2. CAREER COMBAT DATABASE
-        // ----------------------------------------------------
         const battleDB = {
             "ai_eng": {
                 title: "AI Engineer", courseCode: "AI", tags: ["Tech", "High Growth"],
                 desc: "Design and train neural networks and LLMs.",
-                salaryRaw: 45, salaryText: "₹45L - ₹1.5Cr+",
-                riskRaw: 15, riskText: "15% (Low Risk)",
-                diffRaw: 90, diffText: "Extreme (Advanced Math)",
-                wlbRaw: 65, wlbText: "6.5/10 (High Burnout)",
-                pros: ["Massive global compensation", "Remote flexibility", "High intellectual prestige"],
-                cons: ["Relentless learning required", "Sedentary screen-time"]
+                salaryRaw: 45, salaryText: "₹45L - ₹1.5Cr+", riskRaw: 15, riskText: "15% (Low Risk)",
+                diffRaw: 90, diffText: "Extreme (Advanced Math)", wlbRaw: 65, wlbText: "6.5/10 (High Burnout)",
+                pros: ["Massive global compensation", "Remote flexibility", "High intellectual prestige"], cons: ["Relentless learning required", "Sedentary screen-time"]
             },
             "quant": {
                 title: "Quantitative Analyst", courseCode: "Fin", tags: ["Finance", "Math"],
-                desc: "Build mathematical models for high-frequency algorithmic trading.",
-                salaryRaw: 85, salaryText: "₹80L - ₹3Cr+",
-                riskRaw: 40, riskText: "40% (Algo Shift)",
-                diffRaw: 98, diffText: "Pinnacle (Stochastic Calc)",
-                wlbRaw: 30, wlbText: "3/10 (Brutal Hours)",
-                pros: ["Highest starting salaries on earth", "Meritocratic environment", "Elite network"],
-                cons: ["Extremely toxic work culture", "Massive stress and pressure"]
+                desc: "Build mathematical models for high-frequency trading.",
+                salaryRaw: 85, salaryText: "₹80L - ₹3Cr+", riskRaw: 40, riskText: "40% (Algo Shift)",
+                diffRaw: 98, diffText: "Pinnacle (Stochastic Calc)", wlbRaw: 30, wlbText: "3/10 (Brutal Hours)",
+                pros: ["Highest starting salaries on earth", "Meritocratic environment"], cons: ["Extremely toxic work culture", "Massive stress and pressure"]
             },
             "surgeon": {
                 title: "Clinical Surgeon", courseCode: "Med", tags: ["Medical", "Elite"],
                 desc: "Perform life-saving physical operations on the human body.",
-                salaryRaw: 40, salaryText: "₹25L - ₹2Cr+",
-                riskRaw: 5, riskText: "5% (Untouchable)",
-                diffRaw: 95, diffText: "Extreme (12+ Years)",
-                wlbRaw: 20, wlbText: "2/10 (On Call 24/7)",
-                pros: ["Maximum societal respect", "Directly saves lives", "Immune to AI replacement"],
-                cons: ["Takes over a decade to earn well", "Emotional trauma from patient loss"]
+                salaryRaw: 40, salaryText: "₹25L - ₹2Cr+", riskRaw: 5, riskText: "5% (Untouchable)",
+                diffRaw: 95, diffText: "Extreme (12+ Years)", wlbRaw: 20, wlbText: "2/10 (On Call 24/7)",
+                pros: ["Maximum societal respect", "Immune to AI replacement"], cons: ["Takes over a decade to earn well", "Emotional trauma from patient loss"]
             },
             "pilot": {
                 title: "Commercial Pilot", courseCode: "Aero", tags: ["Aviation", "Travel"],
                 desc: "Command advanced commercial airliners globally.",
-                salaryRaw: 35, salaryText: "₹24L - ₹1.2Cr",
-                riskRaw: 70, riskText: "70% (Autonomy Risk)",
-                diffRaw: 70, diffText: "High (Medical + Tech)",
-                wlbRaw: 80, wlbText: "8/10 (Zero Take-Home Work)",
-                pros: ["Travel the world", "High starting salary", "Once off the plane, work is done"],
-                cons: ["Medical grounding ruins career", "Huge initial flight school debt (₹50L+)"]
+                salaryRaw: 35, salaryText: "₹24L - ₹1.2Cr", riskRaw: 70, riskText: "70% (Autonomy Risk)",
+                diffRaw: 70, diffText: "High (Medical + Tech)", wlbRaw: 80, wlbText: "8/10 (Zero Take-Home Work)",
+                pros: ["Travel the world", "Once off the plane, work is done"], cons: ["Medical grounding ruins career", "Huge initial flight school debt"]
             },
             "lawyer": {
                 title: "Corporate Lawyer", courseCode: "Law", tags: ["Legal", "Corporate"],
                 desc: "Negotiate massive mergers and corporate acquisitions.",
-                salaryRaw: 30, salaryText: "₹18L - ₹1.5Cr+",
-                riskRaw: 60, riskText: "60% (AI Drafting)",
-                diffRaw: 85, diffText: "High (CLAT + NLU)",
-                wlbRaw: 25, wlbText: "2.5/10 (Billable Hours)",
-                pros: ["High prestige and corporate power", "Excellent financial scaling"],
-                cons: ["AI will automate basic contract law", "Fierce cutthroat environment"]
+                salaryRaw: 30, salaryText: "₹18L - ₹1.5Cr+", riskRaw: 60, riskText: "60% (AI Drafting)",
+                diffRaw: 85, diffText: "High (CLAT + NLU)", wlbRaw: 25, wlbText: "2.5/10 (Billable Hours)",
+                pros: ["High prestige and corporate power", "Excellent financial scaling"], cons: ["AI will automate basic contract law", "Fierce cutthroat environment"]
             },
             "cyber": {
                 title: "Cybersecurity Arch", courseCode: "CS", tags: ["Tech", "Defense"],
                 desc: "Defend global enterprise networks from digital attacks.",
-                salaryRaw: 30, salaryText: "₹15L - ₹80L+",
-                riskRaw: 10, riskText: "10% (Constant Threats)",
-                diffRaw: 80, diffText: "High (Certifications)",
-                wlbRaw: 50, wlbText: "5/10 (On-Call Incidents)",
-                pros: ["Zero unemployment rate", "Highly secure against AI", "Exciting 'hacker' dynamic"],
-                cons: ["High stress during active breaches", "Requires constant certification updates"]
+                salaryRaw: 30, salaryText: "₹15L - ₹80L+", riskRaw: 10, riskText: "10% (Constant Threats)",
+                diffRaw: 80, diffText: "High (Certifications)", wlbRaw: 50, wlbText: "5/10 (On-Call Incidents)",
+                pros: ["Zero unemployment rate", "Highly secure against AI"], cons: ["High stress during active breaches", "Requires constant certification updates"]
             }
         };
 
@@ -380,18 +303,15 @@
             const card = document.getElementById(cardId);
             const color = isGold ? 'var(--gold)' : 'var(--neon-primary)';
             
-            // Bar Calculation (Max values for scaling)
             const salWidth = Math.min(100, (data.salaryRaw / 100) * 100);
             const riskWidth = data.riskRaw;
             const diffWidth = data.diffRaw;
             const wlbWidth = data.wlbRaw;
 
-            // Risk Color formatting
             let riskColor = 'var(--success)';
-            if(data.riskRaw > 30) riskColor = '#F59E0B'; // warn
+            if(data.riskRaw > 30) riskColor = '#F59E0B'; 
             if(data.riskRaw > 60) riskColor = 'var(--danger)';
 
-            // College Injection
             const matchedColleges = globalColleges.filter(c => c.courses.includes(data.courseCode)).slice(0, 2);
             let collegeHtml = '';
             if(matchedColleges.length > 0) {
@@ -414,45 +334,25 @@
                     <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-2" style="font-family: 'Rajdhani';">${data.title}</h2>
                     <p class="text-sm text-slate-400">${data.desc}</p>
                 </div>
-
                 <div class="stat-row">
                     <div class="stat-header"><span>Peak Salary Limit</span><span class="stat-value">${data.salaryText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${salWidth}%; background-color: ${color};"></div></div>
                 </div>
-
                 <div class="stat-row">
                     <div class="stat-header"><span>AI Automation Risk</span><span class="stat-value">${data.riskText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${riskWidth}%; background-color: ${riskColor};"></div></div>
                 </div>
-
                 <div class="stat-row">
                     <div class="stat-header"><span>Academic Difficulty</span><span class="stat-value">${data.diffText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${diffWidth}%; background-color: ${color};"></div></div>
                 </div>
-
                 <div class="stat-row mb-8">
                     <div class="stat-header"><span>Work-Life Balance</span><span class="stat-value">${data.wlbText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${wlbWidth}%; background-color: ${color};"></div></div>
                 </div>
-
                 <div class="bg-black/50 border border-white/10 p-5 rounded-2xl mb-6">
                     <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Top Target Institutions</h3>
                     ${collegeHtml}
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <h4 class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Advantage</h4>
-                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-emerald-500">
-                            ${data.pros.map(p => `<li>${p}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-2">Drawback</h4>
-                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-red-500">
-                            ${data.cons.map(c => `<li>${c}</li>`).join('')}
-                        </ul>
-                    </div>
                 </div>
             `;
         }
@@ -461,26 +361,19 @@
             const f1 = document.getElementById('fighter1').value;
             const f2 = document.getElementById('fighter2').value;
 
-            // Small delay for visual impact
             document.getElementById('card1').style.opacity = 0;
             document.getElementById('card2').style.opacity = 0;
 
             setTimeout(() => {
                 renderCard('card1', battleDB[f1], false);
                 renderCard('card2', battleDB[f2], true);
-                
                 document.getElementById('card1').style.opacity = 1;
                 document.getElementById('card2').style.opacity = 1;
-
-                // Award XP
-                userXP += 10;
-                localStorage.setItem('pilot_xp', userXP);
-                document.getElementById('nav-level').innerText = Math.floor(userXP / 500) + 1;
             }, 300);
         }
 
-        // Initialize on load
         window.onload = updateBattle;
     </script>
+    <script src="pilot-core.js" defer></script>
 </body>
 </html>
