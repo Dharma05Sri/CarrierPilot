@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carrier.astraforage.in/sitemap.xml
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://astraforage.in/sitemap.xml
