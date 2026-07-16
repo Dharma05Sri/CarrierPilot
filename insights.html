@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics & AdSense -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read elite career insights, admission strategies, and future tech roadmaps for Indian students.">
-    <title>Insights Hub | CareerPilot</title>
+    <title>Insights Hub & Intelligence Matrix | CareerPilot</title>
     
+    <meta name="description" content="Read declassified career roadmaps, elite admissions strategies, and market forecasts designed to secure your academic and financial future.">
+    <meta name="keywords" content="career insights, zero investment degrees, SAT 1550 strategy, AI engineering roadmap, high paying jobs, college admissions">
+    <meta name="author" content="AstraForge Network">
+
+    <!-- Article Schema for AdSense Authority -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "CareerPilot Intelligence Matrix",
+      "description": "Elite career and global admissions research articles.",
+      "publisher": { "@type": "Organization", "name": "AstraForge Network" }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-deep: #020617; 
-            --glass-base: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --neon-primary: #06B6D4;
-        }
-        
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #06B6D4; --gold: #d4af37; --success: #10b981; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
-
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
-        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
         .brand span { color: var(--neon-primary); }
 
-        .glass-module { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
+        .gamify-pill { display: flex; align-items: center; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 800; gap: 12px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .g-streak { color: #F59E0B; display: flex; align-items: center; gap: 4px; }
+
+        .hero { padding: 60px 20px; text-align: center; border-bottom: 1px solid var(--glass-border); background: radial-gradient(circle at top, rgba(6,182,212,0.05) 0%, transparent 80%); }
         
-        /* Article Cards */
-        .article-card { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; text-decoration: none; }
-        .article-card:hover { border-color: var(--neon-primary); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6,182,212,0.05); }
-        .article-img { width: 100%; height: 180px; background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(59,130,246,0.1)); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .category-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 30px 0; padding: 0 20px; }
+        .cat-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: #94A3B8; padding: 10px 20px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .cat-btn.active, .cat-btn:hover { background: rgba(6,182,212,0.1); border-color: var(--neon-primary); color: var(--neon-primary); }
+
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto 60px; padding: 0 20px; width: 100%; }
         
-        /* Featured Article */
-        .featured-article { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 20px; background: linear-gradient(135deg, rgba(15,23,42,0.8), rgba(6,182,212,0.05)); border: 1px solid rgba(6,182,212,0.3); border-radius: 24px; overflow: hidden; text-decoration: none; transition: 0.3s; }
-        .featured-article:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.6); border-color: var(--neon-primary); }
-        @media (min-width: 768px) {
-            .featured-article { grid-template-columns: 1fr 1fr; align-items: center; }
-            .featured-img { height: 100%; min-height: 300px; }
-        }
+        .article-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.4s; display: flex; flex-direction: column; cursor: pointer; }
+        .article-card:hover { border-color: var(--neon-primary); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
         
-        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+        .article-tag { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--neon-primary); margin-bottom: 10px; display: inline-block; }
+        .article-title { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 15px; }
+        .article-excerpt { color: #94A3B8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        
+        .read-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: white; background: transparent; border: none; cursor: pointer; transition: 0.2s; }
+        .article-card:hover .read-btn { color: var(--neon-primary); }
+
+        /* Modal Reader (For High Dwell Time) */
+        .modal { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(15px); z-index: 9999; display: flex; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 40px 20px; opacity: 0; pointer-events: none; transition: 0.3s; }
+        .modal.active { opacity: 1; pointer-events: all; }
+        .modal-content { background: #0b1020; border: 1px solid var(--neon-primary); border-radius: 24px; padding: 50px; max-width: 800px; width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: translateY(30px); transition: 0.4s; position: relative; }
+        .modal.active .modal-content { transform: translateY(0); }
+        .close-btn { position: absolute; top: 25px; right: 30px; background: rgba(255,255,255,0.1); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { background: var(--danger); transform: rotate(90deg); }
+        
+        .prose p { margin-bottom: 20px; color: #cbd5e1; line-height: 1.8; font-size: 1.05rem; }
+        .prose h3 { font-family: 'Rajdhani'; font-size: 1.8rem; font-weight: 900; color: white; margin: 30px 0 15px; text-transform: uppercase; }
+
+        footer { text-align: center; padding: 40px 20px; background: #02050a; color: #94A3B8; border-top: 1px solid var(--glass-border); font-size: 0.9rem; margin-top: auto; }
+        .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; transition: 0.2s; font-weight: 600; }
+        .footer-links a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -53,108 +81,206 @@
     <div class="grid-bg"></div>
 
     <nav>
-        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
-        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">← OS Dashboard</a>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Dashboard</a>
+            <a href="colleges.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-cyan-400 text-decoration-none">Colleges</a>
+            <div class="gamify-pill">
+                <div class="g-streak">🔥 <span id="nav-streak">1</span> Day Streak</div>
+                <div class="w-px h-4 bg-slate-600"></div>
+                <div class="text-xs font-bold text-cyan-400">Lv.<span id="nav-level">1</span> Explorer</div>
+            </div>
+        </div>
     </nav>
 
-    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
-        
-        <header class="mb-10 text-center">
-            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Intelligence <span class="text-cyan-400">Matrix</span></h1>
-            <p class="text-slate-400 text-sm max-w-2xl mx-auto">Declassified career roadmaps, admission strategies, and market forecasts designed to secure your academic future.</p>
-        </header>
+    <div class="hero">
+        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">Intelligence <span class="text-cyan-400">Matrix</span></h1>
+        <p class="text-slate-400 text-base max-w-3xl mx-auto">Declassified career roadmaps, elite admissions strategies, and highly specialized market forecasts designed to secure your academic and financial future.</p>
+    </div>
 
-        <div class="flex justify-center gap-3 mb-10 flex-wrap">
-            <span class="text-xs font-bold uppercase tracking-widest bg-cyan-900/30 text-cyan-400 border border-cyan-800 px-4 py-2 rounded-full cursor-pointer">All Intel</span>
-            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Engineering & Tech</span>
-            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Global Admissions</span>
-            <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-300 px-4 py-2 rounded-full cursor-pointer transition-colors">Finance & Commerce</span>
-        </div>
+    <div class="category-nav">
+        <button class="cat-btn active" onclick="filterCategory('All', this)">All Intel</button>
+        <button class="cat-btn" onclick="filterCategory('Engineering & Tech', this)">Engineering & Tech</button>
+        <button class="cat-btn" onclick="filterCategory('Global Admissions', this)">Global Admissions</button>
+        <button class="cat-btn" onclick="filterCategory('Finance & Commerce', this)">Finance & Commerce</button>
+        <button class="cat-btn" onclick="filterCategory('Aviation', this)">Aviation</button>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            
-            <a href="#" class="featured-article group">
-                <div class="article-img featured-img text-6xl">🤖</div>
-                <div class="p-8 md:p-12">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-[10px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 px-2 py-1 rounded font-bold uppercase tracking-widest">Featured Report</span>
-                        <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">6 Min Read</span>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-black text-white mb-4 leading-tight group-hover:text-cyan-400 transition-colors" style="font-family: 'Rajdhani';">The Python Prerequisite: Architecting AI Portfolios Before College</h2>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Securing a position at top-tier global tech firms requires moving past basic syntax. Learn why elite AI/ML engineers demonstrate their capability through deep, algorithmic logic and "paper coding" before they even clear 12th grade.</p>
-                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-2">Initialize Reading <span class="group-hover:translate-x-2 transition-transform">→</span></div>
-                </div>
-            </a>
-
-            <a href="#" class="article-card group">
-                <div class="article-img">✈️</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-blue-400 font-bold uppercase tracking-widest mb-2">Aviation Sector</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">The 200-Hour Threshold: Commercial Pilot Licensing (CPL)</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">Becoming an airline captain requires navigating a heavily regulated, capital-intensive pathway. Decode the DGCA medicals and flight school logistics.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-
-            <a href="#" class="article-card group">
-                <div class="article-img">🌍</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-2">Global Admissions</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Zero-Investment Degrees: Cracking Need-Blind Frameworks</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">The narrative of crippling student debt is avoidable. Learn how to secure 100% funded packages at US Ivy Leagues using extreme extracurricular spikes.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-
-            <a href="#" class="article-card group">
-                <div class="article-img">📊</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-purple-400 font-bold uppercase tracking-widest mb-2">Finance Tech</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Quant Finance: Where Advanced Math Meets Wall Street</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">The highest-paid engineers don't work in Silicon Valley; they work in hedge funds. Why MPC students are dominating the global finance sector.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-            
-            <a href="#" class="article-card group">
-                <div class="article-img">⚖️</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest mb-2">Law & Judiciary</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">The NLU Pipeline: CLAT and Corporate Litigation</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">How cracking the CLAT exam bypasses traditional courtroom struggles, landing massive day-zero packages at elite corporate law firms.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-            
-            <a href="#" class="article-card group">
-                <div class="article-img">📝</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-red-400 font-bold uppercase tracking-widest mb-2">Standardized Testing</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Triangulating a 1550+: Advanced SAT Strategy</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">A 1550+ on the SAT is not about volume; it's about strategic calibration using College Board baselines and Princeton Review simulations.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-            
-            <a href="#" class="article-card group">
-                <div class="article-img">🛡️</div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest mb-2">Defense Sector</span>
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Command Logic: Surviving the NDA SSB Interview</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">Clearing the UPSC written exam is merely the gateway. Decode the 5-day psychological and physical crucible of the Services Selection Board.</p>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Read Report →</div>
-                </div>
-            </a>
-
-        </div>
-        
-        <div class="text-center mt-8">
-            <button class="bg-slate-900 border border-slate-700 text-white font-bold py-3 px-8 rounded-xl uppercase tracking-widest text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors">Load Archival Data ↓</button>
-        </div>
-
+    <main class="article-grid" id="articleGrid">
+        <!-- Articles Injected by JS -->
     </main>
 
-    <footer>&copy; 2026 AstraForge CareerPilot Network. All operational rights reserved.</footer>
+    <!-- Reading Modal -->
+    <div id="readerModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeReader()">✕</button>
+            <div id="modal-tag" class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">Tag</div>
+            <h2 id="modal-title" style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-8 pb-6 border-b border-white/10">Title</h2>
+            <div id="modal-content" class="prose">
+                <!-- Content Injected -->
+            </div>
+            <button class="w-full mt-10 bg-slate-800 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-slate-700 transition-colors" onclick="completeReading()">Mark as Read (+25 XP)</button>
+        </div>
+    </div>
 
+    <footer>
+        <div class="footer-links mb-4">
+            <a href="future-simulator.html">Simulator</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <p>&copy; 2026 AstraForge Admissions Intelligence. Insights Engine.</p>
+    </footer>
+
+    <script>
+        // FULL ARTICLE DATABASE - HARDCODED FOR ADSENSE INDEXING
+        const articles = [
+            {
+                id: 1, category: "Engineering & Tech", readTime: "6 Min Read",
+                title: "The Python Prerequisite: Architecting AI Portfolios Before College",
+                excerpt: "Securing a position at top-tier global tech firms requires moving past basic syntax. Learn why elite AI/ML engineers demonstrate their capability through deep, algorithmic logic and 'paper coding' before they even clear 12th grade.",
+                content: `
+                    <p>In the modern landscape of Computer Science Engineering (CSE), specifically within the domains of Artificial Intelligence (AI) and Machine Learning (ML), basic syntactic knowledge is no longer a differentiator. High-achieving students in the MPC (Mathematics, Physics, and Chemistry) streams must architect a fundamentally different approach to programming.</p>
+                    <h3>The 'Paper Coding' Methodology</h3>
+                    <p>Before relying on Integrated Development Environments (IDEs) which offer auto-completion and syntax correction, elite candidates master the logic through "paper coding." By writing out conditional statements, advanced loops, and complex data structures manually offline, a student develops an unbreakable mental model of the algorithm.</p>
+                    <p>This offline mastery translates to devastating efficiency during technical interviews at FAANG (Facebook, Amazon, Apple, Netflix, Google) companies. A candidate who can visualize the memory allocation of a Python dictionary or trace a recursive function without a compiler demonstrates a profound, foundational understanding of computer science.</p>
+                    <h3>Transitioning to Machine Learning</h3>
+                    <p>Once Python fundamentals are locked in, the trajectory shifts toward ML frameworks. However, the secret to standing out to top-tier universities and future employers is not just completing tutorials, but deploying actual models. Building a proprietary neural network, even a simple one that automates a daily task, proves an engineering capability that places a candidate in the top 1% globally.</p>
+                `
+            },
+            {
+                id: 2, category: "Global Admissions", readTime: "8 Min Read",
+                title: "Zero-Investment Degrees: Cracking Need-Blind Frameworks",
+                excerpt: "The narrative of crippling student debt is avoidable. Learn how to secure 100% funded packages at US Ivy Leagues and elite global universities using extreme extracurricular spikes.",
+                content: `
+                    <p>The pursuit of an undergraduate degree (B.Tech or equivalent) at a top-tier global institution often carries a daunting financial projection. However, the most elite universities in the United States—including Harvard, MIT, Princeton, and Yale—operate on "Need-Blind" admissions policies with full financial need met. This means if you are accepted, they will ensure you can afford to attend, effectively creating a zero-investment educational pathway.</p>
+                    <h3>The Admissions Reality</h3>
+                    <p>Securing a seat at these institutions requires far more than excellent board exam percentages. These universities are looking for "spikes"—areas of extreme, undeniable excellence. For an MPC student, this might mean securing a top rank in the International Physics Olympiad, or deploying a highly utilized software application while still living in a high school hostel.</p>
+                    <h3>Global Merit Scholarships</h3>
+                    <p>Beyond the US Need-Blind system, regions like Singapore (NUS/NTU) and Canada (University of Toronto) offer massive merit-based scholarships. Programs like the ASEAN scholarship or the Lester B. Pearson International Scholarship provide fully-funded tuition and living stipends. Securing these requires a meticulously crafted admissions profile built years in advance.</p>
+                `
+            },
+            {
+                id: 3, category: "Global Admissions", readTime: "5 Min Read",
+                title: "Standardized Testing: A 1550+ SAT Execution Strategy",
+                excerpt: "A score of 1550 on the SAT is not about volume; it is about strategic calibration using elite-level baselines, exact resource targeting, and relentless execution.",
+                content: `
+                    <p>For international students targeting elite US engineering and computer science programs, crossing the 1500 threshold on the SAT is mandatory. However, breaching the 1550+ mark requires a mathematical and strategic approach to preparation.</p>
+                    <h3>The Precision Resource Matrix</h3>
+                    <p>Our data strongly indicates that relying on generalized prep books yields average results. To achieve a top 1% score, candidates must utilize a highly specific, curated inventory of practice materials. The optimal execution matrix involves:</p>
+                    <ul>
+                        <li><strong>7 Official College Board Tests:</strong> Used strictly for establishing baselines and final calibration.</li>
+                        <li><strong>10 SAT Panda Drills:</strong> Utilized for aggressive, high-difficulty mathematical conditioning.</li>
+                        <li><strong>3 Princeton Review 2026 Simulations:</strong> Deployed for stamina training and adapting to the most current testing algorithms.</li>
+                    </ul>
+                    <p>By analyzing the exact point of failure on every incorrect answer across these specific resources, a student isolates their cognitive gaps. A 1550+ is achieved not by learning new math, but by completely eliminating the probability of making a logic error under extreme time constraints.</p>
+                `
+            },
+            {
+                id: 4, category: "Aviation", readTime: "7 Min Read",
+                title: "The 200-Hour Threshold: Commercial Pilot Licensing (CPL)",
+                excerpt: "Becoming an airline captain requires navigating a heavily regulated, capital-intensive pathway. Decode the DGCA medicals and flight-school logistics.",
+                content: `
+                    <p>The aviation sector offers one of the most lucrative and globally mobile careers available, but the barrier to entry is notoriously steep. The journey to the right seat of an Airbus A320 or Boeing 737 begins long before a candidate ever touches the yoke of an aircraft.</p>
+                    <h3>The Medical Imperative</h3>
+                    <p>Before committing any capital to flight training, candidates must clear the DGCA Class 1 Medical examination. This is a non-negotiable prerequisite. A minor, undetected physiological issue can permanently ground a career before it begins. Therefore, elite candidates secure this clearance while still completing their high school physics and mathematics requirements.</p>
+                    <h3>Accumulating the 200 Hours</h3>
+                    <p>Securing a Commercial Pilot License (CPL) requires a minimum of 200 logged flight hours. This phase requires intense focus on aeronautical theory, meteorology, and spatial navigation. Following the CPL, candidates must endure Type Rating training—a highly specialized, simulator-intensive process that teaches them to fly a specific, multi-million dollar commercial jetliner.</p>
+                `
+            },
+            {
+                id: 5, category: "Finance & Commerce", readTime: "6 Min Read",
+                title: "Quant Finance: Where Advanced Math Meets Wall Street",
+                excerpt: "The highest-paid engineers don't work in Silicon Valley; they work in hedge funds. Why elite math and physics students are dominating the global finance sector.",
+                content: `
+                    <p>There is a hidden tier of compensation in the global economy, sitting above standard tech salaries and corporate law. It belongs to Quantitative Analysts ("Quants"). These are individuals who apply deep mathematical models, stochastic calculus, and C++ algorithms to financial markets to execute high-frequency trades.</p>
+                    <h3>The Academic Pipeline</h3>
+                    <p>Proprietary trading firms (like Jane Street, Optiver, or Citadel) rarely recruit standard finance majors. Instead, they aggressively target top-tier graduates in Mathematics, Physics, and Computer Science. The ability to process complex mental math instantly and write low-latency code is the absolute currency of this industry.</p>
+                    <p>For an ambitious student in the MPC stream, pivoting from pure engineering into Quant Finance represents the highest possible financial ceiling available straight out of an undergraduate program.</p>
+                `
+            },
+            {
+                id: 6, category: "Finance & Commerce", readTime: "4 Min Read",
+                title: "The NLU Pipeline: CLAT and Corporate Litigation",
+                excerpt: "How cracking the CLAT exam bypasses traditional courtroom struggles, landing massive day-zero packages at elite corporate law firms.",
+                content: `
+                    <p>The traditional perception of a lawyer struggling for years in lower courts has been entirely rewritten by the National Law University (NLU) model. By cracking the highly competitive Common Law Admission Test (CLAT), students enter a 5-year integrated BA.LLB program that acts as a direct pipeline to Tier-1 corporate law firms.</p>
+                    <p>These corporate lawyers focus on high-stakes mergers, acquisitions, and international litigation. The starting packages offered at top NLUs rival the compensation of elite software engineers, proving that exceptional reading comprehension and logical reasoning can be just as lucrative as writing code.</p>
+                `
+            }
+        ];
+
+        function renderArticles(category) {
+            const grid = document.getElementById('articleGrid');
+            const filtered = category === 'All' ? articles : articles.filter(a => a.category === category);
+            
+            grid.innerHTML = filtered.map(a => `
+                <div class="article-card" onclick="openReader(${a.id})">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="article-tag">${a.category}</span>
+                            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">${a.readTime}</span>
+                        </div>
+                        <h3 class="article-title">${a.title}</h3>
+                        <p class="article-excerpt">${a.excerpt}</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <button class="read-btn">Read Full Report <span class="text-lg leading-none">→</span></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderArticles(cat);
+        }
+
+        function openReader(id) {
+            const article = articles.find(a => a.id === id);
+            document.getElementById('modal-tag').innerText = article.category;
+            document.getElementById('modal-title').innerText = article.title;
+            document.getElementById('modal-content').innerHTML = article.content;
+            document.getElementById('readerModal').classList.add('active');
+            
+            // Auto scroll modal to top
+            document.getElementById('readerModal').scrollTop = 0;
+        }
+
+        function closeReader() {
+            document.getElementById('readerModal').classList.remove('active');
+        }
+
+        function completeReading() {
+            closeReader();
+            
+            // Gamification call to pilot-core.js logic
+            if(typeof PilotCore !== 'undefined') {
+                PilotCore.awardXP(25);
+            } else {
+                // Fallback if core isn't loaded
+                let xp = parseInt(localStorage.getItem('pilot_xp')) || 250;
+                xp += 25;
+                localStorage.setItem('pilot_xp', xp);
+                document.getElementById('nav-level').innerText = Math.floor(xp / 500) + 1;
+                alert("Report Analyzed. +25 XP Earned.");
+            }
+        }
+
+        // Initialize on Load
+        window.onload = () => {
+            renderArticles('All');
+            
+            // Basic HUD Init fallback
+            let xp = parseInt(localStorage.getItem('pilot_xp')) || 250;
+            document.getElementById('nav-level').innerText = Math.floor(xp / 500) + 1;
+        };
+    </script>
+    
+    <!-- Link to the Operating System file -->
+    <script src="pilot-core.js" defer></script>
 </body>
 </html>
