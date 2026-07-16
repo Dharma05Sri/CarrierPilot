@@ -7,9 +7,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Battles | AstraForge Intelligence</title>
+    <title>Career Battles 2.0 | AstraForge Intelligence</title>
     
-    <meta name="description" content="Compare elite careers head-to-head. Analyze salary data, automation risk, academic difficulty, and top global colleges.">
+    <meta name="description" content="Compare elite careers, academic streams, and global ROI head-to-head. Analyze salary data, automation risk, and top global colleges.">
     <meta name="author" content="AstraForge Network">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,8 +27,8 @@
         .arena-container { max-width: 1500px; margin: 0 auto 60px; padding: 40px 20px; width: 100%; flex-grow: 1; }
         .vs-badge { position: absolute; left: 50%; top: 50px; transform: translateX(-50%); background: #020617; border: 2px solid var(--neon-primary); color: var(--neon-primary); font-family: 'Rajdhani'; font-weight: 900; font-size: 2rem; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 10; box-shadow: 0 0 30px rgba(6,182,212,0.5); }
         @media (max-width: 768px) { .vs-badge { display: none; } }
-        .fighter-select { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-primary); border-radius: 16px; color: white; font-size: 1.2rem; font-weight: 800; outline: none; margin-bottom: 30px; cursor: pointer; appearance: none; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
-        .fighter-select option { background: var(--bg-deep); color: white; text-align: left; }
+        .fighter-select { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-primary); border-radius: 16px; color: white; font-size: 1.1rem; font-weight: 800; outline: none; margin-bottom: 30px; cursor: pointer; appearance: none; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+        .fighter-select option, .fighter-select optgroup { background: var(--bg-deep); color: white; text-align: left; }
         .fighter-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; transition: 0.4s; position: relative; overflow: hidden; }
         .fighter-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--neon-primary); }
         .fighter-card.gold-trim::before { background: var(--gold); }
@@ -39,7 +39,8 @@
         .progress-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; }
-        .college-box { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .college-box { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .college-box:hover { border-color: var(--neon-primary); background: rgba(6,182,212,0.05); }
         footer { text-align: center; padding: 40px 20px; background: #02050a; color: #94A3B8; border-top: 1px solid var(--glass-border); font-size: 0.9rem; margin-top: auto; }
         .footer-links a { color: #94A3B8; text-decoration: none; margin: 0 15px; transition: 0.2s; font-weight: 600; }
         .footer-links a:hover { color: var(--gold); }
@@ -57,7 +58,7 @@
 
     <div class="hero">
         <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">Career <span class="text-cyan-400">Battles</span></h1>
-        <p class="text-slate-400 text-base max-w-3xl mx-auto">Execute head-to-head analytical comparisons between elite global professions.</p>
+        <p class="text-slate-400 text-base max-w-3xl mx-auto">Execute head-to-head analytical comparisons across streams, core engineering, and global ROI matrices.</p>
     </div>
 
     <main class="arena-container relative">
@@ -66,24 +67,58 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-0">
             <div>
                 <select id="fighter1" class="fighter-select" onchange="updateBattle()">
-                    <option value="ai_eng">AI & Machine Learning Engineer</option>
-                    <option value="quant">Quantitative Analyst (Hedge Funds)</option>
-                    <option value="surgeon">Clinical Surgeon (MS/MD)</option>
-                    <option value="pilot">Commercial Airline Pilot</option>
-                    <option value="lawyer">Corporate Lawyer (Tier-1)</option>
-                    <option value="cyber">Cybersecurity Architect</option>
+                    <optgroup label="Academic Streams">
+                        <option value="mpc">MPC (Math, Physics, Chem)</option>
+                        <option value="bipc">BiPC (Bio, Physics, Chem)</option>
+                    </optgroup>
+                    <optgroup label="Engineering Face-Off">
+                        <option value="cse">CSE (Computer Science)</option>
+                        <option value="ece">ECE (Electronics & Comm.)</option>
+                        <option value="eee">EEE (Electrical & Electronics)</option>
+                        <option value="civil">Civil Engineering</option>
+                        <option value="mech">Mechanical Engineering</option>
+                    </optgroup>
+                    <optgroup label="Global ROI Pathways">
+                        <option value="btech_ind">B.Tech (India / IIT/NIT)</option>
+                        <option value="bs_abroad">B.S. (Abroad / US/UK)</option>
+                        <option value="ms_ind">Master's (India / GATE)</option>
+                        <option value="ms_abroad">Master's (Abroad / GRE)</option>
+                    </optgroup>
+                    <optgroup label="Elite Trajectories">
+                        <option value="ai_eng">AI & Machine Learning Engineer</option>
+                        <option value="upsc">Civil Services (UPSC IAS/IPS)</option>
+                        <option value="quant">Quantitative Analyst (Finance)</option>
+                        <option value="surgeon">Clinical Surgeon (MS/MD)</option>
+                    </optgroup>
                 </select>
                 <div class="fighter-card" id="card1"></div>
             </div>
 
             <div>
                 <select id="fighter2" class="fighter-select" style="border-color: var(--gold);" onchange="updateBattle()">
-                    <option value="quant">Quantitative Analyst (Hedge Funds)</option>
-                    <option value="ai_eng">AI & Machine Learning Engineer</option>
-                    <option value="surgeon">Clinical Surgeon (MS/MD)</option>
-                    <option value="pilot">Commercial Airline Pilot</option>
-                    <option value="lawyer">Corporate Lawyer (Tier-1)</option>
-                    <option value="cyber">Cybersecurity Architect</option>
+                    <optgroup label="Academic Streams">
+                        <option value="bipc">BiPC (Bio, Physics, Chem)</option>
+                        <option value="mpc">MPC (Math, Physics, Chem)</option>
+                    </optgroup>
+                    <optgroup label="Engineering Face-Off">
+                        <option value="ece">ECE (Electronics & Comm.)</option>
+                        <option value="cse">CSE (Computer Science)</option>
+                        <option value="eee">EEE (Electrical & Electronics)</option>
+                        <option value="civil">Civil Engineering</option>
+                        <option value="mech">Mechanical Engineering</option>
+                    </optgroup>
+                    <optgroup label="Global ROI Pathways">
+                        <option value="bs_abroad">B.S. (Abroad / US/UK)</option>
+                        <option value="btech_ind">B.Tech (India / IIT/NIT)</option>
+                        <option value="ms_abroad">Master's (Abroad / GRE)</option>
+                        <option value="ms_ind">Master's (India / GATE)</option>
+                    </optgroup>
+                    <optgroup label="Elite Trajectories">
+                        <option value="upsc">Civil Services (UPSC IAS/IPS)</option>
+                        <option value="ai_eng">AI & Machine Learning Engineer</option>
+                        <option value="quant">Quantitative Analyst (Finance)</option>
+                        <option value="surgeon">Clinical Surgeon (MS/MD)</option>
+                    </optgroup>
                 </select>
                 <div class="fighter-card gold-trim" id="card2"></div>
             </div>
@@ -92,210 +127,296 @@
 
     <footer>
         <div class="footer-links">
+            <a href="colleges.html">Predictor</a>
             <a href="future-simulator.html">Simulator</a>
             <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
         </div>
         <p>&copy; 2026 AstraForge Admissions Intelligence.</p>
     </footer>
 
     <script>
-        // THE FULL 150 GLOBAL COLLEGES DATABASE - HARDCODED MANUALLY
+        // FULL 150 COLLEGES DATABASE - INJECTED FOR TARGET MATCHING
         const globalColleges = [
-            { name: "MIT", rank: 1, city: "USA", sat: 1540, courses: "CS, AI, Aero" },
-            { name: "Stanford University", rank: 2, city: "USA", sat: 1530, courses: "AI, CS, Robotics" },
-            { name: "Harvard University", rank: 3, city: "USA", sat: 1520, courses: "Law, Med, CS" },
-            { name: "Caltech", rank: 4, city: "USA", sat: 1550, courses: "Physics, CS, AI" },
-            { name: "Oxford University", rank: 5, city: "UK", sat: 1500, courses: "CS, Math, Arts" },
-            { name: "Cambridge University", rank: 6, city: "UK", sat: 1500, courses: "Math, CS, Physics" },
+            { name: "Massachusetts Institute of Technology (MIT)", rank: 1, city: "USA", sat: 1540, courses: "CS, AI, Aero, Eng" },
+            { name: "Stanford University", rank: 2, city: "USA", sat: 1530, courses: "AI, CS, Robotics, Eng" },
+            { name: "Harvard University", rank: 3, city: "USA", sat: 1520, courses: "Law, Med, CS, Arts" },
+            { name: "Caltech", rank: 4, city: "USA", sat: 1550, courses: "Physics, CS, AI, Eng" },
+            { name: "Oxford University", rank: 5, city: "UK", sat: 1500, courses: "CS, Math, Arts, Law" },
+            { name: "Cambridge University", rank: 6, city: "UK", sat: 1500, courses: "Math, CS, Physics, Eng" },
             { name: "UC Berkeley", rank: 7, city: "USA", sat: 1480, courses: "CS, Data Sci, Eng" },
             { name: "National University of Singapore", rank: 8, city: "Singapore", sat: 1480, courses: "AI, Eng, Med" },
-            { name: "ETH Zurich", rank: 9, city: "Switzerland", sat: 1520, courses: "CS, Robotics, Arch" },
-            { name: "Imperial College London", rank: 10, city: "UK", sat: 1490, courses: "CS, Eng, Med" },
+            { name: "ETH Zurich", rank: 9, city: "Switzerland", sat: 1520, courses: "CS, Robotics, Aero, Eng" },
+            { name: "Imperial College London", rank: 10, city: "UK", sat: 1490, courses: "CS, Aero, Med, Eng" },
             { name: "University of Chicago", rank: 11, city: "USA", sat: 1520, courses: "Econ, CS, Fin" },
-            { name: "University of Pennsylvania", rank: 12, city: "USA", sat: 1520, courses: "Business, CS, Eng" },
+            { name: "University of Pennsylvania", rank: 12, city: "USA", sat: 1520, courses: "Business, CS, Law, Fin" },
             { name: "Tsinghua University", rank: 13, city: "China", sat: 1450, courses: "CS, AI, Eng" },
             { name: "Princeton University", rank: 14, city: "USA", sat: 1530, courses: "Physics, Math, Fin" },
-            { name: "Cornell University", rank: 15, city: "USA", sat: 1500, courses: "CS, Eng, Arch" },
+            { name: "Cornell University", rank: 15, city: "USA", sat: 1500, courses: "CS, Aero, Arch, Eng" },
             { name: "Columbia University", rank: 16, city: "USA", sat: 1510, courses: "CS, Econ, Law" },
             { name: "Yale University", rank: 17, city: "USA", sat: 1520, courses: "CS, Law, Arts" },
-            { name: "EPFL", rank: 18, city: "Switzerland", sat: 1500, courses: "CS, Robotics, Bio" },
-            { name: "Johns Hopkins", rank: 19, city: "USA", sat: 1500, courses: "BioMed, Med, PH" },
+            { name: "EPFL", rank: 18, city: "Switzerland", sat: 1500, courses: "CS, Robotics, Bio, Eng" },
+            { name: "Johns Hopkins", rank: 19, city: "USA", sat: 1500, courses: "BioMed, Med, PH, Bio" },
             { name: "University of Edinburgh", rank: 20, city: "UK", sat: 1450, courses: "AI, Med, Arts" },
             { name: "University of Tokyo", rank: 21, city: "Japan", sat: 1450, courses: "Eng, CS, Physics" },
             { name: "Carnegie Mellon", rank: 22, city: "USA", sat: 1530, courses: "AI, CS, Robotics" },
-            { name: "KAIST", rank: 23, city: "South Korea", sat: 1460, courses: "CS, Eng, Bio" },
+            { name: "KAIST", rank: 23, city: "South Korea", sat: 1460, courses: "CS, Eng, Aero" },
             { name: "University of Toronto", rank: 24, city: "Canada", sat: 1450, courses: "CS, Data Sci, Med" },
             { name: "UCLA", rank: 25, city: "USA", sat: 1450, courses: "CS, Film, Psych" },
-            { name: "University of Michigan", rank: 26, city: "USA", sat: 1460, courses: "Eng, CS, Bus" },
+            { name: "University of Michigan", rank: 26, city: "USA", sat: 1460, courses: "Eng, CS, Aero" },
             { name: "Georgia Tech", rank: 27, city: "USA", sat: 1480, courses: "CS, Eng, Aerospace" },
             { name: "New York University", rank: 28, city: "USA", sat: 1470, courses: "CS, Bus, Law" },
             { name: "University of Hong Kong", rank: 29, city: "Hong Kong", sat: 1440, courses: "CS, Eng, Law" },
             { name: "King's College London", rank: 30, city: "UK", sat: 1420, courses: "CS, Med, Law" },
-            { name: "University of Washington", rank: 31, city: "USA", sat: 1420, courses: "CS, Eng, Bio" },
+            { name: "University of Washington", rank: 31, city: "USA", sat: 1420, courses: "CS, Eng, Aero" },
             { name: "Purdue University", rank: 32, city: "USA", sat: 1400, courses: "Eng, CS, Aero" },
             { name: "UT Austin", rank: 33, city: "USA", sat: 1420, courses: "CS, Eng, Bus" },
             { name: "LMU Munich", rank: 34, city: "Germany", sat: 1400, courses: "CS, Physics, Math" },
-            { name: "University of Amsterdam", rank: 35, city: "Netherlands", sat: 1350, courses: "CS, Logic, Bus" },
-            { name: "UIUC", rank: 36, city: "USA", sat: 1430, courses: "CS, Eng, Math" },
-            { name: "UC San Diego", rank: 37, city: "USA", sat: 1410, courses: "CS, BioEng" },
-            { name: "Seoul National University", rank: 38, city: "South Korea", sat: 1400, courses: "CS, Eng, Med" },
-            { name: "UBC", rank: 39, city: "Canada", sat: 1380, courses: "CS, Eng, Env" },
-            { name: "University of Manchester", rank: 40, city: "UK", sat: 1350, courses: "CS, Eng, Chem" },
-            { name: "UW Madison", rank: 41, city: "USA", sat: 1390, courses: "CS, Eng, Data" },
-            { name: "TU Munich", rank: 42, city: "Germany", sat: 1420, courses: "CS, Robotics, AI" },
+            { name: "University of Amsterdam", rank: 35, city: "Netherlands", sat: 1350, courses: "CS, Logic, Law" },
+            { name: "UIUC", rank: 36, city: "USA", sat: 1430, courses: "CS, Eng, Aero" },
+            { name: "UC San Diego", rank: 37, city: "USA", sat: 1410, courses: "CS, BioEng, Bio" },
+            { name: "Seoul National University", rank: 38, city: "South Korea", sat: 1400, courses: "CS, Aero, Med" },
+            { name: "UBC", rank: 39, city: "Canada", sat: 1380, courses: "CS, Eng, Med" },
+            { name: "University of Manchester", rank: 40, city: "UK", sat: 1350, courses: "CS, Eng, Aero" },
+            { name: "UW Madison", rank: 41, city: "USA", sat: 1390, courses: "CS, Aero, Data" },
+            { name: "TU Munich", rank: 42, city: "Germany", sat: 1420, courses: "CS, Robotics, AI, Eng" },
             { name: "University of Melbourne", rank: 43, city: "Australia", sat: 1350, courses: "CS, Eng, Med" },
-            { name: "Ohio State University", rank: 44, city: "USA", sat: 1350, courses: "CS, Eng, Bus" },
-            { name: "University of Maryland", rank: 45, city: "USA", sat: 1370, courses: "CS, CyberSec, Eng" },
-            { name: "Penn State", rank: 46, city: "USA", sat: 1350, courses: "CS, Eng, Bus" },
-            { name: "Boston University", rank: 47, city: "USA", sat: 1400, courses: "CS, Bus, Data" },
+            { name: "Ohio State University", rank: 44, city: "USA", sat: 1350, courses: "CS, Aero, Bus" },
+            { name: "University of Maryland", rank: 45, city: "USA", sat: 1370, courses: "CS, CyberSec, Aero" },
+            { name: "Penn State", rank: 46, city: "USA", sat: 1350, courses: "CS, Aero, Bus, Eng" },
+            { name: "Boston University", rank: 47, city: "USA", sat: 1400, courses: "CS, Law, Data" },
             { name: "University of Sydney", rank: 48, city: "Australia", sat: 1320, courses: "CS, Eng, Law" },
-            { name: "University of Minnesota", rank: 49, city: "USA", sat: 1350, courses: "CS, Eng, Bio" },
-            { name: "Northwestern University", rank: 50, city: "USA", sat: 1480, courses: "CS, Eng, Bus" },
+            { name: "University of Minnesota", rank: 49, city: "USA", sat: 1350, courses: "CS, Aero, Bio" },
+            { name: "Northwestern University", rank: 50, city: "USA", sat: 1480, courses: "CS, Eng, Law" },
             { name: "UC Santa Barbara", rank: 51, city: "USA", sat: 1400, courses: "CS, Physics" },
             { name: "UC Irvine", rank: 52, city: "USA", sat: 1380, courses: "CS, Data Sci" },
-            { name: "Brown University", rank: 53, city: "USA", sat: 1480, courses: "CS, Math" },
+            { name: "Brown University", rank: 53, city: "USA", sat: 1480, courses: "CS, Math, Bio" },
             { name: "Dartmouth College", rank: 54, city: "USA", sat: 1470, courses: "CS, Fin" },
-            { name: "Rice University", rank: 55, city: "USA", sat: 1490, courses: "CS, Space" },
-            { name: "Duke University", rank: 56, city: "USA", sat: 1500, courses: "CS, BioMed" },
-            { name: "Vanderbilt University", rank: 57, city: "USA", sat: 1480, courses: "CS, Med" },
-            { name: "University of Rochester", rank: 58, city: "USA", sat: 1400, courses: "CS, Optics" },
-            { name: "Case Western Reserve", rank: 59, city: "USA", sat: 1420, courses: "CS, BioEng" },
+            { name: "Rice University", rank: 55, city: "USA", sat: 1490, courses: "CS, Space, Aero" },
+            { name: "Duke University", rank: 56, city: "USA", sat: 1500, courses: "CS, BioMed, Bio" },
+            { name: "Vanderbilt University", rank: 57, city: "USA", sat: 1480, courses: "CS, Med, Bio" },
+            { name: "University of Rochester", rank: 58, city: "USA", sat: 1400, courses: "CS, Optics, Eng" },
+            { name: "Case Western Reserve", rank: 59, city: "USA", sat: 1420, courses: "CS, BioEng, Bio" },
             { name: "Tufts University", rank: 60, city: "USA", sat: 1440, courses: "CS, Int'l" },
-            { name: "USC", rank: 61, city: "USA", sat: 1440, courses: "CS, Film" },
-            { name: "UNC Chapel Hill", rank: 62, city: "USA", sat: 1400, courses: "CS, Med" },
-            { name: "Peking University", rank: 63, city: "China", sat: 1430, courses: "CS, Math" },
-            { name: "University of Glasgow", rank: 64, city: "UK", sat: 1320, courses: "CS, Eng" },
-            { name: "University of Southampton", rank: 65, city: "UK", sat: 1300, courses: "CS, Marine" },
-            { name: "University of Queensland", rank: 66, city: "Australia", sat: 1300, courses: "CS, Bio" },
+            { name: "USC", rank: 61, city: "USA", sat: 1440, courses: "CS, Film, Aero" },
+            { name: "UNC Chapel Hill", rank: 62, city: "USA", sat: 1400, courses: "CS, Med, Law" },
+            { name: "Peking University", rank: 63, city: "China", sat: 1430, courses: "CS, Math, Eng" },
+            { name: "University of Glasgow", rank: 64, city: "UK", sat: 1320, courses: "CS, Aero, Eng" },
+            { name: "University of Southampton", rank: 65, city: "UK", sat: 1300, courses: "CS, Aero, Eng" },
+            { name: "University of Queensland", rank: 66, city: "Australia", sat: 1300, courses: "CS, Bio, Med" },
             { name: "University of Helsinki", rank: 67, city: "Finland", sat: 1300, courses: "CS, Physics" },
-            { name: "KTH Royal Institute", rank: 68, city: "Sweden", sat: 1350, courses: "CS, Robotics" },
+            { name: "KTH Royal Institute", rank: 68, city: "Sweden", sat: 1350, courses: "CS, Aero, Eng" },
             { name: "DTU", rank: 69, city: "Denmark", sat: 1350, courses: "CS, Eng" },
-            { name: "CU Boulder", rank: 70, city: "USA", sat: 1300, courses: "Aero, CS" },
+            { name: "CU Boulder", rank: 70, city: "USA", sat: 1300, courses: "Aero, CS, Eng" },
             { name: "University of Warwick", rank: 71, city: "UK", sat: 1350, courses: "CS, Econ, Fin" },
-            { name: "University of Basel", rank: 72, city: "Switzerland", sat: 1350, courses: "BioMed, CS" },
+            { name: "University of Basel", rank: 72, city: "Switzerland", sat: 1350, courses: "BioMed, CS, Bio" },
             { name: "University of Leiden", rank: 73, city: "Netherlands", sat: 1320, courses: "CS, Law" },
-            { name: "University of Auckland", rank: 74, city: "New Zealand", sat: 1300, courses: "CS, Med" },
-            { name: "Georgia Tech (Global)", rank: 75, city: "USA", sat: 1450, courses: "CS, AI" },
-            { name: "NTU", rank: 76, city: "Singapore", sat: 1450, courses: "AI, CS" },
-            { name: "UC Davis", rank: 77, city: "USA", sat: 1350, courses: "CS, Bio" },
+            { name: "University of Auckland", rank: 74, city: "New Zealand", sat: 1300, courses: "CS, Med, Eng" },
+            { name: "Georgia Tech (Global)", rank: 75, city: "USA", sat: 1450, courses: "CS, AI, Aero, Eng" },
+            { name: "NTU", rank: 76, city: "Singapore", sat: 1450, courses: "AI, CS, Aero, Eng" },
+            { name: "UC Davis", rank: 77, city: "USA", sat: 1350, courses: "CS, Bio, Eng" },
             { name: "UC Santa Cruz", rank: 78, city: "USA", sat: 1320, courses: "CS, Astronomy" },
-            { name: "University of Utah", rank: 79, city: "USA", sat: 1300, courses: "CS, Games" },
-            { name: "Arizona State University", rank: 80, city: "USA", sat: 1280, courses: "CS, Bus" },
-            { name: "University of Florida", rank: 81, city: "USA", sat: 1350, courses: "CS, Eng" },
+            { name: "University of Utah", rank: 79, city: "USA", sat: 1300, courses: "CS, Games, Eng" },
+            { name: "Arizona State University", rank: 80, city: "USA", sat: 1280, courses: "CS, Aero, Eng" },
+            { name: "University of Florida", rank: 81, city: "USA", sat: 1350, courses: "CS, Aero, Eng" },
             { name: "University of Calgary", rank: 82, city: "Canada", sat: 1300, courses: "Eng, CS" },
-            { name: "University of Waterloo", rank: 83, city: "Canada", sat: 1400, courses: "CS, Math" },
-            { name: "McMaster University", rank: 84, city: "Canada", sat: 1320, courses: "CS, Med" },
-            { name: "University of Alberta", rank: 85, city: "Canada", sat: 1300, courses: "CS, AI" },
-            { name: "University of Notre Dame", rank: 86, city: "USA", sat: 1450, courses: "CS, Eng" },
-            { name: "Georgetown University", rank: 87, city: "USA", sat: 1450, courses: "CS, Int'l" },
-            { name: "WashU in St. Louis", rank: 88, city: "USA", sat: 1480, courses: "CS, Med" },
-            { name: "RPI", rank: 89, city: "USA", sat: 1400, courses: "CS, Robotics" },
-            { name: "Virginia Tech", rank: 90, city: "USA", sat: 1320, courses: "CS, Aero" },
-            { name: "University of Pittsburgh", rank: 91, city: "USA", sat: 1330, courses: "CS, Med" },
-            { name: "University of Iowa", rank: 92, city: "USA", sat: 1280, courses: "CS, Arts" },
-            { name: "UMass Amherst", rank: 93, city: "USA", sat: 1350, courses: "CS, AI" },
-            { name: "Colorado School of Mines", rank: 94, city: "USA", sat: 1380, courses: "Eng, CS" },
-            { name: "Michigan State University", rank: 95, city: "USA", sat: 1250, courses: "CS, Bus" },
-            { name: "University of Notre Dame (AUS)", rank: 96, city: "Australia", sat: 1250, courses: "Med, CS" },
-            { name: "University of Victoria", rank: 97, city: "Canada", sat: 1280, courses: "CS, Bio" },
-            { name: "Syracuse University", rank: 98, city: "USA", sat: 1300, courses: "CS, Bus" },
-            { name: "University of Delaware", rank: 99, city: "USA", sat: 1280, courses: "CS, Chem" },
-            { name: "University of Oregon", rank: 100, city: "USA", sat: 1250, courses: "CS, Env" },
+            { name: "University of Waterloo", rank: 83, city: "Canada", sat: 1400, courses: "CS, Math, Eng" },
+            { name: "McMaster University", rank: 84, city: "Canada", sat: 1320, courses: "CS, Med, Bio" },
+            { name: "University of Alberta", rank: 85, city: "Canada", sat: 1300, courses: "CS, AI, Eng" },
+            { name: "University of Notre Dame", rank: 86, city: "USA", sat: 1450, courses: "CS, Eng, Fin" },
+            { name: "Georgetown University", rank: 87, city: "USA", sat: 1450, courses: "CS, Law, Arts" },
+            { name: "WashU in St. Louis", rank: 88, city: "USA", sat: 1480, courses: "CS, Med, Bio" },
+            { name: "RPI", rank: 89, city: "USA", sat: 1400, courses: "CS, Aero, Eng" },
+            { name: "Virginia Tech", rank: 90, city: "USA", sat: 1320, courses: "CS, Aero, Eng" },
+            { name: "University of Pittsburgh", rank: 91, city: "USA", sat: 1330, courses: "CS, Med, Bio" },
+            { name: "University of Iowa", rank: 92, city: "USA", sat: 1280, courses: "CS, Arts, Med" },
+            { name: "UMass Amherst", rank: 93, city: "USA", sat: 1350, courses: "CS, AI, Eng" },
+            { name: "Colorado School of Mines", rank: 94, city: "USA", sat: 1380, courses: "Aero, CS, Eng" },
+            { name: "Michigan State University", rank: 95, city: "USA", sat: 1250, courses: "CS, Bus, Eng" },
+            { name: "University of Notre Dame (AUS)", rank: 96, city: "Australia", sat: 1250, courses: "Med, CS, Arts" },
+            { name: "University of Victoria", rank: 97, city: "Canada", sat: 1280, courses: "CS, Bio, Eng" },
+            { name: "Syracuse University", rank: 98, city: "USA", sat: 1300, courses: "CS, Bus, Eng" },
+            { name: "University of Delaware", rank: 99, city: "USA", sat: 1280, courses: "CS, Chem, Eng" },
+            { name: "University of Oregon", rank: 100, city: "USA", sat: 1250, courses: "CS, Env, Arts" },
             { name: "Fudan University", rank: 101, city: "China", sat: 1380, courses: "CS, Econ, Med" },
             { name: "Zhejiang University", rank: 102, city: "China", sat: 1350, courses: "CS, Eng" },
-            { name: "Kyoto University", rank: 103, city: "Japan", sat: 1400, courses: "CS, Physics" },
-            { name: "UNSW Sydney", rank: 104, city: "Australia", sat: 1300, courses: "CS, Eng" },
-            { name: "Monash University", rank: 105, city: "Australia", sat: 1280, courses: "CS, Pharm" },
+            { name: "Kyoto University", rank: 103, city: "Japan", sat: 1400, courses: "CS, Physics, Eng" },
+            { name: "UNSW Sydney", rank: 104, city: "Australia", sat: 1300, courses: "CS, Aero, Eng" },
+            { name: "Monash University", rank: 105, city: "Australia", sat: 1280, courses: "CS, Med, Eng" },
             { name: "UWA", rank: 106, city: "Australia", sat: 1250, courses: "Eng, CS" },
-            { name: "University of Adelaide", rank: 107, city: "Australia", sat: 1250, courses: "CS, Agri" },
-            { name: "University of Geneva", rank: 108, city: "Switzerland", sat: 1300, courses: "Law, CS" },
-            { name: "University of Zurich", rank: 109, city: "Switzerland", sat: 1320, courses: "Med, CS" },
-            { name: "RWTH Aachen", rank: 110, city: "Germany", sat: 1350, courses: "CS, MechEng" },
-            { name: "University of Oslo", rank: 111, city: "Norway", sat: 1280, courses: "CS, Env" },
-            { name: "Uppsala University", rank: 112, city: "Sweden", sat: 1280, courses: "CS, Bio" },
+            { name: "University of Adelaide", rank: 107, city: "Australia", sat: 1250, courses: "CS, Aero, Eng" },
+            { name: "University of Geneva", rank: 108, city: "Switzerland", sat: 1300, courses: "Law, CS, Arts" },
+            { name: "University of Zurich", rank: 109, city: "Switzerland", sat: 1320, courses: "Med, CS, Bio" },
+            { name: "RWTH Aachen", rank: 110, city: "Germany", sat: 1350, courses: "CS, MechEng, Eng" },
+            { name: "University of Oslo", rank: 111, city: "Norway", sat: 1280, courses: "CS, Env, Arts" },
+            { name: "Uppsala University", rank: 112, city: "Sweden", sat: 1280, courses: "CS, Bio, Med" },
             { name: "Aarhus University", rank: 113, city: "Denmark", sat: 1280, courses: "CS, Eng" },
-            { name: "Lund University", rank: 114, city: "Sweden", sat: 1280, courses: "CS, Physics" },
-            { name: "Trinity College Dublin", rank: 115, city: "Ireland", sat: 1300, courses: "CS, Arts" },
-            { name: "University College Dublin", rank: 116, city: "Ireland", sat: 1280, courses: "CS, Bus" },
+            { name: "Lund University", rank: 114, city: "Sweden", sat: 1280, courses: "CS, Physics, Eng" },
+            { name: "Trinity College Dublin", rank: 115, city: "Ireland", sat: 1300, courses: "CS, Arts, Eng" },
+            { name: "University College Dublin", rank: 116, city: "Ireland", sat: 1280, courses: "CS, Bus, Eng" },
             { name: "KU Leuven", rank: 117, city: "Belgium", sat: 1320, courses: "CS, Eng" },
-            { name: "Sorbonne University", rank: 118, city: "France", sat: 1300, courses: "Math, CS" },
-            { name: "University of Vienna", rank: 119, city: "Austria", sat: 1280, courses: "CS, Physics" },
-            { name: "IIT Bombay", rank: 120, city: "India", sat: 1450, courses: "CS, Eng" },
+            { name: "Sorbonne University", rank: 118, city: "France", sat: 1300, courses: "Math, CS, Arts" },
+            { name: "University of Vienna", rank: 119, city: "Austria", sat: 1280, courses: "CS, Physics, Med" },
+            { name: "IIT Bombay", rank: 120, city: "India", sat: 1450, courses: "CS, Aero, Eng" },
             { name: "IIT Delhi", rank: 121, city: "India", sat: 1450, courses: "CS, Eng" },
-            { name: "IIT Madras", rank: 122, city: "India", sat: 1450, courses: "CS, Eng" },
-            { name: "IIT Kanpur", rank: 123, city: "India", sat: 1420, courses: "CS, Aero" },
+            { name: "IIT Madras", rank: 122, city: "India", sat: 1450, courses: "CS, Aero, Eng" },
+            { name: "IIT Kanpur", rank: 123, city: "India", sat: 1420, courses: "CS, Aero, Eng" },
             { name: "IIT Kharagpur", rank: 124, city: "India", sat: 1420, courses: "CS, Eng" },
-            { name: "IISc Bangalore", rank: 125, city: "India", sat: 1480, courses: "Physics, CS" },
-            { name: "Yonsei University", rank: 126, city: "South Korea", sat: 1350, courses: "CS, Med" },
-            { name: "Korea University", rank: 127, city: "South Korea", sat: 1350, courses: "CS, Bus" },
+            { name: "IISc Bangalore", rank: 125, city: "India", sat: 1480, courses: "Physics, CS, Eng" },
+            { name: "Yonsei University", rank: 126, city: "South Korea", sat: 1350, courses: "CS, Med, Eng" },
+            { name: "Korea University", rank: 127, city: "South Korea", sat: 1350, courses: "CS, Law, Eng" },
             { name: "Sungkyunkwan University", rank: 128, city: "South Korea", sat: 1320, courses: "CS, Eng" },
             { name: "Hanyang University", rank: 129, city: "South Korea", sat: 1300, courses: "CS, Eng" },
-            { name: "CUHK", rank: 130, city: "Hong Kong", sat: 1350, courses: "CS, Med" },
-            { name: "HKUST", rank: 131, city: "Hong Kong", sat: 1380, courses: "CS, Bus" },
+            { name: "CUHK", rank: 130, city: "Hong Kong", sat: 1350, courses: "CS, Med, Arts" },
+            { name: "HKUST", rank: 131, city: "Hong Kong", sat: 1380, courses: "CS, Fin, Eng" },
             { name: "CityU Hong Kong", rank: 132, city: "Hong Kong", sat: 1280, courses: "CS, Eng" },
             { name: "PolyU Hong Kong", rank: 133, city: "Hong Kong", sat: 1280, courses: "CS, Eng" },
             { name: "National Taiwan Uni", rank: 134, city: "Taiwan", sat: 1350, courses: "CS, Eng" },
             { name: "NCKU", rank: 135, city: "Taiwan", sat: 1280, courses: "CS, Eng" },
-            { name: "NTHU", rank: 136, city: "Taiwan", sat: 1320, courses: "CS, Physics" },
-            { name: "University of Malaya", rank: 137, city: "Malaysia", sat: 1250, courses: "CS, Med" },
-            { name: "University of Otago", rank: 138, city: "New Zealand", sat: 1250, courses: "Med, CS" },
-            { name: "Victoria Uni Wellington", rank: 139, city: "New Zealand", sat: 1220, courses: "Law, CS" },
+            { name: "NTHU", rank: 136, city: "Taiwan", sat: 1320, courses: "CS, Physics, Eng" },
+            { name: "University of Malaya", rank: 137, city: "Malaysia", sat: 1250, courses: "CS, Med, Eng" },
+            { name: "University of Otago", rank: 138, city: "New Zealand", sat: 1250, courses: "Med, CS, Bio" },
+            { name: "Victoria Uni Wellington", rank: 139, city: "New Zealand", sat: 1220, courses: "Law, CS, Arts" },
             { name: "University of Canterbury", rank: 140, city: "New Zealand", sat: 1220, courses: "Eng, CS" },
-            { name: "Massey University", rank: 141, city: "New Zealand", sat: 1200, courses: "Aviation, CS" },
-            { name: "Lincoln University", rank: 142, city: "New Zealand", sat: 1180, courses: "Agri, Env" },
-            { name: "Waikato University", rank: 143, city: "New Zealand", sat: 1200, courses: "CS, Bus" },
-            { name: "AUT", rank: 144, city: "New Zealand", sat: 1200, courses: "CS, Design" },
-            { name: "RMIT University", rank: 145, city: "Australia", sat: 1250, courses: "CS, Eng" },
-            { name: "Deakin University", rank: 146, city: "Australia", sat: 1220, courses: "CS, Bus" },
-            { name: "Griffith University", rank: 147, city: "Australia", sat: 1200, courses: "Med, CS" },
-            { name: "La Trobe University", rank: 148, city: "Australia", sat: 1200, courses: "CS, Sports" },
+            { name: "Massey University", rank: 141, city: "New Zealand", sat: 1200, courses: "Aviation, CS, Bio" },
+            { name: "Lincoln University", rank: 142, city: "New Zealand", sat: 1180, courses: "Agri, Env, Bio" },
+            { name: "Waikato University", rank: 143, city: "New Zealand", sat: 1200, courses: "CS, Bus, Arts" },
+            { name: "AUT", rank: 144, city: "New Zealand", sat: 1200, courses: "CS, Design, Eng" },
+            { name: "RMIT University", rank: 145, city: "Australia", sat: 1250, courses: "CS, Aero, Eng" },
+            { name: "Deakin University", rank: 146, city: "Australia", sat: 1220, courses: "CS, Bus, Med" },
+            { name: "Griffith University", rank: 147, city: "Australia", sat: 1200, courses: "Med, CS, Arts" },
+            { name: "La Trobe University", rank: 148, city: "Australia", sat: 1200, courses: "CS, Sports, Bio" },
             { name: "Curtin University", rank: 149, city: "Australia", sat: 1220, courses: "Eng, CS" },
-            { name: "Macquarie University", rank: 150, city: "Australia", sat: 1250, courses: "CS, Finance" }
+            { name: "Macquarie University", rank: 150, city: "Australia", sat: 1250, courses: "CS, Law, Arts" }
         ];
 
+        // EXPANDED BATTLE DATABASE WITH COURSE CODES FOR COLLEGE INJECTION
         const battleDB = {
+            // Streams
+            "mpc": {
+                title: "MPC Stream", courseCode: "Eng", tags: ["Academic", "Analytical", "Tech"],
+                desc: "The absolute foundation for engineering, architecture, and theoretical physics globally.",
+                salaryRaw: 90, salaryText: "Highest Global Ceiling (Tech)", riskRaw: 20, riskText: "20% (AI Integration)",
+                diffRaw: 85, diffText: "High (Calculus/Physics)", wlbRaw: 50, wlbText: "Variable by Career",
+                pros: ["Direct gateway to Artificial Intelligence and algorithmic engineering", "Highest global salary ceilings in Silicon Valley and Quant Finance", "High mathematical rigor provides extreme career flexibility"],
+                cons: ["Intense competitive pressure for elite tier-1 colleges (JEE/SAT)", "Requires mastery of abstract mathematics"]
+            },
+            "bipc": {
+                title: "BiPC Stream", courseCode: "Bio", tags: ["Academic", "Medical", "Research"],
+                desc: "The required pathway for clinical medicine, surgery, and advanced biotechnological research.",
+                salaryRaw: 80, salaryText: "High Stability (Medicine)", riskRaw: 5, riskText: "5% (High Human Empathy)",
+                diffRaw: 95, diffText: "Extreme (Memory Volume)", wlbRaw: 30, wlbText: "Demanding (Clinical Hours)",
+                pros: ["Gateway to the most socially respected and recession-proof professions", "Practically immune to total AI replacement due to physical requirements", "Deeply rewarding human impact"],
+                cons: ["Grueling academic timeline (10+ years to peak earnings)", "Limited lateral career pivots outside of healthcare"]
+            },
+            
+            // Engineering Core
+            "cse": {
+                title: "Computer Science (CSE)", courseCode: "CS", tags: ["Engineering", "Software"],
+                desc: "The dominant engineering discipline focused on algorithmic logic and software architecture.",
+                salaryRaw: 95, salaryText: "₹40L - ₹1.5Cr+", riskRaw: 35, riskText: "35% (AI Coding Tools)",
+                diffRaw: 75, diffText: "Moderate (Logic Based)", wlbRaw: 70, wlbText: "7/10 (High Remote Potential)",
+                pros: ["Massive global demand and unmatched remote work flexibility", "The direct stepping stone to becoming an AI/ML Engineer"],
+                cons: ["Skills become obsolete rapidly without constant self-education"]
+            },
+            "ece": {
+                title: "Electronics & Comm (ECE)", courseCode: "Eng", tags: ["Engineering", "Hardware"],
+                desc: "The bridge between physical hardware and software systems (VLSI, IoT).",
+                salaryRaw: 80, salaryText: "₹20L - ₹80L+", riskRaw: 15, riskText: "15% (Physical Integration)",
+                diffRaw: 85, diffText: "High (Circuit Theory)", wlbRaw: 60, wlbText: "6/10 (Lab & Desk)",
+                pros: ["Critical for the semiconductor boom (Intel, TSMC)", "Stronger defense against pure software automation"],
+                cons: ["Hardware iteration is much slower than software deployment"]
+            },
+            "eee": {
+                title: "Electrical & Electronics (EEE)", courseCode: "Eng", tags: ["Engineering", "Power Systems"],
+                desc: "Core focus on power generation, grid infrastructure, and heavy machinery.",
+                salaryRaw: 75, salaryText: "₹15L - ₹60L+", riskRaw: 10, riskText: "10% (Infrastructure)",
+                diffRaw: 90, diffText: "Very High (Electromagnetics)", wlbRaw: 50, wlbText: "5/10 (Site Dependent)",
+                pros: ["Essential for the massive global shift to Renewable Energy and EVs", "Highly stable government and PSU placements"],
+                cons: ["Often requires physical site presence; lower remote work availability"]
+            },
+            "civil": {
+                title: "Civil Engineering", courseCode: "Eng", tags: ["Engineering", "Infrastructure"],
+                desc: "Design and oversight of physical infrastructure, bridges, and urban transit.",
+                salaryRaw: 65, salaryText: "₹12L - ₹40L+", riskRaw: 10, riskText: "10% (Physical Modeling)",
+                diffRaw: 70, diffText: "Moderate (Statics)", wlbRaw: 40, wlbText: "4/10 (Harsh Field Conditions)",
+                pros: ["Visible, permanent legacy of work (Dams, Skyscrapers)", "Strong government contracting pipelines"],
+                cons: ["Lowest starting corporate salaries among engineering peers", "Physically demanding site environments"]
+            },
+            "mech": {
+                title: "Mechanical Engineering", courseCode: "Eng", tags: ["Engineering", "Kinetics"],
+                desc: "The design of physical kinetic systems, thermodynamics, and manufacturing.",
+                salaryRaw: 70, salaryText: "₹15L - ₹50L+", riskRaw: 20, riskText: "20% (Automated Assembly)",
+                diffRaw: 85, diffText: "High (Thermodynamics)", wlbRaw: 55, wlbText: "5.5/10 (Factory/Design)",
+                pros: ["Highly versatile across Aerospace, Automotive, and Defense sectors", "Tangible, satisfying product development"],
+                cons: ["Capital intensive to prototype; slower career acceleration than IT"]
+            },
+
+            // Elite vs Elite
+            "upsc": {
+                title: "Civil Services (UPSC IAS)", courseCode: "Arts", tags: ["Govt", "Administration"],
+                desc: "The apex of Indian administrative power and policy execution.",
+                salaryRaw: 50, salaryText: "High Perks + Supreme Authority", riskRaw: 0, riskText: "0% (Human Governance)",
+                diffRaw: 100, diffText: "Absolute Pinnacle (<0.1% Pass)", wlbRaw: 20, wlbText: "2/10 (24/7 Public Duty)",
+                pros: ["Unmatched societal prestige, power, and job security", "Direct ability to implement massive systemic change"],
+                cons: ["Brutal preparation years with extremely low mathematical probability of success", "Heavy political interference during service"]
+            },
             "ai_eng": {
-                title: "AI Engineer", courseCode: "AI", tags: ["Tech", "High Growth"],
-                desc: "Design and train neural networks and LLMs.",
-                salaryRaw: 45, salaryText: "₹45L - ₹1.5Cr+", riskRaw: 15, riskText: "15% (Low Risk)",
-                diffRaw: 90, diffText: "Extreme (Advanced Math)", wlbRaw: 65, wlbText: "6.5/10 (High Burnout)",
-                pros: ["Massive global compensation", "Remote flexibility", "High intellectual prestige"], cons: ["Relentless learning required", "Sedentary screen-time"]
+                title: "AI & Machine Learning", courseCode: "AI", tags: ["Tech", "Innovation"],
+                desc: "Architecting neural networks and large language models (LLMs).",
+                salaryRaw: 95, salaryText: "₹45L - ₹1.5Cr+", riskRaw: 10, riskText: "10% (Automation Builders)",
+                diffRaw: 90, diffText: "Extreme (Linear Algebra)", wlbRaw: 65, wlbText: "6.5/10 (Cognitive Burnout)",
+                pros: ["Uncapped global salary potential", "Driving the forefront of human technological advancement"],
+                cons: ["Requires relentless, daily self-education to avoid obsolescence"]
             },
             "quant": {
                 title: "Quantitative Analyst", courseCode: "Fin", tags: ["Finance", "Math"],
-                desc: "Build mathematical models for high-frequency trading.",
-                salaryRaw: 85, salaryText: "₹80L - ₹3Cr+", riskRaw: 40, riskText: "40% (Algo Shift)",
+                desc: "Building mathematical models for high-frequency algorithmic trading.",
+                salaryRaw: 100, salaryText: "₹80L - ₹3Cr+", riskRaw: 40, riskText: "40% (Algo Shift)",
                 diffRaw: 98, diffText: "Pinnacle (Stochastic Calc)", wlbRaw: 30, wlbText: "3/10 (Brutal Hours)",
-                pros: ["Highest starting salaries on earth", "Meritocratic environment"], cons: ["Extremely toxic work culture", "Massive stress and pressure"]
+                pros: ["Highest entry-level compensation on the planet", "Purely meritocratic intellectual environment"],
+                cons: ["Extreme pressure and highly volatile job security"]
             },
             "surgeon": {
                 title: "Clinical Surgeon", courseCode: "Med", tags: ["Medical", "Elite"],
-                desc: "Perform life-saving physical operations on the human body.",
-                salaryRaw: 40, salaryText: "₹25L - ₹2Cr+", riskRaw: 5, riskText: "5% (Untouchable)",
+                desc: "Life-saving physical operations on the human body.",
+                salaryRaw: 85, salaryText: "₹25L - ₹2Cr+", riskRaw: 5, riskText: "5% (Empathy & Precision)",
                 diffRaw: 95, diffText: "Extreme (12+ Years)", wlbRaw: 20, wlbText: "2/10 (On Call 24/7)",
-                pros: ["Maximum societal respect", "Immune to AI replacement"], cons: ["Takes over a decade to earn well", "Emotional trauma from patient loss"]
+                pros: ["Maximum societal respect and direct human impact", "Immune to total AI replacement"],
+                cons: ["Takes over a decade to reach peak earnings", "High emotional trauma risk"]
             },
-            "pilot": {
-                title: "Commercial Pilot", courseCode: "Aero", tags: ["Aviation", "Travel"],
-                desc: "Command advanced commercial airliners globally.",
-                salaryRaw: 35, salaryText: "₹24L - ₹1.2Cr", riskRaw: 70, riskText: "70% (Autonomy Risk)",
-                diffRaw: 70, diffText: "High (Medical + Tech)", wlbRaw: 80, wlbText: "8/10 (Zero Take-Home Work)",
-                pros: ["Travel the world", "Once off the plane, work is done"], cons: ["Medical grounding ruins career", "Huge initial flight school debt"]
+
+            // Global ROI
+            "btech_ind": {
+                title: "B.Tech (India Tier-1)", courseCode: "Eng", tags: ["Undergrad", "Domestic"],
+                desc: "Securing admission into elite Indian institutions (IITs/NITs) via JEE.",
+                salaryRaw: 75, salaryText: "High Domestic ROI", riskRaw: 50, riskText: "Moderate (Global Exposure Gap)",
+                diffRaw: 98, diffText: "Brutal (JEE Advanced)", wlbRaw: 60, wlbText: "High Academic Pressure",
+                pros: ["Extremely low tuition cost relative to starting salaries", "Massive, powerful domestic alumni network"],
+                cons: ["The JEE preparation phase is psychologically exhausting", "Infrastructure may lag behind global Ivy League standards"]
             },
-            "lawyer": {
-                title: "Corporate Lawyer", courseCode: "Law", tags: ["Legal", "Corporate"],
-                desc: "Negotiate massive mergers and corporate acquisitions.",
-                salaryRaw: 30, salaryText: "₹18L - ₹1.5Cr+", riskRaw: 60, riskText: "60% (AI Drafting)",
-                diffRaw: 85, diffText: "High (CLAT + NLU)", wlbRaw: 25, wlbText: "2.5/10 (Billable Hours)",
-                pros: ["High prestige and corporate power", "Excellent financial scaling"], cons: ["AI will automate basic contract law", "Fierce cutthroat environment"]
+            "bs_abroad": {
+                title: "B.S. Degree (US/Global)", courseCode: "CS", tags: ["Undergrad", "International"],
+                desc: "Targeting top-tier global institutions via the SAT and holistic profiles.",
+                salaryRaw: 90, salaryText: "Global Standard Salary", riskRaw: 20, riskText: "Low (Global Adaptability)",
+                diffRaw: 85, diffText: "High (SAT + Holistic Profile)", wlbRaw: 75, wlbText: "Flexible Curriculum",
+                pros: ["Access to cutting-edge research and Silicon Valley internships instantly", "If executing a 'Zero-Investment' strategy via Need-Blind grants, the ROI is unmatched"],
+                cons: ["Without scholarships, the financial burden is catastrophic", "Complex visa and immigration hurdles post-graduation"]
             },
-            "cyber": {
-                title: "Cybersecurity Arch", courseCode: "CS", tags: ["Tech", "Defense"],
-                desc: "Defend global enterprise networks from digital attacks.",
-                salaryRaw: 30, salaryText: "₹15L - ₹80L+", riskRaw: 10, riskText: "10% (Constant Threats)",
-                diffRaw: 80, diffText: "High (Certifications)", wlbRaw: 50, wlbText: "5/10 (On-Call Incidents)",
-                pros: ["Zero unemployment rate", "Highly secure against AI"], cons: ["High stress during active breaches", "Requires constant certification updates"]
+            "ms_ind": {
+                title: "Master's (India / GATE)", courseCode: "Eng", tags: ["Postgrad", "Domestic"],
+                desc: "Pursuing M.Tech via the GATE examination for PSU or domestic R&D.",
+                salaryRaw: 65, salaryText: "Stable PSU/R&D Pay", riskRaw: 40, riskText: "Moderate (Tech Shift)",
+                diffRaw: 85, diffText: "High (GATE Exam)", wlbRaw: 70, wlbText: "Stable (Especially PSUs)",
+                pros: ["Direct pathway into highly secure Government/PSU sector jobs", "Stipend coverage makes it highly affordable"],
+                cons: ["Lower private-sector salary spikes compared to international master's"]
+            },
+            "ms_abroad": {
+                title: "Master's (Abroad / GRE)", courseCode: "CS", tags: ["Postgrad", "International"],
+                desc: "The standard pathway for top engineers moving to US/European tech hubs.",
+                salaryRaw: 95, salaryText: "Massive Global Scaling", riskRaw: 30, riskText: "Low (Specialization)",
+                diffRaw: 75, diffText: "Moderate (GRE + SOP)", wlbRaw: 60, wlbText: "High (Job Hunt Phase)",
+                pros: ["The fastest route to securing a $100k+ global tech salary", "Exposure to diverse, global engineering methodologies"],
+                cons: ["Massive upfront financial loans required", "High stress during the OPT/H1B visa lottery phase"]
             }
         };
 
@@ -303,7 +424,7 @@
             const card = document.getElementById(cardId);
             const color = isGold ? 'var(--gold)' : 'var(--neon-primary)';
             
-            const salWidth = Math.min(100, (data.salaryRaw / 100) * 100);
+            const salWidth = data.salaryRaw;
             const riskWidth = data.riskRaw;
             const diffWidth = data.diffRaw;
             const wlbWidth = data.wlbRaw;
@@ -312,18 +433,23 @@
             if(data.riskRaw > 30) riskColor = '#F59E0B'; 
             if(data.riskRaw > 60) riskColor = 'var(--danger)';
 
+            // DYNAMIC COLLEGE INJECTION LOGIC
             const matchedColleges = globalColleges.filter(c => c.courses.includes(data.courseCode)).slice(0, 2);
             let collegeHtml = '';
             if(matchedColleges.length > 0) {
-                collegeHtml = matchedColleges.map(c => `
-                    <div class="college-box">
-                        <div>
-                            <div class="text-white font-bold text-sm">${c.name}</div>
-                            <div class="text-slate-400 text-[10px] uppercase">${c.city}</div>
+                collegeHtml = `
+                <div class="bg-black/50 border border-white/10 p-5 rounded-2xl mb-6 mt-6">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Top Target Institutions</h3>
+                    ${matchedColleges.map(c => `
+                        <div class="college-box">
+                            <div>
+                                <div class="text-white font-bold text-sm">${c.name}</div>
+                                <div class="text-slate-400 text-[10px] uppercase">${c.city}</div>
+                            </div>
+                            <div style="color: ${color};" class="font-black text-sm">QS #${c.rank}</div>
                         </div>
-                        <div style="color: ${color};" class="font-black text-sm">#${c.rank}</div>
-                    </div>
-                `).join('');
+                    `).join('')}
+                </div>`;
             }
 
             card.innerHTML = `
@@ -335,24 +461,37 @@
                     <p class="text-sm text-slate-400">${data.desc}</p>
                 </div>
                 <div class="stat-row">
-                    <div class="stat-header"><span>Peak Salary Limit</span><span class="stat-value">${data.salaryText}</span></div>
+                    <div class="stat-header"><span>Earning Ceiling / ROI</span><span class="stat-value">${data.salaryText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${salWidth}%; background-color: ${color};"></div></div>
                 </div>
                 <div class="stat-row">
-                    <div class="stat-header"><span>AI Automation Risk</span><span class="stat-value">${data.riskText}</span></div>
+                    <div class="stat-header"><span>Automation / Threat Risk</span><span class="stat-value">${data.riskText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${riskWidth}%; background-color: ${riskColor};"></div></div>
                 </div>
                 <div class="stat-row">
-                    <div class="stat-header"><span>Academic Difficulty</span><span class="stat-value">${data.diffText}</span></div>
+                    <div class="stat-header"><span>Academic Execution Barrier</span><span class="stat-value">${data.diffText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${diffWidth}%; background-color: ${color};"></div></div>
                 </div>
-                <div class="stat-row mb-8">
-                    <div class="stat-header"><span>Work-Life Balance</span><span class="stat-value">${data.wlbText}</span></div>
+                <div class="stat-row mb-2">
+                    <div class="stat-header"><span>Work-Life Balance Index</span><span class="stat-value">${data.wlbText}</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: ${wlbWidth}%; background-color: ${color};"></div></div>
                 </div>
-                <div class="bg-black/50 border border-white/10 p-5 rounded-2xl mb-6">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Top Target Institutions</h3>
-                    ${collegeHtml}
+
+                ${collegeHtml}
+
+                <div class="grid grid-cols-2 gap-4 border-t border-slate-800 pt-6">
+                    <div>
+                        <h4 class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Strategic Advantage</h4>
+                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-emerald-500">
+                            ${data.pros.map(p => `<li class="mb-2">${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-2">Critical Drawback</h4>
+                        <ul class="text-xs text-slate-300 space-y-1 list-disc pl-3 marker:text-red-500">
+                            ${data.cons.map(c => `<li class="mb-2">${c}</li>`).join('')}
+                        </ul>
+                    </div>
                 </div>
             `;
         }
