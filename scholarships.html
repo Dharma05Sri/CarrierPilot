@@ -1,90 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Analytics & AdSense Core -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVBHX1KDW"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-5HVBHX1KDW');</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1495090071076386" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Global and Regional Indian scholarships tracker for 10th, Inter, and B.Tech students.">
-    <title>Scholarship Tracker | CareerPilot</title>
+    <title>Zero-Investment Scholarship Engine | CareerPilot</title>
     
+    <meta name="description" content="Discover fully funded, zero-investment educational pathways. Filter 100% need-blind and elite merit-based scholarships for global engineering and tech programs.">
+    <meta name="keywords" content="fully funded scholarships, need-blind universities, zero investment education, merit scholarships for international students, SAT scholarships">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Zero-Investment Scholarship Engine",
+      "applicationCategory": "EducationalApplication",
+      "publisher": { "@type": "Organization", "name": "AstraForge Network" }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #10B981; }
+        :root { --bg-deep: #020617; --glass-base: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.08); --neon-primary: #10B981; --gold: #d4af37; --danger: #ef4444; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 30px 30px; z-index: -2; opacity: 0.3; }
+        body { background-color: var(--bg-deep); color: #F8FAFC; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
-        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
-        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
-        .brand span { color: #06B6D4; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 40px 40px; z-index: -2; opacity: 0.2; }
+        .radial-glow { position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 70%); z-index: -1; pointer-events: none; }
 
-        .grant-card { background: var(--glass-base); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-left: 4px solid var(--neon-primary); border-radius: 16px; padding: 25px; transition: 0.3s; }
-        .grant-card:hover { transform: translateX(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-color: var(--neon-primary); }
+        nav { position: sticky; top: 0; width: 100%; padding: 15px 30px; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; text-decoration: none; }
+        .brand span { color: var(--gold); }
 
-        footer { text-align: center; padding: 20px; border-top: 1px solid var(--glass-border); color: #64748B; font-size: 0.8rem; margin-top: auto; }
+        .gamify-hud { display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.5); padding: 6px 15px; border-radius: 12px; border: 1px solid var(--glass-border); font-size: 0.75rem; }
+
+        .hero { padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid var(--glass-border); background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, transparent 100%); }
+        
+        /* Dashboard Controls */
+        .control-panel { max-width: 1400px; margin: 30px auto; padding: 25px; background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: calc(100% - 40px); }
+        
+        select, input[type="text"] { width: 100%; padding: 15px 20px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 0.95rem; outline: none; transition: 0.3s; appearance: none; }
+        select:focus, input[type="text"]:focus { border-color: var(--gold); box-shadow: inset 0 0 10px rgba(212,175,55,0.1), 0 0 15px rgba(212,175,55,0.2); }
+        select option { background: var(--bg-deep); }
+
+        /* Grid Data */
+        .scholarship-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto 60px; padding: 0 20px; width: 100%; }
+        
+        .grant-card { background: var(--glass-base); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.4s; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .grant-card::before { content: ""; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: 0.3s; }
+        .grant-card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .grant-card:hover::before { opacity: 1; }
+        
+        .grant-type-badge { position: absolute; top: 20px; right: 20px; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; border: 1px solid; }
+        .badge-blind { background: rgba(16, 185, 129, 0.1); color: var(--neon-primary); border-color: var(--neon-primary); }
+        .badge-merit { background: rgba(212, 175, 55, 0.1); color: var(--gold); border-color: var(--gold); }
+        .badge-govt { background: rgba(6, 182, 212, 0.1); color: #06B6D4; border-color: #06B6D4; }
+
+        .stat-divider { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; margin-top: auto; }
+        .stat-block { display: flex; flex-direction: column; }
+        .stat-title { font-size: 0.65rem; text-transform: uppercase; color: #94A3B8; font-weight: 800; letter-spacing: 1px; margin-bottom: 4px; }
+        .stat-data { font-size: 1.1rem; font-weight: 900; color: white; }
+
+        .bot-essay-section { background: rgba(0,0,0,0.4); border-top: 1px solid var(--glass-border); padding: 60px 20px; color: #94A3B8; font-size: 0.95rem; line-height: 1.8; }
+        
+        footer { padding: 40px 20px; background: rgba(2, 6, 23, 0.98); text-align: center; border-top: 1px solid var(--glass-border); }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 12px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
+
     <div class="grid-bg"></div>
+    <div class="radial-glow"></div>
 
     <nav>
-        <a href="index.html" class="brand">CAREER<span>PILOT</span></a>
-        <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-emerald-400 text-decoration-none">← Dashboard</a>
-    </nav>
-
-    <main class="flex-grow max-w-4xl mx-auto w-full p-4 md:p-8">
-        <header class="mb-10 text-center">
-            <h1 style="font-family: 'Rajdhani';" class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">Scholarship <span class="text-emerald-400">Database</span></h1>
-            <p class="text-slate-400 text-sm">Zero-investment frameworks: Track global need-blind policies and Indian state grants.</p>
-        </header>
-
-        <div class="space-y-6">
-            <div class="grant-card border-l-emerald-500">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest bg-slate-900 px-2 py-1 rounded">Global • International</span>
-                    <span class="text-xs font-bold text-red-400 animate-pulse">Closes in 45 Days</span>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2">US Ivy League Need-Blind Aid 2027</h3>
-                <p class="text-sm text-slate-300 mb-4">Institutions like Harvard, MIT, and Princeton offer 100% full-ride scholarships covering tuition, boarding, and travel for international students demonstrating extreme financial need and exceptional academic/extracurricular spikes.</p>
-                <div class="flex gap-4 border-t border-slate-800 pt-4">
-                    <div class="text-xs text-slate-400"><strong>Req:</strong> SAT 1500+, Elite Extracurriculars</div>
-                    <div class="text-xs text-emerald-400 font-bold">Value: $85,000/year</div>
-                </div>
-            </div>
-
-            <div class="grant-card border-l-amber-500">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest bg-slate-900 px-2 py-1 rounded">National • India</span>
-                    <span class="text-xs font-bold text-amber-400">Upcoming Exam</span>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2">NTSE (National Talent Search Exam)</h3>
-                <p class="text-sm text-slate-300 mb-4">The most prestigious national-level scholarship program by NCERT for Class 10 students. Provides monthly stipends through Intermediate, B.Tech/Degree, and up to Ph.D. levels.</p>
-                <div class="flex gap-4 border-t border-slate-800 pt-4">
-                    <div class="text-xs text-slate-400"><strong>Req:</strong> Class 10 Student, MAT & SAT Papers</div>
-                    <div class="text-xs text-emerald-400 font-bold">Value: Up to Ph.D. Funding</div>
-                </div>
-            </div>
-
-            <div class="grant-card border-l-blue-500">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest bg-slate-900 px-2 py-1 rounded">Regional • State Govt</span>
-                    <span class="text-xs font-bold text-blue-400">Verification Active</span>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2">State Fee Reimbursement (Vidya Deevena & Vasathi)</h3>
-                <p class="text-sm text-slate-300 mb-4">Complete tuition fee reimbursement schemes provided by state governments (e.g., Andhra Pradesh / Telangana) for economically weaker sections pursuing B.Tech, Pharmacy, and Degree courses through state counseling (EAPCET/EAMCET).</p>
-                <div class="flex gap-4 border-t border-slate-800 pt-4">
-                    <div class="text-xs text-slate-400"><strong>Req:</strong> Income Cert, EAPCET Rank</div>
-                    <div class="text-xs text-emerald-400 font-bold">Value: 100% Tuition + Boarding</div>
-                </div>
+        <a href="index.html" class="brand">🚀 CAREER<span>PILOT</span></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-[var(--gold)] text-decoration-none">Dashboard</a>
+            <a href="colleges.html" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-[var(--gold)] text-decoration-none">Predictor</a>
+            <div class="gamify-hud">
+                <div class="text-xs font-bold text-emerald-400">🔥 SYNCED</div>
+                <div class="border-l border-slate-700 h-4 mx-1"></div>
+                <div class="text-xs font-bold text-slate-300">LVL.<span id="nav-level">1</span></div>
             </div>
         </div>
+    </nav>
+
+    <header class="hero">
+        <h1 style="font-family: 'Rajdhani';" class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">Zero-Investment <span style="color: var(--gold);">Grants</span></h1>
+        <p class="text-slate-400 text-sm md:text-base max-w-3xl mx-auto">Access the global master database of fully funded financial aid, need-blind endowments, and elite international merit scholarships.</p>
+    </header>
+
+    <div class="control-panel">
+        <div>
+            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Search Institution</label>
+            <input type="text" id="searchGrant" placeholder="e.g., 'MIT', 'ASEAN', 'Canada'..." onkeyup="filterGrants()">
+        </div>
+        <div>
+            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Grant Architecture</label>
+            <select id="typeFilter" onchange="filterGrants()">
+                <option value="All">All Funding Models</option>
+                <option value="Need-Blind">100% Need-Blind (US Ivy/Elite)</option>
+                <option value="Merit">Elite Merit-Based</option>
+                <option value="Govt">Government Sponsored</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Target Region</label>
+            <select id="regionFilter" onchange="filterGrants()">
+                <option value="All">Global (All Regions)</option>
+                <option value="USA">United States</option>
+                <option value="Canada">Canada</option>
+                <option value="Asia">Asia & Singapore</option>
+                <option value="Europe">Europe</option>
+            </select>
+        </div>
+    </div>
+
+    <main class="scholarship-grid" id="grantGrid">
+        <!-- Injected via Engine -->
     </main>
 
-    <footer>&copy; 2026 AstraForge CareerPilot Network.</footer>
+    <!-- Strategic AdSense Text Density Block -->
+    <section class="bot-essay-section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-white font-bold text-2xl mb-4" style="font-family: 'Rajdhani';">The Mechanics of the Zero-Investment Educational Strategy</h2>
+            <p class="mb-4">Securing a world-class undergraduate degree in high-demand fields like Artificial Intelligence, Computer Science, or Quantitative Finance without inflicting a massive financial burden on one's family requires absolute tactical precision. The "Zero-Investment" strategy relies on two distinct global funding frameworks: The American "Need-Blind" endowment system, and aggressive sovereign/institutional Merit Grants in regions like Singapore, Canada, and the EU.</p>
+            <p class="mb-4">Institutions such as Harvard, MIT, Princeton, and Yale operate with endowments so vast that they evaluate international candidates identically to domestic applicants without regard for their ability to pay. If an international student secures admission, the institution analyzes the family's financial profile and issues a grant to cover 100% of the demonstrated need—often resulting in completely free tuition, room, and board. However, the admissions barrier is exceptionally high.</p>
+            <p>To penetrate these filters, standard academics are insufficient. Candidates must execute a rigorous standardized testing strategy, frequently targeting the 1550-1600 SAT scoring tier. Mathematical optimization of testing performance—such as utilizing an exact matrix of 3 Princeton Review simulations, 10 advanced SAT Panda drills, and 7 official College Board baselines prior to an early Fall testing date—isolates cognitive gaps and ensures peak logic execution under time constraints. Paired with intensive "paper-coded" software portfolios demonstrating real-world algorithmic capability, candidates can successfully bypass financial barriers and secure elite global placements.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-3 mb-6 footer-links">
+            <a href="colleges.html">College Predictor</a>
+            <a href="insights.html">Insights Matrix</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+        <p class="text-slate-600 font-medium text-xs">AstraForge CareerPilot Network. Endowment Analytics Engine.</p>
+    </footer>
+
+    <script>
+        // MASSIVE SCHOLARSHIP DATA MATRIX
+        const grantDB = [
+            {
+                institution: "Massachusetts Institute of Technology (MIT)", title: "MIT International Financial Aid",
+                type: "Need-Blind", region: "USA", coverage: "100% Demonstrated Need (Tuition, Housing, Meals)",
+                requirement: "Extreme STEM Excellence. High SAT (1540+). Verified financial documentation.",
+                desc: "MIT is one of the few US institutions that is completely need-blind for international students. If you clear the brutal technical admissions filter, MIT ensures you graduate debt-free regardless of family income.",
+                badgeClass: "badge-blind"
+            },
+            {
+                institution: "Harvard University", title: "Harvard Endowment Grants",
+                type: "Need-Blind", region: "USA", coverage: "100% Demonstrated Need",
+                requirement: "Unparalleled holistic profile. SAT 1520+. Global leadership impact.",
+                desc: "Harvard guarantees full financial aid for admitted international students whose families earn under a specific threshold, essentially making it a zero-cost elite degree.",
+                badgeClass: "badge-blind"
+            },
+            {
+                institution: "Princeton University", title: "Princeton Financial Aid Program",
+                type: "Need-Blind", region: "USA", coverage: "100% Demonstrated Need (No Loans)",
+                requirement: "Top 1% Academic Standing. Distinct intellectual curiosity.",
+                desc: "Princeton operates a strict 'no-loan' policy. All financial aid is given in the form of non-repayable grants, protecting students and families from future debt.",
+                badgeClass: "badge-blind"
+            },
+            {
+                institution: "Yale University", title: "Yale Need-Based Financial Aid",
+                type: "Need-Blind", region: "USA", coverage: "100% Demonstrated Need",
+                requirement: "Exceptional writing and analytical reasoning. Top percentile academics.",
+                desc: "Yale evaluates international candidates completely independent of their ability to pay, offering full-ride packages including travel stipends for low-income brackets.",
+                badgeClass: "badge-blind"
+            },
+            {
+                institution: "National University of Singapore (NUS)", title: "ASEAN Undergraduate Scholarship",
+                type: "Govt", region: "Asia", coverage: "Full Tuition + S$5,800 Living Allowance",
+                requirement: "Citizens of ASEAN countries. Exceptional board scores & co-curriculars.",
+                desc: "A massive government-backed initiative. Scholars receive comprehensive funding but are typically bonded to work in a Singapore-registered company for 3 years post-graduation.",
+                badgeClass: "badge-govt"
+            },
+            {
+                institution: "Nanyang Technological University (NTU)", title: "Nanyang Scholarship",
+                type: "Merit", region: "Asia", coverage: "Full Tuition + S$6,500 Allowance + Accommodation",
+                requirement: "Exceptional academic tracking, leadership qualities, and interview clearance.",
+                desc: "NTU’s premier undergraduate scholarship awarded to outstanding freshmen. It carries no bond (unless paired with the tuition grant) and funds international exchange programs.",
+                badgeClass: "badge-merit"
+            },
+            {
+                institution: "University of Toronto", title: "Lester B. Pearson International Scholarship",
+                type: "Merit", region: "Canada", coverage: "Tuition, Books, Incidental Fees, & Full Residence",
+                requirement: "School nomination required. Creative thinker with exceptional school impact.",
+                desc: "Canada's most prestigious and competitive scholarship for international students. Covers the entire four-year undergraduate journey for world-class innovators.",
+                badgeClass: "badge-merit"
+            },
+            {
+                institution: "University of British Columbia (UBC)", title: "International Major Entrance Scholarship (IMES)",
+                type: "Merit", region: "Canada", coverage: "Up to $40,000 CAD over 4 years",
+                requirement: "Outstanding academic achievement. No separate application needed.",
+                desc: "Automatically evaluated upon admission. While not a full-ride, when combined with paid Co-op placements, it massively reduces the net cost of an engineering degree.",
+                badgeClass: "badge-merit"
+            },
+            {
+                institution: "ETH Zurich", title: "Excellence Scholarship & Opportunity Programme (ESOP)",
+                type: "Merit", region: "Europe", coverage: "Full Study & Living Costs",
+                requirement: "Top 10% of Bachelor's program (Applicable primarily for Master's transitions).",
+                desc: "ETH Zurich charges extremely low baseline tuition for all students. This specific grant covers living expenses in Switzerland, creating a zero-investment European tech pathway.",
+                badgeClass: "badge-merit"
+            },
+            {
+                institution: "Seoul National University (SNU)", title: "Global Korea Scholarship (GKS)",
+                type: "Govt", region: "Asia", coverage: "Full Tuition + Monthly Stipend + Airfare + Language Training",
+                requirement: "Age under 25, excellent GPA, strong personal statement.",
+                desc: "Fully funded by the Korean government to foster international exchange. Requires 1 year of Korean language training prior to commencing the degree.",
+                badgeClass: "badge-govt"
+            },
+            {
+                institution: "KAIST", title: "KAIST International Student Scholarship",
+                type: "Merit", region: "Asia", coverage: "Full Tuition + 350,000 KRW/month + Health Insurance",
+                requirement: "Admitted international applicant. Must maintain a GPA over 2.7/4.3.",
+                desc: "KAIST automatically offers this highly lucrative package to admitted international STEM students, making it one of the most accessible zero-investment elite tech paths in Asia.",
+                badgeClass: "badge-merit"
+            },
+            {
+                institution: "Amherst College", title: "Amherst International Financial Aid",
+                type: "Need-Blind", region: "USA", coverage: "100% Demonstrated Need",
+                requirement: "Elite liberal arts and STEM capabilities.",
+                desc: "Amherst is one of the rare liberal arts colleges (with massive engineering/CS consortiums) that is fully need-blind for non-US citizens.",
+                badgeClass: "badge-blind"
+            }
+        ];
+
+        function renderGrants(records) {
+            const container = document.getElementById('grantGrid');
+            
+            if (records.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center text-slate-500 font-bold py-16 text-sm uppercase tracking-widest">No matching funding matrices detected.</div>`;
+                return;
+            }
+
+            container.innerHTML = records.map(grant => `
+                <div class="grant-card" onclick="logEngagement()">
+                    <div class="grant-type-badge ${grant.badgeClass}">${grant.type}</div>
+                    
+                    <div class="mb-4 pr-24">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">${grant.institution}</div>
+                        <h3 class="text-2xl font-black text-white leading-tight tracking-tighter" style="font-family: 'Rajdhani';">${grant.title}</h3>
+                    </div>
+                    
+                    <p class="text-sm text-slate-300 leading-relaxed mb-6 flex-grow">${grant.desc}</p>
+                    
+                    <div class="stat-divider mb-3">
+                        <div class="stat-block w-full">
+                            <span class="stat-title">Coverage Matrix</span>
+                            <span class="stat-data text-[var(--gold)] text-sm">${grant.coverage}</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider">
+                        <div class="stat-block w-full">
+                            <span class="stat-title text-purple-400">Execution Requirement</span>
+                            <span class="stat-data text-slate-200 text-xs">${grant.requirement}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterGrants() {
+            const query = document.getElementById('searchGrant').value.toLowerCase();
+            const typeVal = document.getElementById('typeFilter').value;
+            const regionVal = document.getElementById('regionFilter').value;
+
+            const filtered = grantDB.filter(grant => {
+                const matchSearch = grant.institution.toLowerCase().includes(query) || grant.title.toLowerCase().includes(query);
+                const matchType = typeVal === "All" || grant.type === typeVal;
+                const matchRegion = regionVal === "All" || grant.region === regionVal;
+                return matchSearch && matchType && matchRegion;
+            });
+            renderGrants(filtered);
+        }
+
+        function logEngagement() {
+            if (typeof PilotCore !== 'undefined' && typeof PilotCore.awardXP === 'function') {
+                PilotCore.awardXP(10);
+            }
+        }
+
+        window.onload = () => {
+            renderGrants(grantDB);
+            if(localStorage.getItem('pilot_xp')) {
+                document.getElementById('nav-level').innerText = Math.floor(parseInt(localStorage.getItem('pilot_xp')) / 500) + 1;
+            }
+        };
+    </script>
+    <script src="pilot-core.js" defer></script>
 </body>
 </html>
